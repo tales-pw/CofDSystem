@@ -1,0 +1,12 @@
+build/_libraries_dev.hxml
+
+-cp src
+-cp test
+
+-main pw.tales.system.MainTest
+--macro nullSafety("pw.tales.system", Loose)
+--macro include("pw.tales.system")
+
+--each
+--interp
+--next

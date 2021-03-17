@@ -1,0 +1,6 @@
+build/_libraries.hxml
+
+-cp src
+-D analyzer-optimize
+
+--macro include("pw.tales.system")

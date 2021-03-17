@@ -1,0 +1,18 @@
+build/_build_header.hxml
+
+--each
+--interp
+
+--next
+-D python_version=3.9
+-python out/python/CofDSystem.py
+
+--next
+-D fast_cast
+-L hxjava
+--java out/java/
+--cmd mv out/java/java.jar out/java/CofDSystem.jar
+
+--next
+-D php7
+--php out/php

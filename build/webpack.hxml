@@ -1,0 +1,4 @@
+build/_build_header.hxml
+
+-L haxe-loader
+-js out/js/CofDSystem.js
