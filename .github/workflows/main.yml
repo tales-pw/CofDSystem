@@ -1,0 +1,12 @@
+name: Run Tests
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: krdlab/setup-haxe@v1
+        with:
+          haxe-version: 4.2.1
+      - run: |
+          sh scripts/tests.sh
