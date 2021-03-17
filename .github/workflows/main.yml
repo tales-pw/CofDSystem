@@ -8,5 +8,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - run: ls
-      - run: ./scripts/tests.sh
+      - name: Set up project
+        run: ./scripts/setup.sh
+      - name: Run tests
+        run: ./scripts/tests.sh
+      - name: Lint
+        run: ./scripts/lint.sh
