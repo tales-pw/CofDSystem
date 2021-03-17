@@ -8,7 +8,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Set up project
+      - name: Setup npm
+        uses: actions/setup-node@v2
+      - name: Setup project
         run: ./scripts/setup.sh
       - name: Run tests
         run: ./scripts/tests.sh
