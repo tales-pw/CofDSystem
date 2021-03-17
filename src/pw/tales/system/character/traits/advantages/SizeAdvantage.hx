@@ -8,7 +8,7 @@ import pw.tales.system.game_object.traits.TraitType;
 @:expose("SizeAdvantage")
 class SizeAdvantage extends AdvantageConstant {
     public static final DN = "Размер";
-    public static final TYPE = TraitType.createType(DN, create);
+    public static final TYPE:TraitType<SizeAdvantage> = cast TraitType.createType(DN, create);
 
     public function new(gameObject:GameObject) {
         super(gameObject, TYPE, 5);

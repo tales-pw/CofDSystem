@@ -7,12 +7,13 @@ import pw.tales.system.game_object.traits.advantages.AdvantageExpression;
 import pw.tales.system.game_object.traits.TraitType;
 import pw.tales.system.scene.initiative.events.InitiativeModifiersEvent;
 import pw.tales.system.utils.events.HandlerPriority;
+import pw.tales.system.weapon.traits.InitiativeMod;
 
 @:keep
 @:expose("InitiativeAdvantage")
 class InitiativeAdvantage extends AdvantageExpression {
     public static final DN = "Модификатор_Инициативы";
-    public static final TYPE = TraitType.createType(DN, create);
+    public static final TYPE:TraitType<InitiativeMod> = cast TraitType.createType(DN, create);
 
     private static final EXPR = new PBTrait(DEXTERITY.getDN()).plus(new PBTrait(COMPOSURE.getDN()));
 

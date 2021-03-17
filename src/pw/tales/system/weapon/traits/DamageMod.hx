@@ -7,7 +7,7 @@ import pw.tales.system.game_object.traits.TraitType;
 
 class DamageMod extends WeaponMod {
     public static final DN = "Свойство:Damage";
-    public static final TYPE = TraitType.createType(DN, create);
+    public static final TYPE:TraitType<DamageMod> = cast TraitType.createType(DN, create);
 
     public function new(gameObject:GameObject) {
         super(DN, gameObject, TYPE);

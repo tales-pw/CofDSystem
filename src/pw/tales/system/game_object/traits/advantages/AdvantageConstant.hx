@@ -6,7 +6,7 @@ import pw.tales.system.game_object.GameObject;
 class AdvantageConstant extends Advantage {
     private final value:Int;
 
-    public function new<T:AdvantageConstant>(gameObject:GameObject, type:TraitType<T>, value:Int) {
+    public function new(gameObject:GameObject, type:TraitType<Dynamic>, value:Int) {
         super(gameObject, type);
         this.value = value;
     }

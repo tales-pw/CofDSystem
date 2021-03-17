@@ -8,7 +8,7 @@ import pw.tales.system.game_object.traits.TraitType;
 
 class SpeedModifer extends EquipmentMod {
     public static final DN = "Свойство:Speed";
-    public static final TYPE = TraitType.createType(DN, create);
+    public static final TYPE:TraitType<SpeedModifer> = cast TraitType.createType(DN, create);
 
     public function new(gameObject:GameObject) {
         super(DN, gameObject, TYPE);

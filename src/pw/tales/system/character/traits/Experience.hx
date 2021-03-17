@@ -8,7 +8,7 @@ import pw.tales.system.game_object.traits.TraitType;
 @:expose("Experience")
 class Experience extends Trait {
     public static final DN = "Опыт";
-    public static final TYPE = TraitType.createType(DN, create);
+    public static final TYPE:TraitType<Experience> = cast TraitType.createType(DN, create);
 
     public static final BEAT_AMOUNT = 5;
 

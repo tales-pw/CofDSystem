@@ -18,7 +18,7 @@ import pw.tales.system.utils.events.HandlerPriority;
 @:expose("HealthAdvantage")
 class HealthAdvantage extends AdvantageExpression implements IHealthTrait {
     public static final DN = "Здоровье";
-    public static final TYPE = TraitType.createType(DN, create);
+    public static final TYPE:TraitType<HealthAdvantage> = cast TraitType.createType(DN, create);
 
     private static final EXPR = new PBTrait(SizeAdvantage.DN).plus(new PBTrait(STAMINA.getDN()));
 

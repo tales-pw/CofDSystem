@@ -7,7 +7,7 @@ import pw.tales.system.game_object.traits.TraitType;
 
 class HoldingHand extends Trait {
     public static final DN = "holding_hand";
-    public static final TYPE = TraitType.createType(DN, create);
+    public static final TYPE:TraitType<HoldingHand> = cast TraitType.createType(DN, create);
 
     private var hand:Null<EnumHand>;
 

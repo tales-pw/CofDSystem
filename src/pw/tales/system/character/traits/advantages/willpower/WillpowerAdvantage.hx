@@ -10,7 +10,7 @@ import pw.tales.system.game_object.traits.TraitType;
 @:expose("WillpowerAdvantage")
 class WillpowerAdvantage extends AdvantageExpression {
     public static final DN = "Сила_воли";
-    public static final TYPE = TraitType.createType(DN, create);
+    public static final TYPE:TraitType<WillpowerAdvantage> = cast TraitType.createType(DN, create);
 
     private static final EXPR = new PBTrait(RESOLVE.getDN()).plus(new PBTrait(COMPOSURE.getDN()));
 

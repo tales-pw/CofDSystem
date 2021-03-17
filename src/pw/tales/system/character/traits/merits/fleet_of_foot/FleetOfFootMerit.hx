@@ -9,7 +9,7 @@ import pw.tales.system.utils.events.HandlerPriority;
 @:keep
 @:expose("SmallFramedMerit")
 class FleetOfFootMerit extends Merit {
-    public static final TYPE = new FleetOfFootType("Fleet_of_Foot");
+    public static final TYPE:FleetOfFootType = new FleetOfFootType("Fleet_of_Foot");
 
     public function new(dn:String, gameObject:GameObject, ?customName:String) {
         super(dn, gameObject, TYPE, customName);

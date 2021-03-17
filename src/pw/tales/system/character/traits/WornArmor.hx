@@ -9,7 +9,7 @@ import pw.tales.system.game_object.traits.TraitType;
 @:expose("Armor")
 class WornArmor extends Trait {
     public static final DN = "worn_armor";
-    public static final TYPE = TraitType.createType(DN, create);
+    public static final TYPE:TraitType<WornArmor> = cast TraitType.createType(DN, create);
 
     private var armor:Null<Armor> = null;
 

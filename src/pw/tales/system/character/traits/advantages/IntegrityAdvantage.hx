@@ -8,7 +8,7 @@ import pw.tales.system.game_object.traits.TraitType;
 @:expose("IntegrityAdvantage")
 class IntegrityAdvantage extends Advantage {
     public static final DN = "Целостность";
-    public static final TYPE = TraitType.createType(DN, create);
+    public static final TYPE:TraitType<IntegrityAdvantage> = cast TraitType.createType(DN, create);
 
     @Serialize("points")
     private var points:Int = 7;

@@ -9,7 +9,7 @@ import pw.tales.system.utils.events.HandlerPriority;
 @:keep
 @:expose("SmallFramedMerit")
 class SmallFramedMerit extends Merit {
-    public static final TYPE = new SmallFramedType("Small_Framed");
+    public static final TYPE:SmallFramedType = new SmallFramedType("Small_Framed");
 
     public function new(dn:String, gameObject:GameObject, ?customName:String) {
         super(dn, gameObject, TYPE, customName);

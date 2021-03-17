@@ -8,7 +8,7 @@ import pw.tales.system.game_object.traits.TraitType;
 
 class DefenceModifer extends EquipmentMod {
     public static final DN = "Свойство:Defense";
-    public static final TYPE = TraitType.createType(DN, create);
+    public static final TYPE:TraitType<DefenceModifer> = cast TraitType.createType(DN, create);
 
     public function new(gameObject:GameObject) {
         super(DN, gameObject, TYPE);

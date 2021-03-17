@@ -16,7 +16,7 @@ class Condition extends Trait {
     @Serialize("description")
     private var description:String = "";
 
-    public function new<T:Condition>(dn:String, gameObject:GameObject, type:TraitType<T>) {
+    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>) {
         super(dn, gameObject, type);
         this.eventBus.addHandler(ConditionsCollectEvent, (e:ConditionsCollectEvent) -> e.collect(this));
     }

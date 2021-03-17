@@ -12,7 +12,7 @@ import pw.tales.system.weapon.Weapon;
 @:expose("HeldWeapon")
 class HeldWeapon extends Trait {
     public static final DN = "weapon";
-    public static final TYPE = TraitType.createType(DN, create);
+    public static final TYPE:TraitType<HeldWeapon> = cast TraitType.createType(DN, create);
 
     private var mainHand:Null<Weapon> = null;
     private var offHand:Null<Weapon> = null;

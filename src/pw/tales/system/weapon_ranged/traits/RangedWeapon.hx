@@ -12,7 +12,7 @@ import pw.tales.system.weapon.Weapon;
 
 class RangedWeapon extends WeaponTrait {
     public static final DN = "ranged_weapon";
-    public static final TYPE = TraitType.createType(DN, create);
+    public static final TYPE:TraitType<RangedWeapon> = cast TraitType.createType(DN, create);
 
     public function new(gameObject:GameObject) {
         super(DN, gameObject, TYPE);

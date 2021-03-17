@@ -10,13 +10,14 @@ import pw.tales.system.game_object.events.TraitAddEvent;
 import pw.tales.system.game_object.GameObject;
 import pw.tales.system.game_object.GameObjectState;
 import pw.tales.system.game_object.traits.Trait;
+import pw.tales.system.game_object.traits.TraitType;
 import pw.tales.system.game_object.traits.value_trait.events.ValueTraitUpdateEvent;
 
 @:keep
 @:expose("GenAdvancement")
 class GenAdvancement extends Trait {
     public static final DN = "generation_advancement";
-    public static final TYPE = new GenAdvancementType(DN);
+    public static final TYPE:TraitType<GenAdvancement> = new GenAdvancementType(DN);
 
     public var restrictions:Array<GenAdvancementItem<Dynamic, Dynamic>> = [];
 

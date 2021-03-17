@@ -8,7 +8,7 @@ import pw.tales.system.game_object.traits.TraitType;
 
 class LethalDamage extends WeaponTrait {
     public static final DN = "lethal_damage";
-    public static final TYPE = TraitType.createType(DN, create);
+    public static final TYPE:TraitType<LethalDamage> = cast TraitType.createType(DN, create);
 
     public function new(gameObject:GameObject) {
         super(DN, gameObject, TYPE);
