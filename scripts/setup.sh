@@ -2,7 +2,7 @@
 
 echo "Setting up haxe deps:"
 haxelib newrepo
-haxelib install build/_libraries_full.hxml
+haxelib install build/_libraries_full.hxml --always
 
 printf "\n"
 
