@@ -3,9 +3,10 @@ on: push
 
 jobs:
   tests:
-    runs-on: haxe:4.2.1
+    runs-on: ubuntu-latest
+    container: haxe:4.2.1
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - run: |
-          ./scripts/tests.sh
+      - run: ls
+      - run: ./scripts/tests.sh
