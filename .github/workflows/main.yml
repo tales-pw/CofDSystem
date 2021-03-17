@@ -6,10 +6,12 @@ jobs:
     runs-on: ubuntu-latest
     container: haxe:4.2.1
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
       - name: Setup npm
         uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - name: Checkout code
+        uses: actions/checkout@v2
       - name: Setup project
         run: ./scripts/setup.sh
       - name: Run tests
