@@ -1,14 +1,11 @@
-name: Workflow
-on: [push]
+name: CI
+on: push
 
 jobs:
   tests:
-    runs-on: ubuntu-latest
+    runs-on: haxe:4.2.1
     steps:
-      - uses: krdlab/setup-haxe@v1
-        with:
-          haxe-version: 4.2.1
-      - run: |
-          ls
+      - name: Checkout code
+        uses: actions/checkout@v2
       - run: |
           ./scripts/tests.sh
