@@ -12,7 +12,7 @@ import pw.tales.system.weapon.Weapon;
 
 class MeleeWeapon extends WeaponTrait {
     public static final DN = "melee_weapon";
-    public static final TYPE = TraitType.createType(DN, create);
+    public static final TYPE:TraitType<MeleeWeapon> = cast TraitType.createType(DN, create);
 
     public function new(gameObject:GameObject) {
         super(DN, gameObject, TYPE);

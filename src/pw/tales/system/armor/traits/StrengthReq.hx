@@ -10,7 +10,7 @@ import pw.tales.system.game_object.traits.TraitType;
 
 class StrengthReq extends EquipmentMod {
     public static final DN = "Свойство:Strength_Requirements";
-    public static final TYPE = TraitType.createType(DN, create);
+    public static final TYPE:TraitType<StrengthReq> = cast TraitType.createType(DN, create);
 
     public function new(gameObject:GameObject) {
         super(DN, gameObject, TYPE);

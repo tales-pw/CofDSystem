@@ -4,7 +4,7 @@ import pw.tales.system.game_object.GameObject;
 import pw.tales.system.utils.events.IEvent;
 
 class Advantage extends Trait {
-    public function new<T: Advantage>(gameObject:GameObject, type:TraitType<T>) {
+    public function new(gameObject:GameObject, type:TraitType<Dynamic>) {
         super(type.getDN(), gameObject, type);
     }
 

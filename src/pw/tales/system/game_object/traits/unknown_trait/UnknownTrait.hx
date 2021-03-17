@@ -7,7 +7,7 @@ import String;
 @:expose("UnknownTrait")
 class UnknownTrait extends Trait {
     public static final DN = "unknown_trait";
-    public static final TYPE = new UnknownType(DN);
+    public static final TYPE:UnknownType = new UnknownType(DN);
 
     private var data:Dynamic = {};
 

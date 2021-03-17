@@ -14,7 +14,7 @@ import pw.tales.system.utils.Utility;
 **/
 class BrawlTag extends WeaponTag {
     public static final DN = "brawl_(weapon_tag)";
-    public static final TYPE = TraitType.createType(DN, create);
+    public static final TYPE:TraitType<BrawlTag> = cast TraitType.createType(DN, create);
 
     public function new(gameObject:GameObject) {
         super(DN, gameObject, TYPE);

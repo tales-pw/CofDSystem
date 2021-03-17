@@ -13,7 +13,7 @@ import pw.tales.system.game_object.traits.TraitType;
 **/
 class ReachTag extends WeaponTag {
     public static final DN = "reach_(weapon_tag)";
-    public static final TYPE = TraitType.createType(DN, create);
+    public static final TYPE:TraitType<ReachTag> = cast TraitType.createType(DN, create);
 
     public function new(gameObject:GameObject) {
         super(DN, gameObject, TYPE);

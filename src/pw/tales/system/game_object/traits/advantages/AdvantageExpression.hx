@@ -8,7 +8,7 @@ import pw.tales.system.utils.math.IMathOperation;
 class AdvantageExpression extends Advantage {
     private final pool:IMathOperation<Int>;
 
-    public function new<T:AdvantageExpression>(gameObject:GameObject, type:TraitType<T>, poolBuilder:IPoolBuilder) {
+    public function new(gameObject:GameObject, type:TraitType<Dynamic>, poolBuilder:IPoolBuilder) {
         super(gameObject, type);
         this.pool = poolBuilder.build(gameObject);
     }

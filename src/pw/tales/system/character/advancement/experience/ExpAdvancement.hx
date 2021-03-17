@@ -6,12 +6,13 @@ import pw.tales.system.game_object.events.TraitRemoveEvent;
 import pw.tales.system.game_object.GameObject;
 import pw.tales.system.game_object.GameObjectState;
 import pw.tales.system.game_object.traits.Trait;
+import pw.tales.system.game_object.traits.TraitType;
 import pw.tales.system.game_object.traits.value_trait.events.ValueTraitUpdateEvent;
 import pw.tales.system.utils.Utility;
 
 class ExpAdvancement extends Trait {
     public static final DN = "experience_advancement";
-    public static final TYPE = new ExpAdvancementType(DN);
+    public static final TYPE:TraitType<ExpAdvancement> = new ExpAdvancementType(DN);
 
     public function new(gameObject:GameObject) {
         super(DN, gameObject, TYPE);

@@ -9,7 +9,7 @@ import pw.tales.system.game_object.traits.TraitType;
 
 class ArmorRating extends EquipmentTrait {
     public static final DN = "Свойство:Rating";
-    public static final TYPE = TraitType.createType(DN, create);
+    public static final TYPE:TraitType<ArmorRating> = cast TraitType.createType(DN, create);
 
     @Serialize("general")
     private var general:Int = 0;

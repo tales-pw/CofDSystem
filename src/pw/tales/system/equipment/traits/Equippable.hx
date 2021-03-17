@@ -6,7 +6,7 @@ import pw.tales.system.game_object.traits.TraitType;
 
 class Equippable extends Trait {
     public static final DN = "Equippable";
-    public static final TYPE = TraitType.createType(DN, create);
+    public static final TYPE:TraitType<Equippable> = cast TraitType.createType(DN, create);
 
     private var holder:Null<GameObject> = null;
 

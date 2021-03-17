@@ -10,7 +10,7 @@ import pw.tales.system.game_object.traits.TraitType;
 @:expose("Speciality")
 class Speciality extends Trait {
     public static final DN = "Специализация";
-    public static final TYPE = TraitType.createType(DN, create).setMultiInstanced(true);
+    public static final TYPE:TraitType<Speciality> = cast TraitType.createType(DN, create).setMultiInstanced(true);
 
     @Serialize("name")
     private var name:String = "";
@@ -18,7 +18,7 @@ class Speciality extends Trait {
     @Serialize("skill")
     private var skillDn:String = "";
 
-    public function new<T:Speciality>(dn:String, gameObject:GameObject, type:TraitType<T>) {
+    @overload public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>) {
         super(dn, gameObject, type);
         this.eventBus.addHandler(SpecialitiesCollectEvent, (e:SpecialitiesCollectEvent) -> e.collect(this));
     }

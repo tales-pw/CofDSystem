@@ -12,7 +12,7 @@ class WealthAdvantage extends Advantage {
     // TODO: Somehow merge it with ValueTrait. Turning Avdantage into interface is a valid choice.
 
     public static final DN = "Богатство";
-    public static final TYPE = TraitType.createType(DN, create);
+    public static final TYPE:TraitType<WealthAdvantage> = cast TraitType.createType(DN, create);
 
     @Serialize("points")
     private var points:Int = 0;

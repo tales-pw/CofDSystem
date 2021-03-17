@@ -9,7 +9,7 @@ import pw.tales.system.utils.events.HandlerPriority;
 @:keep
 @:expose("GiantMerit")
 class GiantMerit extends Merit {
-    public static final TYPE = new GiantMeritType("Giant");
+    public static final TYPE:GiantMeritType = new GiantMeritType("Giant");
 
     public function new(dn:String, gameObject:GameObject, ?customName:String) {
         super(dn, gameObject, TYPE, customName);
