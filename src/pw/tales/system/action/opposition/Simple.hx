@@ -14,13 +14,15 @@ class Simple extends Opposition {
         this.difficulty = difficulty;
     }
 
-    override public function roll(action:IAction, system:CofDSystem):Void {
-        system.events.post(new ActionBuildPoolEvent(action, actorPool, system));
+    override public function roll(action:IAction):Void {
+        var system = action.getSystem();
+
+        system.events.post(new ActionBuildPoolEvent(action, actorPool));
 
         this.actorPool.getRequest().addModifier(difficulty, "difficulty");
 
-        system.events.post(new ActionPreRollEvent(action, actorPool, system));
+        system.events.post(new ActionPreRollEvent(action, actorPool));
         this.actorPool.roll(system);
-        system.events.post(new ActionPostRollEvent(action, actorPool, system));
+        system.events.post(new ActionPostRollEvent(action, actorPool));
     }
 }

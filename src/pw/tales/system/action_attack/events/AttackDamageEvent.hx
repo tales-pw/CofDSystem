@@ -5,8 +5,8 @@ import pw.tales.system.damage.Damage;
 class AttackDamageEvent extends AttackEvent {
     private var damage:Damage;
 
-    public function new(damage:Damage, action:AttackAction, system:CofDSystem) {
-        super(action, system);
+    public function new(damage:Damage, action:AttackAction) {
+        super(action);
         this.damage = damage;
     }
 

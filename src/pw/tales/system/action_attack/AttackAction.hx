@@ -13,14 +13,13 @@ import pw.tales.system.action_attack.events.AttackSuccesesEvent;
 import pw.tales.system.damage.Damage;
 import pw.tales.system.damage.DamageType;
 import pw.tales.system.game_object.health_helper.HealthTraitHelper;
-import pw.tales.system.scene.Scene;
 
 class AttackAction extends Action {
     private final competitiveOpposition:OppositionCompetitive;
     private var damage:Null<Damage> = null;
 
-    public function new(opposition:OppositionCompetitive) {
-        super(opposition, EnumTime.INSTANT);
+    public function new(opposition:OppositionCompetitive, system:CofDSystem) {
+        super(opposition, EnumTime.INSTANT, system);
         this.competitiveOpposition = opposition;
     }
 
@@ -45,18 +44,18 @@ class AttackAction extends Action {
         return new Damage(value, 0, 0);
     }
 
-    private override function before(system:CofDSystem, scene:Null<Scene> = null) {
-        system.events.post(new AttackInitiatedEvent(this, system));
-        super.before(system, scene);
+    private override function beforeAction() {
+        super.beforeAction();
+        system.events.post(new AttackInitiatedEvent(this));
     }
 
-    private override function perform(system:CofDSystem, scene:Null<Scene> = null) {
+    private override function perform() {
         var opposition = this.getOpposition();
         var actor = opposition.getActorPool().getGameObject();
         var target = opposition.getTargetPool().getGameObject();
 
         if (opposition.getWinnerPool() == opposition.getActorPool()) {
-            system.events.post(new AttackHitEvent(this, system));
+            system.events.post(new AttackHitEvent(this));
 
             var successes = opposition.getActorPool().getResponse().getSuccesses();
             if (opposition.getTargetPool().getResponse() != null) {
@@ -65,12 +64,12 @@ class AttackAction extends Action {
             var damageType = DamageType.BASHING;
 
             // Post damage type event
-            var eventDamageType = new AttackDamageGetTypeEvent(damageType, this, system);
+            var eventDamageType = new AttackDamageGetTypeEvent(damageType, this);
             system.events.post(eventDamageType);
             damageType = eventDamageType.getDamageType();
 
             // Allow weapon to modifiy damage successes while leaving response object alone
-            var eventAttackSuccess = new AttackSuccesesEvent(successes, this, system);
+            var eventAttackSuccess = new AttackSuccesesEvent(successes, this);
             system.events.post(eventAttackSuccess);
             successes = eventAttackSuccess.getDamageSucceses();
 
@@ -78,7 +77,7 @@ class AttackAction extends Action {
             this.damage = this.createDamageType(successes, damageType);
 
             // Post damage event
-            var eventDamage = new AttackDamageGetEvent(damage, this, system);
+            var eventDamage = new AttackDamageGetEvent(damage, this);
             system.events.post(eventDamage);
             this.damage = eventDamage.getDamage();
 
@@ -86,9 +85,9 @@ class AttackAction extends Action {
             HealthTraitHelper.get(target).dealDamage(this.damage);
 
             // Post final damage event
-            system.events.post(new AttackDamageDealtEvent(this.damage, this, system));
+            system.events.post(new AttackDamageDealtEvent(this.damage, this));
         } else {
-            system.events.post(new AttackMissEvent(this, system));
+            system.events.post(new AttackMissEvent(this));
         }
     }
 }

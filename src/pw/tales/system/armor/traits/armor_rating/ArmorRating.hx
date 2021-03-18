@@ -47,11 +47,11 @@ class ArmorRating extends EquipmentTrait {
         if (!event.isTarget(holder)) return;
 
         // Post armor get event
-        var system = event.getSystem();
         var action = event.getAction();
+        var system = action.getSystem();
 
-        var armorGetEvent = new AttackArmorGetEvent(system, action, this.getGeneral(), this.getBallistic());
-        event.getSystem().events.post(armorGetEvent);
+        var armorGetEvent = new AttackArmorGetEvent(action, this.getGeneral(), this.getBallistic());
+        system.events.post(armorGetEvent);
 
         var general = armorGetEvent.getGeneral();
         var ballistic = armorGetEvent.getBallistic();

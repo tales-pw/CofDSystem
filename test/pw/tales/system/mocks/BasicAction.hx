@@ -5,7 +5,7 @@ import pw.tales.system.action.EnumTime;
 import pw.tales.system.action.opposition.base.Opposition;
 
 class BasicAction extends Action {
-    public function new(opposition:Opposition, time:EnumTime) {
-        super(opposition, time);
+    public function new(opposition:Opposition, time:EnumTime, system:CofDSystem) {
+        super(opposition, time, system);
     }
 }

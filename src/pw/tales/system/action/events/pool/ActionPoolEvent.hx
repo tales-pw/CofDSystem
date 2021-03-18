@@ -6,8 +6,8 @@ import pw.tales.system.game_object.GameObject;
 class ActionPoolEvent extends ActionEvent {
     private var pool:ActionPool;
 
-    public function new(action:IAction, pool:ActionPool, system:CofDSystem) {
-        super(action, system);
+    public function new(action:IAction, pool:ActionPool) {
+        super(action);
         this.pool = pool;
     }
 

@@ -28,5 +28,5 @@ class Opposition {
         return this.actorPool.getGameObject() == character;
     }
 
-    public function roll(action:IAction, system:CofDSystem):Void throw new AbstractMethod();
+    public function roll(action:IAction):Void throw new AbstractMethod();
 }

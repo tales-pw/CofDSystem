@@ -122,7 +122,7 @@ class AttackBuilder {
     public function build():IAction {
         var opposition:OppositionCompetitive = this.createOpposition();
 
-        var attackAction:AttackAction = new AttackAction(opposition);
+        var attackAction:AttackAction = new AttackAction(opposition, this.system);
         var action:IAction = attackAction;
 
         if (specifiedTarget != null) action.addModification(
