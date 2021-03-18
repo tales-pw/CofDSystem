@@ -1,25 +1,20 @@
 package pw.tales.system.weapon.traits;
 
+import pw.tales.system.action.events.ActionGetHandEvent;
 import pw.tales.system.action.IAction;
-import pw.tales.system.action.modifications.Offhand;
 import pw.tales.system.action.opposition.pool.ActionPool;
 import pw.tales.system.common.EnumHand;
 import pw.tales.system.equipment.traits.EquipmentTrait;
-import pw.tales.system.utils.Utility;
 
 class WeaponTrait extends EquipmentTrait {
     private function getActionHand(action:IAction):EnumHand {
+        var eventBus = action.getEventBus();
         var actor = action.getOpposition().getActorPool().getGameObject();
 
-        for (modification in action.getModifications()) {
-            var offhand:Null<Offhand> = Utility.downcast(modification, Offhand);
-            if (offhand == null) continue;
+        var handEvent = new ActionGetHandEvent(action, actor);
+        eventBus.post(handEvent);
 
-            var whoseHand = offhand.getGameObject();
-            if (whoseHand == actor) return EnumHand.OFFHAND;
-        }
-
-        return EnumHand.HAND;
+        return handEvent.getHand();
     }
 
     public function doesHolderAct(action:IAction):Bool {
