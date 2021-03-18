@@ -1,6 +1,5 @@
 package pw.tales.system;
 
-import pw.tales.system.action.events.ActionPerformedEvent;
 import pw.tales.system.action.IAction;
 import pw.tales.system.armor.prefabs.ArmorPrefab;
 import pw.tales.system.dices.DiceRoller;
@@ -28,6 +27,6 @@ class CofDSystem {
 
     public function act(action:IAction) {
         action.execute();
-        this.events.post(new ActionPerformedEvent(action, this));
+
     }
 }

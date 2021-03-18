@@ -8,8 +8,8 @@ import pw.tales.system.damage.DamageType;
 class AttackDamageGetTypeEvent extends AttackEvent {
     private var damageType:DamageType;
 
-    public function new(damageType:DamageType, action:AttackAction, system:CofDSystem) {
-        super(action, system);
+    public function new(damageType:DamageType, action:AttackAction) {
+        super(action);
         this.damageType = damageType;
     }
 

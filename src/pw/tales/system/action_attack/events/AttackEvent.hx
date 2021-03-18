@@ -6,8 +6,8 @@ import pw.tales.system.game_object.GameObject;
 class AttackEvent extends ActionEvent {
     private final attackAction:AttackAction;
 
-    public function new(action:AttackAction, system:CofDSystem) {
-        super(action, system);
+    public function new(action:AttackAction) {
+        super(action);
         this.attackAction = action;
     }
 

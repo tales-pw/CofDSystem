@@ -46,7 +46,7 @@ class AttackAction extends Action {
 
     private override function beforeAction() {
         super.beforeAction();
-        system.events.post(new AttackInitiatedEvent(this, system));
+        system.events.post(new AttackInitiatedEvent(this));
     }
 
     private override function perform() {
@@ -55,7 +55,7 @@ class AttackAction extends Action {
         var target = opposition.getTargetPool().getGameObject();
 
         if (opposition.getWinnerPool() == opposition.getActorPool()) {
-            system.events.post(new AttackHitEvent(this, system));
+            system.events.post(new AttackHitEvent(this));
 
             var successes = opposition.getActorPool().getResponse().getSuccesses();
             if (opposition.getTargetPool().getResponse() != null) {
@@ -64,12 +64,12 @@ class AttackAction extends Action {
             var damageType = DamageType.BASHING;
 
             // Post damage type event
-            var eventDamageType = new AttackDamageGetTypeEvent(damageType, this, system);
+            var eventDamageType = new AttackDamageGetTypeEvent(damageType, this);
             system.events.post(eventDamageType);
             damageType = eventDamageType.getDamageType();
 
             // Allow weapon to modifiy damage successes while leaving response object alone
-            var eventAttackSuccess = new AttackSuccesesEvent(successes, this, system);
+            var eventAttackSuccess = new AttackSuccesesEvent(successes, this);
             system.events.post(eventAttackSuccess);
             successes = eventAttackSuccess.getDamageSucceses();
 
@@ -77,7 +77,7 @@ class AttackAction extends Action {
             this.damage = this.createDamageType(successes, damageType);
 
             // Post damage event
-            var eventDamage = new AttackDamageGetEvent(damage, this, system);
+            var eventDamage = new AttackDamageGetEvent(damage, this);
             system.events.post(eventDamage);
             this.damage = eventDamage.getDamage();
 
@@ -85,9 +85,9 @@ class AttackAction extends Action {
             HealthTraitHelper.get(target).dealDamage(this.damage);
 
             // Post final damage event
-            system.events.post(new AttackDamageDealtEvent(this.damage, this, system));
+            system.events.post(new AttackDamageDealtEvent(this.damage, this));
         } else {
-            system.events.post(new AttackMissEvent(this, system));
+            system.events.post(new AttackMissEvent(this));
         }
     }
 }

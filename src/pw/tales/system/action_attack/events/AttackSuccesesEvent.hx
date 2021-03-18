@@ -3,8 +3,8 @@ package pw.tales.system.action_attack.events;
 class AttackSuccesesEvent extends AttackEvent {
     private var succeses:Int;
 
-    public function new(succeses:Int, action:AttackAction, system:CofDSystem) {
-        super(action, system);
+    public function new(succeses:Int, action:AttackAction) {
+        super(action);
         this.succeses = succeses;
     }
 

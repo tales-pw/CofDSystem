@@ -7,8 +7,8 @@ class AttackArmorGetEvent extends AttackEvent {
     private var general:Int;
     private var ballistic:Int;
 
-    public function new(system:CofDSystem, action:AttackAction, general:Int, ballistic:Int) {
-        super(action, system);
+    public function new(action:AttackAction, general:Int, ballistic:Int) {
+        super(action);
         this.general = general;
         this.ballistic = ballistic;
     }

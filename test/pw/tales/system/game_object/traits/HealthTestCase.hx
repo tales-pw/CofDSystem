@@ -35,6 +35,7 @@ class HealthTestCase extends CofDSystemTestCase {
 
         var actorRoll = new ActionPool(c1, []);
         var opposition = new Simple(actorRoll, 0);
+
         var action = new BasicAction(opposition, EnumTime.INSTANT, this.system);
         action.execute();
 

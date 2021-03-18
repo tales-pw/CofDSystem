@@ -5,8 +5,8 @@ import pw.tales.system.action.opposition.pool.ActionPool;
 class ActionRollEvent extends ActionEvent {
     private var roll:ActionPool;
 
-    public function new(action:IAction, roll:ActionPool, system:CofDSystem) {
-        super(action, system);
+    public function new(action:IAction, roll:ActionPool) {
+        super(action);
         this.roll = roll;
     }
 
