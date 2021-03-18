@@ -35,8 +35,8 @@ class HealthTestCase extends CofDSystemTestCase {
 
         var actorRoll = new ActionPool(c1, []);
         var opposition = new Simple(actorRoll, 0);
-        var action = new BasicAction(opposition, EnumTime.INSTANT);
-        action.execute(system, null);
+        var action = new BasicAction(opposition, EnumTime.INSTANT, this.system);
+        action.execute();
 
         var roll = opposition.getPool(c1);
         assertEquals(result, roll.getRequest().getAppliedModifiers()[HealthAdvantage.DN]);
@@ -70,8 +70,9 @@ class HealthTestCase extends CofDSystemTestCase {
         var targetRoll = new ActionPool(c2, []);
         var opposition = new Resisted(actorRoll, targetRoll);
 
-        var action = new BasicAction(opposition, EnumTime.INSTANT);
-        action.execute(system, null);
+        var action = new BasicAction(opposition, EnumTime.INSTANT, this.system);
+        action.execute();
+
         var roll = opposition.getPool(c1);
         assertEquals(null, roll.getRequest().getAppliedModifiers()[HealthAdvantage.DN]);
     }

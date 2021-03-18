@@ -1,21 +1,35 @@
 package pw.tales.system.action;
 
 import pw.tales.system.action.opposition.base.Opposition;
-import pw.tales.system.scene.Scene;
+import pw.tales.system.utils.events.IEventBus;
+import pw.tales.system.utils.events.SubEventBus;
 
 class Action implements IAction {
+    private final system:CofDSystem;
     private final opposition:Opposition;
     private final time:EnumTime;
 
+    private final eventBus:SubEventBus;
     private var modifications:Array<IModification> = [];
 
-    private function new(opposition:Opposition, time:EnumTime) {
+    private function new(opposition:Opposition, time:EnumTime, system:CofDSystem) {
         this.opposition = opposition;
         this.time = time;
+        this.system = system;
+        this.eventBus = system.events.createSubBus();
+    }
+
+    public function getSystem():CofDSystem {
+        return this.system;
+    }
+
+    public function getEventBus():IEventBus {
+        return this.eventBus;
     }
 
     public function addModification(modification:IModification) {
         this.modifications.push(modification);
+        modification.init(this);
     }
 
     public function getModifications():Array<IModification> {
@@ -30,26 +44,26 @@ class Action implements IAction {
         return this.time;
     }
 
-    private function before(system:CofDSystem, scene:Null<Scene> = null) {
-        for (modification in this.modifications) modification.before(this);
-    }
-
-    private function after(system:CofDSystem, scene:Null<Scene> = null) {
-        for (modification in this.modifications) modification.after(this);
-    }
-
-    private function roll(system:CofDSystem, scene:Null<Scene> = null) {
-        this.opposition.roll(this, system);
-    }
-
-    private function perform(system:CofDSystem, scene:Null<Scene> = null) {
+    private function beforeAction() {
 
     }
 
-    public function execute(system:CofDSystem, scene:Null<Scene> = null):Void {
-        this.before(system, scene);
-        this.roll(system, scene);
-        this.perform(system, scene);
-        this.after(system, scene);
+    private function perform() {
+
+    }
+
+    private function roll() {
+        this.opposition.roll(this);
+    }
+
+    private function afterAction() {
+        this.eventBus.disable();
+    }
+
+    public function execute():Void {
+        this.beforeAction();
+        this.roll();
+        this.perform();
+        this.afterAction();
     }
 }

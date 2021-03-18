@@ -14,7 +14,9 @@ class Simple extends Opposition {
         this.difficulty = difficulty;
     }
 
-    override public function roll(action:IAction, system:CofDSystem):Void {
+    override public function roll(action:IAction):Void {
+        var system = action.getSystem();
+
         system.events.post(new ActionBuildPoolEvent(action, actorPool, system));
 
         this.actorPool.getRequest().addModifier(difficulty, "difficulty");

@@ -20,7 +20,9 @@ class Contested extends OppositionCompetitive {
         return roll == actorPool || roll == targetPool;
     }
 
-    override public function roll(action:IAction, system:CofDSystem):Void {
+    override public function roll(action:IAction):Void {
+        var system = action.getSystem();
+
         system.events.post(new ActionBuildPoolEvent(action, actorPool, system));
         system.events.post(new ActionBuildPoolEvent(action, targetPool, system));
 

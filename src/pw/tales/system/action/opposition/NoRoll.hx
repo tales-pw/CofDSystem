@@ -13,6 +13,7 @@ class NoRoll extends Opposition {
         return false;
     }
 
-    override public function roll(action:IAction, system:CofDSystem):Void {
+    override public function roll(action:IAction):Void {
+        var system = action.getSystem();
     }
 }

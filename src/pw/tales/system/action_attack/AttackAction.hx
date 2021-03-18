@@ -13,14 +13,13 @@ import pw.tales.system.action_attack.events.AttackSuccesesEvent;
 import pw.tales.system.damage.Damage;
 import pw.tales.system.damage.DamageType;
 import pw.tales.system.game_object.health_helper.HealthTraitHelper;
-import pw.tales.system.scene.Scene;
 
 class AttackAction extends Action {
     private final competitiveOpposition:OppositionCompetitive;
     private var damage:Null<Damage> = null;
 
-    public function new(opposition:OppositionCompetitive) {
-        super(opposition, EnumTime.INSTANT);
+    public function new(opposition:OppositionCompetitive, system:CofDSystem) {
+        super(opposition, EnumTime.INSTANT, system);
         this.competitiveOpposition = opposition;
     }
 
@@ -45,12 +44,12 @@ class AttackAction extends Action {
         return new Damage(value, 0, 0);
     }
 
-    private override function before(system:CofDSystem, scene:Null<Scene> = null) {
+    private override function beforeAction() {
+        super.beforeAction();
         system.events.post(new AttackInitiatedEvent(this, system));
-        super.before(system, scene);
     }
 
-    private override function perform(system:CofDSystem, scene:Null<Scene> = null) {
+    private override function perform() {
         var opposition = this.getOpposition();
         var actor = opposition.getActorPool().getGameObject();
         var target = opposition.getTargetPool().getGameObject();

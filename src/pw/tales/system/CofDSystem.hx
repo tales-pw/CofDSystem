@@ -27,7 +27,7 @@ class CofDSystem {
     public function new() {}
 
     public function act(action:IAction) {
-        action.execute(this, null);
+        action.execute();
         this.events.post(new ActionPerformedEvent(action, this));
     }
 }
