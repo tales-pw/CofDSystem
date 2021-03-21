@@ -1,5 +1,6 @@
 name: Publish PyPI
-on: push
+on:
+  push: tags
 
 jobs:
   publish:
