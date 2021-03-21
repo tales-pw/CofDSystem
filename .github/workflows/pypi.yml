@@ -30,8 +30,9 @@ jobs:
           repository: tales-pw/PyPI
           path: PyPI
       - name: Publsih to git PyPI
-        workdir: PyPI
         run: |
+          cd PyPI
+
           yes | cp ../dist/*.whl ./packages
 
           ls ./packages/*.whl > packages/packages.txt
