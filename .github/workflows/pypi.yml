@@ -26,16 +26,13 @@ jobs:
         run: python3 setup.py bdist_wheel
       - name: Setup PyPI keys
         run: |
-          # load key from secret
+          # Load key from secret
           echo "${{ secrets.PYPI_DEPLOY_KEY }}" > ./pypi_ssh_key
 
-          # start agent
-          ssh-agent -a $SSH_AUTH_SOCK_FIRST > /dev/null
+          # Add ssh key
+          ssh-add ./pypi_ssh_key
 
-          # add key to ssh agent
-          SSH_AUTH_SOCK=$SSH_AUTH_SOCK_FIRST ssh-add ./pypi_ssh_key
-
-          # remove key
+          # Remove key
           rm -f ./pypi_ssh_key
       - name: Publsih to git PyPI
         run: |
