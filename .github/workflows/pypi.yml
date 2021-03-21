@@ -29,6 +29,9 @@ jobs:
           # Load key from secret
           echo "${{ secrets.PYPI_DEPLOY_KEY }}" > ./pypi_ssh_key
 
+          # Start agent
+          eval `ssh-agent -s`
+
           # Add ssh key
           ssh-add ./pypi_ssh_key
 
