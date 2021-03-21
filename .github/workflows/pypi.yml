@@ -44,7 +44,6 @@ jobs:
           cd PyPI
 
           yes | cp ../dist/*.whl ./
-          find . -name "*.whl" -printf "%f\n" > packages.txt
 
           git add --all
           git config --local user.email "pypi@tales.pw"
