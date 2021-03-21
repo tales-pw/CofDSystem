@@ -1,3 +1,5 @@
+# noinspection PyUnresolvedReferences
+import setuptools
 from distutils.core import setup
 
 setup(

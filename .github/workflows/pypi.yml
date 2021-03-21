@@ -23,4 +23,4 @@ jobs:
       - name: Install python deps
         run: python3 -m pip install wheel dumb-pypi
       - name: Build python package
-        run: python3 setup.py bdist_wheel -b .build
+        run: python3 setup.py bdist_wheel
