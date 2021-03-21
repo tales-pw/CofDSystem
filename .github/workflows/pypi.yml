@@ -18,18 +18,23 @@ jobs:
         with:
           python-version: '3'
       - uses: actions/checkout@v2
+
       - name: Build
         run: ./scripts/build.sh
+
       - name: Install python deps
-        run: python3 -m pip install wheel dumb-pypi
+        run: python3 -m pip install wheel
+
       - name: Build python package
         run: python3 setup.py bdist_wheel
+
       - name: Setup PyPI keys
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
         run: |
           ssh-agent -a $SSH_AUTH_SOCK > /dev/null
           ssh-add - <<< "${{ secrets.PYPI_DEPLOY_KEY }}"
+
       - name: Publsih to git PyPI
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
