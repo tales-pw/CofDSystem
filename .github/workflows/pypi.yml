@@ -37,14 +37,8 @@ jobs:
           git clone git@github.com:tales-pw/PyPI ./PyPI
           cd PyPI
 
-          yes | cp ../dist/*.whl ./packages
-
-          ls ./packages/*.whl > packages/packages.txt
-
-          dumb-pypi \
-            --package-list ./packages/packages.txt \
-            --packages-url https://tales-pw.github.io/PyPI/packages/ \
-            --output-dir .
+          yes | cp ../dist/*.whl ./
+          ls ./*.whl > packages.txt
 
           git add --all
           git config --local user.email "pypi@tales.pw"
