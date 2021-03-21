@@ -24,11 +24,15 @@ jobs:
         run: python3 -m pip install wheel dumb-pypi
       - name: Build python package
         run: python3 setup.py bdist_wheel
-      - name: Publsih to git PyPI
-        env:
-          GITHUB_PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
+      - name: Setup PyPI keys
         run: |
-          git clone https://xunto:$GITHUB_PYPI_TOKEN@github.com/tales-pw/PyPI
+          echo "${{ secrets.PYPI_DEPLOY_KEY }}" > ./pypi_ssh_key
+          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+          ssh-add ./pypi_ssh_key
+          rm -f ./pypi_ssh_key
+      - name: Publsih to git PyPI
+        run: |
+          git clone git@github.com:tales-pw/PyPI
           cd PyPI
 
           yes | cp ../dist/*.whl ./packages
