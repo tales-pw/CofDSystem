@@ -25,22 +25,16 @@ jobs:
       - name: Build python package
         run: python3 setup.py bdist_wheel
       - name: Setup PyPI keys
-        run: |
-          # Load key from secret
-          echo "${{ secrets.PYPI_DEPLOY_KEY }}" > ./pypi_ssh_key
-          chmod 600 ./pypi_ssh_key
-
-          # Start agent
-          eval `ssh-agent -s`
-
-          # Add ssh key
-          ssh-add ./pypi_ssh_key
-
-          # Remove key
-          rm -f ./pypi_ssh_key
+          env:
+            SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+          run: |
+            ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+            ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
       - name: Publsih to git PyPI
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
         run: |
-          git clone git@github.com:tales-pw/PyPI
+          git clone git@github.com:tales-pw/PyPI ./PyPI
           cd PyPI
 
           yes | cp ../dist/*.whl ./packages
