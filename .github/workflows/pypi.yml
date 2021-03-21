@@ -2,7 +2,7 @@ name: Publish PyPI
 on: push
 
 jobs:
-  tests:
+  pypi:
     runs-on: ubuntu-latest
     steps:
       - uses: krdlab/setup-haxe@v1
@@ -24,3 +24,9 @@ jobs:
         run: python3 -m pip install wheel dumb-pypi
       - name: Build python package
         run: python3 setup.py bdist_wheel
+      - name: Checkout PyPI repository
+        uses: actions/checkout@v2
+        with:
+          repository: tales-pw/PyPI
+          path: PyPI
+      - run: cp dist/*.whl PyPI/packages
