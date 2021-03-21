@@ -25,11 +25,11 @@ jobs:
       - name: Build python package
         run: python3 setup.py bdist_wheel
       - name: Setup PyPI keys
-          env:
-            SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-          run: |
-            ssh-agent -a $SSH_AUTH_SOCK > /dev/null
-            ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+        run: |
+          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+          ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
       - name: Publsih to git PyPI
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
