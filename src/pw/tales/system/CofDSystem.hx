@@ -12,6 +12,7 @@ import pw.tales.system.weapon.prefabs.WeaponPrefab;
 @:expose('CofDSystem')
 class CofDSystem {
     public static final version = Version.get();
+    public static final versionCheck = Version.shouldCheck();
 
     public var dices:DiceRoller = new DiceRoller();
 

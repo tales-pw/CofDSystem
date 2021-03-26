@@ -38,7 +38,7 @@ class SystemStorage {
         var data:Dynamic = haxe.Json.parse(serializedData);
 
         var remoteVersion:String = data.version;
-        if (remoteVersion != CofDSystem.version) {
+        if (CofDSystem.versionCheck && remoteVersion != CofDSystem.version) {
             throw new VersionMissmatchException(CofDSystem.version, remoteVersion);
         }
 
