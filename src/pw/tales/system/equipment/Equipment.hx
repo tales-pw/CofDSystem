@@ -8,7 +8,7 @@ import pw.tales.system.game_object.GameObject;
 import pw.tales.system.game_object.prefabs.Accessor;
 
 class Equipment extends Accessor {
-    public function new(gameObject:GameObject) {
+    private function new(gameObject:GameObject) {
         super(gameObject);
     }
 
