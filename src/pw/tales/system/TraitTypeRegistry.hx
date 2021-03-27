@@ -39,6 +39,7 @@ import pw.tales.system.game_object.traits.TraitType;
 import pw.tales.system.utils.registry.Registry;
 import pw.tales.system.weapon.traits.DamageMod;
 import pw.tales.system.weapon.traits.InitiativeMod;
+import pw.tales.system.weapon.traits.LethalDamage;
 import pw.tales.system.weapon.traits.weapon_tags.AccurateTag;
 import pw.tales.system.weapon.traits.weapon_tags.BrawlTag;
 import pw.tales.system.weapon.traits.weapon_tags.ConcealedTag;
@@ -111,6 +112,7 @@ class TraitTypeRegistry extends Registry<TraitType<Dynamic>> {
         this.registerFromClass(InitiativeMod);
         this.registerFromClass(MeleeWeapon);
         this.registerFromClass(RangedWeapon);
+        this.registerFromClass(LethalDamage);
 
         // Weapon Tags
         this.registerFromClass(AccurateTag);
