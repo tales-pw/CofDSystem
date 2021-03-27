@@ -4,3 +4,4 @@ build/_libraries.hxml
 -D analyzer-optimize
 
 --macro include("pw.tales.system")
+--macro keep("pw.tales.system")

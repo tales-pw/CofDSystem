@@ -18,7 +18,6 @@ class NodeGroup implements INode implements INodeCheck {
         return checkNode.build(gameObject);
     }
 
-
     public function getHumanReadable():String {
         return '(${this.node.getHumanReadable()})';
     }

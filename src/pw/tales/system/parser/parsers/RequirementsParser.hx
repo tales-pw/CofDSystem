@@ -15,7 +15,6 @@ import pw.tales.system.parser.nodes.NodeTraitRequirement;
 import pw.tales.system.parser.ParserHelper;
 using parsihax.Parser;
 
-@:keep
 @:expose
 class RequirementsParser extends Parser {
     private static final AND_LITERAL = [" и ".string(), ", ".string()].alt().as("separator");

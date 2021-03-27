@@ -6,7 +6,6 @@ import pw.tales.system.game_object.events.AdvantageModEvent;
 import pw.tales.system.game_object.GameObject;
 import pw.tales.system.utils.events.HandlerPriority;
 
-@:keep
 @autoregister
 @:expose("SmallFramedMerit")
 class SmallFramedMerit extends Merit {

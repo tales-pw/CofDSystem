@@ -31,7 +31,6 @@ class RangedWeapon extends WeaponTrait {
         event.getActionPool().getRequest().setTraits([Attributes.DEXTERITY.getDN(), Skills.SHOOTING.getDN()]);
     }
 
-
     public static function create(dn:String, gameObject:GameObject, t:TraitType<RangedWeapon>):RangedWeapon {
         return new RangedWeapon(gameObject);
     }

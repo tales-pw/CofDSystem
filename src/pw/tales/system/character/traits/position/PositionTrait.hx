@@ -4,7 +4,6 @@ import pw.tales.system.character.traits.position.PositionProvider;
 import pw.tales.system.game_object.GameObject;
 import pw.tales.system.game_object.traits.Trait;
 
-@:keep
 @autoregister
 @:expose("PositionTrait")
 class PositionTrait extends Trait {

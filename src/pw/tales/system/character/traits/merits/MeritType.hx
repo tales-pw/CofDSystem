@@ -7,7 +7,6 @@ import pw.tales.system.parser.nodes.INodeLevels;
 import pw.tales.system.parser.nodes.NodeAnd;
 import pw.tales.system.parser.nodes.NodeDotsRange;
 
-@:keep
 @:expose("MeritType")
 class MeritType extends ValueTraitType<Merit> {
     private var levels:INodeLevels = NodeDotsRange.create(1, 5);

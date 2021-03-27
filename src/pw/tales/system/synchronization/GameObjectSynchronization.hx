@@ -16,7 +16,6 @@ typedef GameObjectData = {
     traits:Array<Dynamic>
 }
 
-@:keep
 @:expose("GameObjectSynchronization")
 class GameObjectSynchronization {
     // Things serializer needs to know

@@ -1,6 +1,5 @@
 package pw.tales.system.game_object.traits.text;
 
-@:keep
 @:expose("TextTrait")
 class TextTrait extends Trait {
     @Serialize("value")

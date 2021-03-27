@@ -6,7 +6,6 @@ import pw.tales.system.game_object.traits.advantages.Advantage;
 import pw.tales.system.game_object.traits.TraitType;
 import pw.tales.system.game_object.traits.value_trait.events.ValueTraitUpdateEvent;
 
-@:keep
 @autoregister
 @:expose("WealthAdvantage")
 class WealthAdvantage extends Advantage {

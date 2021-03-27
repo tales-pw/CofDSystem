@@ -3,7 +3,6 @@ package pw.tales.system.character.traits.aspiration;
 import pw.tales.system.character.traits.aspiration.events.AspirationsCollectEvent;
 import pw.tales.system.game_object.GameObject;
 
-@:keep
 @autoregister
 @:expose("Aspirations")
 class Aspirations {

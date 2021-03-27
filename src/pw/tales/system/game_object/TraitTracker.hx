@@ -11,7 +11,6 @@ import pw.tales.system.utils.events.HandlerPriority;
 import pw.tales.system.utils.events.SubEventBus;
 import pw.tales.system.utils.registry.Registry;
 
-@:keep
 @:expose("TraitTracker")
 class TraitTracker {
     private final gameObject:GameObject;

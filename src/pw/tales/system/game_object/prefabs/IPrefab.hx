@@ -2,7 +2,6 @@ package pw.tales.system.game_object.prefabs;
 
 import pw.tales.system.utils.registry.IRecord;
 
-
 /**
 * Prefabs are used to create GameObjects with specific traits.
 *

@@ -4,7 +4,6 @@ import pw.tales.system.game_object.GameObject;
 import pw.tales.system.game_object.prefabs.Accessor;
 import pw.tales.system.game_object.traits.text.TextTraitType;
 
-
 @autoregister
 class Character extends Accessor {
     public static final NAME = new TextTraitType("Name");

@@ -13,7 +13,7 @@ typedef SystemData = {
 }
 
 @:nullSafety(Off)
-@:keep
+
 @:expose("SystemSynchronization")
 class SystemSynchronization {
     // Things serializer needs to know

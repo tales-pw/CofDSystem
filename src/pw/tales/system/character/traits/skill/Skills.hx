@@ -5,7 +5,6 @@ import pw.tales.system.character.traits.skill.events.SkillGroupCollectEvent;
 import pw.tales.system.character.traits.skill.SkillGroup;
 import pw.tales.system.game_object.GameObject;
 
-@:keep
 @autoregister
 @:expose('Skills')
 class Skills {

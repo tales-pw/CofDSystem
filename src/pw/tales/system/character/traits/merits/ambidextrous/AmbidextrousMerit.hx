@@ -5,7 +5,6 @@ import pw.tales.system.character.traits.merits.Merit;
 import pw.tales.system.game_object.GameObject;
 import pw.tales.system.utils.events.HandlerPriority;
 
-@:keep
 @autoregister
 @:expose("AmbidextrousMerit")
 class AmbidextrousMerit extends Merit {

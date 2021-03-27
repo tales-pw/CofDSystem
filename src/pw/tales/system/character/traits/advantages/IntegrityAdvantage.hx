@@ -4,7 +4,6 @@ import pw.tales.system.game_object.GameObject;
 import pw.tales.system.game_object.traits.advantages.Advantage;
 import pw.tales.system.game_object.traits.TraitType;
 
-@:keep
 @autoregister
 @:expose("IntegrityAdvantage")
 class IntegrityAdvantage extends Advantage {
