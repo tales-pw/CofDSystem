@@ -70,7 +70,7 @@ class Action implements IAction {
         this.eventBus.disable();
     }
 
-    public function execute():Void {
+    public final function execute():Void {
         this.beforeAction();
         this.roll();
         this.perform();

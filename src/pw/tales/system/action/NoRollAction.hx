@@ -11,6 +11,6 @@ class NoRollAction extends Action {
         this.actor = actor;
     }
 
-    override public function execute():Void {
+    override public function roll():Void {
     }
 }

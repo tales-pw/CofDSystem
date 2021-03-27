@@ -17,7 +17,7 @@ class PickAction extends NoRollAction {
         this.hand = hand;
     }
 
-    override public function execute():Void {
+    override public function perform():Void {
         var trait:HeldWeapon = cast(actor.getTraitManager().getTrait(HeldWeapon.TYPE));
         trait.setHand(this.hand, this.weapon);
     }
