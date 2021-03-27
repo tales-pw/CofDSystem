@@ -7,7 +7,7 @@ import pw.tales.system.game_object.traits.TraitType;
 import pw.tales.system.utils.registry.Registry;
 
 class TraitTypeRegistry extends Registry<TraitType<Dynamic>> {
-    public static final AUTOREGISTER_ANNOTATION = "autoregister";
+    public static final AUTOREGISTER_ANNOTATION = "RegisterTraitTypes";
 
     private final registartionMap:Map<String, Class<Dynamic>> = new Map();
 

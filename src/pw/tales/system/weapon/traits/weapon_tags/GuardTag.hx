@@ -10,7 +10,7 @@ import pw.tales.system.game_object.traits.TraitType;
  *
  *   @see <https://tales.pw/page/guard_(weapon_tag)>
 **/
-@autoregister
+@RegisterTraitTypes
 class GuardTag extends WeaponTag {
     public static final DN = "guard_(weapon_tag)";
     public static final TYPE:TraitType<GuardTag> = cast TraitType.createType(DN, create);

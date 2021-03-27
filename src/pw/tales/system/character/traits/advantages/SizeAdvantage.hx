@@ -4,7 +4,7 @@ import pw.tales.system.game_object.GameObject;
 import pw.tales.system.game_object.traits.advantages.AdvantageConstant;
 import pw.tales.system.game_object.traits.TraitType;
 
-@autoregister
+@RegisterTraitTypes
 @:expose("SizeAdvantage")
 class SizeAdvantage extends AdvantageConstant {
     public static final DN = "Размер";

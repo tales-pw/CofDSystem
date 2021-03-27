@@ -3,7 +3,7 @@ package pw.tales.system.weapon.traits;
 import pw.tales.system.game_object.GameObject;
 import pw.tales.system.game_object.traits.TraitType;
 
-@autoregister
+@RegisterTraitTypes
 class WeaponMod extends WeaponTrait {
     @Serialize("value")
     private var value:Int = 0;

@@ -6,7 +6,7 @@ import pw.tales.system.damage.DamageType;
 import pw.tales.system.game_object.GameObject;
 import pw.tales.system.game_object.traits.TraitType;
 
-@autoregister
+@RegisterTraitTypes
 class LethalDamage extends WeaponTrait {
     public static final DN = "lethal_damage";
     public static final TYPE:TraitType<LethalDamage> = cast TraitType.createType(DN, create);

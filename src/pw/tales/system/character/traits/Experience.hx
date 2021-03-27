@@ -4,7 +4,7 @@ import pw.tales.system.game_object.GameObject;
 import pw.tales.system.game_object.traits.Trait;
 import pw.tales.system.game_object.traits.TraitType;
 
-@autoregister
+@RegisterTraitTypes
 @:expose("Experience")
 class Experience extends Trait {
     public static final DN = "Опыт";

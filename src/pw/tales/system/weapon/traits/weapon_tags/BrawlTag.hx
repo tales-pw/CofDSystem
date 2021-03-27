@@ -12,7 +12,7 @@ import pw.tales.system.utils.Utility;
 *
 *    @see <https://tales.pw/page/brawl_(weapon_tag)>
 **/
-@autoregister
+@RegisterTraitTypes
 class BrawlTag extends WeaponTag {
     public static final DN = "brawl_(weapon_tag)";
     public static final TYPE:TraitType<BrawlTag> = cast TraitType.createType(DN, create);

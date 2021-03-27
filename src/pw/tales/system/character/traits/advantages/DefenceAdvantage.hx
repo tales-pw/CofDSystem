@@ -8,7 +8,7 @@ import pw.tales.system.game_object.GameObject;
 import pw.tales.system.game_object.traits.advantages.AdvantageExpression;
 import pw.tales.system.game_object.traits.TraitType;
 
-@autoregister
+@RegisterTraitTypes
 @:expose("DefenceAdvantage")
 class DefenceAdvantage extends AdvantageExpression {
     public static final DN = "Защита";

@@ -10,7 +10,7 @@ import pw.tales.system.game_object.traits.TraitType;
 import pw.tales.system.weapon.traits.WeaponTrait;
 import pw.tales.system.weapon.Weapon;
 
-@autoregister
+@RegisterTraitTypes
 class MeleeWeapon extends WeaponTrait {
     public static final DN = "melee_weapon";
     public static final TYPE:TraitType<MeleeWeapon> = cast TraitType.createType(DN, create);

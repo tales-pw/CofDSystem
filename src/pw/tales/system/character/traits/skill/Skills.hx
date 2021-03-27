@@ -5,7 +5,7 @@ import pw.tales.system.character.traits.skill.events.SkillGroupCollectEvent;
 import pw.tales.system.character.traits.skill.SkillGroup;
 import pw.tales.system.game_object.GameObject;
 
-@autoregister
+@RegisterTraitTypes
 @:expose('Skills')
 class Skills {
     // Mental

@@ -7,7 +7,7 @@ import pw.tales.system.equipment.traits.EquipmentTrait;
 import pw.tales.system.game_object.GameObject;
 import pw.tales.system.game_object.traits.TraitType;
 
-@autoregister
+@RegisterTraitTypes
 class ArmorRating extends EquipmentTrait {
     public static final DN = "Свойство:Rating";
     public static final TYPE:TraitType<ArmorRating> = cast TraitType.createType(DN, create);

@@ -12,7 +12,7 @@ import pw.tales.system.utils.Utility;
  *
  *   @see <https://tales.pw/page/finesse_(weapon_tag)>
 **/
-@autoregister
+@RegisterTraitTypes
 class FinesseTag extends WeaponTag {
     public static final DN = "finesse_(weapon_tag)";
     public static final TYPE:TraitType<FinesseTag> = cast TraitType.createType(DN, create);

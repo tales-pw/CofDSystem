@@ -21,7 +21,7 @@ import thx.error.AbstractMethod;
     @see pw.tales.system.game_object.traits.TraitType
 **/
 
-@autoregister
+@RegisterTraitTypes
 @:expose("Trait")
 class Trait implements IRecord {
     private final type:TraitType<Dynamic>;

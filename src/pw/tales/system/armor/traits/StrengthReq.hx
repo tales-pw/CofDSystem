@@ -8,7 +8,7 @@ import pw.tales.system.equipment.traits.EquipmentMod;
 import pw.tales.system.game_object.GameObject;
 import pw.tales.system.game_object.traits.TraitType;
 
-@autoregister
+@RegisterTraitTypes
 class StrengthReq extends EquipmentMod {
     public static final DN = "Свойство:Strength_Requirements";
     public static final TYPE:TraitType<StrengthReq> = cast TraitType.createType(DN, create);

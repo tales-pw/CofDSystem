@@ -9,7 +9,7 @@ import pw.tales.system.scene.initiative.events.InitiativeModifiersEvent;
 import pw.tales.system.utils.events.HandlerPriority;
 import pw.tales.system.weapon.traits.InitiativeMod;
 
-@autoregister
+@RegisterTraitTypes
 @:expose("InitiativeAdvantage")
 class InitiativeAdvantage extends AdvantageExpression {
     public static final DN = "Модификатор_Инициативы";
