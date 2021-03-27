@@ -5,6 +5,7 @@ import pw.tales.system.game_object.GameObject;
 import pw.tales.system.game_object.traits.Trait;
 
 @:keep
+@autoregister
 @:expose("PositionTrait")
 class PositionTrait extends Trait {
     public static final DN = "position";

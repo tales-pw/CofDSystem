@@ -6,6 +6,7 @@ import pw.tales.system.game_object.events.AdvantageModEvent;
 import pw.tales.system.game_object.GameObject;
 import pw.tales.system.game_object.traits.TraitType;
 
+@autoregister
 class SpeedModifer extends EquipmentMod {
     public static final DN = "Свойство:Speed";
     public static final TYPE:TraitType<SpeedModifer> = cast TraitType.createType(DN, create);

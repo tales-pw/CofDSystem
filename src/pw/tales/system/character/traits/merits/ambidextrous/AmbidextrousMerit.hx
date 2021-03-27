@@ -6,6 +6,7 @@ import pw.tales.system.game_object.GameObject;
 import pw.tales.system.utils.events.HandlerPriority;
 
 @:keep
+@autoregister
 @:expose("AmbidextrousMerit")
 class AmbidextrousMerit extends Merit {
     public static final TYPE:AmbidextrousMeritType = new AmbidextrousMeritType("Ambidextrous");

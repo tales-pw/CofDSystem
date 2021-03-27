@@ -28,6 +28,5 @@ class CofDSystem {
 
     public function act(action:IAction) {
         action.execute();
-
     }
 }

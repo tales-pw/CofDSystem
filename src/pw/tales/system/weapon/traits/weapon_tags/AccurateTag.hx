@@ -10,6 +10,7 @@ import pw.tales.system.game_object.traits.TraitType;
  *   
  *   @see <https://tales.pw/page/accurate_(weapon_tag)>
 **/
+@autoregister
 class AccurateTag extends WeaponTag {
     public static final DN = "accurate_(weapon_tag)";
     public static final TYPE:TraitType<AccurateTag> = cast TraitType.createType(DN, create);

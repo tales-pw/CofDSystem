@@ -7,6 +7,7 @@ import pw.tales.system.game_object.traits.TraitType;
 import pw.tales.system.game_object.traits.value_trait.events.ValueTraitUpdateEvent;
 
 @:keep
+@autoregister
 @:expose("WealthAdvantage")
 class WealthAdvantage extends Advantage {
     // TODO: Somehow merge it with ValueTrait. Turning Avdantage into interface is a valid choice.

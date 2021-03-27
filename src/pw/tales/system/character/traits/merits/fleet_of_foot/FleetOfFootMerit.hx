@@ -7,6 +7,7 @@ import pw.tales.system.game_object.GameObject;
 import pw.tales.system.utils.events.HandlerPriority;
 
 @:keep
+@autoregister
 @:expose("SmallFramedMerit")
 class FleetOfFootMerit extends Merit {
     public static final TYPE:FleetOfFootType = new FleetOfFootType("Fleet_of_Foot");

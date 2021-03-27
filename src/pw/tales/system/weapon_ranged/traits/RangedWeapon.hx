@@ -10,6 +10,7 @@ import pw.tales.system.game_object.traits.TraitType;
 import pw.tales.system.weapon.traits.WeaponTrait;
 import pw.tales.system.weapon.Weapon;
 
+@autoregister
 class RangedWeapon extends WeaponTrait {
     public static final DN = "ranged_weapon";
     public static final TYPE:TraitType<RangedWeapon> = cast TraitType.createType(DN, create);

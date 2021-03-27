@@ -12,6 +12,7 @@ import pw.tales.system.utils.events.HandlerPriority;
  *
  *   @see <https://tales.pw/page/mercy_(weapon_tag)>
 **/
+@autoregister
 class MercyTag extends WeaponTag {
     public static final DN = "mercy_(weapon_tag)";
     public static final TYPE:TraitType<MercyTag> = cast TraitType.createType(DN, create);

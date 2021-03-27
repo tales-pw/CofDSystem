@@ -15,6 +15,7 @@ import pw.tales.system.game_object.traits.TraitType;
 import pw.tales.system.utils.events.HandlerPriority;
 
 @:keep
+@autoregister
 @:expose("HealthAdvantage")
 class HealthAdvantage extends AdvantageExpression implements IHealthTrait {
     public static final DN = "Здоровье";

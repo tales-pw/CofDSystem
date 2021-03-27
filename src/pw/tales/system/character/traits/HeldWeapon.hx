@@ -9,6 +9,7 @@ import pw.tales.system.utils.events.HandlerPriority;
 import pw.tales.system.weapon.Weapon;
 
 @:keep
+@autoregister
 @:expose("HeldWeapon")
 class HeldWeapon extends Trait {
     public static final DN = "weapon";

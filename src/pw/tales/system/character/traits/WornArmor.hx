@@ -6,6 +6,7 @@ import pw.tales.system.game_object.traits.Trait;
 import pw.tales.system.game_object.traits.TraitType;
 
 @:keep
+@autoregister
 @:expose("Armor")
 class WornArmor extends Trait {
     public static final DN = "worn_armor";

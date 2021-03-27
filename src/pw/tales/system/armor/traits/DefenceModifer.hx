@@ -6,6 +6,7 @@ import pw.tales.system.game_object.events.AdvantageModEvent;
 import pw.tales.system.game_object.GameObject;
 import pw.tales.system.game_object.traits.TraitType;
 
+@autoregister
 class DefenceModifer extends EquipmentMod {
     public static final DN = "Свойство:Defense";
     public static final TYPE:TraitType<DefenceModifer> = cast TraitType.createType(DN, create);

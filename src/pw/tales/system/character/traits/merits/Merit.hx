@@ -1,11 +1,12 @@
 package pw.tales.system.character.traits.merits;
 
 import pw.tales.system.character.advancement.generation.events.GenMeritCollectEvent;
-import pw.tales.system.game_object.GameObject;
 import pw.tales.system.character.traits.merits.events.MeritsCollectEvent;
+import pw.tales.system.game_object.GameObject;
 import pw.tales.system.game_object.traits.value_trait.ValueTrait;
 
 @:keep
+@autoregister
 @:expose("Merit")
 class Merit extends ValueTrait {
     public static final CUSTOM_MERIT_TYPE = new MeritType("Custom_Merit");

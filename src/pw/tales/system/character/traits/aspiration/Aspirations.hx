@@ -4,6 +4,7 @@ import pw.tales.system.character.traits.aspiration.events.AspirationsCollectEven
 import pw.tales.system.game_object.GameObject;
 
 @:keep
+@autoregister
 @:expose("Aspirations")
 class Aspirations {
     public static final TYPE:AspirationType = new AspirationType("Стремление");

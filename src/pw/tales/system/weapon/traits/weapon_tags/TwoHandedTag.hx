@@ -8,6 +8,7 @@ import pw.tales.system.game_object.traits.TraitType;
  *
  *   @see <https://tales.pw/page/two-handed_(weapon_tag)>
 **/
+@autoregister
 class TwoHandedTag extends WeaponTag {
     public static final DN = "two-handed_(weapon_tag)";
     public static final TYPE:TraitType<TwoHandedTag> = cast TraitType.createType(DN, create);

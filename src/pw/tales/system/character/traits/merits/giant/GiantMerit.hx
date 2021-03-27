@@ -7,6 +7,7 @@ import pw.tales.system.game_object.GameObject;
 import pw.tales.system.utils.events.HandlerPriority;
 
 @:keep
+@autoregister
 @:expose("GiantMerit")
 class GiantMerit extends Merit {
     public static final TYPE:GiantMeritType = new GiantMeritType("Giant");
