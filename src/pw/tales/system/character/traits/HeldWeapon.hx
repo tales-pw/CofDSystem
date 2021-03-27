@@ -8,7 +8,7 @@ import pw.tales.system.scene.initiative.events.InitiativeModifiersEvent;
 import pw.tales.system.utils.events.HandlerPriority;
 import pw.tales.system.weapon.Weapon;
 
-@:keep
+@RegisterTraitTypes
 @:expose("HeldWeapon")
 class HeldWeapon extends Trait {
     public static final DN = "weapon";

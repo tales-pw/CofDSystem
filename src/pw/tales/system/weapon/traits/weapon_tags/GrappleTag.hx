@@ -8,6 +8,7 @@ import pw.tales.system.game_object.traits.TraitType;
  *
  *   @see <https://tales.pw/page/grapple_(weapon_tag)>
 **/
+@RegisterTraitTypes
 class GrappleTag extends WeaponTag {
     public static final DN = "grapple_(weapon_tag)";
     public static final TYPE:TraitType<GrappleTag> = cast TraitType.createType(DN, create);

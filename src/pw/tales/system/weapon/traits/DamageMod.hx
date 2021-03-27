@@ -5,6 +5,7 @@ import pw.tales.system.action_attack.events.AttackSuccesesEvent;
 import pw.tales.system.game_object.GameObject;
 import pw.tales.system.game_object.traits.TraitType;
 
+@RegisterTraitTypes
 class DamageMod extends WeaponMod {
     public static final DN = "Свойство:Damage";
     public static final TYPE:TraitType<DamageMod> = cast TraitType.createType(DN, create);

@@ -8,7 +8,6 @@ import pw.tales.system.utils.events.EventBus;
 import pw.tales.system.utils.registry.Registry;
 import pw.tales.system.weapon.prefabs.WeaponPrefab;
 
-@:keep
 @:expose('CofDSystem')
 class CofDSystem {
     public static final version = Version.get();
@@ -28,6 +27,5 @@ class CofDSystem {
 
     public function act(action:IAction) {
         action.execute();
-
     }
 }

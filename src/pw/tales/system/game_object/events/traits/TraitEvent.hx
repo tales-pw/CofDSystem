@@ -2,7 +2,6 @@ package pw.tales.system.game_object.events.traits;
 
 import pw.tales.system.game_object.traits.Trait;
 
-@:keep
 @:expose("TraitEvent")
 class TraitEvent implements IGameObjectEvent {
     private var trait:Trait;

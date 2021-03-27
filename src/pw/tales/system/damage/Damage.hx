@@ -1,6 +1,5 @@
 package pw.tales.system.damage;
 
-@:keep
 @:expose("Damage")
 class Damage {
     private var bashing:Int;

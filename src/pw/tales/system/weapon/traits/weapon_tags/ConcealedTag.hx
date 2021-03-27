@@ -8,6 +8,7 @@ import pw.tales.system.game_object.traits.TraitType;
  *
  *   @see <https://tales.pw/page/concealed_(weapon_tag)>
 **/
+@RegisterTraitTypes
 class ConcealedTag extends WeaponTag {
     public static final DN = "concealed_(weapon_tag)";
     public static final TYPE:TraitType<ConcealedTag> = cast TraitType.createType(DN, create);

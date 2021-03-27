@@ -6,7 +6,7 @@ import pw.tales.system.game_object.GameObject;
 import pw.tales.system.game_object.traits.advantages.AdvantageExpression;
 import pw.tales.system.game_object.traits.TraitType;
 
-@:keep
+@RegisterTraitTypes
 @:expose("WillpowerAdvantage")
 class WillpowerAdvantage extends AdvantageExpression {
     public static final DN = "Сила_воли";

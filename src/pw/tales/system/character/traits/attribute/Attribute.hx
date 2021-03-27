@@ -3,7 +3,6 @@ package pw.tales.system.character.traits.attribute;
 import pw.tales.system.game_object.GameObject;
 import pw.tales.system.game_object.traits.value_trait.ValueTrait;
 
-@:keep
 @:expose("Attribute")
 class Attribute extends ValueTrait {
     public static final STARTING_VALUE = 1;

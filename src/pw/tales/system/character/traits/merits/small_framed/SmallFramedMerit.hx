@@ -6,7 +6,7 @@ import pw.tales.system.game_object.events.AdvantageModEvent;
 import pw.tales.system.game_object.GameObject;
 import pw.tales.system.utils.events.HandlerPriority;
 
-@:keep
+@RegisterTraitTypes
 @:expose("SmallFramedMerit")
 class SmallFramedMerit extends Merit {
     public static final TYPE:SmallFramedType = new SmallFramedType("Small_Framed");

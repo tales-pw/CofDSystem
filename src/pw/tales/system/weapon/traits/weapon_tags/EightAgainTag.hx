@@ -11,6 +11,7 @@ import pw.tales.system.game_object.traits.TraitType;
  *
  *   @see <https://tales.pw/page/8-again_(weapon_tag)>
 **/
+@RegisterTraitTypes
 class EightAgainTag extends WeaponTag {
     public static final DN = "8-again_(weapon_tag)";
     public static final TYPE:TraitType<EightAgainTag> = cast TraitType.createType(DN, create);

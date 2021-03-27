@@ -3,6 +3,7 @@ package pw.tales.system.weapon.traits;
 import pw.tales.system.game_object.GameObject;
 import pw.tales.system.game_object.traits.TraitType;
 
+@RegisterTraitTypes
 class InitiativeMod extends WeaponMod {
     public static final DN = "Свойство:Initiative";
     public static final TYPE:TraitType<InitiativeMod> = cast TraitType.createType(DN, create);

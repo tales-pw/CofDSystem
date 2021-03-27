@@ -1,6 +1,6 @@
 package pw.tales.system.character.traits.attribute;
 
-@:keep
+@RegisterTraitTypes
 @:expose('Attributes')
 class Attributes {
     // Mental

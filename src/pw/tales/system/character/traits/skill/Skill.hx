@@ -9,7 +9,6 @@ import pw.tales.system.game_object.traits.Trait;
 import pw.tales.system.game_object.traits.value_trait.ValueTrait;
 import pw.tales.system.utils.events.IEvent;
 
-@:keep
 @:expose("Skill")
 class Skill extends ValueTrait {
     public function new(gameObject:GameObject, type:SkillType) {

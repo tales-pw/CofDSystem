@@ -1,6 +1,5 @@
 package pw.tales.system.character.advancement.generation.trait_advancements;
 
-
 import pw.tales.system.character.traits.attribute.Attribute;
 import pw.tales.system.character.traits.attribute.AttributeType;
 import pw.tales.system.game_object.GameObject;

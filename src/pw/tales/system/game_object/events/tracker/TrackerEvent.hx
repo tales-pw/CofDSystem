@@ -1,6 +1,5 @@
 package pw.tales.system.game_object.events.tracker;
 
-@:keep
 @:expose("TrackerEvent")
 class TrackerEvent implements IGameObjectEvent {
     private final tracker:TraitTracker;

@@ -8,7 +8,6 @@ import pw.tales.system.utils.events.SubEventBus;
 import pw.tales.system.utils.registry.IRecord;
 import pw.tales.system.utils.Utility;
 
-@:keep
 @:expose('GameObject')
 @:nullSafety(Off)
 class GameObject implements IRecord {

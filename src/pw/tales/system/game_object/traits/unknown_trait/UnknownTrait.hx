@@ -3,7 +3,6 @@ package pw.tales.system.game_object.traits.unknown_trait;
 import pw.tales.system.game_object.traits.unknown_trait.events.UnknownTraitsCollectEvent;
 import String;
 
-@:keep
 @:expose("UnknownTrait")
 class UnknownTrait extends Trait {
     public static final DN = "unknown_trait";

@@ -19,7 +19,7 @@ typedef TraitFactoryMethod<Y: Trait> = (dn: String, gameObject: GameObject, t:Tr
 
     @see pw.tales.system.game_object.traits.Trait
 **/
-@:keep
+
 @:expose("TraitType")
 class TraitType<T:Trait> implements IRecord {
     private final dn:String;

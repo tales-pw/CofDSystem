@@ -2,7 +2,6 @@ package pw.tales.system.character.traits.skill;
 
 import pw.tales.system.utils.EnumNamed;
 
-@:keep
 @:expose("SkillGroup")
 class SkillGroup extends EnumNamed {
     public static var VALUES = new Map<String, SkillGroup>();

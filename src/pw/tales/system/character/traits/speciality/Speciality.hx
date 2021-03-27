@@ -6,7 +6,7 @@ import pw.tales.system.game_object.GameObject;
 import pw.tales.system.game_object.traits.Trait;
 import pw.tales.system.game_object.traits.TraitType;
 
-@:keep
+@RegisterTraitTypes
 @:expose("Speciality")
 class Speciality extends Trait {
     public static final DN = "Специализация";

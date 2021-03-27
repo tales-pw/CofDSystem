@@ -6,7 +6,6 @@ import pw.tales.system.game_object.GameObject;
 import pw.tales.system.game_object.traits.text.TextTrait;
 import pw.tales.system.game_object.traits.TraitType;
 
-@:keep
 @:expose("Aspiration")
 class Aspiration extends TextTrait {
     @Optional

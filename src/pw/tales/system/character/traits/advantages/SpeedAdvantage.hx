@@ -8,7 +8,7 @@ import pw.tales.system.game_object.GameObject;
 import pw.tales.system.game_object.traits.advantages.AdvantageExpression;
 import pw.tales.system.game_object.traits.TraitType;
 
-@:keep
+@RegisterTraitTypes
 @:expose("SpeedAdvantage")
 class SpeedAdvantage extends AdvantageExpression {
     public static final DN = "Скорость";

@@ -4,7 +4,6 @@ import pw.tales.system.game_object.GameObject;
 import pw.tales.system.game_object.traits.Trait;
 import pw.tales.system.synchronization.GameObjectSynchronization;
 
-@:keep
 @:expose("GameObjectStorage")
 @:nullSafety(Off)
 class GameObjectStorage {

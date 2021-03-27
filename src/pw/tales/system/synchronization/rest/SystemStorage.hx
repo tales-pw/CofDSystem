@@ -9,7 +9,6 @@ import pw.tales.system.synchronization.rest.serialization.APIRangedSerialization
 import pw.tales.system.synchronization.rest.serialization.APITagSerialization;
 import pw.tales.system.synchronization.rest.serialization.APITiltSerialization;
 
-@:keep
 @:expose("SystemStorage")
 @:nullSafety(Off)
 class SystemStorage {

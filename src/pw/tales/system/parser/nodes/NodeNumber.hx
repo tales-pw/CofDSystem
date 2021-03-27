@@ -23,7 +23,6 @@ class NodeNumber implements INodePoolBuilder {
         return new MathValue<Int>(number);
     }
 
-
     public function toString():String {
         return 'NodeNumber[${this.number}]';
     }

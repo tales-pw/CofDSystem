@@ -15,22 +15,9 @@ import pw.tales.system.character.traits.skill.Skills;
 import pw.tales.system.character.traits.WornArmor;
 import pw.tales.system.game_object.GameObject;
 import pw.tales.system.game_object.prefabs.Prefab;
-import pw.tales.system.game_object.traits.text.TextTraitType;
 
 class HumanPrefab extends Prefab {
     public static final INSTANCE = new HumanPrefab("human");
-
-    public static final NAME = new TextTraitType("Name");
-    public static final AGE = new TextTraitType("Age");
-    public static final PLAYER = new TextTraitType("Player");
-
-    public static final RACE = new TextTraitType("Race");
-    public static final NATION = new TextTraitType("Nation");
-    public static final LANGUAGE = new TextTraitType("Language");
-
-    public static final VIRTUE = new TextTraitType("Добродетель");
-    public static final VICE = new TextTraitType("Порок");
-    public static final CONCEPT = new TextTraitType("Концепт");
 
     private override function setUpGameObject(gameObject:GameObject) {
         var traitManager = gameObject.getTraitManager();
@@ -41,17 +28,17 @@ class HumanPrefab extends Prefab {
         traitManager.addTrait(PositionTrait.TYPE);
 
         // Person
-        traitManager.addTrait(NAME);
-        traitManager.addTrait(AGE);
-        traitManager.addTrait(PLAYER);
+        traitManager.addTrait(Character.NAME);
+        traitManager.addTrait(Character.AGE);
+        traitManager.addTrait(Character.PLAYER);
 
-        traitManager.addTrait(RACE);
-        traitManager.addTrait(NATION);
-        traitManager.addTrait(LANGUAGE);
+        traitManager.addTrait(Character.RACE);
+        traitManager.addTrait(Character.NATION);
+        traitManager.addTrait(Character.LANGUAGE);
 
-        traitManager.addTrait(VIRTUE);
-        traitManager.addTrait(VICE);
-        traitManager.addTrait(CONCEPT);
+        traitManager.addTrait(Character.VIRTUE);
+        traitManager.addTrait(Character.VICE);
+        traitManager.addTrait(Character.CONCEPT);
 
         // Attributes
         traitManager.addTrait(Attributes.INTELLIGENCE);
@@ -103,6 +90,5 @@ class HumanPrefab extends Prefab {
         traitManager.addTrait(SpeedAdvantage.TYPE);
         traitManager.addTrait(WillpowerAdvantage.TYPE);
         traitManager.addTrait(WealthAdvantage.TYPE);
-
     }
 }

@@ -11,6 +11,7 @@ import pw.tales.system.game_object.traits.TraitType;
  *
  *   @see <https://tales.pw/page/reach_(weapon_tag)>
 **/
+@RegisterTraitTypes
 class ReachTag extends WeaponTag {
     public static final DN = "reach_(weapon_tag)";
     public static final TYPE:TraitType<ReachTag> = cast TraitType.createType(DN, create);

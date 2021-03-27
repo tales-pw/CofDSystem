@@ -3,7 +3,6 @@ package pw.tales.system.game_object.exceptions;
 import pw.tales.system.game_object.traits.TraitType;
 import pw.tales.system.utils.Utility;
 
-@:keep
 @:expose("MITraitAddException")
 class MITraitAddException {
     private final type:TraitType<Dynamic>;
