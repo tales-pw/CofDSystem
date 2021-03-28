@@ -1,7 +1,7 @@
 package pw.tales.system.game_object;
 
 import pw.tales.system.game_object.events.IGameObjectEvent;
-import pw.tales.system.game_object.TraitManager;
+import pw.tales.system.game_object.trait_manager.TraitManager;
 import pw.tales.system.utils.events.IEvent;
 import pw.tales.system.utils.events.IEventBus;
 import pw.tales.system.utils.events.SubEventBus;

@@ -1,15 +1,15 @@
-package pw.tales.system.game_object;
+package pw.tales.system.game_object.trait_manager;
 
 import pw.tales.system.game_object.events.TraitRemoveEvent;
 import pw.tales.system.game_object.events.traits.TraitPostAttachEvent;
 import pw.tales.system.game_object.events.traits.TraitPostRemoveEvent;
 import pw.tales.system.game_object.events.traits.TraitPreAttachEvent;
 import pw.tales.system.game_object.events.traits.TraitPreRemoveEvent;
-import pw.tales.system.game_object.exceptions.CreationRejectedException;
-import pw.tales.system.game_object.exceptions.MITraitAddException;
-import pw.tales.system.game_object.exceptions.MITraitFetchException;
-import pw.tales.system.game_object.exceptions.RemoveRejectedException;
-import pw.tales.system.game_object.exceptions.WrongTypeException;
+import pw.tales.system.game_object.trait_manager.exceptions.CreationRejectedException;
+import pw.tales.system.game_object.trait_manager.exceptions.MITraitAddException;
+import pw.tales.system.game_object.trait_manager.exceptions.MITraitFetchException;
+import pw.tales.system.game_object.trait_manager.exceptions.RemoveRejectedException;
+import pw.tales.system.game_object.trait_manager.exceptions.WrongTypeException;
 import pw.tales.system.game_object.traits.Trait;
 import pw.tales.system.game_object.traits.TraitType;
 import pw.tales.system.utils.registry.Registry;
@@ -47,11 +47,11 @@ class TraitManager {
     public function addTrait<T:Trait>(type:TraitType<T>, dn:String = null):T {
         if (!type.isMultiInstanced()) {
             var trait = this.getTrait(type);
-            if (trait != null) throw new MITraitAddException(type);
+            if (trait != null) throw new MITraitAddException(this.gameObject, type);
         }
 
         if (!type.canAdd(gameObject))
-            throw new CreationRejectedException(type);
+            throw new CreationRejectedException(this.gameObject, type);
 
         var trait:T;
         if (dn == null) trait = type.create(this.gameObject);
@@ -93,13 +93,13 @@ class TraitManager {
     @:nullSafety(Off)
     public function getTrait<T:Trait>(type:TraitType<T>, dn:String = null):T {
         if (dn == null) {
-            if (type.isMultiInstanced()) throw new MITraitFetchException(type);
+            if (type.isMultiInstanced()) throw new MITraitFetchException(this.gameObject, type);
             dn = type.getDN();
         }
 
         var record = traits.getRecord(dn);
         if (record == null) return null;
-        if (record.getType() != type) throw new WrongTypeException(record, record.getType(), type);
+        if (record.getType() != type) throw new WrongTypeException(this.gameObject, record, type);
 
         return cast(record);
     }

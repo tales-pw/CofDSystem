@@ -1,5 +1,6 @@
 package pw.tales.system.character.traits.advantages.willpower;
 
+import pw.tales.system.character.traits.advantages.willpower.exceptions.NoWillpowerException;
 import pw.tales.system.character.traits.attribute.Attributes.*;
 import pw.tales.system.dices.pool.builder.PBTrait;
 import pw.tales.system.game_object.GameObject;
@@ -31,10 +32,9 @@ class WillpowerAdvantage extends AdvantageExpression {
     }
 
     public function burnWillpower() {
+        if (!this.canUse()) throw new NoWillpowerException(this);
 
         this.points = this.getPoints() - 1;
-        if (this.points < 0) this.points = 0;
-
         this.notifyUpdated();
     }
 

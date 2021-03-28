@@ -3,7 +3,7 @@ package pw.tales.system.synchronization;
 import haxe.Json;
 import pw.tales.system.game_object.GameObject;
 import pw.tales.system.game_object.GameObjectState;
-import pw.tales.system.game_object.TraitManager;
+import pw.tales.system.game_object.trait_manager.TraitManager;
 import pw.tales.system.game_object.traits.Trait;
 import pw.tales.system.game_object.traits.TraitType;
 import pw.tales.system.game_object.traits.unknown_trait.UnknownTrait;
@@ -90,9 +90,9 @@ class GameObjectSynchronization {
                 trait.deserialize(trait_data);
             } catch (e:DeserializationException) {
                 logger.warning(
-                    'Unable to deserialize ${e.getField()},' +
-                    'needed by ${trait.getType()}' +
-                    'from data ${Json.stringify(trait_data)}'
+                    'Unable to create ${trait.getType()} ' +
+                    'from data ${Json.stringify(trait_data)} ' +
+                    'because: ${e.message}.'
                 );
                 manager.removeTrait(trait);
                 trait = manager.addTrait(UnknownTrait.TYPE);
