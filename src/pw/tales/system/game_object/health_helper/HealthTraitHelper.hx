@@ -8,7 +8,7 @@ class HealthTraitHelper {
         gameObject.getEventBus().post(event);
 
         var healthTrait = event.getHealthTrait();
-        if (healthTrait == null) throw new NoHealthTraitException();
+        if (healthTrait == null) throw new NoHealthTraitException(gameObject);
 
         return healthTrait;
     }

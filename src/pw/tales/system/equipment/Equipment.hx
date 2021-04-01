@@ -1,7 +1,5 @@
 package pw.tales.system.equipment;
 
-import pw.tales.system.equipment.exceptions.NotEquippableException;
-import pw.tales.system.equipment.exceptions.NotHoldedException;
 import pw.tales.system.equipment.traits.Equippable;
 import pw.tales.system.equipment.traits.HoldingHand;
 import pw.tales.system.game_object.GameObject;
@@ -13,14 +11,10 @@ class Equipment extends Accessor {
     }
 
     private function ensureEquipable():Equippable {
-        var equippable:Null<Equippable> = cast this.traitManager.getTrait(Equippable.TYPE);
-        if (equippable == null) throw new NotEquippableException(this.gameObject);
-        return equippable;
+        return this.getTrait(Equippable.TYPE);
     }
 
     private function ensureHoldingHand():HoldingHand {
-        var holdingHand:Null<HoldingHand> = cast this.traitManager.getTrait(HoldingHand.TYPE);
-        if (holdingHand == null) throw new NotHoldedException(this.gameObject);
-        return holdingHand;
+        return this.getTrait(HoldingHand.TYPE);
     }
 }

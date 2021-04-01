@@ -1,7 +1,7 @@
 package pw.tales.system.game_object.traits.value_trait;
 
 import pw.tales.system.character.advancement.experience.IAdvanceableTrait;
-import pw.tales.system.game_object.exceptions.UpdateRejectedException;
+import pw.tales.system.game_object.traits.value_trait.exceptions.UpdateRejectedException;
 import pw.tales.system.game_object.traits.value_trait.events.ValueTraitUpdateEvent;
 import pw.tales.system.game_object.traits.value_trait.ValueTraitType;
 

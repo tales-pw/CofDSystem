@@ -1,10 +1,13 @@
 package pw.tales.system.utils.serialization;
 
-class DeserializationException {
+import pw.tales.system.exceptions.CofDSystemException;
+
+class DeserializationException extends CofDSystemException {
     private final data:Dynamic;
     private final field:String;
 
     public function new(data:Dynamic, field:String) {
+        super('Field "${field}" not found in ${data}.');
         this.data = data;
         this.field = field;
     }
