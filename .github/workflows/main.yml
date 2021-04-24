@@ -12,10 +12,8 @@ jobs:
         with:
           node-version: '14'
       - uses: actions/checkout@v2
-      - name: Setup
-        run: ./scripts/setup.sh
       - name: Tests
-        run: ./scripts/tests.sh
+        run: make tests
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -26,10 +24,8 @@ jobs:
         with:
           node-version: '14'
       - uses: actions/checkout@v2
-      - name: Setup
-        run: ./scripts/setup.sh
       - name: Lint
-        run: ./scripts/lint.sh
+        run: make lint
   build:
     runs-on: ubuntu-latest
     steps:
@@ -45,7 +41,5 @@ jobs:
           java-package: jdk
           architecture: x64
       - uses: actions/checkout@v2
-      - name: Setup
-        run: ./scripts/setup.sh
       - name: Build
-        run: ./scripts/build.sh
+        run: make build
