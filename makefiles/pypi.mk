@@ -8,14 +8,16 @@ pypi_setup_deps:
 pypi_build_package: build pypi_setup_deps
 	python3 setup.py bdist_wheel
 
-pypi_publish: pypi_setup_keys pypi_build_package
+pypi_setup_git:
+	git config --local user.email "pypi@tales.pw"
+	git config --local user.name "pypi"
+
+pypi_publish: pypi_setup_keys pypi_setup_git pypi_build_package
 	git clone git@github.com:tales-pw/PyPI ./PyPI
 	cd PyPI
 
 	yes | cp ../dist/*.whl ./
 
 	git add --all
-	git config --local user.email "pypi@tales.pw"
-	git config --local user.name "pypi"
 	git commit -a -m "update"
 	git push
