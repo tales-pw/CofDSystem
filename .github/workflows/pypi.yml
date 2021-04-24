@@ -22,37 +22,9 @@ jobs:
           python-version: '3'
       - uses: actions/checkout@v2
 
-      - name: Build
-        env:
-          RELEASE_VERSION: ${{ github.event.release.tag_name }}
-        run: ./scripts/build.sh
-
-      - name: Install python deps
-        run: python3 -m pip install wheel
-
-      - name: Build python package
-        env:
-          RELEASE_VERSION: ${{ github.event.release.tag_name }}
-        run: python3 setup.py bdist_wheel
-
-      - name: Setup PyPI keys
-        env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-        run: |
-          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
-          ssh-add - <<< "${{ secrets.PYPI_DEPLOY_KEY }}"
-
       - name: Publsih to git PyPI
         env:
+          PYPI_DEPLOY_KEY: ${{ secrets.PYPI_DEPLOY_KEY }}
+          RELEASE_VERSION: ${{ github.event.release.tag_name }}
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-        run: |
-          git clone git@github.com:tales-pw/PyPI ./PyPI
-          cd PyPI
-
-          yes | cp ../dist/*.whl ./
-
-          git add --all
-          git config --local user.email "pypi@tales.pw"
-          git config --local user.name "pypi"
-          git commit -a -m "update"
-          git push
+        run: make pypi_publish
