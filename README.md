@@ -3,21 +3,21 @@
 ## Install dependencies and setup project
 Executed automatically when other scripts are executed.
 ```bash
-scripts/setup.sh
+make setup
 ```
 
 ## Lint
-```
-scripts/lint.sh
+```bash
+make lint
 ```
 
 ## Tests
 ```bash
-scripts/tests.sh
+make tests
 ```
 
 ## Build
 Build artifacts. You can find built artifacts in `out`.
 ```bash
-scripts/build.sh
+make build
 ```
