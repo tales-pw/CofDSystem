@@ -21,5 +21,5 @@ docs: build
 lint: setup_haxe
 	haxelib run checkstyle -s src
 
-tests: setup
+tests: setup_haxe
 	haxe build/tests.hxml
