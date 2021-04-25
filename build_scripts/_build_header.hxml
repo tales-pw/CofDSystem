@@ -3,5 +3,5 @@ build_scripts/_libraries.hxml
 -cp src
 -D analyzer-optimize
 
---macro include("pw.tales.system")
---macro keep("pw.tales.system")
+--macro include("pw.tales.cofdsystem")
+--macro keep("pw.tales.cofdsystem")
