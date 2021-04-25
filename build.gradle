@@ -1,0 +1,27 @@
+apply plugin: 'maven-publish'
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = "pw.tales"
+            artifactId = "cofdsystem"
+            version = System.getenv('RELEASE_VERSION') ?: "dev"
+
+            artifact("out/java/CofDSystem.jar")
+
+            pom {
+                name = "CofDSystem"
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            credentials {
+                username = "tales-pw-worker"
+                password = System.getenv('PACKAGES_TOKEN')
+            }
+            url = "https://maven.pkg.github.com/tales-pw/CofDSystem"
+        }
+    }
+}
