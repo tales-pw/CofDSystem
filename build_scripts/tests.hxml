@@ -3,9 +3,9 @@ build_scripts/_libraries_dev.hxml
 -cp src
 -cp test
 
--main pw.tales.system.MainTest
---macro nullSafety("pw.tales.system", Loose)
---macro include("pw.tales.system")
+-main pw.tales.cofdsystem.MainTest
+--macro nullSafety("pw.tales.cofdsystem", Loose)
+--macro include("pw.tales.cofdsystem")
 
 --each
 --interp
