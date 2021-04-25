@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
   mode: 'development',
   devtool: 'source-map',
-  entry: './build/webpack.hxml',
+  entry: './build_scripts/webpack.hxml',
   output: {
     filename: 'CofDSystem.js',
     path: path.resolve(__dirname, 'out/js'),
