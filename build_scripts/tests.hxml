@@ -1,4 +1,4 @@
-build/_libraries_dev.hxml
+build_scripts/_libraries_dev.hxml
 
 -cp src
 -cp test

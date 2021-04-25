@@ -1,4 +1,4 @@
-build/_build_header.hxml
+build_scripts/_build_header.hxml
 
 -xml out/docs/doc.xml
 -D doc-gen

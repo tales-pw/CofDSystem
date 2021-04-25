@@ -1,0 +1,3 @@
+build_scripts/_libraries.hxml
+
+-L hx3compat:1.0.3
