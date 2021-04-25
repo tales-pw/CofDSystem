@@ -1,9 +1,10 @@
-.haxelib/
-.idea/
-out/
+/.haxelib/
+/.idea/
+/out/
 /yarn.lock
 /node_modules/
-dist/
-build/bdist.linux-x86_64
-build/lib
+/dist/
+/build/bdist.linux-x86_64
+/build/lib
 /PyPI
+/.gradle
