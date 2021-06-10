@@ -13,7 +13,6 @@ typedef SystemData = {
 }
 
 @:nullSafety(Off)
-
 @:expose("SystemSynchronization")
 class SystemSynchronization {
     // Things serializer needs to know
@@ -26,10 +25,8 @@ class SystemSynchronization {
     public static function create(s:CofDSystem):SystemSynchronization {
         return new SystemSynchronization(s);
     }
-
-    public function deserialize(data:String):SystemSynchronization {
-        var deserialized:SystemData = haxe.Json.parse(data);
-
+    
+    public function fromData(deserialized:SystemData):SystemSynchronization {
         for (serializedWeapon in deserialized.weapons) {
             this.system.weapons.register(WeaponSerialization.deserialize(system.traits, serializedWeapon));
         }
@@ -46,8 +43,8 @@ class SystemSynchronization {
 
         return this;
     }
-
-    public function serialize():String {
+    
+    public function toData():SystemData {
         var serializedWeapons:Array<MeleeWeaponData> = [];
         for (weapon in this.system.weapons.items()) {
             serializedWeapons.push(WeaponSerialization.serialize(weapon));
@@ -58,15 +55,26 @@ class SystemSynchronization {
             serializedArmor.push(ExternalArmorSerialization.serialize(armor));
         }
 
-        var serializedTraiTypes:Array<TraitTypeData> = [];
+        var serializedTraitTypes:Array<TraitTypeData> = [];
         for (traitType in this.system.traits.items()) {
-            serializedTraiTypes.push(TraitTypeSerialization.serialize(traitType));
+            serializedTraitTypes.push(TraitTypeSerialization.serialize(traitType));
         }
 
-        return haxe.Json.stringify({
-            traitTypes: serializedTraiTypes,
+        return {
+            traitTypes: serializedTraitTypes,
             weapons: serializedWeapons,
             armors: serializedArmor
-        });
+        };
     }
+    
+    public function deserialize(serializedData:String):SystemSynchronization {
+        var data:SystemData = haxe.Json.parse(serializedData);
+        return this.fromData(data);
+    }
+
+    public function serialize():String {
+        var data:SystemData = this.toData();
+        return haxe.Json.stringify(data);
+    }
+
 }
