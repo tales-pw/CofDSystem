@@ -3,11 +3,12 @@ package pw.tales.cofdsystem.game_object.events;
 import pw.tales.cofdsystem.game_object.traits.Trait;
 
 @:expose("TraitRemoveEvent")
-class TraitRemoveEvent implements IGameObjectEvent {
+class TraitRemoveEvent extends GameObjectEvent {
     private var trait:Trait;
     private var cancelled = false;
 
     public function new(trait:Trait) {
+        super(trait.getGameObject());
         this.trait = trait;
     }
 
@@ -21,9 +22,5 @@ class TraitRemoveEvent implements IGameObjectEvent {
 
     public function getTrait():Trait {
         return this.trait;
-    }
-
-    public function isRelated(gameObject:GameObject):Bool {
-        return this.getTrait().getGameObject() == gameObject;
     }
 }

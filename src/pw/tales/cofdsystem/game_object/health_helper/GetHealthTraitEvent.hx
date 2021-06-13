@@ -1,14 +1,9 @@
 package pw.tales.cofdsystem.game_object.health_helper;
 
-import pw.tales.cofdsystem.game_object.events.IGameObjectEvent;
+import pw.tales.cofdsystem.game_object.events.GameObjectEvent;
 
-class GetHealthTraitEvent implements IGameObjectEvent {
-    private final character:GameObject;
+class GetHealthTraitEvent extends GameObjectEvent {
     private var trait:Null<IHealthTrait> = null;
-
-    public function new(character:GameObject) {
-        this.character = character;
-    }
 
     public function setHealthTrait(trait:IHealthTrait) {
         this.trait = trait;
@@ -16,9 +11,5 @@ class GetHealthTraitEvent implements IGameObjectEvent {
 
     public function getHealthTrait():Null<IHealthTrait> {
         return this.trait;
-    }
-
-    public function isRelated(character:GameObject):Bool {
-        return character == this.character;
     }
 }

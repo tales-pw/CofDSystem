@@ -1,16 +1,5 @@
 package pw.tales.cofdsystem.action_attack.events;
 
-import pw.tales.cofdsystem.game_object.events.IGameObjectEvent;
-import pw.tales.cofdsystem.game_object.GameObject;
+import pw.tales.cofdsystem.game_object.events.GameObjectEvent;
 
-class HeartPiercedEvent implements IGameObjectEvent {
-    private final gameObject:GameObject;
-
-    public function new(gameObject:GameObject) {
-        this.gameObject = gameObject;
-    }
-
-    public function isRelated(gameObject:GameObject):Bool {
-        return this.gameObject == gameObject;
-    }
-}
+class HeartPiercedEvent extends GameObjectEvent {}

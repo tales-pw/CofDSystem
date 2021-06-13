@@ -1,12 +1,7 @@
 package pw.tales.cofdsystem.game_object.events;
 
-class CollectEvent<T> implements IGameObjectEvent {
-    private final gameObject:GameObject;
+class CollectEvent<T> extends GameObjectEvent {
     private final collected:Array<T> = [];
-
-    public function new(gameObject:GameObject) {
-        this.gameObject = gameObject;
-    }
 
     public function collect(aspiration:T) {
         this.collected.push(aspiration);
@@ -14,9 +9,5 @@ class CollectEvent<T> implements IGameObjectEvent {
 
     public function getCollected():Array<T> {
         return this.collected;
-    }
-
-    public function isRelated(gameObject:GameObject):Bool {
-        return this.gameObject == gameObject;
     }
 }

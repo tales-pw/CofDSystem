@@ -1,20 +1,5 @@
 package pw.tales.cofdsystem.character.traits.advantages.health.events;
 
-import pw.tales.cofdsystem.game_object.events.IGameObjectEvent;
-import pw.tales.cofdsystem.game_object.GameObject;
+import pw.tales.cofdsystem.game_object.events.GameObjectEvent;
 
-class GameObjectDiedEvent implements IGameObjectEvent {
-    private final gameObject:GameObject;
-
-    public function new(gameObject:GameObject) {
-        this.gameObject = gameObject;
-    }
-
-    public function getGameObject():GameObject {
-        return this.gameObject;
-    }
-
-    public function isRelated(gameObject:GameObject):Bool {
-        return gameObject == this.gameObject;
-    }
-}
+class GameObjectDiedEvent extends GameObjectEvent {}
