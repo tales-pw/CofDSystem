@@ -65,6 +65,8 @@ class WeaponTestCase extends CofDSystemTestCase {
 
         var traits = action.getOpposition().getPool(c1).getRequest().getTraits();
         assertEquals(Std.string(pool), Std.string(traits));
+
+        return action;
     }
 
     public function testMeleeWeaponPool() {
@@ -75,10 +77,13 @@ class WeaponTestCase extends CofDSystemTestCase {
     }
 
     public function testRangedWeaponPool() {
-        this.methodTestWeaponPool(GENERIC_RANGED_WEAPON, [
+        var action = this.methodTestWeaponPool(GENERIC_RANGED_WEAPON, [
             Attributes.DEXTERITY.getDN(),
             Skills.SHOOTING.getDN()
         ]);
+
+        var traits = action.getOpposition().getPool(c2).getRequest().getTraits();
+        assertEquals(Std.string([]), Std.string(traits));
     }
 
     public function testMeleeWeaponPoolIsRemovedWhenWeaponRemoved() {
