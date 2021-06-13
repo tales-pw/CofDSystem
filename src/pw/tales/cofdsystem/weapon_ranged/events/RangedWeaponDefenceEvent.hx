@@ -1,19 +1,9 @@
 package pw.tales.cofdsystem.weapon_ranged.events;
 
-import pw.tales.cofdsystem.game_object.events.IGameObjectEvent;
-import pw.tales.cofdsystem.game_object.GameObject;
+import pw.tales.cofdsystem.game_object.events.GameObjectEvent;
 
-class RangedWeaponDefenceEvent implements IGameObjectEvent {
-    private final gameObject:GameObject;
+class RangedWeaponDefenceEvent extends GameObjectEvent {
     private var canApply:Bool = false;
-
-    public function new(gameObject:GameObject) {
-        this.gameObject = gameObject;
-    }
-
-    public function getGameObject():GameObject {
-        return this.gameObject;
-    }
 
     public function getCanApply():Bool {
         return this.canApply;
@@ -21,9 +11,5 @@ class RangedWeaponDefenceEvent implements IGameObjectEvent {
 
     public function setCanApply(canApply:Bool):Void {
         this.canApply = canApply;
-    }
-
-    public function isRelated(gameObject:GameObject):Bool {
-        return gameObject == this.gameObject;
     }
 }

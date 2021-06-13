@@ -3,13 +3,12 @@ package pw.tales.cofdsystem.game_object.events;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 
 @:expose("TraitAddEvent")
-class TraitAddEvent implements IGameObjectEvent {
-    private var gameObject:GameObject;
+class TraitAddEvent extends GameObjectEvent {
     private var traitType:TraitType<Dynamic>;
     private var cancelled = false;
 
     public function new(gameObject:GameObject, trait:TraitType<Dynamic>) {
-        this.gameObject = gameObject;
+        super(gameObject);
         this.traitType = trait;
     }
 
@@ -23,9 +22,5 @@ class TraitAddEvent implements IGameObjectEvent {
 
     public function getTraitType():TraitType<Dynamic> {
         return this.traitType;
-    }
-
-    public function isRelated(gameObject:GameObject):Bool {
-        return this.gameObject == gameObject;
     }
 }
