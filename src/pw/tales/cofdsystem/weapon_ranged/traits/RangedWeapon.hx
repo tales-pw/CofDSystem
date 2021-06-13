@@ -22,13 +22,16 @@ class RangedWeapon extends WeaponTrait {
 
     public function changeTraits(event:ActionPoolEvent) {
         var action = event.getAction();
-        var opposition = action.getOpposition();
+        var attackAction = Std.downcast(action, AttackAction);
 
-        if (!Std.isOfType(action, AttackAction)) return;
+        if (attackAction == null) return;
         if (!this.doesHolderAct(action)) return;
         if (!this.isActionWithWeapon(action)) return;
 
-        event.getActionPool().getRequest().setTraits([Attributes.DEXTERITY.getDN(), Skills.SHOOTING.getDN()]);
+        var opposition = attackAction.getCompetitiveOpposition();
+
+        opposition.getActorPool().getRequest().setTraits([Attributes.DEXTERITY.getDN(), Skills.SHOOTING.getDN()]);
+        opposition.getTargetPool().getRequest().setTraits([]);
     }
 
     public static function create(dn:String, gameObject:GameObject, t:TraitType<RangedWeapon>):RangedWeapon {
