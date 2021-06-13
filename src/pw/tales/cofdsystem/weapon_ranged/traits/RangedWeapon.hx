@@ -22,7 +22,7 @@ class RangedWeapon extends WeaponTrait {
 
     public function changeTraits(event:ActionPoolEvent) {
         var action = event.getAction();
-        var attackAction = Std.downcast(action, AttackAction);
+        var attackAction: Null<AttackAction> = Std.downcast(action, AttackAction);
 
         if (attackAction == null) return;
         if (!this.doesHolderAct(action)) return;
