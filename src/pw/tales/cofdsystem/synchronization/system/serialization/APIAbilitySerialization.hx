@@ -1,4 +1,4 @@
-package pw.tales.cofdsystem.synchronization.rest.serialization;
+package pw.tales.cofdsystem.synchronization.system.serialization;
 
 import haxe.DynamicAccess;
 import pw.tales.cofdsystem.character.traits.merits.MeritType;
@@ -16,7 +16,7 @@ typedef ApiAbility = {
     requirements:Array<String>
 }
 
-class APIAbilitySerialization implements ISerialization {
+class APIAbilitySerialization implements ISystemSerializationItem {
     public static final INSTANCE:APIAbilitySerialization = new APIAbilitySerialization();
 
     private final requirementsParser:RequirementsParser = new RequirementsParser();
@@ -24,7 +24,7 @@ class APIAbilitySerialization implements ISerialization {
 
     public function new() {}
 
-    public function handle(system:CofDSystem, data:Dynamic) {
+    public function updateFromData(system:CofDSystem, data:Dynamic) {
         var abilities:DynamicAccess<ApiAbility> = data.abilities;
 
         var logger = LoggerManager.getLogger();
@@ -55,5 +55,9 @@ class APIAbilitySerialization implements ISerialization {
                 logger.warning('Error occured while parsing requitements for ${dn}: ${e.getError()}');
             }
         }
+    }
+
+    public function writeToData(system:CofDSystem, data:Dynamic):Void {
+
     }
 }

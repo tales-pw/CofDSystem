@@ -1,4 +1,4 @@
-package pw.tales.cofdsystem.synchronization.rest.serialization;
+package pw.tales.cofdsystem.synchronization.system.serialization;
 
 import haxe.DynamicAccess;
 import pw.tales.cofdsystem.character.traits.condition.Condition;
@@ -10,12 +10,12 @@ typedef ApiCondition = {
     categories:Array<String>
 }
 
-class APIConditionSerialization implements ISerialization {
+class APIConditionSerialization implements ISystemSerializationItem {
     public static final INSTANCE:APIConditionSerialization = new APIConditionSerialization();
 
     public function new() {}
 
-    public function handle(system:CofDSystem, data:Dynamic) {
+    public function updateFromData(system:CofDSystem, data:Dynamic) {
         var conditions:DynamicAccess<ApiCondition> = data.conditions;
         for (dn in conditions.keys()) {
             var record = conditions.get(dn);
@@ -28,5 +28,8 @@ class APIConditionSerialization implements ISerialization {
 
             type.setName(record.name);
         }
+    }
+
+    public function writeToData(system:CofDSystem, data:Dynamic):Void {
     }
 }

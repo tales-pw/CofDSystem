@@ -1,4 +1,4 @@
-package pw.tales.cofdsystem.synchronization.rest.serialization;
+package pw.tales.cofdsystem.synchronization.system.serialization;
 
 import haxe.DynamicAccess;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
@@ -15,12 +15,12 @@ typedef ApiRangedWeapon = {
     categories:Array<String>
 }
 
-class APIRangedSerialization implements ISerialization {
-    public static final INSTANCE:APIRangedSerialization = new APIRangedSerialization();
+class RangedSerialization implements ISystemSerializationItem {
+    public static final INSTANCE:RangedSerialization = new RangedSerialization();
 
     public function new() {}
 
-    public function handle(system:CofDSystem, data:Dynamic) {
+    public function updateFromData(system:CofDSystem, data:Dynamic) {
         var rangedWeapons:DynamicAccess<ApiRangedWeapon> = data.ranged_weapons;
         for (dn in rangedWeapons.keys()) {
             var record = rangedWeapons.get(dn);
@@ -33,5 +33,9 @@ class APIRangedSerialization implements ISerialization {
 
             system.weapons.register(new RangedWeaponPrefab(record.dn, record.name, record.initiative, record.damage, tags));
         }
+    }
+
+    public function writeToData(system:CofDSystem, data:Dynamic):Void {
+
     }
 }

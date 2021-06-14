@@ -1,4 +1,4 @@
-package pw.tales.cofdsystem.synchronization.rest.serialization;
+package pw.tales.cofdsystem.synchronization.system.serialization;
 
 import haxe.DynamicAccess;
 import pw.tales.cofdsystem.armor.prefabs.ArmorPrefab;
@@ -15,12 +15,12 @@ typedef ApiArmor = {
     availability:String
 }
 
-class APIArmorSerialization implements ISerialization {
+class APIArmorSerialization implements ISystemSerializationItem {
     public static final INSTANCE:APIArmorSerialization = new APIArmorSerialization();
 
     public function new() {}
 
-    public function handle(system:CofDSystem, data:Dynamic) {
+    public function updateFromData(system:CofDSystem, data:Dynamic) {
         var armors:DynamicAccess<ApiArmor> = cast(data.armor);
 
         for (dn in armors.keys()) {
@@ -30,5 +30,8 @@ class APIArmorSerialization implements ISerialization {
 
             system.armors.register(armor);
         }
+    }
+
+    public function writeToData(system:CofDSystem, data:Dynamic):Void {
     }
 }

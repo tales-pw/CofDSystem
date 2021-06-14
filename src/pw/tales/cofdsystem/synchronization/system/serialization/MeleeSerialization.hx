@@ -1,4 +1,4 @@
-package pw.tales.cofdsystem.synchronization.rest.serialization;
+package pw.tales.cofdsystem.synchronization.system.serialization;
 
 import haxe.DynamicAccess;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
@@ -15,12 +15,12 @@ typedef ApiMeleeWeapon = {
     categories:Array<String>
 }
 
-class APIMeleeSerialization implements ISerialization {
-    public static final INSTANCE:APIMeleeSerialization = new APIMeleeSerialization();
+class MeleeSerialization implements ISystemSerializationItem {
+    public static final INSTANCE:MeleeSerialization = new MeleeSerialization();
 
     public function new() {}
 
-    public function handle(system:CofDSystem, data:Dynamic) {
+    public function updateFromData(system:CofDSystem, data:Dynamic) {
         var melee_weapons:DynamicAccess<ApiMeleeWeapon> = data.melee_weapons;
         for (dn in melee_weapons.keys()) {
             var record = melee_weapons.get(dn);
@@ -33,5 +33,8 @@ class APIMeleeSerialization implements ISerialization {
 
             system.weapons.register(new MeleeWeaponPrefab(record.dn, record.name, record.initiative, record.damage, tags));
         }
+    }
+
+    public function writeToData(system:CofDSystem, data:Dynamic):Void {
     }
 }

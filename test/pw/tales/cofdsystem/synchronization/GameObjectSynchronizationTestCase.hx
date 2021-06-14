@@ -4,7 +4,7 @@ import pw.tales.cofdsystem.character.traits.advantages.health.HealthAdvantage;
 import pw.tales.cofdsystem.character.traits.attribute.Attributes;
 import pw.tales.cofdsystem.character.traits.skill.Skills;
 import pw.tales.cofdsystem.damage.Damage;
-import pw.tales.cofdsystem.synchronization.GameObjectSynchronization;
+import pw.tales.cofdsystem.synchronization.game_object.GameObjectSynchronization;
 
 @:nullSafety(Off)
 class GameObjectSynchronizationTestCase extends CofDSystemTestCase {

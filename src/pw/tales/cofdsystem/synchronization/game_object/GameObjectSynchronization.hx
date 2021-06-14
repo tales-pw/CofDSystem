@@ -1,4 +1,4 @@
-package pw.tales.cofdsystem.synchronization;
+package pw.tales.cofdsystem.synchronization.game_object;
 
 import haxe.Json;
 import pw.tales.cofdsystem.game_object.GameObject;
@@ -17,32 +17,11 @@ typedef GameObjectData = {
 }
 
 @:expose("GameObjectSynchronization")
-class GameObjectSynchronization {
-    // Things serializer needs to know
-    public var system:CofDSystem;
+class GameObjectSynchronization extends Synchronization<GameObjectData, GameObject> {
+    private final system:CofDSystem;
 
-    // What to serialize
-    public var gameObject:Null<GameObject>;
-
-    private function new(system:CofDSystem) {
+    public function new(system:CofDSystem) {
         this.system = system;
-    }
-
-    public static function createDeserializer(system:CofDSystem, gameObject:GameObject = null):GameObjectSynchronization {
-        var serializer = new GameObjectSynchronization(system);
-        serializer.gameObject = gameObject;
-        return serializer;
-    }
-
-    public static function create(s:CofDSystem, gameObject:GameObject):GameObjectSynchronization {
-        var serializer = new GameObjectSynchronization(s);
-        serializer.gameObject = gameObject;
-        return serializer;
-    }
-
-    private function ensureGameObject(data:GameObjectData):GameObject {
-        if (this.gameObject == null) this.gameObject = new GameObject(data.dn, this.system);
-        return this.gameObject;
     }
 
     private function ensureTrait(manager:TraitManager, type:TraitType<Dynamic>, dn:String):Trait {
@@ -58,8 +37,7 @@ class GameObjectSynchronization {
         return oldTraits.filter((v:Trait) -> !newDNs.contains(v.getDN()));
     }
 
-    public function fromData(data:GameObjectData):GameObject {
-        var gameObject:GameObject = this.ensureGameObject(data);
+    public override function updateWithData(gameObject:GameObject, data:GameObjectData):Void {
         gameObject.setState(GameObjectState.LOADING);
 
         // Start updating given GameObject
@@ -102,33 +80,26 @@ class GameObjectSynchronization {
 
         // Make GameObject active
         gameObject.setState(GameObjectState.ACTIVE);
+    }
+
+    public override function fromData(data:GameObjectData):GameObject {
+        var gameObject:GameObject = new GameObject(this.system);
+        this.updateWithData(gameObject, data);
         return gameObject;
     }
 
-    public function toData():GameObjectData {
-        if (this.gameObject == null) throw "Unable to serialize gameObject as gameObject is not set";
-
+    public override function toData(gameObject:GameObject):GameObjectData {
         var data:GameObjectData = {
-            version: this.gameObject.version,
-            dn: this.gameObject.getDN(),
+            version: gameObject.version,
+            dn: gameObject.getDN(),
             traits: []
         };
 
-        var traitManager:TraitManager = this.gameObject.getTraitManager();
+        var traitManager:TraitManager = gameObject.getTraitManager();
         for (trait in traitManager.getTraits().items()) {
             data.traits.push(trait.serialize());
         }
 
         return data;
-    }
-
-    public function deserialize(serializedData:String):GameObject {
-        var data:GameObjectData = haxe.Json.parse(serializedData);
-        return this.fromData(data);
-    }
-
-    public function serialize():String {
-        var data:GameObjectData = toData();
-        return haxe.Json.stringify(data);
     }
 }
