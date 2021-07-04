@@ -2,6 +2,7 @@ package pw.tales.cofdsystem.weapon;
 
 import pw.tales.cofdsystem.common.EnumHand;
 import pw.tales.cofdsystem.equipment.Equipment;
+import pw.tales.cofdsystem.equipment.traits.HoldingHand;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.utils.events.HandlerPriority;
@@ -14,6 +15,11 @@ class Weapon extends Equipment implements IWeapon {
 
     public function new(gameObject:GameObject) {
         super(gameObject);
+        this.ensureHoldingHand();
+    }
+
+    private function ensureHoldingHand():HoldingHand {
+        return this.getTrait(HoldingHand.TYPE);
     }
 
     public function getInitiativeMod():Int {
