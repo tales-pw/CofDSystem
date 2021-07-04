@@ -15,11 +15,6 @@ class Weapon extends Equipment implements IWeapon {
 
     public function new(gameObject:GameObject) {
         super(gameObject);
-        this.ensureHoldingHand();
-    }
-
-    private function ensureHoldingHand():HoldingHand {
-        return this.getTrait(HoldingHand.TYPE);
     }
 
     public function getInitiativeMod():Int {
@@ -34,25 +29,31 @@ class Weapon extends Equipment implements IWeapon {
         return WeaponTags.collect(this.gameObject).map((tag) -> tag.getType());
     }
 
-    public function getEquipper():Null<GameObject> {
-        return this.ensureEquipable().getHolder();
-    }
-
     public function getHand():Null<EnumHand> {
-        return this.ensureHoldingHand().getHand();
+        try {
+            return this.ensureHoldingHand().getHand();
+        } catch (NoTraitAccessorException) {
+            return null;
+        }
     }
 
     public function unsetEquipper() {
-        this.ensureEquipable().unset();
-        this.ensureHoldingHand().unset();
+        super.unsetHolder();
+
+        try {
+            this.ensureHoldingHand().unset();
+        } catch (NoTraitAccessorException) {}
     }
 
     public function setEquipper(gameObject:GameObject, hand:EnumHand) {
-        this.ensureEquipable().setHolder(gameObject);
-        this.ensureHoldingHand().setHand(hand);
+        super.setHolder(gameObject);
+
+        try {
+            this.ensureHoldingHand().setHand(hand);
+        } catch (NoTraitAccessorException) {}
     }
 
-    public function getGameObject():GameObject {
-        return this.gameObject;
+    private function ensureHoldingHand():HoldingHand {
+        return this.getTrait(HoldingHand.TYPE);
     }
 }

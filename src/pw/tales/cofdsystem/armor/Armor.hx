@@ -36,11 +36,11 @@ class Armor extends Equipment implements IArmor {
         return this.getInt(SpeedModifer.TYPE);
     }
 
-    public function setHolder(gameObject:GameObject) {
-        this.ensureEquipable().setHolder(gameObject);
+    public override function setHolder(gameObject:GameObject) {
+        super.setHolder(gameObject);
     }
 
-    public function unsetHolder() {
-        this.ensureEquipable().unset();
+    public override function unsetHolder() {
+        super.ensureEquipable().unset();
     }
 }
