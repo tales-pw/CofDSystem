@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem;
 
+import haxe.unit.TestRunner;
 import pw.tales.cofdsystem.action_attack.AttackBuilderTestCase;
 import pw.tales.cofdsystem.character.advancement.GenAdvancementTestCase;
 import pw.tales.cofdsystem.character.advantages.WillpowerAdvantageTestCase;
