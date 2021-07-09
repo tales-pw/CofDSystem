@@ -23,7 +23,7 @@ class Head implements ITarget {
         var gameObject = action.getOpposition().getTargetPool().getGameObject();
         var size:SizeAdvantage = gameObject.getTraitManager().getTrait(SizeAdvantage.TYPE);
 
-        if (totalDamage > size.getValue()) {
+        if (totalDamage > 0) {
             var gameObject = action.getOpposition().getTargetPool().getGameObject();
             gameObject.getTraitManager().addTrait(StunnedTilt.TYPE);
         }
