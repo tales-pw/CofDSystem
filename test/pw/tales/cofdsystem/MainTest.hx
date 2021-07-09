@@ -1,8 +1,8 @@
 package pw.tales.cofdsystem;
 
-import haxe.unit.TestRunner;
 import pw.tales.cofdsystem.action_attack.AttackBuilderTestCase;
 import pw.tales.cofdsystem.character.advancement.GenAdvancementTestCase;
+import pw.tales.cofdsystem.character.advantages.WillpowerAdvantageTestCase;
 import pw.tales.cofdsystem.character.equipment.ArmorTestCase;
 import pw.tales.cofdsystem.character.equipment.WeaponTestCase;
 import pw.tales.cofdsystem.character.merits.AmbidextrousTestCase;
@@ -32,6 +32,9 @@ class MainTest {
         r.add(new GameObjectTestCase());
         r.add(new ManagerTestCase());
         r.add(new GameObjectSynchronizationTestCase());
+
+        // Advatnages
+        r.add(new WillpowerAdvantageTestCase());
 
         // Merits
         r.add(new AmbidextrousTestCase());
