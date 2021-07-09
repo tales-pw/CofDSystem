@@ -1,7 +1,7 @@
 package pw.tales.cofdsystem.game_object.prefabs;
 
-import pw.tales.cofdsystem.game_object.trait_manager.TraitManager;
 import pw.tales.cofdsystem.game_object.prefabs.exceptions.NoTraitAccessorException;
+import pw.tales.cofdsystem.game_object.trait_manager.TraitManager;
 import pw.tales.cofdsystem.game_object.traits.text.TextTrait;
 import pw.tales.cofdsystem.game_object.traits.text.TextTraitType;
 import pw.tales.cofdsystem.game_object.traits.Trait;
@@ -49,5 +49,9 @@ class Accessor {
         var intTrait:Null<Trait> = cast this.traitManager.getTrait(type);
         if (intTrait == null) return 0;
         return intTrait.getValue();
+    }
+
+    public function getGameObject():GameObject {
+        return this.gameObject;
     }
 }
