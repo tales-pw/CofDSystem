@@ -7,6 +7,10 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed
+
+- Throw NoWillpowerException when no willpower left.
+
 ### Fixed
 
 - Fix Head target required deal more than size to cause StunnedTilt. 
