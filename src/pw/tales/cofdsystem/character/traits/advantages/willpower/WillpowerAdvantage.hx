@@ -34,7 +34,7 @@ class WillpowerAdvantage extends AdvantageExpression {
     public function burnWillpower() {
         var newPoints = this.getPoints() - 1;
 
-        if (newPoints < 0) {
+        if (!this.canUse()) {
             throw new NoWillpowerException(this);
         }
 
