@@ -55,6 +55,9 @@ class AttackBuilder {
             case EnumSide.TARGET:
                 return this.getTarget();
         }
+
+        // Should be unreachable.
+        throw "wrong side";
     }
 
     public function setAllOut(allOut:Bool) {
@@ -80,7 +83,7 @@ class AttackBuilder {
         var willpower = gameObject.getTraitManager().getTrait(WillpowerAdvantage.TYPE);
 
         if (willpower == null || !willpower.canUse()) {
-            throw NoWillpowerBuilderException(this);
+            throw new NoWillpowerBuilderException(this);
         }
 
         switch (side) {
