@@ -9,7 +9,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
-- Throw NoWillpowerException when no willpower left.
+- Throw NoWillpowerException when no willpower left or you can't use it.
 
 ### Fixed
 
