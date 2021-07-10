@@ -1,5 +1,7 @@
 package pw.tales.cofdsystem.action_attack.builder;
 
+import pw.tales.cofdsystem.action_attack.builder.exceptions.NoWillpowerBuilderException;
+import pw.tales.cofdsystem.character.traits.advantages.willpower.WillpowerAdvantage;
 import pw.tales.cofdsystem.action.IAction;
 import pw.tales.cofdsystem.action.modifications.Offhand;
 import pw.tales.cofdsystem.action.modifications.Willpower;
@@ -38,12 +40,21 @@ class AttackBuilder {
         this.target = target;
     }
 
-    public function getActor() {
+    public function getActor(): GameObject {
         return this.actor;
     }
 
-    public function getTarget() {
+    public function getTarget(): GameObject {
         return this.target;
+    }
+
+    public function getGameObject(side: EnumSide): GameObject {
+        switch (side) {
+            case EnumSide.ACTOR:
+                return this.getActor();
+            case EnumSide.TARGET:
+                return this.getTarget();
+        }
     }
 
     public function setAllOut(allOut:Bool) {
@@ -65,12 +76,20 @@ class AttackBuilder {
     }
 
     public function spendWillpower(side:EnumSide, value:Bool = true):AttackBuilder {
+        var gameObject = this.getGameObject(side);
+        var willpower = gameObject.getTraitManager().getTrait(WillpowerAdvantage.TYPE);
+
+        if (willpower == null || !willpower.canUse()) {
+            throw NoWillpowerBuilderException(this);
+        }
+
         switch (side) {
             case EnumSide.ACTOR:
                 this.actorWillpower = value;
             case EnumSide.TARGET:
                 this.targetWillpower = value;
         }
+
         return this;
     }
 
