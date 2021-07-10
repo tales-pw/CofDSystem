@@ -26,27 +26,25 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 **/
 class Accessor {
     private final gameObject:GameObject;
-    private final traitManager:TraitManager;
 
     private function new(gameObject:GameObject) {
         this.gameObject = gameObject;
-        this.traitManager = gameObject.getTraitManager();
     }
 
     private function getTrait<T: Trait>(type: TraitType<T>):T {
-        var trait: Null<T> = this.traitManager.getTrait(type);
+        var trait = this.gameObject.getTrait(type);
         if (trait == null) throw new NoTraitAccessorException(this.gameObject, type);
         return trait;
     }
 
     private function getText(type:TextTraitType):String {
-        var textTrait:Null<TextTrait> = cast this.traitManager.getTrait(type);
+        var textTrait = this.gameObject.getTrait(type);
         if (textTrait == null) return "";
         return textTrait.getText();
     }
 
     private function getInt(type:TraitType<Dynamic>):Int {
-        var intTrait:Null<Trait> = cast this.traitManager.getTrait(type);
+        var intTrait:Null<Trait> = this.gameObject.getTrait(type);
         if (intTrait == null) return 0;
         return intTrait.getValue();
     }

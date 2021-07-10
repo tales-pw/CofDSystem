@@ -14,7 +14,7 @@ class DonAction extends NoRollAction {
     }
 
     override public function perform():Void {
-        var trait:WornArmor = cast(actor.getTraitManager().getTrait(WornArmor.TYPE));
+        var trait = actor.getTrait(WornArmor.TYPE);
         trait.setArmor(this.armor);
     }
 }

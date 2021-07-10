@@ -24,7 +24,7 @@ class MeritType extends ValueTraitType<Merit> {
         if (this.requirements == null) {
             this.requirements = requirements;
         } else {
-            this.requirements = cast(new NodeAnd(this.requirements, requirements));
+            this.requirements = new NodeAnd(this.requirements, requirements);
         }
     }
 

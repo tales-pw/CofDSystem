@@ -22,7 +22,7 @@ class Arm implements ITarget {
         var totalDamage = damage.getBashing() + damage.getLethal() + damage.getAggravated();
 
         var gameObject = action.getOpposition().getTargetPool().getGameObject();
-        var stamina:Attribute = gameObject.getTraitManager().getTrait(Attributes.STAMINA);
+        var stamina:Attribute = gameObject.getTrait(Attributes.STAMINA);
 
         if (totalDamage > stamina.getValue()) {
             var gameObject = action.getOpposition().getTargetPool().getGameObject();

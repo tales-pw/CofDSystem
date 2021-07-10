@@ -80,7 +80,7 @@ class AttackBuilder {
 
     public function spendWillpower(side:EnumSide, value:Bool = true):AttackBuilder {
         var gameObject = this.getGameObject(side);
-        var willpower = gameObject.getTraitManager().getTrait(WillpowerAdvantage.TYPE);
+        var willpower = gameObject.getTrait(WillpowerAdvantage.TYPE);
 
         if (willpower == null || !willpower.canUse()) {
             throw new NoWillpowerBuilderException(this);

@@ -40,8 +40,9 @@ class Willpower implements IModification {
     }
 
     private function burnWillpower() {
-        var manager = gameObject.getTraitManager();
-        var willpower:WillpowerAdvantage = cast manager.getTrait(WillpowerAdvantage.TYPE);
+        var willpower = this.gameObject.getTrait(
+            WillpowerAdvantage.TYPE
+        );
         willpower.burnWillpower();
     }
 }

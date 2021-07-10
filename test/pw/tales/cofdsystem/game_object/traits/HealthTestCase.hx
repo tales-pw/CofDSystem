@@ -14,7 +14,7 @@ import pw.tales.cofdsystem.mocks.BasicAction;
 @:nullSafety(Off)
 class HealthTestCase extends CofDSystemTestCase {
     private function prepareHealthAdvantage(bashing:Int, lethal:Int, aggravated:Int):HealthAdvantage {
-        var health:HealthAdvantage = cast c1.getTraitManager().getTrait(HealthAdvantage.TYPE);
+        var health:HealthAdvantage = cast c1.getTrait(HealthAdvantage.TYPE);
         assertEquals(health.getValue(), 6);
 
         // Fill health with lethal
@@ -64,7 +64,7 @@ class HealthTestCase extends CofDSystemTestCase {
     }
 
     public function testHealthRollPenaltyForResistedAction() {
-        var maxHealth = c2.getTraitManager().getTrait(HealthAdvantage.TYPE).getValue();
+        var maxHealth = c2.getTrait(HealthAdvantage.TYPE).getValue();
         HealthTraitHelper.get(c2).dealDamage(new Damage(maxHealth, 0, 0));
 
         var actorRoll = new ActionPool(c1, []);
@@ -79,8 +79,8 @@ class HealthTestCase extends CofDSystemTestCase {
     }
 
     public function testSimpleDamage() {
-        c1.getTraitManager().getTrait(Attributes.STAMINA).setValue(2);
-        var health:HealthAdvantage = cast(c1.getTraitManager().getTrait(HealthAdvantage.TYPE));
+        c1.getTrait(Attributes.STAMINA).setValue(2);
+        var health:HealthAdvantage = cast(c1.getTrait(HealthAdvantage.TYPE));
         assertEquals(7, health.getValue());
 
         // Cassidy has seven boxes in her Health track.
@@ -164,7 +164,7 @@ class HealthTestCase extends CofDSystemTestCase {
     }
 
     public function testDeath() {
-        var health:HealthAdvantage = cast(c1.getTraitManager().getTrait(HealthAdvantage.TYPE));
+        var health:HealthAdvantage = cast(c1.getTrait(HealthAdvantage.TYPE));
         assertEquals(health.getValue(), 6);
 
         var hasDied = false;

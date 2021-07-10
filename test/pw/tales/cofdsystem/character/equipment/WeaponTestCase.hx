@@ -20,14 +20,14 @@ class WeaponTestCase extends CofDSystemTestCase {
 
     override public function setup() {
         super.setup();
-        c1.getTraitManager().getTrait(Attributes.STRENGTH).setValue(1);
-        c1.getTraitManager().getTrait(Skills.WEAPONRY).setValue(1);
-        c1.getTraitManager().getTrait(Skills.BRAWL).setValue(1);
-        c1.getTraitManager().getTrait(Skills.SHOOTING).setValue(1);
+        c1.getTrait(Attributes.STRENGTH).setValue(1);
+        c1.getTrait(Skills.WEAPONRY).setValue(1);
+        c1.getTrait(Skills.BRAWL).setValue(1);
+        c1.getTrait(Skills.SHOOTING).setValue(1);
 
-        c2.getTraitManager().getTrait(Attributes.DEXTERITY).setValue(1);
-        c2.getTraitManager().getTrait(Attributes.WITS).setValue(1);
-        c2.getTraitManager().getTrait(Skills.ATHLETICS).setValue(0);
+        c2.getTrait(Attributes.DEXTERITY).setValue(1);
+        c2.getTrait(Attributes.WITS).setValue(1);
+        c2.getTrait(Skills.ATHLETICS).setValue(0);
     }
 
     private function getInitiativeMod():Int {
@@ -41,7 +41,7 @@ class WeaponTestCase extends CofDSystemTestCase {
     public function testApplyInitiativeMod() {
         assertEquals(2, this.getInitiativeMod());
 
-        var weaponTrait:HeldWeapon = cast(c1.getTraitManager().getTrait(HeldWeapon.TYPE));
+        var weaponTrait:HeldWeapon = cast c1.getTrait(HeldWeapon.TYPE);
 
         weaponTrait.setMainHand(GENERIC_MELEE_WEAPON.createWeapon(system));
         assertEquals(0, this.getInitiativeMod());
@@ -57,7 +57,7 @@ class WeaponTestCase extends CofDSystemTestCase {
     }
 
     public function methodTestWeaponPool(weapon:WeaponPrefab, pool:Array<String>) {
-        var weaponTrait:HeldWeapon = cast(c1.getTraitManager().getTrait(HeldWeapon.TYPE));
+        var weaponTrait:HeldWeapon = cast(c1.getTrait(HeldWeapon.TYPE));
         weaponTrait.setMainHand(weapon.createWeapon(system));
 
         var action = new AttackBuilder(c1, c2).build();
@@ -87,7 +87,7 @@ class WeaponTestCase extends CofDSystemTestCase {
     }
 
     public function testMeleeWeaponPoolIsRemovedWhenWeaponRemoved() {
-        var heldWeapon:HeldWeapon = cast(c1.getTraitManager().getTrait(HeldWeapon.TYPE));
+        var heldWeapon:HeldWeapon = cast(c1.getTrait(HeldWeapon.TYPE));
         heldWeapon.setMainHand(GENERIC_MELEE_WEAPON.createWeapon(system));
         heldWeapon.setMainHand(null);
 
@@ -99,7 +99,7 @@ class WeaponTestCase extends CofDSystemTestCase {
     }
 
     public function testWeaponHand() {
-        var heldWeapon:HeldWeapon = cast(c1.getTraitManager().getTrait(HeldWeapon.TYPE));
+        var heldWeapon:HeldWeapon = cast(c1.getTrait(HeldWeapon.TYPE));
         heldWeapon.setOffHand(GENERIC_MELEE_WEAPON.createWeapon(system));
 
         var action = new AttackBuilder(c1, c2).build();

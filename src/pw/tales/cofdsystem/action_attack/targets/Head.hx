@@ -21,7 +21,7 @@ class Head implements ITarget {
         var totalDamage = damage.getBashing() + damage.getLethal() + damage.getAggravated();
 
         var gameObject = action.getOpposition().getTargetPool().getGameObject();
-        var size:SizeAdvantage = gameObject.getTraitManager().getTrait(SizeAdvantage.TYPE);
+        var size:SizeAdvantage = gameObject.getTrait(SizeAdvantage.TYPE);
 
         if (totalDamage > 0) {
             var gameObject = action.getOpposition().getTargetPool().getGameObject();

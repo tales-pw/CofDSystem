@@ -5,7 +5,7 @@ import pw.tales.cofdsystem.character.traits.advantages.willpower.WillpowerAdvant
 class WillpowerAdvantageTestCase extends CofDSystemTestCase {
     public function testNoWillpower() {
         var manager = c1.getTraitManager();
-        var willpower:WillpowerAdvantage = cast c2.getTraitManager().getTrait(
+        var willpower:WillpowerAdvantage = cast c2.getTrait(
             WillpowerAdvantage.TYPE
         );
 

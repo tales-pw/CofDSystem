@@ -14,20 +14,20 @@ class ArmorTestCase extends CofDSystemTestCase {
 
     override public function setup() {
         super.setup();
-        c1.getTraitManager().getTrait(Attributes.STRENGTH).setValue(3);
-        c1.getTraitManager().getTrait(Skills.BRAWL).setValue(2);
+        c1.getTrait(Attributes.STRENGTH).setValue(3);
+        c1.getTrait(Skills.BRAWL).setValue(2);
 
-        c2.getTraitManager().getTrait(Attributes.DEXTERITY).setValue(1);
-        c2.getTraitManager().getTrait(Attributes.WITS).setValue(1);
-        c2.getTraitManager().getTrait(Skills.ATHLETICS).setValue(0);
-        c2.getTraitManager().getTrait(WornArmor.TYPE).setArmor(ARMOR.createArmor(system));
+        c2.getTrait(Attributes.DEXTERITY).setValue(1);
+        c2.getTrait(Attributes.WITS).setValue(1);
+        c2.getTrait(Skills.ATHLETICS).setValue(0);
+        c2.getTrait(WornArmor.TYPE).setArmor(ARMOR.createArmor(system));
     }
 
     public function testSimple() {
         var action = new AttackBuilder(c1, c2).build();
         system.act(action);
 
-        var health:HealthAdvantage = cast(c2.getTraitManager().getTrait(HealthAdvantage.TYPE));
+        var health:HealthAdvantage = cast(c2.getTrait(HealthAdvantage.TYPE));
 
         assertEquals(2, health.getBashing());
         assertEquals(0, health.getLethal());

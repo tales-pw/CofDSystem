@@ -19,13 +19,13 @@ class EquipmentTrait extends Trait {
     }
 
     private function getHolder():Null<GameObject> {
-        var equippable:Equippable = cast(this.gameObject.getTraitManager().getTrait(Equippable.TYPE));
+        var equippable = this.gameObject.getTrait(Equippable.TYPE);
         if (equippable == null) return null;
         return equippable.getHolder();
     }
 
     private function getHand():Null<EnumHand> {
-        var holdingHang:HoldingHand = cast(this.gameObject.getTraitManager().getTrait(HoldingHand.TYPE));
+        var holdingHang = this.gameObject.getTrait(HoldingHand.TYPE);
         if (holdingHang == null) return null;
         return holdingHang.getHand();
     }

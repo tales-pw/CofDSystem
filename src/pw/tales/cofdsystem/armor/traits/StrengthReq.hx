@@ -26,7 +26,7 @@ class StrengthReq extends EquipmentMod {
         if (!event.isPoolOwner(holder)) return;
         if (!Std.isOfType(action, AttackAction)) return;
 
-        var strengthTrait:Null<Attribute> = cast holder.getTraitManager().getTrait(Attributes.STRENGTH);
+        var strengthTrait = holder.getTrait(Attributes.STRENGTH);
         if (strengthTrait == null) return;
 
         var strength = strengthTrait.getValue();

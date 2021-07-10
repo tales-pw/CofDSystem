@@ -12,19 +12,19 @@ class AttackBuilderTestCase extends CofDSystemTestCase {
     override public function setup() {
         super.setup();
 
-        c1.getTraitManager().getTrait(Attributes.STRENGTH).setValue(3);
-        c1.getTraitManager().getTrait(Skills.BRAWL).setValue(2);
+        c1.getTrait(Attributes.STRENGTH).setValue(3);
+        c1.getTrait(Skills.BRAWL).setValue(2);
 
-        c2.getTraitManager().getTrait(Attributes.DEXTERITY).setValue(1);
-        c2.getTraitManager().getTrait(Attributes.WITS).setValue(1);
-        c2.getTraitManager().getTrait(Skills.ATHLETICS).setValue(0);
+        c2.getTrait(Attributes.DEXTERITY).setValue(1);
+        c2.getTrait(Attributes.WITS).setValue(1);
+        c2.getTrait(Skills.ATHLETICS).setValue(0);
     }
 
     public function testSimple() {
         var action = new AttackBuilder(c1, c2).build();
         system.act(action);
 
-        var health:HealthAdvantage = cast c2.getTraitManager().getTrait(HealthAdvantage.TYPE);
+        var health:HealthAdvantage = cast c2.getTrait(HealthAdvantage.TYPE);
         assertEquals(4, health.getBashing());
         assertEquals(0, health.getLethal());
         assertEquals(0, health.getAggravated());
@@ -34,16 +34,16 @@ class AttackBuilderTestCase extends CofDSystemTestCase {
         var action = new AttackBuilder(c1, c2).spendWillpower(EnumSide.ACTOR).build();
         system.act(action);
 
-        var health:HealthAdvantage = cast c2.getTraitManager().getTrait(HealthAdvantage.TYPE);
+        var health:HealthAdvantage = cast c2.getTrait(HealthAdvantage.TYPE);
         assertEquals(5, health.getBashing());
         assertEquals(1, health.getLethal());
         assertEquals(0, health.getAggravated());
 
-        var willpower:WillpowerAdvantage = cast c1.getTraitManager().getTrait(WillpowerAdvantage.TYPE);
+        var willpower:WillpowerAdvantage = cast c1.getTrait(WillpowerAdvantage.TYPE);
         assertEquals(1, willpower.getPoints());
         assertEquals(2, willpower.getValue());
 
-        var willpower:WillpowerAdvantage = cast c2.getTraitManager().getTrait(WillpowerAdvantage.TYPE);
+        var willpower:WillpowerAdvantage = cast c2.getTrait(WillpowerAdvantage.TYPE);
         assertEquals(2, willpower.getPoints());
         assertEquals(2, willpower.getValue());
     }
@@ -52,16 +52,16 @@ class AttackBuilderTestCase extends CofDSystemTestCase {
         var action = new AttackBuilder(c1, c2).spendWillpower(EnumSide.TARGET).build();
         system.act(action);
 
-        var health:HealthAdvantage = cast c2.getTraitManager().getTrait(HealthAdvantage.TYPE);
+        var health:HealthAdvantage = cast c2.getTrait(HealthAdvantage.TYPE);
         assertEquals(2, health.getBashing());
         assertEquals(0, health.getLethal());
         assertEquals(0, health.getAggravated());
 
-        var willpower:WillpowerAdvantage = cast c1.getTraitManager().getTrait(WillpowerAdvantage.TYPE);
+        var willpower:WillpowerAdvantage = cast c1.getTrait(WillpowerAdvantage.TYPE);
         assertEquals(2, willpower.getPoints());
         assertEquals(2, willpower.getValue());
 
-        var willpower:WillpowerAdvantage = cast c2.getTraitManager().getTrait(WillpowerAdvantage.TYPE);
+        var willpower:WillpowerAdvantage = cast c2.getTrait(WillpowerAdvantage.TYPE);
         assertEquals(1, willpower.getPoints());
         assertEquals(2, willpower.getValue());
     }
@@ -74,16 +74,16 @@ class AttackBuilderTestCase extends CofDSystemTestCase {
 
         system.act(action);
 
-        var health:HealthAdvantage = cast c2.getTraitManager().getTrait(HealthAdvantage.TYPE);
+        var health:HealthAdvantage = cast c2.getTrait(HealthAdvantage.TYPE);
         assertEquals(5, health.getBashing());
         assertEquals(0, health.getLethal());
         assertEquals(0, health.getAggravated());
 
-        var willpower:WillpowerAdvantage = cast c1.getTraitManager().getTrait(WillpowerAdvantage.TYPE);
+        var willpower:WillpowerAdvantage = cast c1.getTrait(WillpowerAdvantage.TYPE);
         assertEquals(1, willpower.getPoints());
         assertEquals(2, willpower.getValue());
 
-        var willpower:WillpowerAdvantage = cast c2.getTraitManager().getTrait(WillpowerAdvantage.TYPE);
+        var willpower:WillpowerAdvantage = cast c2.getTrait(WillpowerAdvantage.TYPE);
         assertEquals(1, willpower.getPoints());
         assertEquals(2, willpower.getValue());
     }

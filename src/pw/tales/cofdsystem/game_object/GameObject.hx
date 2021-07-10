@@ -1,5 +1,7 @@
 package pw.tales.cofdsystem.game_object;
 
+import pw.tales.cofdsystem.game_object.traits.TraitType;
+import pw.tales.cofdsystem.game_object.traits.Trait;
 import pw.tales.cofdsystem.game_object.events.IGameObjectEvent;
 import pw.tales.cofdsystem.game_object.trait_manager.TraitManager;
 import pw.tales.cofdsystem.utils.events.IEvent;
@@ -38,6 +40,10 @@ class GameObject implements IRecord {
 
     public function getTraitManager():TraitManager {
         return this.traitManager;
+    }
+
+    public function getTrait<T:Trait>(type:TraitType<T>, dn:String = null):T {
+        return this.traitManager.getTrait(type, dn);
     }
 
     public function getSystem():CofDSystem {
