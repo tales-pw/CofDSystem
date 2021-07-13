@@ -10,9 +10,9 @@ import pw.tales.cofdsystem.synchronization.GameObjectSynchronization;
 class GameObjectSynchronizationTestCase extends CofDSystemTestCase {
 
     public function testTraitSync() {
-        c1.getTraitManager().getTrait(Attributes.STRENGTH).setValue(3);
-        c1.getTraitManager().getTrait(Skills.BRAWL).setValue(2);
-        c1.getTraitManager().getTrait(HealthAdvantage.TYPE).dealDamage(new Damage(1, 0, 0));
+        c1.getTrait(Attributes.STRENGTH).setValue(3);
+        c1.getTrait(Skills.BRAWL).setValue(2);
+        c1.getTrait(HealthAdvantage.TYPE).dealDamage(new Damage(1, 0, 0));
 
         var serializer = GameObjectSynchronization.create(system, c1);
         var serialzedData = serializer.serialize();

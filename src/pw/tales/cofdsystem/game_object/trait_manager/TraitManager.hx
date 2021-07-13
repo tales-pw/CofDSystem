@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.game_object.trait_manager;
 
+import pw.tales.cofdsystem.utils.registry.IRecord;
 import pw.tales.cofdsystem.game_object.events.TraitRemoveEvent;
 import pw.tales.cofdsystem.game_object.events.traits.TraitPostAttachEvent;
 import pw.tales.cofdsystem.game_object.events.traits.TraitPostRemoveEvent;
@@ -112,7 +113,7 @@ class TraitManager {
     **/
     @:nullSafety(Off)
     public function getTraitByDn(dn:String):Trait {
-        var record:Trait = traits.getRecord(dn);
+        var record:IRecord = traits.getRecord(dn);
         if (record == null) return null;
         return cast(record);
     }

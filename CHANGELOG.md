@@ -7,6 +7,10 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- Added shortcut for GameObject().getTraitManager().getTrait(...) to improve project readability.
+
 ### Changed
 
 - Throw NoWillpowerException when no willpower left or you can't use it.

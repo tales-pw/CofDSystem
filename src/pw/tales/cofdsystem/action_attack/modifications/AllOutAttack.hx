@@ -25,8 +25,9 @@ class AllOutAttack implements IModification {
         pool.getRequest().addModifier(2, DN);
 
         // Lose defence
-        var manager = gameObject.getTraitManager();
-        var defence:DefenceAdvantage = cast manager.getTrait(DefenceAdvantage.TYPE);
+        var defence = this.gameObject.getTrait(
+            DefenceAdvantage.TYPE
+        );
         defence.loseDefence();
     }
 }

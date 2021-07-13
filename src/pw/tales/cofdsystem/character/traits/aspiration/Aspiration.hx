@@ -35,10 +35,10 @@ class Aspiration extends TextTrait {
     }
 
     public function accomplish() {
-        var manager = this.getGameObject().getTraitManager();
-
-        var experience:Experience = cast(manager.getTrait(Experience.TYPE));
+        var experience = gameObject.getTrait(Experience.TYPE);
         experience.grantBeat();
+
+        var manager = gameObject.getTraitManager();
         manager.removeTrait(this);
     }
 }

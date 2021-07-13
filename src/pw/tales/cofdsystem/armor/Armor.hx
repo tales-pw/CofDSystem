@@ -13,13 +13,13 @@ class Armor extends Equipment implements IArmor {
     }
 
     public function getGeneral():Int {
-        var armorRating = this.traitManager.getTrait(ArmorRating.TYPE);
+        var armorRating = gameObject.getTrait(ArmorRating.TYPE);
         if (armorRating == null) return 0;
         return armorRating.getGeneral();
     }
 
     public function getBallistic():Int {
-        var armorRating = this.traitManager.getTrait(ArmorRating.TYPE);
+        var armorRating = gameObject.getTrait(ArmorRating.TYPE);
         if (armorRating == null) return 0;
         return armorRating.getBallistic();
     }

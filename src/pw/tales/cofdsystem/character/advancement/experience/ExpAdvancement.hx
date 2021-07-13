@@ -33,7 +33,7 @@ class ExpAdvancement extends Trait {
         if (cost == null) return event.setCancelled(true);
 
         // Spend experience
-        var experience:Null<Experience> = this.gameObject.getTraitManager().getTrait(Experience.TYPE);
+        var experience:Null<Experience> = this.gameObject.getTrait(Experience.TYPE);
         if (experience == null) return event.setCancelled(true);
         if (!experience.isEnough(cost)) return event.setCancelled(true);
 
@@ -54,7 +54,7 @@ class ExpAdvancement extends Trait {
         if (cost == null) return event.setCancelled(true);
 
         // Spend experience
-        var experience:Null<Experience> = this.gameObject.getTraitManager().getTrait(Experience.TYPE);
+        var experience:Null<Experience> = this.gameObject.getTrait(Experience.TYPE);
         if (experience == null) return event.setCancelled(true);
         if (!experience.isEnough(cost)) return event.setCancelled(true);
 
