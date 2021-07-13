@@ -49,6 +49,13 @@ class Initiative {
         this.update();
     }
 
+    public function remove(gameObject:GameObject) {
+        this.order.remove(gameObject);
+        this.rollResults.remove(gameObject);
+
+        this.update();
+    }
+
     public function update() {
         this.order.sort(function(a:GameObject, b:GameObject):Int {
             var initiativeA = this.getInitiative(a);
