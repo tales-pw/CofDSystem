@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.scene;
 
+import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.CofDSystem;
 import pw.tales.cofdsystem.scene.events.SceneEvent;
 import pw.tales.cofdsystem.scene.initiative.Initiative;
@@ -27,6 +28,15 @@ class Scene implements IRecord {
         this.initiative = new Initiative(this.system, this);
         this.turns = new Turns(this.system, this, this.initiative);
         return this;
+    }
+
+    public function add(gameObject:GameObject) {
+        this.initiative.add(gameObject);
+    }
+
+    public function remove(gameObject:GameObject) {
+        this.initiative.remove(gameObject);
+        this.turns.remove(gameObject);
     }
 
     public function getSystem():CofDSystem {
