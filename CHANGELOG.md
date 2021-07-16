@@ -11,6 +11,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 - Added shortcut for GameObject().getTraitManager().getTrait(...) to improve project readability.
 - Added methods to remove GameObject from Scenes, Initiative and Turns.
+- Added isRelated method for ActionBuilder.
 
 ### Changed
 

@@ -87,4 +87,11 @@ class AttackBuilderTestCase extends CofDSystemTestCase {
         assertEquals(1, willpower.getPoints());
         assertEquals(2, willpower.getValue());
     }
+
+    public function testIsRelated() {
+        var build = new AttackBuilder(c1, c2);
+        assertTrue(build.isRelated(c1));
+        assertTrue(build.isRelated(c2));
+        assertFalse(build.isRelated(c3));
+    }
 }

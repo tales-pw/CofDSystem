@@ -60,6 +60,10 @@ class AttackBuilder {
         throw "wrong side";
     }
 
+    public function isRelated(gameObject:GameObject) {
+        return this.actor == gameObject || this.target == gameObject;
+    }
+
     public function setAllOut(allOut:Bool) {
         this.actorAllOut = allOut;
     }
