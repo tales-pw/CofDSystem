@@ -18,11 +18,16 @@ class Turns {
         this.initiative = initiative;
     }
 
+    public function add(gameObject:GameObject) {
+        this.turns.push(gameObject);
+    }
+
+    public function remove(gameObject:GameObject) {
+        this.turns.remove(gameObject);
+    }
+
     public function nextRound() {
-        this.turns = [];
-        for (gameObject in this.initiative.getOrder()) {
-            this.turns.push(gameObject);
-        }
+        this.turns = this.initiative.getOrder().copy();
     }
 
     public function start() {
