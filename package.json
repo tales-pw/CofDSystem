@@ -1,5 +1,6 @@
 {
   "name": "@octocat/cofdsystem",
+  "pkgRoot": "out/js",
   "devDependencies": {
     "haxe-loader": "^0.8.0",
     "ssri": ">=8.0.1",
