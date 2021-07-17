@@ -24,6 +24,6 @@ jobs:
       - name: Publsih to git Maven
         env:
           RELEASE_VERSION: ${{ github.event.release.tag_name }}
-          PACKAGES_TOKEN: ${{ secrets.PACKAGES_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.PACKAGES_TOKEN }}
         run: |
-          make npm_publish
+          make -e npm_publish
