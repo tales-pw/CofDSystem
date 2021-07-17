@@ -1,5 +1,9 @@
 package pw.tales.cofdsystem;
 
+import pw.tales.cofdsystem.character.tilts.LegWrackTiltTestCase;
+import pw.tales.cofdsystem.character.tilts.BlindedTiltTestCase;
+import pw.tales.cofdsystem.character.tilts.ArmWrackTiltTestCase;
+import pw.tales.cofdsystem.character.tilts.StunnedTiltTestCase;
 import haxe.unit.TestRunner;
 import pw.tales.cofdsystem.action_attack.AttackBuilderTestCase;
 import pw.tales.cofdsystem.character.advancement.GenAdvancementTestCase;
@@ -42,6 +46,12 @@ class MainTest {
         r.add(new FleetOfFootTestCase());
         r.add(new GiantTestCase());
         r.add(new SmallFramedTestCase());
+
+        // Tilts
+        r.add(new ArmWrackTiltTestCase());
+        r.add(new BlindedTiltTestCase());
+        r.add(new LegWrackTiltTestCase());
+        r.add(new StunnedTiltTestCase());
 
         // Utils
         r.add(new EventBusTestCase());
