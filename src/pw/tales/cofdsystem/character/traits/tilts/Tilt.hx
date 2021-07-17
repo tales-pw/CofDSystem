@@ -10,12 +10,12 @@ class Tilt extends Trait {
         super(dn, gameObject, type);
         this.eventBus.addHandler(
             SceneEndEvent,
-            this.applyInitiativeMod,
+            this.onSceneEnd,
             HandlerPriority.NORMAL
         );
     }
 
-    private function applyInitiativeMod(event:SceneEndEvent) {
+    private function onSceneEnd(event:SceneEndEvent) {
         this.gameObject.getTraitManager().removeTrait(this);
     }
 }
