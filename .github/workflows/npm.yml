@@ -1,8 +1,5 @@
-name: Publish PyPI
-on:
-  release:
-    types:
-      - created
+name: Publish NPM
+on: push
 
 jobs:
   publish:
@@ -14,6 +11,8 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@octocat'
       - uses: actions/setup-java@v1
         with:
           java-version: '8'
@@ -22,16 +21,9 @@ jobs:
           python-version: '3'
       - uses: actions/checkout@v2
 
-      - name: Setup PyPI keys
-        env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-        run: |
-          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
-          ssh-add - <<< "${{ secrets.PYPI_DEPLOY_KEY }}"
-
-      - name: Publsih to git PyPI
+      - name: Publsih to git Maven
         env:
           RELEASE_VERSION: ${{ github.event.release.tag_name }}
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+          PACKAGES_TOKEN: ${{ secrets.PACKAGES_TOKEN }}
         run: |
-          make pypi_publish
+          make npm_publish
