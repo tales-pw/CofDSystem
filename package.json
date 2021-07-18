@@ -1,9 +1,9 @@
 {
-  "name": "@octocat/cofdsystem",
+  "name": "@tales-pw/cofdsystem",
   "pkgRoot": "out/js",
-  "repository": "https://github.com/tales-pw/CofDSystem",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tales-pw/CofDSystem.git"
   },
   "devDependencies": {
     "haxe-loader": "^0.8.0",
