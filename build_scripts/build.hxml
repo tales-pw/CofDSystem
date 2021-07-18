@@ -4,15 +4,10 @@ build_scripts/_build_header.hxml
 --interp
 
 --next
--D python_version=3.9
--python out/python/CofDSystem.py
+build_scripts/_build_python.hxml
 
 --next
--D fast_cast
--L hxjava
---java out/java/
---cmd mv out/java/java.jar out/java/CofDSystem.jar
+build_scripts/_build_java.hxml
 
 --next
--D php7
---php out/php
+build_scripts/_build_php.hxml

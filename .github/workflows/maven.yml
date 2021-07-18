@@ -11,15 +11,10 @@ jobs:
       - uses: krdlab/setup-haxe@v1
         with:
           haxe-version: 4.2.1
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '14'
       - uses: actions/setup-java@v1
         with:
           java-version: '8'
-      - uses: actions/setup-python@v2
-        with:
-          python-version: '3'
+
       - uses: actions/checkout@v2
 
       - name: Publsih to git Maven

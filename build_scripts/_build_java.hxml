@@ -1,0 +1,4 @@
+-D fast_cast
+-L hxjava
+--java out/java/
+--cmd mv out/java/java.jar out/java/CofDSystem.jar
