@@ -24,4 +24,4 @@ jobs:
           RELEASE_VERSION: ${{ github.event.release.tag_name }}
           NODE_AUTH_TOKEN: ${{ secrets.PACKAGES_TOKEN }}
         run: |
-          make npm_publish
+          make -e npm_publish
