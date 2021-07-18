@@ -1,6 +1,8 @@
 {
   "name": "@tales-pw/cofdsystem",
-  "pkgRoot": "out/js",
+  "files": [
+    "out/js"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/tales-pw/CofDSystem.git"
