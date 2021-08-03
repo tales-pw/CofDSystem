@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.synchronization.rest;
 
+import pw.tales.cofdsystem.serialization.system.SystemSerializer;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.Trait;
 import pw.tales.cofdsystem.synchronization.GameObjectSynchronization;

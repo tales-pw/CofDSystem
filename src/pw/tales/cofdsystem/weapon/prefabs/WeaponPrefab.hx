@@ -14,14 +14,25 @@ class WeaponPrefab extends EquipmentPrefab implements IWeapon {
     private var name:Null<String>;
     private var initiative:Int;
     private var damage:Int;
-
+    private var size:Int;
+    private var strength: Int;
     private var tags:Array<TraitType<Dynamic>>;
 
-    public function new(dn:String, name:Null<String>, initiative:Int, damage:Int, tags:Array<TraitType<Dynamic>>) {
+    public function new(
+        dn:String,
+        name:Null<String>,
+        initiative:Int,
+        damage:Int,
+        size: Int,
+        strength: Int,
+        tags:Array<TraitType<Dynamic>>
+    ) {
         super(dn);
         this.name = name;
         this.initiative = initiative;
         this.damage = damage;
+        this.size = size;
+        this.strength = strength;
         this.tags = tags;
     }
 
@@ -41,6 +52,15 @@ class WeaponPrefab extends EquipmentPrefab implements IWeapon {
     public function getDamageMod():Int {
         return this.damage;
     }
+
+    public function getStrengthReq():Int {
+        return this.strength;
+    }
+
+    public function getSize():Int {
+        return this.size;
+    }
+
 
     public function getWeaponTags():Array<TraitType<Dynamic>> {
         return this.tags;
