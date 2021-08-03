@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.character.traits.tilts;
 
+import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.utils.events.HandlerPriority;
 import pw.tales.cofdsystem.scene.events.SceneEndEvent;
 import pw.tales.cofdsystem.game_object.GameObject;

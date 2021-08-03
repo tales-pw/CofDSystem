@@ -27,4 +27,11 @@ class NodeDotsRange implements INodeLevels {
     public static function create(start:Int, end:Int) {
         return new NodeDotsRange(new NodeDots(start), new NodeDots(end));
     }
+
+    public function serialize():String {
+        var left_str = start.serialize();
+        var right_str = end.serialize();
+
+        return 'от $left_str до $right_str';
+    }
 }

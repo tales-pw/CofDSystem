@@ -23,4 +23,11 @@ class NodeDotsOr implements INodeLevels {
     public function toString():String {
         return 'NodeDotsOr[${this.left},${this.right}]';
     }
+
+    public function serialize():String {
+        var left_str = left.serialize();
+        var right_str = right.serialize();
+
+        return '$left_str или $right_str';
+    }
 }

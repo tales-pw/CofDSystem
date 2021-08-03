@@ -21,12 +21,15 @@ class NodeTraitRequirement implements INodeCheck {
 
     public function build(gameObject:GameObject):IMathOperation<Bool> {
         return new MathMore(
-        new PoolTrait(gameObject, this.trait.getValue()),
-        new MathValue<Int>(this.value.getValue() - 1)
+        new PoolTrait(gameObject, this.trait.getValue()), new MathValue<Int>(this.value.getValue() - 1)
         );
     }
 
     public function toString():String {
         return 'NodeTraitRequirement[trait=${this.trait},value=${this.value}]';
+    }
+
+    public function serialize():String {
+        return '${trait.serialize()} ${value.serialize()}';
     }
 }

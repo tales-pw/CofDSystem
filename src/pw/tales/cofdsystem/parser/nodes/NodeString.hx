@@ -16,10 +16,14 @@ class NodeString implements INodeCheck {
     }
 
     public function getHumanReadable():String {
-        return string;
+        return this.string;
     }
 
     public function toString():String {
         return 'NodeString[\"${this.string}\"]';
+    }
+
+    public function serialize():String {
+        return this.string;
     }
 }

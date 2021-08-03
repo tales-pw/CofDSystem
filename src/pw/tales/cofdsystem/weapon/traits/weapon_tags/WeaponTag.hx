@@ -9,4 +9,8 @@ class WeaponTag extends WeaponTrait {
         super(dn, gameObject, type);
         this.eventBus.addHandler(WeaponTagsCollectEvent, (e:WeaponTagsCollectEvent) -> e.collect(this));
     }
+
+    public static function create(dn:String, gameObject:GameObject, type:TraitType<Dynamic>) {
+        return new WeaponTag(dn, gameObject, type);
+    }
 }

@@ -42,4 +42,8 @@ class Condition extends Trait {
         if (customName != null) return this.customName;
         return super.getDisplayName();
     }
+
+    public static function create(dn:String, gameObject:GameObject, type:TraitType<Dynamic>) {
+        return new Condition(dn, gameObject, type);
+    }
 }

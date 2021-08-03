@@ -26,4 +26,8 @@ class NodeNumber implements INodePoolBuilder {
     public function toString():String {
         return 'NodeNumber[${this.number}]';
     }
+
+    public function serialize():String {
+        return Std.string(number);
+    }
 }

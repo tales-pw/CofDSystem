@@ -22,4 +22,7 @@ class NodeGroup implements INode implements INodeCheck {
         return '(${this.node.getHumanReadable()})';
     }
 
+    public function serialize():String {
+        return '(${this.node.serialize()})';
+    }
 }

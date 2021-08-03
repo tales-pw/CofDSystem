@@ -16,7 +16,9 @@ class NodeAnd implements INodeCheck {
     }
 
     public function getHumanReadable():String {
-        return '${this.node1.getHumanReadable()}${this.separator}${this.node2.getHumanReadable()}';
+        var node1str = node1.getHumanReadable();
+        var node2str = node2.getHumanReadable();
+        return '$node1str$separator$node2str';
     }
 
     public function build(gameObject:GameObject):IMathOperation<Bool> {
@@ -25,5 +27,11 @@ class NodeAnd implements INodeCheck {
 
     public function toString():String {
         return 'NodeAnd[${this.node1},${this.node2}]';
+    }
+
+    public function serialize():String {
+        var node1str = node1.serialize();
+        var node2str = node2.serialize();
+        return '$node1str$separator$node2str';
     }
 }

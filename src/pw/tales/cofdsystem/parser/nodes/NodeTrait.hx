@@ -26,4 +26,8 @@ class NodeTrait implements INode implements INodePoolBuilder {
     public function toString():String {
         return 'NodeTrait[${this.dn}]';
     }
+
+    public function serialize():String {
+        return dn;
+    }
 }

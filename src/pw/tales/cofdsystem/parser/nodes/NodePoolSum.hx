@@ -15,12 +15,15 @@ class NodePoolSum implements INodePoolBuilder {
 
     public function build(gameObject:GameObject):IMathOperation<Int> {
         return new MathSum(
-        this.left.build(gameObject),
-        this.right.build(gameObject)
+        this.left.build(gameObject), this.right.build(gameObject)
         );
     }
 
     public function getHumanReadable():String {
         return '${this.left.getHumanReadable()} + ${this.right.getHumanReadable()}';
+    }
+
+    public function serialize():String {
+        return '${this.left.serialize()} + ${this.right.serialize()}';
     }
 }

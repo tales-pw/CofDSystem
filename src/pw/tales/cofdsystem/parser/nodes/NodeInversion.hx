@@ -16,6 +16,10 @@ class NodeInversion implements INodePoolBuilder {
     }
 
     public function getHumanReadable():String {
-        return '${this.operand.getHumanReadable()}';
+        return '-${this.operand.getHumanReadable()}';
+    }
+
+    public function serialize():String {
+        return '-${this.operand.serialize()}';
     }
 }

@@ -10,6 +10,10 @@ class ValueTraitType<T:ValueTrait> extends TraitType<T> implements IAdvanceableT
         return 0;
     }
 
+    public function setDotCost(dotCost:Null<Int>):Void {
+        this.dotCost = dotCost;
+    }
+
     public function getDotCost():Null<Int> {
         return this.dotCost;
     }
