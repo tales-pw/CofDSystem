@@ -7,7 +7,8 @@ import pw.tales.cofdsystem.game_object.traits.value_trait.ValueTrait;
 
 @RegisterTraitTypes
 @:expose("Merit")
-class Merit extends ValueTrait {
+class Merit extends ValueTrait
+{
     public static final CUSTOM_MERIT_TYPE = new MeritType("Custom_Merit");
 
     private var meritType:MeritType;
@@ -20,12 +21,14 @@ class Merit extends ValueTrait {
     @Serialize("description")
     private var description:String = "";
 
-    public function new(dn:String, gameObject:GameObject, type:MeritType, ?customName:String, ?description:String) {
+    public function new(dn:String, gameObject:GameObject, type:MeritType, ?customName:String, ?description:String)
+    {
         super(dn, gameObject, type, type.getLowestValue());
         this.meritType = type;
         this.customName = customName;
 
-        if (description != null) {
+        if (description != null)
+        {
             this.description = description;
         }
 
@@ -33,40 +36,49 @@ class Merit extends ValueTrait {
         this.eventBus.addHandler(GenMeritCollectEvent, (e:GenMeritCollectEvent) -> e.collect(this));
     }
 
-    override public function canUpdate(newValue:Int) {
+    override public function canUpdate(newValue:Int)
+    {
         var levels = meritType.getLevels();
 
-        if (levels.getLevels().indexOf(newValue) == -1) {
+        if (levels.getLevels().indexOf(newValue) == -1)
+        {
             return false;
         }
 
         return super.canUpdate(newValue);
     }
 
-    override public function getValue():Int {
+    override public function getValue():Int
+    {
         return this.value;
     }
 
-    public function setCustomName(customName:Null<String>) {
+    public function setCustomName(customName:Null<String>)
+    {
         this.customName = customName;
         this.notifyUpdated();
     }
 
-    public function getCustomName():Null<String> {
+    public function getCustomName():Null<String>
+    {
         return this.customName;
     }
 
-    public function setDescription(description:String) {
+    public function setDescription(description:String)
+    {
         this.description = description;
         this.notifyUpdated();
     }
 
-    public function getDescription() {
+    public function getDescription()
+    {
         return this.description;
     }
 
-    override public function getDisplayName():String {
-        if (customName != null) return this.customName;
+    override public function getDisplayName():String
+    {
+        if (customName != null)
+            return this.customName;
         return super.getDisplayName();
     }
 }

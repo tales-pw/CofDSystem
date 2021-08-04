@@ -15,18 +15,20 @@ typedef ApiArmor = {
     availability:String
 }
 
-class APIArmorSerialization implements ISerialization {
+class APIArmorSerialization implements ISerialization
+{
     public static final INSTANCE:APIArmorSerialization = new APIArmorSerialization();
 
     public function new() {}
 
-    public function handle(system:CofDSystem, data:Dynamic) {
+    public function handle(system:CofDSystem, data:Dynamic)
+    {
         var armors:DynamicAccess<ApiArmor> = cast(data.armor);
 
-        for (dn in armors.keys()) {
+        for (dn in armors.keys())
+        {
             var record:ApiArmor = armors.get(dn);
-            var armor = new ArmorPrefab(dn, record.name, record.general_armor, record.ballistic_armor, record.defense,
-            record.speed, record.strength);
+            var armor = new ArmorPrefab(dn, record.name, record.general_armor, record.ballistic_armor, record.defense, record.speed, record.strength);
 
             system.armors.register(armor);
         }

@@ -12,7 +12,8 @@ import pw.tales.cofdsystem.utils.Utility;
 
 @:expose('GameObject')
 @:nullSafety(Off)
-class GameObject implements IRecord {
+class GameObject implements IRecord
+{
     private final dn:String;
 
     private final system:CofDSystem;
@@ -23,52 +24,63 @@ class GameObject implements IRecord {
 
     public var version = "";
 
-    public function new(dn:String, system:CofDSystem) {
+    public function new(dn:String, system:CofDSystem)
+    {
         this.dn = dn;
         this.system = system;
         this.traitManager = new TraitManager(this);
 
-        this.events = new SubEventBus(system.events, function(event:IEvent) {
+        this.events = new SubEventBus(system.events, function(event:IEvent)
+        {
             var e:IGameObjectEvent = Std.downcast(event, IGameObjectEvent);
             return e != null && e.isRelated(this);
         });
     }
 
-    public function getDN():String {
+    public function getDN():String
+    {
         return this.dn;
     }
 
-    public function getTraitManager():TraitManager {
+    public function getTraitManager():TraitManager
+    {
         return this.traitManager;
     }
 
-    public function getTrait<T:Trait>(type:TraitType<T>, dn:String = null):T {
+    public function getTrait<T:Trait>(type:TraitType<T>, dn:String = null):T
+    {
         return this.traitManager.getTrait(type, dn);
     }
 
-    public function getSystem():CofDSystem {
+    public function getSystem():CofDSystem
+    {
         return this.system;
     }
 
-    public function getEventBus():IEventBus {
+    public function getEventBus():IEventBus
+    {
         return this.events;
     }
 
-    public function getState():GameObjectState {
+    public function getState():GameObjectState
+    {
         return this.state;
     }
 
-    public function setState(state:GameObjectState) {
+    public function setState(state:GameObjectState)
+    {
         this.state = state;
     }
 
-    public function deactivate() {
+    public function deactivate()
+    {
         this.state = GameObjectState.INACTIVE;
         this.getTraitManager().deactivate();
         this.events.disable();
     }
 
-    public function toString() {
+    public function toString()
+    {
         var className = Utility.getClassName(Type.getClass(this));
         return '${className}[${this.getDN()}]';
     }

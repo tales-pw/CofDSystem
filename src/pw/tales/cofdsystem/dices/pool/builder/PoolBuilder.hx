@@ -6,18 +6,22 @@ import pw.tales.cofdsystem.utils.math.IMathOperation;
 /*
 
  */
-class PoolBuilder implements IPoolBuilder {
+class PoolBuilder implements IPoolBuilder
+{
     public function new() {}
 
-    public function getHumanReadable():String {
+    public function getHumanReadable():String
+    {
         throw "Unimplemented";
     }
 
-    public function build(gameObject:GameObject):IMathOperation<Int> {
+    public function build(gameObject:GameObject):IMathOperation<Int>
+    {
         throw "Unimplemented";
     }
 
-    public function plus(other:IPoolBuilder):IPoolBuilder {
+    public function plus(other:IPoolBuilder):IPoolBuilder
+    {
         return new PBSum(this, other);
     }
 }

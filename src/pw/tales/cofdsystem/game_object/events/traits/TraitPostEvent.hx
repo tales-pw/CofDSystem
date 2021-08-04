@@ -1,5 +1,4 @@
 package pw.tales.cofdsystem.game_object.events.traits;
 
 @:expose("TraitPostEvent")
-class TraitPostEvent extends TraitEvent {
-}
+class TraitPostEvent extends TraitEvent {}

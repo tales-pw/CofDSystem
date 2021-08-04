@@ -10,7 +10,8 @@ import pw.tales.cofdsystem.action_attack.targets.ITarget;
 import pw.tales.cofdsystem.action_attack.targets.Leg;
 import pw.tales.cofdsystem.utils.EnumNamed;
 
-class EnumSpecifiedTarget extends EnumNamed {
+class EnumSpecifiedTarget extends EnumNamed
+{
     public static final VALUES = new StringMap<EnumSpecifiedTarget>();
 
     public static final ARM = new EnumSpecifiedTarget(Arm.instance);
@@ -22,20 +23,24 @@ class EnumSpecifiedTarget extends EnumNamed {
 
     private final target:ITarget;
 
-    private function new(target:ITarget) {
+    private function new(target:ITarget)
+    {
         super(target.getDN());
         this.target = target;
 
         VALUES.set(this.getName(), this);
     }
 
-    public static function byName(name:String):EnumSpecifiedTarget {
+    public static function byName(name:String):EnumSpecifiedTarget
+    {
         var value = VALUES.get(name);
-        if (value == null) throw "Wrong name";
+        if (value == null)
+            throw "Wrong name";
         return value;
     }
 
-    public function getTarget():ITarget {
+    public function getTarget():ITarget
+    {
         return this.target;
     }
 }

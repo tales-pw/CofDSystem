@@ -4,12 +4,15 @@ import pw.tales.cofdsystem.action.modifications.Offhand;
 import pw.tales.cofdsystem.character.traits.merits.ambidextrous.AmbidextrousMerit;
 import pw.tales.cofdsystem.game_object.GameObject;
 
-class AmbidextrousTestCase extends CofDSystemTestCase {
-    public function getOffhandModifer(gameObject:GameObject) {
+class AmbidextrousTestCase extends CofDSystemTestCase
+{
+    public function getOffhandModifer(gameObject:GameObject)
+    {
         return Offhand.getModifier(gameObject);
     }
 
-    function testAmbidextrous() {
+    function testAmbidextrous()
+    {
         var manager = c1.getTraitManager();
         assertEquals(-2, this.getOffhandModifer(c1));
 

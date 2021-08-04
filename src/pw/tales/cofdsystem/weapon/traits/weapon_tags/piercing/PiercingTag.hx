@@ -9,36 +9,45 @@ import pw.tales.cofdsystem.game_object.GameObject;
  *
  *   @see <https://tales.pw/page/piercing_(weapon_tag)>
 **/
-class PiercingTag extends WeaponTag {
+class PiercingTag extends WeaponTag
+{
     private final piercingType:PiercingTagType;
 
-    public function new(gameObject:GameObject, type:PiercingTagType) {
+    public function new(gameObject:GameObject, type:PiercingTagType)
+    {
         super(type.getDN(), gameObject, type);
         this.piercingType = type;
         this.holderEventBus.addHandler(AttackArmorGetEvent, this.applyPiercing);
     }
 
-    public function applyPiercing(e:AttackArmorGetEvent) {
+    public function applyPiercing(e:AttackArmorGetEvent)
+    {
         var action = e.getAction();
 
-        if (!Std.isOfType(action, AttackAction)) return;
-        if (!this.doesHolderAct(action)) return;
-        if (!this.isActionWithWeapon(action)) return;
+        if (!Std.isOfType(action, AttackAction))
+            return;
+        if (!this.doesHolderAct(action))
+            return;
+        if (!this.isActionWithWeapon(action))
+            return;
 
         var general = e.getGeneral();
         var ballistic = e.getBallistic();
         var piercing = this.piercingType.getLevel();
 
         ballistic = ballistic - piercing;
-        if (ballistic < 0) {
+        if (ballistic < 0)
+        {
             piercing = Std.int(Math.abs(ballistic));
             ballistic = 0;
-        } else {
+        } else
+        {
             piercing = piercing - e.getBallistic();
         }
 
         general = general - piercing;
-        if (general < 0) general = 0;
+        if (general < 0)
+            general = 0;
 
         e.setGeneral(general);
         e.setBallistic(ballistic);

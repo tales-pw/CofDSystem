@@ -16,7 +16,8 @@ typedef ApiAbility = {
     requirements:Array<String>
 }
 
-class APIAbilitySerialization implements ISerialization {
+class APIAbilitySerialization implements ISerialization
+{
     public static final INSTANCE:APIAbilitySerialization = new APIAbilitySerialization();
 
     private final requirementsParser:RequirementsParser = new RequirementsParser();
@@ -24,34 +25,41 @@ class APIAbilitySerialization implements ISerialization {
 
     public function new() {}
 
-    public function handle(system:CofDSystem, data:Dynamic) {
+    public function handle(system:CofDSystem, data:Dynamic)
+    {
         var abilities:DynamicAccess<ApiAbility> = data.abilities;
 
         var logger = LoggerManager.getLogger();
-        for (dn in abilities.keys()) {
+        for (dn in abilities.keys())
+        {
             var record = abilities.get(dn);
 
             var abilityType:MeritType = cast(system.traits.getRecord(dn));
-            if (abilityType == null) {
+            if (abilityType == null)
+            {
                 abilityType = new MeritType(dn);
                 system.traits.register(abilityType);
             }
 
-            if (record.name != null) abilityType.setName(record.name);
+            if (record.name != null)
+                abilityType.setName(record.name);
 
             var requirementsArray:Array<Dynamic> = record.requirements;
-            for (requirementsRaw in requirementsArray) {
+            for (requirementsRaw in requirementsArray)
+            {
                 var requirements = requirementsParser.parse(requirementsRaw);
                 abilityType.addRequirements(requirements);
             }
 
-            try {
-                if (record.levels != null) {
+            try
+            {
+                if (record.levels != null)
+                {
                     var levels = levelsParser.parse(record.levels);
                     abilityType.setLevels(levels);
                 }
-            }
-            catch (e:ParsingException) {
+            } catch (e:ParsingException)
+            {
                 logger.warning('Error occured while parsing requitements for ${dn}: ${e.getError()}');
             }
         }

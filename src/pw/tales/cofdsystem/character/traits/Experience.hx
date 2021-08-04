@@ -6,7 +6,8 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 
 @RegisterTraitTypes
 @:expose("Experience")
-class Experience extends Trait {
+class Experience extends Trait
+{
     public static final DN = "Опыт";
     public static final TYPE:TraitType<Experience> = cast TraitType.createType(DN, create);
 
@@ -18,29 +19,36 @@ class Experience extends Trait {
     @Serialize("spent")
     private var spent:Int = 0;
 
-    public function new(gameObject:GameObject) {
+    public function new(gameObject:GameObject)
+    {
         super(TYPE.getDN(), gameObject, TYPE);
     }
 
-    public function getExperience() {
+    public function getExperience()
+    {
         return Std.int(this.beats / BEAT_AMOUNT) - this.spent;
     }
 
-    public function getBeats() {
+    public function getBeats()
+    {
         return this.beats % BEAT_AMOUNT;
     }
 
-    public function grantBeat() {
+    public function grantBeat()
+    {
         this.beats += 1;
         this.notifyUpdated();
     }
 
-    public function isEnough(amount:Int) {
+    public function isEnough(amount:Int)
+    {
         return this.getExperience() < amount;
     }
 
-    public function spend(amount:Int, restriction = true) {
-        if (restriction && this.isEnough(amount)) {
+    public function spend(amount:Int, restriction = true)
+    {
+        if (restriction && this.isEnough(amount))
+        {
             throw "Not enough experience!";
         }
 
@@ -48,7 +56,8 @@ class Experience extends Trait {
         this.notifyUpdated();
     }
 
-    public static function create(dn:String, gameObject:GameObject, t:TraitType<Experience>):Experience {
+    public static function create(dn:String, gameObject:GameObject, t:TraitType<Experience>):Experience
+    {
         return new Experience(gameObject);
     }
 }

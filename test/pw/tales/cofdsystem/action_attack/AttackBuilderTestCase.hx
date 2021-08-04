@@ -8,8 +8,10 @@ import pw.tales.cofdsystem.character.traits.skill.Skills;
 import pw.tales.cofdsystem.common.EnumSide;
 
 @:nullSafety(Off)
-class AttackBuilderTestCase extends CofDSystemTestCase {
-    override public function setup() {
+class AttackBuilderTestCase extends CofDSystemTestCase
+{
+    override public function setup()
+    {
         super.setup();
 
         c1.getTrait(Attributes.STRENGTH).setValue(3);
@@ -20,7 +22,8 @@ class AttackBuilderTestCase extends CofDSystemTestCase {
         c2.getTrait(Skills.ATHLETICS).setValue(0);
     }
 
-    public function testSimple() {
+    public function testSimple()
+    {
         var action = new AttackBuilder(c1, c2).build();
         system.act(action);
 
@@ -30,7 +33,8 @@ class AttackBuilderTestCase extends CofDSystemTestCase {
         assertEquals(0, health.getAggravated());
     }
 
-    public function testWillpowerActor() {
+    public function testWillpowerActor()
+    {
         var action = new AttackBuilder(c1, c2).spendWillpower(EnumSide.ACTOR).build();
         system.act(action);
 
@@ -48,7 +52,8 @@ class AttackBuilderTestCase extends CofDSystemTestCase {
         assertEquals(2, willpower.getValue());
     }
 
-    public function testWillpowerTarget() {
+    public function testWillpowerTarget()
+    {
         var action = new AttackBuilder(c1, c2).spendWillpower(EnumSide.TARGET).build();
         system.act(action);
 
@@ -66,11 +71,9 @@ class AttackBuilderTestCase extends CofDSystemTestCase {
         assertEquals(2, willpower.getValue());
     }
 
-    public function testWillpowerBoth() {
-        var action = new AttackBuilder(c1, c2)
-        .spendWillpower(EnumSide.TARGET)
-        .spendWillpower(EnumSide.ACTOR)
-        .build();
+    public function testWillpowerBoth()
+    {
+        var action = new AttackBuilder(c1, c2).spendWillpower(EnumSide.TARGET).spendWillpower(EnumSide.ACTOR).build();
 
         system.act(action);
 
@@ -88,7 +91,8 @@ class AttackBuilderTestCase extends CofDSystemTestCase {
         assertEquals(2, willpower.getValue());
     }
 
-    public function testIsRelated() {
+    public function testIsRelated()
+    {
         var build = new AttackBuilder(c1, c2);
         assertTrue(build.isRelated(c1));
         assertTrue(build.isRelated(c2));

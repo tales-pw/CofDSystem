@@ -1,6 +1,7 @@
 package pw.tales.cofdsystem.action.opposition.builder;
 
-enum EnumOpposition {
+enum EnumOpposition
+{
     SIMPLE;
     CONTESTED;
     RESISTED;

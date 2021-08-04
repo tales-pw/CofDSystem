@@ -12,28 +12,36 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
  *   @see <https://tales.pw/page/9-again_(weapon_tag)>
 **/
 @RegisterTraitTypes
-class NineAgainTag extends WeaponTag {
+class NineAgainTag extends WeaponTag
+{
     public static final DN = "9-again_(weapon_tag)";
     public static final TYPE:TraitType<NineAgainTag> = cast TraitType.createType(DN, create);
 
-    public function new(gameObject:GameObject) {
+    public function new(gameObject:GameObject)
+    {
         super(DN, gameObject, TYPE);
         this.holderEventBus.addHandler(ActionBuildPoolEvent, this.applyExplode);
     }
 
-    public function applyExplode(e:ActionBuildPoolEvent) {
+    public function applyExplode(e:ActionBuildPoolEvent)
+    {
         var action = e.getAction();
         var pool = e.getActionPool();
 
-        if (!Std.isOfType(action, AttackAction)) return;
-        if (!this.isHolderPool(pool)) return;
-        if (!this.doesHolderAct(action)) return;
-        if (!this.isActionWithWeapon(action)) return;
+        if (!Std.isOfType(action, AttackAction))
+            return;
+        if (!this.isHolderPool(pool))
+            return;
+        if (!this.doesHolderAct(action))
+            return;
+        if (!this.isActionWithWeapon(action))
+            return;
 
         e.getActionPool().getRequest().setExplode(EnumExplode.NINE_AGAIN);
     }
 
-    public static function create(dn:String, gameObject:GameObject, t:TraitType<NineAgainTag>):NineAgainTag {
+    public static function create(dn:String, gameObject:GameObject, t:TraitType<NineAgainTag>):NineAgainTag
+    {
         return new NineAgainTag(gameObject);
     }
 }

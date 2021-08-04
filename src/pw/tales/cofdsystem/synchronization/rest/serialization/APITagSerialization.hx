@@ -11,18 +11,22 @@ typedef ApiWeaponTag = {
     categories:Array<String>
 }
 
-class APITagSerialization implements ISerialization {
+class APITagSerialization implements ISerialization
+{
     public static final INSTANCE:APITagSerialization = new APITagSerialization();
 
     public function new() {}
 
-    public function handle(system:CofDSystem, data:Dynamic) {
+    public function handle(system:CofDSystem, data:Dynamic)
+    {
         var weaponTag:DynamicAccess<ApiWeaponTag> = data.weapon_tags;
-        for (dn in weaponTag.keys()) {
+        for (dn in weaponTag.keys())
+        {
             var record = weaponTag.get(dn);
 
             var type:TraitType<WeaponTag> = cast(system.traits.getRecord(dn));
-            if (type == null) {
+            if (type == null)
+            {
                 type = new TraitType<WeaponTag>(dn);
                 system.traits.register(type);
             }

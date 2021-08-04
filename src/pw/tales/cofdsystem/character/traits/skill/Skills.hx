@@ -7,7 +7,8 @@ import pw.tales.cofdsystem.game_object.GameObject;
 
 @RegisterTraitTypes
 @:expose('Skills')
-class Skills {
+class Skills
+{
     // Mental
     public static final ACADEMICS = new SkillType("Эрудиция", SkillGroup.MENTAL);
     public static final ENIGMAS = new SkillType("Загадки", SkillGroup.MENTAL);
@@ -38,13 +39,15 @@ class Skills {
     public static final STREETWISE = new SkillType("Знание улиц", SkillGroup.SOCIAL);
     public static final SUBTERFUGE = new SkillType("Обман", SkillGroup.SOCIAL);
 
-    public static function collect(gameObject:GameObject):Array<Skill> {
+    public static function collect(gameObject:GameObject):Array<Skill>
+    {
         var event = new SkillCollectEvent(gameObject);
         gameObject.getEventBus().post(event);
         return event.getCollected();
     }
 
-    public static function collectByGroup(gameObject:GameObject, group:SkillGroup):Array<Skill> {
+    public static function collectByGroup(gameObject:GameObject, group:SkillGroup):Array<Skill>
+    {
         var event = new SkillGroupCollectEvent(gameObject, group);
         gameObject.getEventBus().post(event);
         return event.getCollected();

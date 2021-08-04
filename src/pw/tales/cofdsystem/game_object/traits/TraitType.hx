@@ -6,7 +6,7 @@ import pw.tales.cofdsystem.utils.Utility;
 import thx.error.AbstractMethod;
 import thx.Uuid;
 
-typedef TraitFactoryMethod<Y: Trait> = (dn: String, gameObject: GameObject, t:TraitType<Y>) -> Y;
+typedef TraitFactoryMethod<Y:Trait> = (dn:String, gameObject:GameObject, t:TraitType<Y>) -> Y;
 
 /**
     This class represents trait. While Trait
@@ -19,66 +19,80 @@ typedef TraitFactoryMethod<Y: Trait> = (dn: String, gameObject: GameObject, t:Tr
 
     @see pw.tales.cofdsystem.game_object.traits.Trait
 **/
-
 @:expose("TraitType")
-class TraitType<T:Trait> implements IRecord {
+class TraitType<T:Trait> implements IRecord
+{
     private final dn:String;
     private var name:Null<String> = null;
 
     private var factoryMethod:Null<TraitFactoryMethod<T>> = null;
     private var multiInstanced:Bool = false;
 
-    public function new(dn:String) {
+    public function new(dn:String)
+    {
         this.dn = dn;
     }
 
-    public function getDN() {
+    public function getDN()
+    {
         return this.dn;
     }
 
-    public function getDisplayName():String {
-        if (this.name != null) return this.name;
+    public function getDisplayName():String
+    {
+        if (this.name != null)
+            return this.name;
         return StringTools.replace(this.dn, "_", " ");
     }
 
-    public function getName():Null<String> {
+    public function getName():Null<String>
+    {
         return this.name;
     }
 
-    public function setName(name:Null<String>) {
+    public function setName(name:Null<String>)
+    {
         this.name = name;
     }
 
-    public function isMultiInstanced():Bool {
+    public function isMultiInstanced():Bool
+    {
         return false;
     }
 
-    public function setMultiInstanced(multiInstanced:Bool):TraitType<T> {
+    public function setMultiInstanced(multiInstanced:Bool):TraitType<T>
+    {
         this.multiInstanced = multiInstanced;
         return this;
     }
 
-    public function canAdd(gameObject:GameObject):Bool {
+    public function canAdd(gameObject:GameObject):Bool
+    {
         var createEvent = new TraitAddEvent(gameObject, this);
         gameObject.getSystem().events.post(createEvent);
         return !createEvent.isCancelled();
     }
 
-    public function createWithDN(dn:String, gameObject:GameObject):T {
-        if (this.factoryMethod != null) return this.factoryMethod(dn, gameObject, this);
+    public function createWithDN(dn:String, gameObject:GameObject):T
+    {
+        if (this.factoryMethod != null)
+            return this.factoryMethod(dn, gameObject, this);
         throw new AbstractMethod();
     }
 
-    public function create(gameObject:GameObject):T {
+    public function create(gameObject:GameObject):T
+    {
         return createWithDN(Uuid.create(), gameObject);
     }
 
-    private function toString() {
+    private function toString()
+    {
         var className = Utility.getClassName(Type.getClass(this));
         return '${className}[${this.getDN()}]';
     }
 
-    public static function createType<T:Trait>(dn:String, factoryMethod:TraitFactoryMethod<T>):TraitType<T> {
+    public static function createType<T:Trait>(dn:String, factoryMethod:TraitFactoryMethod<T>):TraitType<T>
+    {
         var newType = new TraitType(dn);
         newType.factoryMethod = factoryMethod;
         return newType;

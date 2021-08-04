@@ -5,35 +5,42 @@ import pw.tales.cofdsystem.game_object.traits.value_trait.exceptions.UpdateRejec
 import pw.tales.cofdsystem.game_object.traits.value_trait.events.ValueTraitUpdateEvent;
 import pw.tales.cofdsystem.game_object.traits.value_trait.ValueTraitType;
 
-class ValueTrait extends Trait implements IAdvanceableTrait {
+class ValueTrait extends Trait implements IAdvanceableTrait
+{
     @Serialize("value")
     private var value:Int;
 
     private var valueType:ValueTraitType<Dynamic>;
 
-    public function new(dn:String, gameObject:GameObject, type:ValueTraitType<Dynamic>, defaultValue:Int) {
+    public function new(dn:String, gameObject:GameObject, type:ValueTraitType<Dynamic>, defaultValue:Int)
+    {
         super(dn, gameObject, type);
         this.value = defaultValue;
         this.valueType = type;
     }
 
-    override public function getValue():Int {
+    override public function getValue():Int
+    {
         return this.value;
     }
 
-    public function canUpdate(newValue:Int) {
+    public function canUpdate(newValue:Int)
+    {
         var event = new ValueTraitUpdateEvent(this, newValue);
         this.system.events.post(event);
         return !event.isCancelled();
     }
 
-    public function getCost(newValue:Int):Null<Int> {
+    public function getCost(newValue:Int):Null<Int>
+    {
         var dotCost = this.valueType.getDotCost();
-        if (dotCost == null) return null;
+        if (dotCost == null)
+            return null;
         return (newValue - this.getValue()) * dotCost;
     }
 
-    public function setValue(value:Int) {
+    public function setValue(value:Int)
+    {
         if (!this.canUpdate(value))
             throw new UpdateRejectedException(this, value);
 

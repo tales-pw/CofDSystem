@@ -1,4 +1,3 @@
 package pw.tales.cofdsystem.action.events.pool;
 
-class ActionBuildPoolEvent extends ActionPoolEvent {
-}
+class ActionBuildPoolEvent extends ActionPoolEvent {}

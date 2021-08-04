@@ -9,7 +9,8 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 
 @RegisterTraitTypes
 @:expose("WillpowerAdvantage")
-class WillpowerAdvantage extends AdvantageExpression {
+class WillpowerAdvantage extends AdvantageExpression
+{
     public static final DN = "Сила_воли";
     public static final TYPE:TraitType<WillpowerAdvantage> = cast TraitType.createType(DN, create);
 
@@ -18,23 +19,29 @@ class WillpowerAdvantage extends AdvantageExpression {
     @Serialize("points")
     private var points:Null<Int> = null;
 
-    public function new(gameObject:GameObject) {
+    public function new(gameObject:GameObject)
+    {
         super(gameObject, TYPE, EXPR);
     }
 
-    public function canUse():Bool {
+    public function canUse():Bool
+    {
         return this.getPoints() > 0;
     }
 
-    public function getPoints():Int {
-        if (this.points != null) return this.points;
+    public function getPoints():Int
+    {
+        if (this.points != null)
+            return this.points;
         return this.getValue();
     }
 
-    public function burnWillpower() {
+    public function burnWillpower()
+    {
         var newPoints = this.getPoints() - 1;
 
-        if (!this.canUse()) {
+        if (!this.canUse())
+        {
             throw new NoWillpowerException(this);
         }
 
@@ -42,11 +49,8 @@ class WillpowerAdvantage extends AdvantageExpression {
         this.notifyUpdated();
     }
 
-    public static function create(
-        dn:String,
-        gameObject:GameObject,
-        t:TraitType<WillpowerAdvantage>
-    ):WillpowerAdvantage {
+    public static function create(dn:String, gameObject:GameObject, t:TraitType<WillpowerAdvantage>):WillpowerAdvantage
+    {
         return new WillpowerAdvantage(gameObject);
     }
 }

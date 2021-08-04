@@ -7,40 +7,51 @@ import pw.tales.cofdsystem.armor.traits.StrengthReq;
 import pw.tales.cofdsystem.equipment.Equipment;
 import pw.tales.cofdsystem.game_object.GameObject;
 
-class Armor extends Equipment implements IArmor {
-    public function new(gameObject:GameObject) {
+class Armor extends Equipment implements IArmor
+{
+    public function new(gameObject:GameObject)
+    {
         super(gameObject);
     }
 
-    public function getGeneral():Int {
+    public function getGeneral():Int
+    {
         var armorRating = gameObject.getTrait(ArmorRating.TYPE);
-        if (armorRating == null) return 0;
+        if (armorRating == null)
+            return 0;
         return armorRating.getGeneral();
     }
 
-    public function getBallistic():Int {
+    public function getBallistic():Int
+    {
         var armorRating = gameObject.getTrait(ArmorRating.TYPE);
-        if (armorRating == null) return 0;
+        if (armorRating == null)
+            return 0;
         return armorRating.getBallistic();
     }
 
-    public function getStrengthReq():Int {
+    public function getStrengthReq():Int
+    {
         return this.getInt(StrengthReq.TYPE);
     }
 
-    public function getDefenceMod():Int {
+    public function getDefenceMod():Int
+    {
         return this.getInt(DefenceModifer.TYPE);
     }
 
-    public function getSpeedMod():Int {
+    public function getSpeedMod():Int
+    {
         return this.getInt(SpeedModifer.TYPE);
     }
 
-    public override function setHolder(gameObject:GameObject) {
+    public override function setHolder(gameObject:GameObject)
+    {
         super.setHolder(gameObject);
     }
 
-    public override function unsetHolder() {
+    public override function unsetHolder()
+    {
         super.ensureEquipable().unset();
     }
 }

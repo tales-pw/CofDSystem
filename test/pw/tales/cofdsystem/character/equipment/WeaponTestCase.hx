@@ -14,11 +14,13 @@ import pw.tales.cofdsystem.weapon_ranged.prefabs.RangedWeaponPrefab;
 import thx.Uuid;
 
 @:nullSafety(Off)
-class WeaponTestCase extends CofDSystemTestCase {
+class WeaponTestCase extends CofDSystemTestCase
+{
     public final GENERIC_MELEE_WEAPON = new MeleeWeaponPrefab(Uuid.create(), "", -2, 0, []);
     public final GENERIC_RANGED_WEAPON = new RangedWeaponPrefab(Uuid.create(), "", -2, 0, []);
 
-    override public function setup() {
+    override public function setup()
+    {
         super.setup();
         c1.getTrait(Attributes.STRENGTH).setValue(1);
         c1.getTrait(Skills.WEAPONRY).setValue(1);
@@ -30,7 +32,8 @@ class WeaponTestCase extends CofDSystemTestCase {
         c2.getTrait(Skills.ATHLETICS).setValue(0);
     }
 
-    private function getInitiativeMod():Int {
+    private function getInitiativeMod():Int
+    {
         var scene = Scene.create(system);
         var initiativeEvent = new InitiativeModifiersEvent(c1, scene.getInitiative());
         c1.getEventBus().post(initiativeEvent);
@@ -38,7 +41,8 @@ class WeaponTestCase extends CofDSystemTestCase {
         return initiativeEvent.getModifier();
     }
 
-    public function testApplyInitiativeMod() {
+    public function testApplyInitiativeMod()
+    {
         assertEquals(2, this.getInitiativeMod());
 
         var weaponTrait:HeldWeapon = cast c1.getTrait(HeldWeapon.TYPE);
@@ -56,7 +60,8 @@ class WeaponTestCase extends CofDSystemTestCase {
         assertEquals(2, this.getInitiativeMod());
     }
 
-    public function methodTestWeaponPool(weapon:WeaponPrefab, pool:Array<String>) {
+    public function methodTestWeaponPool(weapon:WeaponPrefab, pool:Array<String>)
+    {
         var weaponTrait:HeldWeapon = cast(c1.getTrait(HeldWeapon.TYPE));
         weaponTrait.setMainHand(weapon.createWeapon(system));
 
@@ -69,24 +74,21 @@ class WeaponTestCase extends CofDSystemTestCase {
         return action;
     }
 
-    public function testMeleeWeaponPool() {
-        this.methodTestWeaponPool(GENERIC_MELEE_WEAPON, [
-            Attributes.STRENGTH.getDN(),
-            Skills.WEAPONRY.getDN()
-        ]);
+    public function testMeleeWeaponPool()
+    {
+        this.methodTestWeaponPool(GENERIC_MELEE_WEAPON, [Attributes.STRENGTH.getDN(), Skills.WEAPONRY.getDN()]);
     }
 
-    public function testRangedWeaponPool() {
-        var action = this.methodTestWeaponPool(GENERIC_RANGED_WEAPON, [
-            Attributes.DEXTERITY.getDN(),
-            Skills.SHOOTING.getDN()
-        ]);
+    public function testRangedWeaponPool()
+    {
+        var action = this.methodTestWeaponPool(GENERIC_RANGED_WEAPON, [Attributes.DEXTERITY.getDN(), Skills.SHOOTING.getDN()]);
 
         var traits = action.getOpposition().getPool(c2).getRequest().getTraits();
         assertEquals(Std.string([]), Std.string(traits));
     }
 
-    public function testMeleeWeaponPoolIsRemovedWhenWeaponRemoved() {
+    public function testMeleeWeaponPoolIsRemovedWhenWeaponRemoved()
+    {
         var heldWeapon:HeldWeapon = cast(c1.getTrait(HeldWeapon.TYPE));
         heldWeapon.setMainHand(GENERIC_MELEE_WEAPON.createWeapon(system));
         heldWeapon.setMainHand(null);
@@ -98,7 +100,8 @@ class WeaponTestCase extends CofDSystemTestCase {
         assertEquals(Std.string([Attributes.STRENGTH.getDN(), Skills.BRAWL.getDN()]), Std.string(traits));
     }
 
-    public function testWeaponHand() {
+    public function testWeaponHand()
+    {
         var heldWeapon:HeldWeapon = cast(c1.getTrait(HeldWeapon.TYPE));
         heldWeapon.setOffHand(GENERIC_MELEE_WEAPON.createWeapon(system));
 

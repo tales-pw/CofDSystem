@@ -7,24 +7,29 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 
 using Lambda;
 
-class GenMeritGroupAdvancement<T: Trait, TY:TraitType<T>> extends GenAdvancementItem<T, TY> {
+class GenMeritGroupAdvancement<T:Trait, TY:TraitType<T>> extends GenAdvancementItem<T, TY>
+{
     public static final MERIT_GENERATION_LIMIT = 10;
 
-    public function new(traitClazz:Class<T>, traitTypeClazz:Class<TY>, gameObject:GameObject) {
+    public function new(traitClazz:Class<T>, traitTypeClazz:Class<TY>, gameObject:GameObject)
+    {
         super(traitClazz, traitTypeClazz, gameObject);
     }
 
-    private function collectMeritForGeneration(gameObject:GameObject) {
+    private function collectMeritForGeneration(gameObject:GameObject)
+    {
         var event = new GenMeritCollectEvent(gameObject);
         gameObject.getEventBus().post(event);
         return event.getCollected();
     }
 
-    private function calcualteMeritTotal() {
+    private function calcualteMeritTotal()
+    {
         var merits = this.collectMeritForGeneration(gameObject);
 
         var meritTotal = 0;
-        for (trait in merits) {
+        for (trait in merits)
+        {
             meritTotal += trait.getValue();
         }
 

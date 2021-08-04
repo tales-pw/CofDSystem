@@ -1,20 +1,25 @@
 package pw.tales.cofdsystem.utils.events;
 
-class EventBusTestCase extends haxe.unit.TestCase {
-    public function testEvent() {
+class EventBusTestCase extends haxe.unit.TestCase
+{
+    public function testEvent()
+    {
         var firstTriggered = false;
         var secondTriggered = false;
 
         var bus = new EventBus();
-        bus.addHandler(EventFirst, (v:EventFirst) -> {
+        bus.addHandler(EventFirst, (v:EventFirst) ->
+        {
             firstTriggered = true;
         }, 1);
 
-        bus.addHandler(EventSecond, (v:EventSecond) -> {
+        bus.addHandler(EventSecond, (v:EventSecond) ->
+        {
             secondTriggered = true;
         }, 1);
 
-        bus.addHandler(EventSecond, (v:EventSecond) -> {
+        bus.addHandler(EventSecond, (v:EventSecond) ->
+        {
             assertFalse(secondTriggered);
         }, 0);
 
@@ -25,11 +30,13 @@ class EventBusTestCase extends haxe.unit.TestCase {
         assertTrue(secondTriggered);
     }
 
-    public function testTreeTriggerEvent() {
+    public function testTreeTriggerEvent()
+    {
         var trigggered:Bool = false;
 
         var bus = new EventBus();
-        bus.addHandler(IEvent, (e:IEvent) -> {
+        bus.addHandler(IEvent, (e:IEvent) ->
+        {
             trigggered = true;
         }, 0);
 
@@ -37,5 +44,4 @@ class EventBusTestCase extends haxe.unit.TestCase {
 
         assertTrue(trigggered);
     }
-
 }

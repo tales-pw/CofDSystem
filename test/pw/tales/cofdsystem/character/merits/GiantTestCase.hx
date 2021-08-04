@@ -3,8 +3,10 @@ package pw.tales.cofdsystem.character.merits;
 import pw.tales.cofdsystem.character.traits.advantages.SizeAdvantage;
 import pw.tales.cofdsystem.character.traits.merits.giant.GiantMerit;
 
-class GiantTestCase extends CofDSystemTestCase {
-    public function testGiant() {
+class GiantTestCase extends CofDSystemTestCase
+{
+    public function testGiant()
+    {
         var manager = c1.getTraitManager();
 
         var size:SizeAdvantage = cast(manager.getTrait(SizeAdvantage.TYPE));
