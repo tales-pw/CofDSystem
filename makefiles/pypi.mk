@@ -3,7 +3,7 @@ PYPI_REPO_DIR="./PyPI"
 pypi_setup_deps:
 	python3 -m pip install wheel
 
-pypi_build_package: build pypi_setup_deps
+pypi_build_package: build_python pypi_setup_deps
 	python3 setup.py bdist_wheel
 
 pypi_cleanup_repo:
