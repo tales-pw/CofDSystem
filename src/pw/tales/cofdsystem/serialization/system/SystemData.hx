@@ -1,7 +1,7 @@
 package pw.tales.cofdsystem.serialization.system;
 
 typedef DnData = {
-    dn: String
+    dn:String
 }
 
 typedef SimpleData = {

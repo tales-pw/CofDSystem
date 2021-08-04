@@ -33,7 +33,8 @@ class NodeTrait implements INode implements INodePoolBuilder
         return 'NodeTrait[${this.dn}]';
     }
 
-    public function serialize():String {
+    public function serialize():String
+    {
         return dn;
     }
 }

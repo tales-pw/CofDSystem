@@ -34,7 +34,8 @@ class NodeDotsRange implements INodeLevels
         return new NodeDotsRange(new NodeDots(start), new NodeDots(end));
     }
 
-    public function serialize():String {
+    public function serialize():String
+    {
         var left_str = start.serialize();
         var right_str = end.serialize();
 
