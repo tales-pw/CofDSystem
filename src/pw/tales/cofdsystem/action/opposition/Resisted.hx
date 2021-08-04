@@ -8,18 +8,23 @@ import pw.tales.cofdsystem.action.opposition.base.OppositionCompetitive;
 import pw.tales.cofdsystem.action.opposition.pool.ActionPool;
 import pw.tales.cofdsystem.dices.EnumResult;
 
-class Resisted extends OppositionCompetitive {
-    override public function getWinnerPool():ActionPool {
+class Resisted extends OppositionCompetitive
+{
+    override public function getWinnerPool():ActionPool
+    {
         var result = actorPool.getResponse().getResult();
-        if (EnumResult.isSuccess(result)) return actorPool;
+        if (EnumResult.isSuccess(result))
+            return actorPool;
         return targetPool;
     }
 
-    public override function willRoll(roll:ActionPool) {
+    public override function willRoll(roll:ActionPool)
+    {
         return roll == actorPool;
     }
 
-    override public function roll(action:IAction):Void {
+    override public function roll(action:IAction):Void
+    {
         var system = action.getSystem();
 
         system.events.post(new ActionBuildPoolEvent(action, actorPool));

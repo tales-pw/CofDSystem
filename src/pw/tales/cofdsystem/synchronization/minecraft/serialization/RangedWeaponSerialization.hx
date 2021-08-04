@@ -13,10 +13,12 @@ typedef RangedWeaponData = {
     tags:Array<String>
 }
 
-class RangedWeaponSerialization {
+class RangedWeaponSerialization
+{
     public static final TYPE:String = "RANGED";
 
-    public static function serialize(weapon:WeaponPrefab):RangedWeaponData {
+    public static function serialize(weapon:WeaponPrefab):RangedWeaponData
+    {
         return {
             type: RangedWeaponSerialization.TYPE,
             dn: weapon.getDN(),
@@ -27,11 +29,14 @@ class RangedWeaponSerialization {
         };
     }
 
-    public static function deserialize(tagRegistry:TraitTypeRegistry, data:RangedWeaponData):RangedWeaponPrefab {
+    public static function deserialize(tagRegistry:TraitTypeRegistry, data:RangedWeaponData):RangedWeaponPrefab
+    {
         var tags:Array<TraitType<Dynamic>> = [];
-        for (dn in data.tags) {
+        for (dn in data.tags)
+        {
             var record = tagRegistry.getRecord(dn);
-            if (record == null) throw 'Tag not found ${dn}';
+            if (record == null)
+                throw 'Tag not found ${dn}';
             tags.push(record);
         }
 

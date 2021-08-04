@@ -1,15 +1,18 @@
 package pw.tales.cofdsystem.utils.logger;
 
-class LoggerManager {
+class LoggerManager
+{
     private static var LOGGER:ILogger = new TraceLogger();
 
     public function new() {}
 
-    public static function getLogger():ILogger {
+    public static function getLogger():ILogger
+    {
         return LoggerManager.LOGGER;
     }
 
-    public static function setLogger(logger:ILogger) {
+    public static function setLogger(logger:ILogger)
+    {
         LoggerManager.LOGGER = logger;
     }
 }

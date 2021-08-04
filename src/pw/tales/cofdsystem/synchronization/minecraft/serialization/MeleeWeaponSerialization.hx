@@ -13,10 +13,12 @@ typedef MeleeWeaponData = {
     tags:Array<String>
 }
 
-class MeleeWeaponSerialization {
+class MeleeWeaponSerialization
+{
     public static final TYPE:String = "MELEE";
 
-    public static function serialize(weapon:WeaponPrefab):MeleeWeaponData {
+    public static function serialize(weapon:WeaponPrefab):MeleeWeaponData
+    {
         return {
             type: MeleeWeaponSerialization.TYPE,
             dn: weapon.getDN(),
@@ -27,11 +29,14 @@ class MeleeWeaponSerialization {
         };
     }
 
-    public static function deserialize(tagRegistry:TraitTypeRegistry, data:MeleeWeaponData):WeaponPrefab {
+    public static function deserialize(tagRegistry:TraitTypeRegistry, data:MeleeWeaponData):WeaponPrefab
+    {
         var tags:Array<TraitType<Dynamic>> = [];
-        for (dn in data.tags) {
+        for (dn in data.tags)
+        {
             var record = tagRegistry.getRecord(dn);
-            if (record == null) throw 'Tag not found ${dn}';
+            if (record == null)
+                throw 'Tag not found ${dn}';
             tags.push(record);
         }
 

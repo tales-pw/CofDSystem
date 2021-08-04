@@ -10,11 +10,13 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.game_object.traits.value_trait.events.ValueTraitUpdateEvent;
 import pw.tales.cofdsystem.utils.Utility;
 
-class ExpAdvancement extends Trait {
+class ExpAdvancement extends Trait
+{
     public static final DN = "experience_advancement";
     public static final TYPE:TraitType<ExpAdvancement> = new ExpAdvancementType(DN);
 
-    public function new(gameObject:GameObject) {
+    public function new(gameObject:GameObject)
+    {
         super(DN, gameObject, TYPE);
 
         this.eventBus.addHandler(TraitAddEvent, this.canBeAdded);
@@ -22,47 +24,62 @@ class ExpAdvancement extends Trait {
         this.eventBus.addHandler(ValueTraitUpdateEvent, this.canBeUpdated);
     }
 
-    public function canBeAdded(event:TraitAddEvent) {
-        if (this.gameObject.getState() != GameObjectState.ACTIVE) return;
+    public function canBeAdded(event:TraitAddEvent)
+    {
+        if (this.gameObject.getState() != GameObjectState.ACTIVE)
+            return;
 
         var advanceableType:Null<IAdvanceableType> = Utility.downcast(event.getTraitType(), IAdvanceableType);
-        if (advanceableType == null) return event.setCancelled(true);
+        if (advanceableType == null)
+            return event.setCancelled(true);
 
         // Get cost
         var cost = advanceableType.getCreateCost();
-        if (cost == null) return event.setCancelled(true);
+        if (cost == null)
+            return event.setCancelled(true);
 
         // Spend experience
         var experience:Null<Experience> = this.gameObject.getTrait(Experience.TYPE);
-        if (experience == null) return event.setCancelled(true);
-        if (!experience.isEnough(cost)) return event.setCancelled(true);
+        if (experience == null)
+            return event.setCancelled(true);
+        if (!experience.isEnough(cost))
+            return event.setCancelled(true);
 
         experience.spend(cost);
     }
 
-    public function canBeUpdated(event:ValueTraitUpdateEvent) {
-        if (this.gameObject.getState() != GameObjectState.ACTIVE) return;
+    public function canBeUpdated(event:ValueTraitUpdateEvent)
+    {
+        if (this.gameObject.getState() != GameObjectState.ACTIVE)
+            return;
 
         var advanceableTrait:Null<IAdvanceableTrait> = Utility.downcast(event.getTrait(), IAdvanceableTrait);
-        if (advanceableTrait == null) return event.setCancelled(true);
+        if (advanceableTrait == null)
+            return event.setCancelled(true);
 
         // Disallow lowering stats
-        if (event.getTrait().getValue() <= event.getNewValue()) return event.setCancelled(true);
+        if (event.getTrait().getValue() <= event.getNewValue())
+            return event.setCancelled(true);
 
         // Get cost
         var cost = advanceableTrait.getCost(event.getNewValue());
-        if (cost == null) return event.setCancelled(true);
+        if (cost == null)
+            return event.setCancelled(true);
 
         // Spend experience
         var experience:Null<Experience> = this.gameObject.getTrait(Experience.TYPE);
-        if (experience == null) return event.setCancelled(true);
-        if (!experience.isEnough(cost)) return event.setCancelled(true);
+        if (experience == null)
+            return event.setCancelled(true);
+        if (!experience.isEnough(cost))
+            return event.setCancelled(true);
 
         experience.spend(cost);
     }
 
-    public function canBeRemoved(event:TraitRemoveEvent) {
-        if (this.gameObject.getState() != GameObjectState.ACTIVE) return;
+    public function canBeRemoved(event:TraitRemoveEvent)
+    {
+        if (this.gameObject.getState() != GameObjectState.ACTIVE)
+            return;
         event.setCancelled(true);
     }
 }

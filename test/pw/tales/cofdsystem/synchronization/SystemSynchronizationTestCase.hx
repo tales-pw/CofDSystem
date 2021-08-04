@@ -7,8 +7,10 @@ import pw.tales.cofdsystem.weapon.traits.weapon_tags.BrawlTag;
 import pw.tales.cofdsystem.weapon_melee.prefabs.MeleeWeaponPrefab;
 import pw.tales.cofdsystem.weapon_ranged.prefabs.RangedWeaponPrefab;
 
-class SystemSynchronizationTestCase extends haxe.unit.TestCase {
-    public function testFullSync() {
+class SystemSynchronizationTestCase extends haxe.unit.TestCase
+{
+    public function testFullSync()
+    {
         var system1 = new CofDSystem();
         system1.weapons.register(new MeleeWeaponPrefab("weapon1", "", 1, 2, [AccurateTag.TYPE]));
         system1.weapons.register(new MeleeWeaponPrefab("weapon2", "", 3, 4, [BrawlTag.TYPE]));
@@ -26,11 +28,13 @@ class SystemSynchronizationTestCase extends haxe.unit.TestCase {
         var system2 = new CofDSystem();
         SystemSynchronization.create(system2).deserialize(data);
 
-        for (weapon in system1.weapons.items()) {
+        for (weapon in system1.weapons.items())
+        {
             assertEquals(Std.string(weapon), Std.string(system2.weapons.getRecord(weapon.getDN())));
         }
 
-        for (armor in system1.armors.items()) {
+        for (armor in system1.armors.items())
+        {
             assertEquals(Std.string(armor), Std.string(system2.armors.getRecord(armor.getDN())));
         }
     }

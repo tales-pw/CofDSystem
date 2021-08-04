@@ -164,38 +164,6 @@
       }
     },
     {
-      "type": "LeftCurly",
-      "props": {
-        "tokens": [
-          "CLASS_DEF",
-          "ENUM_DEF",
-          "ABSTRACT_DEF",
-          "INTERFACE_DEF",
-          "FUNCTION",
-          "FOR",
-          "IF",
-          "WHILE",
-          "SWITCH",
-          "TRY",
-          "CATCH"
-        ],
-        "option": "eol",
-        "ignoreEmptySingleline": true,
-        "ignoreSingleline": false
-      }
-    },
-    {
-      "type": "LeftCurly",
-      "props": {
-        "tokens": [
-          "TYPEDEF_DEF"
-        ],
-        "option": "eol",
-        "ignoreEmptySingleline": false,
-        "ignoreSingleline": false
-      }
-    },
-    {
       "type": "LineLength",
       "props": {
         "max": 140,

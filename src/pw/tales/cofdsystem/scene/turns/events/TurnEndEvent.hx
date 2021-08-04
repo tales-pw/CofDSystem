@@ -1,4 +1,3 @@
 package pw.tales.cofdsystem.scene.turns.events;
 
-class TurnEndEvent extends TurnEvent {
-}
+class TurnEndEvent extends TurnEvent {}

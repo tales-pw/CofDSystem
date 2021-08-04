@@ -3,20 +3,25 @@ package pw.tales.cofdsystem.game_object.prefabs;
 import thx.error.NotImplemented;
 import thx.Uuid;
 
-class Prefab implements IPrefab {
+class Prefab implements IPrefab
+{
     private final dn:String;
 
-    public function new(dn:String) {
+    public function new(dn:String)
+    {
         this.dn = dn;
     }
 
-    public function getDN():String {
+    public function getDN():String
+    {
         return this.dn;
     }
 
-    private function setUpGameObject(gameObject:GameObject) throw new NotImplemented();
+    private function setUpGameObject(gameObject:GameObject)
+        throw new NotImplemented();
 
-    public function createGameObject(system:CofDSystem):GameObject {
+    public function createGameObject(system:CofDSystem):GameObject
+    {
         final gameObject = new GameObject(Uuid.create(), system);
         gameObject.setState(GameObjectState.LOADING);
 

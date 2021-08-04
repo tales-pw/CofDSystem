@@ -14,49 +14,61 @@ typedef SystemData = {
 
 @:nullSafety(Off)
 @:expose("SystemSynchronization")
-class SystemSynchronization {
+class SystemSynchronization
+{
     // Things serializer needs to know
     public var system:CofDSystem = null;
 
-    private function new(system:CofDSystem) {
+    private function new(system:CofDSystem)
+    {
         this.system = system;
     }
 
-    public static function create(s:CofDSystem):SystemSynchronization {
+    public static function create(s:CofDSystem):SystemSynchronization
+    {
         return new SystemSynchronization(s);
     }
-    
-    public function fromData(deserialized:SystemData):SystemSynchronization {
-        for (serializedWeapon in deserialized.weapons) {
+
+    public function fromData(deserialized:SystemData):SystemSynchronization
+    {
+        for (serializedWeapon in deserialized.weapons)
+        {
             this.system.weapons.register(WeaponSerialization.deserialize(system.traits, serializedWeapon));
         }
 
-        for (serializedArmor in deserialized.armors) {
+        for (serializedArmor in deserialized.armors)
+        {
             this.system.armors.register(ExternalArmorSerialization.deserialize(serializedArmor));
         }
 
-        for (a in deserialized.traitTypes) {
+        for (a in deserialized.traitTypes)
+        {
             var serializedTraitType:TraitTypeData = a;
             var record = this.system.traits.getRecord(serializedTraitType.dn);
-            if (record != null) record.setName(serializedTraitType.name);
+            if (record != null)
+                record.setName(serializedTraitType.name);
         }
 
         return this;
     }
-    
-    public function toData():SystemData {
+
+    public function toData():SystemData
+    {
         var serializedWeapons:Array<MeleeWeaponData> = [];
-        for (weapon in this.system.weapons.items()) {
+        for (weapon in this.system.weapons.items())
+        {
             serializedWeapons.push(WeaponSerialization.serialize(weapon));
         }
 
         var serializedArmor:Array<ExternalArmorData> = [];
-        for (armor in this.system.armors.items()) {
+        for (armor in this.system.armors.items())
+        {
             serializedArmor.push(ExternalArmorSerialization.serialize(armor));
         }
 
         var serializedTraitTypes:Array<TraitTypeData> = [];
-        for (traitType in this.system.traits.items()) {
+        for (traitType in this.system.traits.items())
+        {
             serializedTraitTypes.push(TraitTypeSerialization.serialize(traitType));
         }
 
@@ -66,15 +78,16 @@ class SystemSynchronization {
             armors: serializedArmor
         };
     }
-    
-    public function deserialize(serializedData:String):SystemSynchronization {
+
+    public function deserialize(serializedData:String):SystemSynchronization
+    {
         var data:SystemData = haxe.Json.parse(serializedData);
         return this.fromData(data);
     }
 
-    public function serialize():String {
+    public function serialize():String
+    {
         var data:SystemData = this.toData();
         return haxe.Json.stringify(data);
     }
-
 }

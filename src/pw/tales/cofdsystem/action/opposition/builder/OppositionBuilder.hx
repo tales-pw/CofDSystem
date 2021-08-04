@@ -11,7 +11,8 @@ import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.utils.registry.IRecord;
 import thx.Uuid;
 
-class OppositionBuilder implements IRecord {
+class OppositionBuilder implements IRecord
+{
     private var oppositionType:Null<EnumOpposition> = null;
 
     private var actor:Null<GameObject> = null;
@@ -29,67 +30,83 @@ class OppositionBuilder implements IRecord {
 
     public function new() {}
 
-    public function getActor():Null<GameObject> {
+    public function getActor():Null<GameObject>
+    {
         return this.actor;
     }
 
-    public function setActor(gameObject:GameObject):OppositionBuilder {
+    public function setActor(gameObject:GameObject):OppositionBuilder
+    {
         this.actor = gameObject;
         return this;
     }
 
-    public function getTarget():Null<GameObject> {
+    public function getTarget():Null<GameObject>
+    {
         return this.target;
     }
 
-    public function setTarget(gameObject:GameObject):OppositionBuilder {
+    public function setTarget(gameObject:GameObject):OppositionBuilder
+    {
         this.target = gameObject;
         return this;
     }
 
-    public function getDN():String {
+    public function getDN():String
+    {
         return this.dn;
     }
 
-    public function setDN(dn:String):OppositionBuilder {
+    public function setDN(dn:String):OppositionBuilder
+    {
         this.dn = dn;
         return this;
     }
 
-    public function setModifier(side:EnumSide, modifier:Int):OppositionBuilder {
-        if (side == EnumSide.ACTOR) this.actorModifier = modifier;
-        if (side == EnumSide.TARGET) this.targetModifier = modifier;
-        return this;
-
-    }
-
-    public function setTraits(side:EnumSide, traits:Array<String>):OppositionBuilder {
-        if (side == EnumSide.ACTOR) this.actorTraits = traits;
-        if (side == EnumSide.TARGET) this.targetTraits = traits;
+    public function setModifier(side:EnumSide, modifier:Int):OppositionBuilder
+    {
+        if (side == EnumSide.ACTOR)
+            this.actorModifier = modifier;
+        if (side == EnumSide.TARGET)
+            this.targetModifier = modifier;
         return this;
     }
 
-    public function setOppositionType(opposition:EnumOpposition):OppositionBuilder {
+    public function setTraits(side:EnumSide, traits:Array<String>):OppositionBuilder
+    {
+        if (side == EnumSide.ACTOR)
+            this.actorTraits = traits;
+        if (side == EnumSide.TARGET)
+            this.targetTraits = traits;
+        return this;
+    }
+
+    public function setOppositionType(opposition:EnumOpposition):OppositionBuilder
+    {
         this.oppositionType = opposition;
         return this;
     }
 
-    private function prepareActor(opposition:Opposition) {
+    private function prepareActor(opposition:Opposition)
+    {
         var roll:ActionPool = opposition.getActorPool();
         final request = roll.getRequest();
         request.addModifier(this.actorModifier, CUSTOM_MODIFIER);
         request.addIgnoreLimit(CUSTOM_MODIFIER);
     }
 
-    private function prepareTarget(opposition:OppositionCompetitive) {
+    private function prepareTarget(opposition:OppositionCompetitive)
+    {
         var roll:ActionPool = opposition.getTargetPool();
         final request = roll.getRequest();
         request.addModifier(this.targetModifier, CUSTOM_MODIFIER);
         request.addIgnoreLimit(CUSTOM_MODIFIER);
     }
 
-    private function createSimple():Simple {
-        if (this.actor == null) throw "Actor is needed";
+    private function createSimple():Simple
+    {
+        if (this.actor == null)
+            throw "Actor is needed";
 
         var actorRoll = new ActionPool(actor, this.actorTraits);
         var opposition:Simple = new Simple(actorRoll, 0);
@@ -97,9 +114,12 @@ class OppositionBuilder implements IRecord {
         return opposition;
     }
 
-    private function createResisted():Resisted {
-        if (this.actor == null) throw "Actor is needed";
-        if (this.target == null) throw "Target is needed";
+    private function createResisted():Resisted
+    {
+        if (this.actor == null)
+            throw "Actor is needed";
+        if (this.target == null)
+            throw "Target is needed";
 
         var actorRoll = new ActionPool(actor, this.actorTraits);
         var targetRoll = new ActionPool(target, this.targetTraits);
@@ -110,9 +130,12 @@ class OppositionBuilder implements IRecord {
         return opposition;
     }
 
-    private function createContested():Contested {
-        if (this.actor == null) throw "Actor is needed";
-        if (this.target == null) throw "Target is needed";
+    private function createContested():Contested
+    {
+        if (this.actor == null)
+            throw "Actor is needed";
+        if (this.target == null)
+            throw "Target is needed";
 
         var actorRoll = new ActionPool(actor, this.actorTraits);
         var targetRoll = new ActionPool(target, this.targetTraits);
@@ -123,14 +146,17 @@ class OppositionBuilder implements IRecord {
         return opposition;
     }
 
-    public function build():Opposition {
+    public function build():Opposition
+    {
         var obj:Opposition;
 
-        if (this.oppositionType == null) {
+        if (this.oppositionType == null)
+        {
             throw "You should choose opposition type (Simple, Resisted, Contested).";
         }
 
-        switch this.oppositionType {
+        switch this.oppositionType
+        {
             case EnumOpposition.SIMPLE:
                 obj = this.createSimple();
             case EnumOpposition.RESISTED:
@@ -142,7 +168,8 @@ class OppositionBuilder implements IRecord {
         return obj;
     }
 
-    public function toString() {
+    public function toString()
+    {
         return 'OppositionBuilder[dn=${this.getDN()}, ${this.actorTraits.join(" + ")} vs ${this.targetTraits.join("+")}]';
     }
 }

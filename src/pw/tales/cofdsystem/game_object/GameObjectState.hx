@@ -1,6 +1,7 @@
 package pw.tales.cofdsystem.game_object;
 
-enum GameObjectState {
+enum GameObjectState
+{
     ACTIVE;
     LOADING;
     INACTIVE;

@@ -8,14 +8,15 @@ typedef ExternalArmorData = {
 
     ballistic:Int,
     general:Int,
-
     defenceMod:Int,
     speedMod:Int,
     strengthReq:Int
 }
 
-class ExternalArmorSerialization {
-    public static function serialize(armor:ArmorPrefab):ExternalArmorData {
+class ExternalArmorSerialization
+{
+    public static function serialize(armor:ArmorPrefab):ExternalArmorData
+    {
         return {
             dn: armor.getDN(),
             name: armor.getName(),
@@ -28,8 +29,8 @@ class ExternalArmorSerialization {
         };
     }
 
-    public static function deserialize(data:ExternalArmorData):ArmorPrefab {
-        return new ArmorPrefab(data.dn, data.name, data.general, data.ballistic, data.defenceMod, data.speedMod,
-        data.strengthReq);
+    public static function deserialize(data:ExternalArmorData):ArmorPrefab
+    {
+        return new ArmorPrefab(data.dn, data.name, data.general, data.ballistic, data.defenceMod, data.speedMod, data.strengthReq);
     }
 }

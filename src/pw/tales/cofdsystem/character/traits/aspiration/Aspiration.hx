@@ -7,34 +7,41 @@ import pw.tales.cofdsystem.game_object.traits.text.TextTrait;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 
 @:expose("Aspiration")
-class Aspiration extends TextTrait {
+class Aspiration extends TextTrait
+{
     @Optional
     @Serialize("description")
     private var description:String = "";
 
-    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>) {
+    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
+    {
         super(dn, gameObject, type);
         this.eventBus.addHandler(AspirationsCollectEvent, (e:AspirationsCollectEvent) -> e.collect(this));
     }
 
-    public function setTitle(title:String) {
+    public function setTitle(title:String)
+    {
         this.setText(title);
     }
 
-    public function getTitle() {
+    public function getTitle()
+    {
         return this.getText();
     }
 
-    public function setDescription(description:String) {
+    public function setDescription(description:String)
+    {
         this.description = description;
         notifyUpdated();
     }
 
-    public function getDescription() {
+    public function getDescription()
+    {
         return this.description;
     }
 
-    public function accomplish() {
+    public function accomplish()
+    {
         var experience = gameObject.getTrait(Experience.TYPE);
         experience.grantBeat();
 

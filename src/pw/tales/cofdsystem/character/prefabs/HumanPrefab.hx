@@ -16,10 +16,12 @@ import pw.tales.cofdsystem.character.traits.WornArmor;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.prefabs.Prefab;
 
-class HumanPrefab extends Prefab {
+class HumanPrefab extends Prefab
+{
     public static final INSTANCE = new HumanPrefab("human");
 
-    private override function setUpGameObject(gameObject:GameObject) {
+    private override function setUpGameObject(gameObject:GameObject)
+    {
         var traitManager = gameObject.getTraitManager();
 
         // Utility

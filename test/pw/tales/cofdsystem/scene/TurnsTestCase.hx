@@ -3,8 +3,10 @@ package pw.tales.cofdsystem.scene;
 import pw.tales.cofdsystem.mocks.CharacterMock;
 import pw.tales.cofdsystem.mocks.DiceRollerMock;
 
-class TurnsTestCase extends haxe.unit.TestCase {
-    public function testInitiative() {
+class TurnsTestCase extends haxe.unit.TestCase
+{
+    public function testInitiative()
+    {
         var system = new CofDSystem();
         system.dices = new DiceRollerMock([4, 8, 6]);
 

@@ -30,8 +30,10 @@ import pw.tales.cofdsystem.synchronization.GameObjectSynchronizationTestCase;
 import pw.tales.cofdsystem.synchronization.SystemSynchronizationTestCase;
 import pw.tales.cofdsystem.utils.events.EventBusTestCase;
 
-class MainTest {
-    static public function main() {
+class MainTest
+{
+    static public function main()
+    {
         var r = new TestRunner();
 
         r.add(new GameObjectTestCase());

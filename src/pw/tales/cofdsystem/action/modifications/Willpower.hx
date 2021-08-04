@@ -6,21 +6,26 @@ import pw.tales.cofdsystem.character.traits.advantages.willpower.WillpowerAdvant
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.utils.events.HandlerPriority;
 
-class Willpower implements IModification {
+class Willpower implements IModification
+{
     private final gameObject:GameObject;
 
-    public function new(gameObject:GameObject) {
+    public function new(gameObject:GameObject)
+    {
         this.gameObject = gameObject;
     }
 
-    public function init(action:IAction) {
+    public function init(action:IAction)
+    {
         var eventBus = action.getEventBus();
         eventBus.addHandler(ActionBuildPoolEvent, this.applyRollBonus, HandlerPriority.NORMAL);
         eventBus.addHandler(ActionBuildResistEvent, this.applyResistBonus, HandlerPriority.NORMAL);
     }
 
-    private function applyRollBonus(event:ActionBuildPoolEvent) {
-        if (!event.isPoolOwner(this.gameObject)) return;
+    private function applyRollBonus(event:ActionBuildPoolEvent)
+    {
+        if (!event.isPoolOwner(this.gameObject))
+            return;
 
         this.burnWillpower();
 
@@ -29,8 +34,10 @@ class Willpower implements IModification {
         request.addModifier(3, WillpowerAdvantage.DN);
     }
 
-    private function applyResistBonus(event:ActionBuildResistEvent) {
-        if (!event.isPoolOwner(this.gameObject)) return;
+    private function applyResistBonus(event:ActionBuildResistEvent)
+    {
+        if (!event.isPoolOwner(this.gameObject))
+            return;
 
         this.burnWillpower();
 
@@ -39,10 +46,9 @@ class Willpower implements IModification {
         request.addModifier(2, WillpowerAdvantage.DN);
     }
 
-    private function burnWillpower() {
-        var willpower = this.gameObject.getTrait(
-            WillpowerAdvantage.TYPE
-        );
+    private function burnWillpower()
+    {
+        var willpower = this.gameObject.getTrait(WillpowerAdvantage.TYPE);
         willpower.burnWillpower();
     }
 }

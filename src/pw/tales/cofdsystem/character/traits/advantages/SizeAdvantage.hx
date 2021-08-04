@@ -6,15 +6,18 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 
 @RegisterTraitTypes
 @:expose("SizeAdvantage")
-class SizeAdvantage extends AdvantageConstant {
+class SizeAdvantage extends AdvantageConstant
+{
     public static final DN = "Размер";
     public static final TYPE:TraitType<SizeAdvantage> = cast TraitType.createType(DN, create);
 
-    public function new(gameObject:GameObject) {
+    public function new(gameObject:GameObject)
+    {
         super(gameObject, TYPE, 5);
     }
 
-    public static function create(dn:String, gameObject:GameObject, t:TraitType<SizeAdvantage>):SizeAdvantage {
+    public static function create(dn:String, gameObject:GameObject, t:TraitType<SizeAdvantage>):SizeAdvantage
+    {
         return new SizeAdvantage(gameObject);
     }
 }

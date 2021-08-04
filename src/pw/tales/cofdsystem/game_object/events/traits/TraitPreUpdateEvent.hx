@@ -1,6 +1,4 @@
 package pw.tales.cofdsystem.game_object.events.traits;
 
 @:expose("TraitPreUpdateEvent")
-class TraitPreUpdateEvent extends TraitCancellablePreEvent {
-
-}
+class TraitPreUpdateEvent extends TraitCancellablePreEvent {}

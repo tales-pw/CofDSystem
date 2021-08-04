@@ -6,7 +6,8 @@ import pw.tales.cofdsystem.game_object.traits.Trait;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 
 @:expose("Condition")
-class Condition extends Trait {
+class Condition extends Trait
+{
     @Optional
     @Serialize("customName")
     private var customName:Null<String> = null;
@@ -15,31 +16,38 @@ class Condition extends Trait {
     @Serialize("description")
     private var description:String = "";
 
-    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>) {
+    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
+    {
         super(dn, gameObject, type);
         this.eventBus.addHandler(ConditionsCollectEvent, (e:ConditionsCollectEvent) -> e.collect(this));
     }
 
-    public function setCustomName(customName:String) {
+    public function setCustomName(customName:String)
+    {
         this.customName = customName;
         this.notifyUpdated();
     }
 
-    public function getCustomName():Null<String> {
+    public function getCustomName():Null<String>
+    {
         return this.customName;
     }
 
-    public function setDescription(description:String) {
+    public function setDescription(description:String)
+    {
         this.description = description;
         this.notifyUpdated();
     }
 
-    public function getDescription() {
+    public function getDescription()
+    {
         return this.description;
     }
 
-    override public function getDisplayName():String {
-        if (customName != null) return this.customName;
+    override public function getDisplayName():String
+    {
+        if (customName != null)
+            return this.customName;
         return super.getDisplayName();
     }
 }

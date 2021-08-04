@@ -12,14 +12,16 @@ import pw.tales.cofdsystem.utils.events.SubEventBus;
 import pw.tales.cofdsystem.utils.registry.Registry;
 
 @:expose("TraitTracker")
-class TraitTracker {
+class TraitTracker
+{
     private final gameObject:GameObject;
     private final events:SubEventBus;
 
     private var update:Registry<Trait> = new Registry<Trait>(true, true);
     private var remove:Registry<Trait> = new Registry<Trait>(true, true);
 
-    public function new(gameObject:GameObject) {
+    public function new(gameObject:GameObject)
+    {
         this.gameObject = gameObject;
         this.events = gameObject.getEventBus().createSubBus();
 
@@ -28,52 +30,65 @@ class TraitTracker {
         this.events.addHandler(TraitPostRemoveEvent, trackRemove, HandlerPriority.NORMAL);
     }
 
-    public function getGameObject():GameObject {
+    public function getGameObject():GameObject
+    {
         return this.gameObject;
     }
 
-    private function trackChange(event:TraitPostChangeEvent) {
+    private function trackChange(event:TraitPostChangeEvent)
+    {
         final trait:Trait = event.getTrait();
         final gameObject = trait.getGameObject();
 
-        if (gameObject.getState() != GameObjectState.ACTIVE) return;
+        if (gameObject.getState() != GameObjectState.ACTIVE)
+            return;
 
-        if (trait.hasChanges()) {
+        if (trait.hasChanges())
+        {
             update.register(trait);
             remove.unregister(trait);
-        } else {
+        } else
+        {
             update.unregister(trait);
         }
 
         gameObject.getSystem().events.post(new TrackerTrackEvent(this));
     }
 
-    private function trackRemove(event:TraitPostRemoveEvent) {
+    private function trackRemove(event:TraitPostRemoveEvent)
+    {
         final trait:Trait = event.getTrait();
         final gameObject = trait.getGameObject();
 
-        if (gameObject.getState() != GameObjectState.ACTIVE) return;
+        if (gameObject.getState() != GameObjectState.ACTIVE)
+            return;
 
-        if (!trait.isNew()) remove.register(trait);
+        if (!trait.isNew())
+            remove.register(trait);
         update.unregister(trait);
 
         gameObject.getSystem().events.post(new TrackerTrackEvent(this));
     }
 
-    public function getUpdate():Array<Trait> {
+    public function getUpdate():Array<Trait>
+    {
         return update.items();
     }
 
-    public function getRemove():Array<Trait> {
+    public function getRemove():Array<Trait>
+    {
         return remove.items();
     }
 
-    public function hasChanges() {
+    public function hasChanges()
+    {
         return this.getUpdate().length > 0 || this.getRemove().length > 0;
     }
 
-    public function clear() {
-        for (trait in update.items()) trait.acceptChanges();
+    public function clear()
+    {
+        for (trait in update.items())
+            trait.acceptChanges();
 
         update.clear();
         remove.clear();

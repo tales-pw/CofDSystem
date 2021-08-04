@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.utils.registry;
 
-interface IRecord {
+interface IRecord
+{
     function getDN():String;
 }

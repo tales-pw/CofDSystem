@@ -8,18 +8,22 @@ import pw.tales.cofdsystem.game_object.GameObject;
     Never instantiated by itself, consider it abstract, avoid subscribing
     to it, better use IGameObjectEvent, otherwise you may miss some events.
 **/
-class GameObjectEvent implements IGameObjectEvent {
+class GameObjectEvent implements IGameObjectEvent
+{
     private final gameObject:GameObject;
 
-    public function new(gameObject:GameObject) {
+    public function new(gameObject:GameObject)
+    {
         this.gameObject = gameObject;
     }
 
-    public function getGameObject():GameObject {
+    public function getGameObject():GameObject
+    {
         return this.gameObject;
     }
 
-    public function isRelated(gameObject:GameObject):Bool {
+    public function isRelated(gameObject:GameObject):Bool
+    {
         return this.gameObject == gameObject;
     }
 }

@@ -11,7 +11,8 @@ import pw.tales.cofdsystem.synchronization.rest.serialization.APITiltSerializati
 
 @:expose("SystemStorage")
 @:nullSafety(Off)
-class SystemStorage {
+class SystemStorage
+{
     public static final ROUTE:String = "system";
 
     private final host:String;
@@ -26,36 +27,42 @@ class SystemStorage {
         APITagSerialization.INSTANCE
     ];
 
-    public function new(host:String) {
+    public function new(host:String)
+    {
         this.host = host;
     }
 
-    private dynamic function onSuccess() {
-    }
+    private dynamic function onSuccess() {}
 
-    private function handleResponse(system:CofDSystem, serializedData:String) {
+    private function handleResponse(system:CofDSystem, serializedData:String)
+    {
         var data:Dynamic = haxe.Json.parse(serializedData);
 
         var remoteVersion:String = data.version;
-        if (CofDSystem.versionCheck && remoteVersion != CofDSystem.version) {
+        if (CofDSystem.versionCheck && remoteVersion != CofDSystem.version)
+        {
             throw new VersionMissmatchException(CofDSystem.version, remoteVersion);
         }
 
-        for (handler in handlers) {
+        for (handler in handlers)
+        {
             handler.handle(system, data);
         }
 
         this.onSuccess();
     }
 
-    public function update(system:CofDSystem) {
+    public function update(system:CofDSystem)
+    {
         var http = new haxe.Http('${host}/system');
 
-        http.onData = function(serializedData:String) {
+        http.onData = function(serializedData:String)
+        {
             handleResponse(system, serializedData);
         };
 
-        http.onError = function(error) {
+        http.onError = function(error)
+        {
             throw 'HttpException ${error}';
         };
 

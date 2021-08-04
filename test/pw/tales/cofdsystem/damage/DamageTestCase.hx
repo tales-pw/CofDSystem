@@ -2,14 +2,17 @@ package pw.tales.cofdsystem.damage;
 
 import pw.tales.cofdsystem.damage.Damage;
 
-class DamageTestCase extends haxe.unit.TestCase {
-    public function assertDamage(expecitedB:Int, expectedL:Int, expectedA:Int, damage:Damage) {
+class DamageTestCase extends haxe.unit.TestCase
+{
+    public function assertDamage(expecitedB:Int, expectedL:Int, expectedA:Int, damage:Damage)
+    {
         assertEquals(expecitedB, damage.getBashing());
         assertEquals(expectedL, damage.getLethal());
         assertEquals(expectedA, damage.getAggravated());
     }
 
-    public function testBallistic() {
+    public function testBallistic()
+    {
         // Ignores bashing
         var damage = new Damage(3, 0, 0);
         damage.applyBallisticArmor(3);
@@ -31,7 +34,8 @@ class DamageTestCase extends haxe.unit.TestCase {
         assertDamage(3, 2, 0, damage);
     }
 
-    public function testGeneral() {
+    public function testGeneral()
+    {
         // Esnure absorb priorities
         var damage = new Damage(2, 2, 2);
         damage.applyGeneralArmor(1);
@@ -51,7 +55,8 @@ class DamageTestCase extends haxe.unit.TestCase {
         assertDamage(0, 0, 0, damage);
     }
 
-    public function testRulebookExample() {
+    public function testRulebookExample()
+    {
         var damage = new Damage(0, 3, 0);
         damage.applyBallisticArmor(3);
         damage.applyGeneralArmor(1);

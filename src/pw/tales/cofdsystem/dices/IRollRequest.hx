@@ -1,6 +1,7 @@
 package pw.tales.cofdsystem.dices;
 
-interface IRollRequest {
+interface IRollRequest
+{
     function getThreshold():Int;
 
     function getExplode():EnumExplode;

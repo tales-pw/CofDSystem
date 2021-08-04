@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.parser.nodes;
 
-interface INode {
+interface INode
+{
     function getHumanReadable():String;
 }

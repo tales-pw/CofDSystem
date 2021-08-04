@@ -8,7 +8,8 @@ import pw.tales.cofdsystem.utils.events.IEventBus;
 import pw.tales.cofdsystem.utils.events.SubEventBus;
 import pw.tales.cofdsystem.utils.Utility;
 
-class Action implements IAction {
+class Action implements IAction
+{
     private final system:CofDSystem;
     private final opposition:Opposition;
     private final time:EnumTime;
@@ -16,61 +17,69 @@ class Action implements IAction {
     private final eventBus:SubEventBus;
     private var modifications:Array<IModification> = [];
 
-    private function new(opposition:Opposition, time:EnumTime, system:CofDSystem) {
+    private function new(opposition:Opposition, time:EnumTime, system:CofDSystem)
+    {
         this.opposition = opposition;
         this.time = time;
         this.system = system;
 
-        this.eventBus = new SubEventBus(system.events, (event:IEvent) -> {
+        this.eventBus = new SubEventBus(system.events, (event:IEvent) ->
+        {
             var actionEvent:Null<IActionEvent> = Utility.downcast(event, IActionEvent);
-            if (actionEvent == null) return false;
+            if (actionEvent == null)
+                return false;
             return actionEvent.isRelatedAction(this);
         });
     }
 
-    public function getSystem():CofDSystem {
+    public function getSystem():CofDSystem
+    {
         return this.system;
     }
 
-    public function getEventBus():IEventBus {
+    public function getEventBus():IEventBus
+    {
         return this.eventBus;
     }
 
-    public function addModification(modification:IModification) {
+    public function addModification(modification:IModification)
+    {
         this.modifications.push(modification);
         modification.init(this);
     }
 
-    public function getModifications():Array<IModification> {
+    public function getModifications():Array<IModification>
+    {
         return this.modifications;
     }
 
-    public function getOpposition():Opposition {
+    public function getOpposition():Opposition
+    {
         return this.opposition;
     }
 
-    public function getActionTime():EnumTime {
+    public function getActionTime():EnumTime
+    {
         return this.time;
     }
 
-    private function beforeAction() {
+    private function beforeAction() {}
 
-    }
+    private function perform() {}
 
-    private function perform() {
-
-    }
-
-    private function roll() {
+    private function roll()
+    {
         this.opposition.roll(this);
     }
 
-    private function afterAction() {
+    private function afterAction()
+    {
         this.eventBus.post(new ActionPerformedEvent(this));
         this.eventBus.disable();
     }
 
-    public final function execute():Void {
+    public final function execute():Void
+    {
         this.beforeAction();
         this.roll();
         this.perform();

@@ -15,20 +15,25 @@ typedef ApiRangedWeapon = {
     categories:Array<String>
 }
 
-class APIRangedSerialization implements ISerialization {
+class APIRangedSerialization implements ISerialization
+{
     public static final INSTANCE:APIRangedSerialization = new APIRangedSerialization();
 
     public function new() {}
 
-    public function handle(system:CofDSystem, data:Dynamic) {
+    public function handle(system:CofDSystem, data:Dynamic)
+    {
         var rangedWeapons:DynamicAccess<ApiRangedWeapon> = data.ranged_weapons;
-        for (dn in rangedWeapons.keys()) {
+        for (dn in rangedWeapons.keys())
+        {
             var record = rangedWeapons.get(dn);
 
             var tags:Array<TraitType<Dynamic>> = [];
-            for (tagDN in record.tags) {
+            for (tagDN in record.tags)
+            {
                 var tag = system.traits.getRecord(tagDN);
-                if (tag != null) tags.push(tag);
+                if (tag != null)
+                    tags.push(tag);
             }
 
             system.weapons.register(new RangedWeaponPrefab(record.dn, record.name, record.initiative, record.damage, tags));

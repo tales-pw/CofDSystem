@@ -7,8 +7,10 @@ typedef TraitTypeData = {
     name:Null<String>
 }
 
-class TraitTypeSerialization {
-    public static function serialize(traitType:TraitType<Dynamic>):TraitTypeData {
+class TraitTypeSerialization
+{
+    public static function serialize(traitType:TraitType<Dynamic>):TraitTypeData
+    {
         return {
             dn: traitType.getDN(),
             name: traitType.getName()

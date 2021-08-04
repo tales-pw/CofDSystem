@@ -1,6 +1,7 @@
 package pw.tales.cofdsystem.action;
 
-enum EnumTime {
+enum EnumTime
+{
     INSTANT;
     REFLEXIVE;
     EXTENDED;
