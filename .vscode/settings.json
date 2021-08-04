@@ -1,7 +1,6 @@
 {
     "haxe.configurations": [
-        ["-cp", "src", "-cp", "test"],
-        ["build.hxml"],
+        ["build_scripts/tests.hxml"],
     ],
     "haxe.displayServer": {
         "arguments": ["-v"],
