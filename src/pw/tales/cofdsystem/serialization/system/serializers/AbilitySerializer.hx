@@ -1,20 +1,20 @@
 package pw.tales.cofdsystem.serialization.system.serializers;
 
+import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.character.traits.merits.MeritType;
 import pw.tales.cofdsystem.parser.exception.ParsingException;
 import pw.tales.cofdsystem.parser.parsers.DotsLevelsParser;
 import pw.tales.cofdsystem.parser.parsers.RequirementsParser;
 import pw.tales.cofdsystem.serialization.system.SystemData;
 import pw.tales.cofdsystem.utils.logger.LoggerManager;
+import pw.tales.cofdsystem.utils.registry.Registry;
 
-class AbilitySerializer extends Serializer<AbilityData, MeritType> {
+class AbilitySerializer extends SystemSubSerializer<AbilityData, MeritType> {
     private static final requirementsParser = new RequirementsParser();
     private static final levelsParser = new DotsLevelsParser();
 
-    private final registry:TraitTypeRegistry;
-
-    public function new(registry:TraitTypeRegistry) {
-        this.registry = registry;
+    public function new(system: CofDSystem) {
+        super(system);
     }
 
     public override function updateWithData(result:MeritType, data:AbilityData):Void {
@@ -52,12 +52,12 @@ class AbilitySerializer extends Serializer<AbilityData, MeritType> {
     }
 
     public override function fromData(data:AbilityData):MeritType {
-        var record:Null<MeritType> = cast registry.getRecord(data.dn);
-        if (record == null) {
-            record = new MeritType(data.dn);
-            registry.register(record);
-        }
+        var record = new MeritType(data.dn);
         this.updateWithData(record, data);
         return record;
+    }
+
+    private override function getRegistry(): Registry<MeritType> {
+        return cast this.system.traits;
     }
 }

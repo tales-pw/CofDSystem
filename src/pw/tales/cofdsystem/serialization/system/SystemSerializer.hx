@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.serialization.system;
 
+import pw.tales.cofdsystem.serialization.system.serializers.ArmorSerializer;
 import pw.tales.cofdsystem.serialization.system.serializers.RangedWeaponSerializer;
 import pw.tales.cofdsystem.serialization.system.serializers.MeleeWeaponSerializer;
 import pw.tales.cofdsystem.serialization.system.serializers.AbilitySerializer;
@@ -9,50 +10,29 @@ import pw.tales.cofdsystem.serialization.system.serializers.WeaponTagSerializer;
 import pw.tales.cofdsystem.serialization.system.SystemData;
 
 class SystemSerializer extends Serializer<SystemData, CofDSystem> {
-    public function new() {}
+    public function new() {
+        super();
+    }
 
     public override function updateWithData(result:CofDSystem, data:SystemData):Void {
-        var conditionSerializer = new ConditionSerializer(result.traits);
-        for (data in data.conditions.iterator()) {
-            conditionSerializer.fromData(data);
-        }
-
-        var tiltsSerializer = new TiltSerializer(result.traits);
-        for (data in data.tilts.iterator()) {
-            tiltsSerializer.fromData(data);
-        }
-
-        var abilitySerializer = new AbilitySerializer(result.traits);
-        for (data in data.abilities.iterator()) {
-            abilitySerializer.fromData(data);
-        }
-
-        var tagSerializer = new WeaponTagSerializer(result.traits);
-        for (data in data.weapon_tags.iterator()) {
-            tagSerializer.fromData(data);
-        }
-
-        var meleeWeaponSerializer = new MeleeWeaponSerializer(result.weapons, result.traits);
-        for (data in data.melee_weapons.iterator()) {
-            meleeWeaponSerializer.fromData(data);
-        }
-
-        var rangedWeaponSerializer = new RangedWeaponSerializer(result.weapons, result.traits);
-        for (data in data.ranged_weapons.iterator()) {
-            rangedWeaponSerializer.fromData(data);
-        }
+        new ConditionSerializer(result).load(data.conditions);
+        new TiltSerializer(result).load(data.tilts);
+        new AbilitySerializer(result).load(data.abilities);
+        new WeaponTagSerializer(result).load(data.weapon_tags);
+        new MeleeWeaponSerializer(result).load(data.melee_weapons);
+        new RangedWeaponSerializer(result).load(data.ranged_weapons);
     }
 
     public override function toData(result:CofDSystem):SystemData {
         return {
             version: CofDSystem.version,
-            conditions: {},
-            tilts: {},
-            abilities: {},
-            melee_weapons: {},
-            ranged_weapons: {},
-            armor: {},
-            weapon_tags: {},
+            conditions: new ConditionSerializer(result).dump(),
+            tilts: new TiltSerializer(result).dump(),
+            abilities: new AbilitySerializer(result).dump(),
+            melee_weapons: new MeleeWeaponSerializer(result).dump(),
+            ranged_weapons:new RangedWeaponSerializer(result).dump(),
+            armor: new ArmorSerializer(result).dump(),
+            weapon_tags: new WeaponTagSerializer(result).dump(),
         }
     }
 

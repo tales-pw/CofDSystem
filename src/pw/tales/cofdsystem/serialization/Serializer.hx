@@ -2,7 +2,11 @@ package pw.tales.cofdsystem.serialization;
 
 import thx.error.AbstractMethod;
 
-class Serializer <DATA, RESULT> {
+class Serializer<DATA, RESULT> {
+    private function new() {
+
+    }
+
     public function updateWithData(result:RESULT, data:DATA):Void throw new AbstractMethod();
 
     public function fromData(data:DATA):RESULT throw new AbstractMethod();
