@@ -11,10 +11,12 @@ import pw.tales.cofdsystem.character.traits.skill.Skills;
 import pw.tales.cofdsystem.character.traits.speciality.Speciality;
 
 @:nullSafety(Off)
-class GenAdvancementTestCase extends CofDSystemTestCase {
+class GenAdvancementTestCase extends CofDSystemTestCase
+{
     public static final MERIT_TYPE = new MeritType("test");
 
-    public override function setup() {
+    public override function setup()
+    {
         super.setup();
         c1.getTraitManager().addTrait(GenAdvancement.TYPE);
         c2.getTraitManager().addTrait(GenAdvancement.TYPE);
@@ -22,7 +24,8 @@ class GenAdvancementTestCase extends CofDSystemTestCase {
         system.traits.register(MERIT_TYPE);
     }
 
-    public function testUpdateWealth() {
+    public function testUpdateWealth()
+    {
         var manager = c1.getTraitManager();
 
         var merit_1:Merit = cast manager.addTrait(MERIT_TYPE);
@@ -34,7 +37,8 @@ class GenAdvancementTestCase extends CofDSystemTestCase {
         assertFalse(wealth.canUpdate(6));
     }
 
-    public function testAddAndUpdateMerit() {
+    public function testAddAndUpdateMerit()
+    {
         var m = c1.getTraitManager();
 
         var merit_1:Merit = cast m.addTrait(MERIT_TYPE);
@@ -52,7 +56,8 @@ class GenAdvancementTestCase extends CofDSystemTestCase {
         assertFalse(MERIT_TYPE.canAdd(c1));
     }
 
-    public function testAddSpeciality() {
+    public function testAddSpeciality()
+    {
         var m = c1.getTraitManager();
 
         assertTrue(m.addTrait(Speciality.TYPE) != null);
@@ -61,7 +66,8 @@ class GenAdvancementTestCase extends CofDSystemTestCase {
         assertFalse(Speciality.TYPE.canAdd(c1));
     }
 
-    public function testUpdateAttribute() {
+    public function testUpdateAttribute()
+    {
         var m = c1.getTraitManager();
 
         // Mental
@@ -94,7 +100,8 @@ class GenAdvancementTestCase extends CofDSystemTestCase {
         assertFalse(manipulation.canUpdate(2));
     }
 
-    public function testUpdateAttributeWhenFull() {
+    public function testUpdateAttributeWhenFull()
+    {
         var m = c1.getTraitManager();
 
         // Set up full group
@@ -112,7 +119,8 @@ class GenAdvancementTestCase extends CofDSystemTestCase {
         assertTrue(intelligence.canUpdate(4));
     }
 
-    public function testUpdateSkills() {
+    public function testUpdateSkills()
+    {
         var m = c1.getTraitManager();
 
         // Mental
@@ -147,7 +155,8 @@ class GenAdvancementTestCase extends CofDSystemTestCase {
         athletics.setValue(4);
     }
 
-    public function testUpdateSkillWhenFull() {
+    public function testUpdateSkillWhenFull()
+    {
         var m = c1.getTraitManager();
 
         // Set up full group

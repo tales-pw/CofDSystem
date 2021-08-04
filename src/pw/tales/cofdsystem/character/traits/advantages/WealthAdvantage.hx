@@ -8,37 +8,43 @@ import pw.tales.cofdsystem.game_object.traits.value_trait.events.ValueTraitUpdat
 
 @RegisterTraitTypes
 @:expose("WealthAdvantage")
-class WealthAdvantage extends Advantage {
+class WealthAdvantage extends Advantage
+{
     // TODO: Somehow merge it with ValueTrait. Turning Avdantage into interface is a valid choice.
-
     public static final DN = "Богатство";
     public static final TYPE:TraitType<WealthAdvantage> = cast TraitType.createType(DN, create);
 
     @Serialize("points")
     private var points:Int = 0;
 
-    public function new(gameObject:GameObject) {
+    public function new(gameObject:GameObject)
+    {
         super(gameObject, TYPE);
         this.eventBus.addHandler(GenMeritCollectEvent, (e:GenMeritCollectEvent) -> e.collect(this));
     }
 
-    public function canUpdate(newValue:Int):Bool {
+    public function canUpdate(newValue:Int):Bool
+    {
         var event = new ValueTraitUpdateEvent(this, newValue);
         this.system.events.post(event);
         return !event.isCancelled();
     }
 
-    public function setValue(points:Int):Void {
-        if (!this.canUpdate(points)) return;
+    public function setValue(points:Int):Void
+    {
+        if (!this.canUpdate(points))
+            return;
         this.points = points;
         this.notifyUpdated();
     }
 
-    public override function getValue():Int {
+    public override function getValue():Int
+    {
         return this.points;
     }
 
-    public static function create(dn:String, gameObject:GameObject, t:TraitType<WealthAdvantage>):WealthAdvantage {
+    public static function create(dn:String, gameObject:GameObject, t:TraitType<WealthAdvantage>):WealthAdvantage
+    {
         return new WealthAdvantage(gameObject);
     }
 }

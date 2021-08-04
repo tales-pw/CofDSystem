@@ -10,50 +10,63 @@ import pw.tales.cofdsystem.weapon.traits.DamageMod;
 import pw.tales.cofdsystem.weapon.traits.InitiativeMod;
 import pw.tales.cofdsystem.weapon.traits.weapon_tags.WeaponTags;
 
-class Weapon extends Equipment implements IWeapon {
+class Weapon extends Equipment implements IWeapon
+{
     public static final ATTACK_POOL_PRIORITY = HandlerPriority.NORMAL;
 
-    public function new(gameObject:GameObject) {
+    public function new(gameObject:GameObject)
+    {
         super(gameObject);
     }
 
-    public function getInitiativeMod():Int {
+    public function getInitiativeMod():Int
+    {
         return this.getInt(InitiativeMod.TYPE);
     }
 
-    public function getDamageMod():Int {
+    public function getDamageMod():Int
+    {
         return this.getInt(DamageMod.TYPE);
     }
 
-    public function getWeaponTags():Array<TraitType<Dynamic>> {
+    public function getWeaponTags():Array<TraitType<Dynamic>>
+    {
         return WeaponTags.collect(this.gameObject).map((tag) -> tag.getType());
     }
 
-    public function getHand():Null<EnumHand> {
-        try {
+    public function getHand():Null<EnumHand>
+    {
+        try
+        {
             return this.ensureHoldingHand().getHand();
-        } catch (NoTraitAccessorException) {
+        } catch (NoTraitAccessorException)
+        {
             return null;
         }
     }
 
-    public function unsetEquipper() {
+    public function unsetEquipper()
+    {
         super.unsetHolder();
 
-        try {
+        try
+        {
             this.ensureHoldingHand().unset();
         } catch (NoTraitAccessorException) {}
     }
 
-    public function setEquipper(gameObject:GameObject, hand:EnumHand) {
+    public function setEquipper(gameObject:GameObject, hand:EnumHand)
+    {
         super.setHolder(gameObject);
 
-        try {
+        try
+        {
             this.ensureHoldingHand().setHand(hand);
         } catch (NoTraitAccessorException) {}
     }
 
-    private function ensureHoldingHand():HoldingHand {
+    private function ensureHoldingHand():HoldingHand
+    {
         return this.getTrait(HoldingHand.TYPE);
     }
 }

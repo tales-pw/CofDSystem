@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.action;
 
-interface IModification {
+interface IModification
+{
     function init(action:IAction):Void;
 }

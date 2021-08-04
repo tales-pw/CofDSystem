@@ -4,8 +4,10 @@ import pw.tales.cofdsystem.character.traits.condition.events.ConditionsCollectEv
 import pw.tales.cofdsystem.game_object.GameObject;
 
 @:expose("Conditions")
-class Conditions {
-    public static function collect(gameObject:GameObject):Array<Condition> {
+class Conditions
+{
+    public static function collect(gameObject:GameObject):Array<Condition>
+    {
         var event = new ConditionsCollectEvent(gameObject);
         gameObject.getEventBus().post(event);
         return event.getCollected();

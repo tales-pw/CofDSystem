@@ -8,7 +8,8 @@ import pw.tales.cofdsystem.equipment.prefabs.EquipmentPrefab;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.utils.Utility;
 
-class ArmorPrefab extends EquipmentPrefab implements IArmor {
+class ArmorPrefab extends EquipmentPrefab implements IArmor
+{
     private var name:Null<String>;
 
     private var ballistic:Int;
@@ -18,7 +19,8 @@ class ArmorPrefab extends EquipmentPrefab implements IArmor {
     private var speedMod:Int;
     private var strengthReq:Int;
 
-    public function new(dn:String, name:Null<String>, general:Int, ballistic:Int, defenceMod:Int, speedMod:Int, strengthReq:Int) {
+    public function new(dn:String, name:Null<String>, general:Int, ballistic:Int, defenceMod:Int, speedMod:Int, strengthReq:Int)
+    {
         super(dn);
         this.name = name;
 
@@ -30,41 +32,51 @@ class ArmorPrefab extends EquipmentPrefab implements IArmor {
         this.strengthReq = strengthReq;
     }
 
-    public function getName():Null<String> {
+    public function getName():Null<String>
+    {
         return this.name;
     }
 
-    public function getDisplayName():String {
-        if (this.name != null) return this.name;
+    public function getDisplayName():String
+    {
+        if (this.name != null)
+            return this.name;
         return this.dn;
     }
 
-    public function getBallistic():Int {
+    public function getBallistic():Int
+    {
         return this.ballistic;
     }
 
-    public function getGeneral():Int {
+    public function getGeneral():Int
+    {
         return this.general;
     }
 
-    public function getStrengthReq():Int {
+    public function getStrengthReq():Int
+    {
         return this.strengthReq;
     }
 
-    public function getDefenceMod():Int {
+    public function getDefenceMod():Int
+    {
         return this.defenceMod;
     }
 
-    public function getSpeedMod():Int {
+    public function getSpeedMod():Int
+    {
         return this.speedMod;
     }
 
-    public function toString() {
+    public function toString()
+    {
         var clazz = Type.getClass(this);
         return '${Utility.getClassName(clazz)}[dn=$dn,general=$general, ballistic=$ballistic]';
     }
 
-    private override function setUpGameObject(armorGameObject:GameObject) {
+    private override function setUpGameObject(armorGameObject:GameObject)
+    {
         super.setUpGameObject(armorGameObject);
 
         var manager = armorGameObject.getTraitManager();
@@ -83,7 +95,8 @@ class ArmorPrefab extends EquipmentPrefab implements IArmor {
         strengthReq.setValue(this.getStrengthReq());
     }
 
-    public function createArmor(system:CofDSystem):Armor {
+    public function createArmor(system:CofDSystem):Armor
+    {
         return new Armor(this.createGameObject(system));
     }
 }

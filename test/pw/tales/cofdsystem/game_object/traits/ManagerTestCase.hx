@@ -4,8 +4,10 @@ import pw.tales.cofdsystem.character.traits.advantages.SizeAdvantage;
 import pw.tales.cofdsystem.character.traits.merits.giant.GiantMerit;
 
 @:nullSafety(Off)
-class ManagerTestCase extends haxe.unit.TestCase {
-    public function testAddAndRemoveTrait() {
+class ManagerTestCase extends haxe.unit.TestCase
+{
+    public function testAddAndRemoveTrait()
+    {
         // TODO: better tests for TraitManager.
         var system = new CofDSystem();
         var gameObject = new GameObject("game_object", system);

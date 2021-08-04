@@ -2,7 +2,8 @@ package pw.tales.cofdsystem.weapon;
 
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 
-interface IWeapon {
+interface IWeapon
+{
     function getInitiativeMod():Int;
 
     function getDamageMod():Int;

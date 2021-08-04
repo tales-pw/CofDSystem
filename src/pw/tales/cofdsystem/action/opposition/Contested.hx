@@ -7,20 +7,25 @@ import pw.tales.cofdsystem.action.IAction;
 import pw.tales.cofdsystem.action.opposition.base.OppositionCompetitive;
 import pw.tales.cofdsystem.action.opposition.pool.ActionPool;
 
-class Contested extends OppositionCompetitive {
-    override public function getWinnerPool():ActionPool {
+class Contested extends OppositionCompetitive
+{
+    override public function getWinnerPool():ActionPool
+    {
         var actorRollResponse = actorPool.getResponse();
         var targetRollResponse = targetPool.getResponse();
 
-        if (actorRollResponse.getSuccesses() > targetRollResponse.getSuccesses()) return actorPool;
+        if (actorRollResponse.getSuccesses() > targetRollResponse.getSuccesses())
+            return actorPool;
         return targetPool;
     }
 
-    public override function willRoll(roll:ActionPool) {
+    public override function willRoll(roll:ActionPool)
+    {
         return roll == actorPool || roll == targetPool;
     }
 
-    override public function roll(action:IAction):Void {
+    override public function roll(action:IAction):Void
+    {
         var system = action.getSystem();
 
         system.events.post(new ActionBuildPoolEvent(action, actorPool));

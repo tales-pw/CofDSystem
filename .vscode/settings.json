@@ -1,0 +1,8 @@
+{
+    "haxe.configurations": [
+        ["build_scripts/tests.hxml"],
+    ],
+    "haxe.displayServer": {
+        "arguments": ["-v"],
+    }
+}

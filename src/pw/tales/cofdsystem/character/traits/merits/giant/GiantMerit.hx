@@ -8,16 +8,20 @@ import pw.tales.cofdsystem.utils.events.HandlerPriority;
 
 @RegisterTraitTypes
 @:expose("GiantMerit")
-class GiantMerit extends Merit {
+class GiantMerit extends Merit
+{
     public static final TYPE:GiantMeritType = new GiantMeritType("Giant");
 
-    public function new(dn:String, gameObject:GameObject, ?customName:String) {
+    public function new(dn:String, gameObject:GameObject, ?customName:String)
+    {
         super(dn, gameObject, TYPE, customName);
         this.eventBus.addHandler(AdvantageModEvent, this.onAdvantageModEvent, HandlerPriority.NORMAL);
     }
 
-    private function onAdvantageModEvent(event:AdvantageModEvent) {
-        if (event.getAdvantage().getType() != SizeAdvantage.TYPE) return;
+    private function onAdvantageModEvent(event:AdvantageModEvent)
+    {
+        if (event.getAdvantage().getType() != SizeAdvantage.TYPE)
+            return;
         event.apply(1);
     }
 }

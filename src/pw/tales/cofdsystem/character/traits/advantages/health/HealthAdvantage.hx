@@ -16,7 +16,8 @@ import pw.tales.cofdsystem.utils.events.HandlerPriority;
 
 @RegisterTraitTypes
 @:expose("HealthAdvantage")
-class HealthAdvantage extends AdvantageExpression implements IHealthTrait {
+class HealthAdvantage extends AdvantageExpression implements IHealthTrait
+{
     public static final DN = "Здоровье";
     public static final TYPE:TraitType<HealthAdvantage> = cast TraitType.createType(DN, create);
 
@@ -31,111 +32,143 @@ class HealthAdvantage extends AdvantageExpression implements IHealthTrait {
     @Serialize("aggravated")
     private var aggravated:Int = 0;
 
-    public function new(gameObject:GameObject) {
+    public function new(gameObject:GameObject)
+    {
         super(gameObject, TYPE, EXPR);
         this.eventBus.addHandler(ActionBuildPoolEvent, this.applyHealthPenalty, HandlerPriority.NORMAL);
         this.eventBus.addHandler(GetHealthTraitEvent, this.setHealthTrait, HandlerPriority.NORMAL);
     }
 
-    public function getBashing():Int {
+    public function getBashing():Int
+    {
         return this.bashing;
     }
 
-    public function getLethal():Int {
+    public function getLethal():Int
+    {
         return this.lethal;
     }
 
-    public function getAggravated():Int {
+    public function getAggravated():Int
+    {
         return this.aggravated;
     }
 
-    private function getFilledDamage():Int {
+    private function getFilledDamage():Int
+    {
         return this.bashing + this.lethal + this.aggravated;
     }
 
-    public function getHealthLeft():Int {
+    public function getHealthLeft():Int
+    {
         return this.getValue() - this.getFilledDamage();
     }
 
-    public function isDead() {
+    public function isDead()
+    {
         var healthValue = this.getValue();
         return this.aggravated >= healthValue;
     }
 
-    private function applyDamage(damage:Damage) {
+    private function applyDamage(damage:Damage)
+    {
         var maxHealth = this.getValue();
 
-        for (i in 0...damage.getBashing()) {
-            if (this.getFilledDamage() >= maxHealth) {
-                if (this.bashing != 0) {
+        for (i in 0...damage.getBashing())
+        {
+            if (this.getFilledDamage() >= maxHealth)
+            {
+                if (this.bashing != 0)
+                {
                     this.bashing--;
                     this.lethal++;
-                } else if (this.lethal != 0) {
+                } else if (this.lethal != 0)
+                {
                     this.lethal--;
                     this.aggravated++;
                 }
-            } else {
+            } else
+            {
                 this.bashing++;
             }
         }
 
-        for (i in 0...damage.getLethal()) {
-            if (this.getFilledDamage() >= maxHealth) {
-                if (this.bashing != 0) {
+        for (i in 0...damage.getLethal())
+        {
+            if (this.getFilledDamage() >= maxHealth)
+            {
+                if (this.bashing != 0)
+                {
                     this.bashing--;
                     this.lethal++;
-                } else if (this.lethal != 0) {
+                } else if (this.lethal != 0)
+                {
                     this.lethal--;
                     this.aggravated++;
                 }
-            } else {
+            } else
+            {
                 this.lethal++;
             }
         }
 
-        for (i in 0...damage.getAggravated()) {
-            if (this.getFilledDamage() >= maxHealth) {
-                if (this.bashing != 0) {
+        for (i in 0...damage.getAggravated())
+        {
+            if (this.getFilledDamage() >= maxHealth)
+            {
+                if (this.bashing != 0)
+                {
                     this.bashing--;
                     this.aggravated++;
-                } else if (this.lethal != 0) {
+                } else if (this.lethal != 0)
+                {
                     this.lethal--;
                     this.aggravated++;
                 }
-            } else {
+            } else
+            {
                 this.aggravated++;
             }
         }
     }
 
-    public function dealDamage(damage:Damage):Void {
+    public function dealDamage(damage:Damage):Void
+    {
         this.applyDamage(damage);
 
         this.eventBus.post(new GameObjectDamagedEvent(this.gameObject, damage));
-        if (isDead()) this.eventBus.post(new GameObjectDiedEvent(this.gameObject));
+        if (isDead())
+            this.eventBus.post(new GameObjectDiedEvent(this.gameObject));
 
         this.notifyUpdated();
     }
 
-    private function setHealthTrait(event:GetHealthTraitEvent) {
+    private function setHealthTrait(event:GetHealthTraitEvent)
+    {
         event.setHealthTrait(this);
     }
 
-    private function applyHealthPenalty(event:ActionBuildPoolEvent) {
-        if (!event.isPoolOwner(this.gameObject)) return;
+    private function applyHealthPenalty(event:ActionBuildPoolEvent)
+    {
+        if (!event.isPoolOwner(this.gameObject))
+            return;
 
         // TODO: Ignore Stamina roll to avoid becoming unconscious
         var healthLeft = this.getHealthLeft();
 
         var penalty = 0;
-        if (healthLeft == 3) penalty = -1;
-        if (healthLeft == 2) penalty = -2;
-        if (healthLeft <= 1) penalty = -3;
+        if (healthLeft == 3)
+            penalty = -1;
+        if (healthLeft == 2)
+            penalty = -2;
+        if (healthLeft <= 1)
+            penalty = -3;
 
         event.getActionPool().getRequest().addModifier(penalty, HealthAdvantage.DN);
     }
 
-    public static function create(dn:String, gameObject:GameObject, t:TraitType<HealthAdvantage>):HealthAdvantage {
+    public static function create(dn:String, gameObject:GameObject, t:TraitType<HealthAdvantage>):HealthAdvantage
+    {
         return new HealthAdvantage(gameObject);
     }
 }

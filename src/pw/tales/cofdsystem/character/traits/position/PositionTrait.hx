@@ -6,26 +6,32 @@ import pw.tales.cofdsystem.game_object.traits.Trait;
 
 @RegisterTraitTypes
 @:expose("PositionTrait")
-class PositionTrait extends Trait {
+class PositionTrait extends Trait
+{
     public static final DN = "position";
     public static final TYPE:PositionType = new PositionType(DN);
 
     private var provider:Null<PositionProvider> = null;
 
-    public function new(gameObject:GameObject) {
+    public function new(gameObject:GameObject)
+    {
         super(TYPE.getDN(), gameObject, TYPE);
     }
 
-    public function setPosProvider(provider:PositionProvider):Void {
+    public function setPosProvider(provider:PositionProvider):Void
+    {
         this.provider = provider;
     }
 
-    public function getPos():Position {
-        if (this.provider == null) throw 'Pos source is not set for ${this.gameObject}.';
+    public function getPos():Position
+    {
+        if (this.provider == null)
+            throw 'Pos source is not set for ${this.gameObject}.';
         return this.provider.getPos();
     }
 
-    public function distanceTo(other:PositionTrait):Int {
+    public function distanceTo(other:PositionTrait):Int
+    {
         var p0 = this.getPos();
         var p1 = other.getPos();
 

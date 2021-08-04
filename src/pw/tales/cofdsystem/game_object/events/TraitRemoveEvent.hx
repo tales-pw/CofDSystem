@@ -3,24 +3,29 @@ package pw.tales.cofdsystem.game_object.events;
 import pw.tales.cofdsystem.game_object.traits.Trait;
 
 @:expose("TraitRemoveEvent")
-class TraitRemoveEvent extends GameObjectEvent {
+class TraitRemoveEvent extends GameObjectEvent
+{
     private var trait:Trait;
     private var cancelled = false;
 
-    public function new(trait:Trait) {
+    public function new(trait:Trait)
+    {
         super(trait.getGameObject());
         this.trait = trait;
     }
 
-    public function setCancelled(cancelled:Bool) {
+    public function setCancelled(cancelled:Bool)
+    {
         this.cancelled = cancelled;
     }
 
-    public function isCancelled():Bool {
+    public function isCancelled():Bool
+    {
         return this.cancelled;
     }
 
-    public function getTrait():Trait {
+    public function getTrait():Trait
+    {
         return this.trait;
     }
 }

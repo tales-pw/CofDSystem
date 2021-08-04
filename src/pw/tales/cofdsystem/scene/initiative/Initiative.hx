@@ -8,26 +8,31 @@ import pw.tales.cofdsystem.scene.initiative.exceptions.AddedAgainException;
 import pw.tales.cofdsystem.scene.initiative.exceptions.ParticipantNotFoundException;
 
 /** Stores list of initiatives, their order, handles rolling for initiative and etc **/
-class Initiative {
+class Initiative
+{
     private final system:CofDSystem;
     private final scene:Scene;
 
     private var order:Array<GameObject> = [];
     private var rollResults:Map<GameObject, Int> = new Map<GameObject, Int>();
 
-    public function new(system:CofDSystem, scene:Scene) {
+    public function new(system:CofDSystem, scene:Scene)
+    {
         this.scene = scene;
         this.system = system;
     }
 
-    public function getOrder():Array<GameObject> {
+    public function getOrder():Array<GameObject>
+    {
         return this.order;
     }
 
-    public function getInitiative(gameObject:GameObject):Int {
+    public function getInitiative(gameObject:GameObject):Int
+    {
         var rollResult = this.rollResults.get(gameObject);
 
-        if (rollResult == null) throw new ParticipantNotFoundException(gameObject.getDN());
+        if (rollResult == null)
+            throw new ParticipantNotFoundException(gameObject.getDN());
 
         var event = new InitiativeModifiersEvent(gameObject, this);
         this.system.events.post(event);
@@ -35,8 +40,10 @@ class Initiative {
         return rollResult + event.getModifier();
     }
 
-    public function add(gameObject:GameObject) {
-        if (this.order.indexOf(gameObject) != -1) {
+    public function add(gameObject:GameObject)
+    {
+        if (this.order.indexOf(gameObject) != -1)
+        {
             throw new AddedAgainException(gameObject, this);
             return;
         }
@@ -49,15 +56,18 @@ class Initiative {
         this.update();
     }
 
-    public function remove(gameObject:GameObject) {
+    public function remove(gameObject:GameObject)
+    {
         this.order.remove(gameObject);
         this.rollResults.remove(gameObject);
 
         this.update();
     }
 
-    public function update() {
-        this.order.sort(function(a:GameObject, b:GameObject):Int {
+    public function update()
+    {
+        this.order.sort(function(a:GameObject, b:GameObject):Int
+        {
             var initiativeA = this.getInitiative(a);
             var initiativeB = this.getInitiative(b);
 

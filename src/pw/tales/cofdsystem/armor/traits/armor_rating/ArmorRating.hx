@@ -8,7 +8,8 @@ import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 
 @RegisterTraitTypes
-class ArmorRating extends EquipmentTrait {
+class ArmorRating extends EquipmentTrait
+{
     public static final DN = "Свойство:Rating";
     public static final TYPE:TraitType<ArmorRating> = cast TraitType.createType(DN, create);
 
@@ -18,34 +19,42 @@ class ArmorRating extends EquipmentTrait {
     @Serialize("ballistic")
     private var ballistic:Int = 0;
 
-    public function new(gameObject:GameObject) {
+    public function new(gameObject:GameObject)
+    {
         super(DN, gameObject, TYPE);
         this.holderEventBus.addHandler(AttackDamageGetEvent, this.applyArmorAbsorption);
     }
 
-    public function setGeneral(general:Int) {
+    public function setGeneral(general:Int)
+    {
         this.general = general;
         this.notifyUpdated();
     }
 
-    public function setBallistic(ballistic:Int) {
+    public function setBallistic(ballistic:Int)
+    {
         this.ballistic = ballistic;
         this.notifyUpdated();
     }
 
-    public function getGeneral():Int {
+    public function getGeneral():Int
+    {
         return this.general;
     }
 
-    public function getBallistic():Int {
+    public function getBallistic():Int
+    {
         return this.ballistic;
     }
 
-    private function applyArmorAbsorption(event:AttackDamageGetEvent) {
+    private function applyArmorAbsorption(event:AttackDamageGetEvent)
+    {
         var holder = this.getHolder();
 
-        if (holder == null) return;
-        if (!event.isTarget(holder)) return;
+        if (holder == null)
+            return;
+        if (!event.isTarget(holder))
+            return;
 
         // Post armor get event
         var action = event.getAction();
@@ -62,7 +71,8 @@ class ArmorRating extends EquipmentTrait {
         event.setDamage(damage);
     }
 
-    public static function create(dn:String, gameObject:GameObject, t:TraitType<ArmorRating>):ArmorRating {
+    public static function create(dn:String, gameObject:GameObject, t:TraitType<ArmorRating>):ArmorRating
+    {
         return new ArmorRating(gameObject);
     }
 }

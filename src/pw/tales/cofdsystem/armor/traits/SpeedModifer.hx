@@ -7,21 +7,26 @@ import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 
 @RegisterTraitTypes
-class SpeedModifer extends EquipmentMod {
+class SpeedModifer extends EquipmentMod
+{
     public static final DN = "Свойство:Speed";
     public static final TYPE:TraitType<SpeedModifer> = cast TraitType.createType(DN, create);
 
-    public function new(gameObject:GameObject) {
+    public function new(gameObject:GameObject)
+    {
         super(DN, gameObject, TYPE);
         this.holderEventBus.addHandler(AdvantageModEvent, this.applyMod);
     }
 
-    private function applyMod(event:AdvantageModEvent) {
-        if (event.getAdvantage().getType() != SpeedAdvantage.TYPE) return;
+    private function applyMod(event:AdvantageModEvent)
+    {
+        if (event.getAdvantage().getType() != SpeedAdvantage.TYPE)
+            return;
         event.apply(this.value);
     }
 
-    public static function create(dn:String, gameObject:GameObject, t:TraitType<SpeedModifer>):SpeedModifer {
+    public static function create(dn:String, gameObject:GameObject, t:TraitType<SpeedModifer>):SpeedModifer
+    {
         return new SpeedModifer(gameObject);
     }
 }

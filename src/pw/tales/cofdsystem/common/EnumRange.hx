@@ -1,7 +1,8 @@
 package pw.tales.cofdsystem.common;
 
 @SuppressWarnings("checkstyle:Type")
-class EnumRange {
+class EnumRange
+{
     private static var VALUES:Array<EnumRange> = [];
 
     // Order matters, it should go in order of ascending distance
@@ -14,26 +15,34 @@ class EnumRange {
     private var name:String;
     private var distance:Float;
 
-    private function new(name:String, distance:Float) {
+    private function new(name:String, distance:Float)
+    {
         this.name = name;
         this.distance = distance;
 
         VALUES.push(this);
     }
 
-    public function getDistance():Float {
+    public function getDistance():Float
+    {
         return this.distance;
     }
 
-    public static function measure(value:Int):EnumRange {
-        for (range in VALUES) {
-            if (value < range.getDistance()) return range;
+    public static function measure(value:Int):EnumRange
+    {
+        for (range in VALUES)
+        {
+            if (value < range.getDistance())
+                return range;
         }
         return EnumRange.EXTREME;
     }
 
-    public static function findByName(name:String):Null<EnumRange> {
-        for (range in VALUES) if (range.name == name) return range;
+    public static function findByName(name:String):Null<EnumRange>
+    {
+        for (range in VALUES)
+            if (range.name == name)
+                return range;
         return null;
     }
 }

@@ -4,12 +4,15 @@ import thx.error.NotImplemented;
 import pw.tales.cofdsystem.character.traits.tilts.TiltType;
 import pw.tales.cofdsystem.scene.Scene;
 
-class BaseTiltTestCase extends CofDSystemTestCase {
-    public function getTiltType():TiltType {
+class BaseTiltTestCase extends CofDSystemTestCase
+{
+    public function getTiltType():TiltType
+    {
         throw new NotImplemented();
     }
 
-    public function testTiltsDeletedOnSceneEnd() {
+    public function testTiltsDeletedOnSceneEnd()
+    {
         var scene = Scene.create(this.system);
         scene.add(c1);
         scene.begin();

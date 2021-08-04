@@ -1,15 +1,17 @@
 package pw.tales.cofdsystem.damage;
 
-class DamageUtil {
+class DamageUtil
+{
     public static final INSTANCE:DamageUtil = new DamageUtil();
 
-    public function new() {
-    }
+    public function new() {}
 
-    public function simpleAbsorb(general:Int, ballistic:Int, damage:Damage, armor:Bool = true):Damage {
+    public function simpleAbsorb(general:Int, ballistic:Int, damage:Damage, armor:Bool = true):Damage
+    {
         damage.applyBallisticArmor(ballistic);
         damage.applyGeneralArmor(general);
-        if (armor) damage.enusreBashing();
+        if (armor)
+            damage.enusreBashing();
         return damage;
     }
 }

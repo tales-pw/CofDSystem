@@ -9,15 +9,18 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
  *   @see <https://tales.pw/page/grapple_(weapon_tag)>
 **/
 @RegisterTraitTypes
-class GrappleTag extends WeaponTag {
+class GrappleTag extends WeaponTag
+{
     public static final DN = "grapple_(weapon_tag)";
     public static final TYPE:TraitType<GrappleTag> = cast TraitType.createType(DN, create);
 
-    public function new(gameObject:GameObject) {
+    public function new(gameObject:GameObject)
+    {
         super(DN, gameObject, TYPE);
     }
 
-    public static function create(dn:String, gameObject:GameObject, t:TraitType<GrappleTag>):GrappleTag {
+    public static function create(dn:String, gameObject:GameObject, t:TraitType<GrappleTag>):GrappleTag
+    {
         return new GrappleTag(gameObject);
     }
 }

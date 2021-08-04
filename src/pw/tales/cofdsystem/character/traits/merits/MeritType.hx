@@ -8,47 +8,59 @@ import pw.tales.cofdsystem.parser.nodes.NodeAnd;
 import pw.tales.cofdsystem.parser.nodes.NodeDotsRange;
 
 @:expose("MeritType")
-class MeritType extends ValueTraitType<Merit> {
+class MeritType extends ValueTraitType<Merit>
+{
     private var levels:INodeLevels = NodeDotsRange.create(1, 5);
     private var requirements:Null<INodeCheck> = null;
 
-    public function new(dn:String) {
+    public function new(dn:String)
+    {
         super(dn);
     }
 
-    public function getRequirements():Null<INodeCheck> {
+    public function getRequirements():Null<INodeCheck>
+    {
         return this.requirements;
     }
 
-    public function addRequirements(requirements:INodeCheck) {
-        if (this.requirements == null) {
+    public function addRequirements(requirements:INodeCheck)
+    {
+        if (this.requirements == null)
+        {
             this.requirements = requirements;
-        } else {
+        } else
+        {
             this.requirements = new NodeAnd(this.requirements, requirements);
         }
     }
 
-    public function setRequirements(requirement:INodeCheck) {
+    public function setRequirements(requirement:INodeCheck)
+    {
         this.requirements = requirement;
     }
 
-    public function getLevels():INodeLevels {
+    public function getLevels():INodeLevels
+    {
         return this.levels;
     }
 
-    public function setLevels(levels:INodeLevels) {
+    public function setLevels(levels:INodeLevels)
+    {
         this.levels = levels;
     }
 
-    override public function isMultiInstanced():Bool {
+    override public function isMultiInstanced():Bool
+    {
         return true;
     }
 
-    public override function getLowestValue() {
+    public override function getLowestValue()
+    {
         return this.levels.getLevels()[0];
     }
 
-    override public function createWithDN(dn:String, gameObject:GameObject):Merit {
+    override public function createWithDN(dn:String, gameObject:GameObject):Merit
+    {
         return new Merit(dn, gameObject, this);
     }
 }

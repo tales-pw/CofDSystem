@@ -1,6 +1,7 @@
 package pw.tales.cofdsystem.armor;
 
-interface IArmor {
+interface IArmor
+{
     function getBallistic():Int;
 
     function getGeneral():Int;

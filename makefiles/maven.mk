@@ -1,2 +1,2 @@
-maven_publish: guard-PACKAGES_TOKEN build
+maven_publish: guard-PACKAGES_TOKEN build_java
 	gradle publish

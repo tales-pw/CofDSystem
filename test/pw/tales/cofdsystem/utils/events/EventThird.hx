@@ -1,4 +1,3 @@
 package pw.tales.cofdsystem.utils.events;
 
-class EventThird extends EventFirst {
-}
+class EventThird extends EventFirst {}

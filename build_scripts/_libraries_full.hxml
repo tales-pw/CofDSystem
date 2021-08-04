@@ -3,4 +3,3 @@ build_scripts/_libraries_dev.hxml
 -L hxjava:4.2.0
 -L haxe-loader:0.9.0
 -L dox:1.5.0
--L checkstyle:2.7.0

@@ -13,30 +13,33 @@ import pw.tales.cofdsystem.utils.events.HandlerPriority;
  *   @see <https://tales.pw/page/mercy_(weapon_tag)>
 **/
 @RegisterTraitTypes
-class MercyTag extends WeaponTag {
+class MercyTag extends WeaponTag
+{
     public static final DN = "mercy_(weapon_tag)";
     public static final TYPE:TraitType<MercyTag> = cast TraitType.createType(DN, create);
 
-    public function new(gameObject:GameObject) {
+    public function new(gameObject:GameObject)
+    {
         super(DN, gameObject, TYPE);
-        this.holderEventBus.addHandler(
-            AttackDamageGetTypeEvent,
-            this.makeBashing,
-            HandlerPriority.after([Weapon.ATTACK_POOL_PRIORITY])
-        );
+        this.holderEventBus.addHandler(AttackDamageGetTypeEvent, this.makeBashing, HandlerPriority.after([Weapon.ATTACK_POOL_PRIORITY]));
     }
 
-    private function makeBashing(e:AttackDamageGetTypeEvent) {
+    private function makeBashing(e:AttackDamageGetTypeEvent)
+    {
         var action = e.getAction();
 
-        if (!Std.isOfType(action, AttackAction)) return;
-        if (!this.doesHolderAct(action)) return;
-        if (!this.isActionWithWeapon(action)) return;
+        if (!Std.isOfType(action, AttackAction))
+            return;
+        if (!this.doesHolderAct(action))
+            return;
+        if (!this.isActionWithWeapon(action))
+            return;
 
         e.setDamageType(DamageType.BASHING);
     }
 
-    public static function create(dn:String, gameObject:GameObject, t:TraitType<MercyTag>):MercyTag {
+    public static function create(dn:String, gameObject:GameObject, t:TraitType<MercyTag>):MercyTag
+    {
         return new MercyTag(gameObject);
     }
 }

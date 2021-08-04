@@ -1,17 +1,21 @@
 package pw.tales.cofdsystem.utils;
 
-class EnumNamed {
+class EnumNamed
+{
     private var name:String;
 
-    public function new(name:String) {
+    public function new(name:String)
+    {
         this.name = name;
     }
 
-    public function getName():String {
+    public function getName():String
+    {
         return this.name;
     }
 
-    public function toString():String {
+    public function toString():String
+    {
         return this.getName();
     }
 }

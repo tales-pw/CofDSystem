@@ -1,6 +1,7 @@
 package pw.tales.cofdsystem.action_attack.targets;
 
-interface ITarget {
+interface ITarget
+{
     function getDN():String;
 
     function getAttackModifer():Int;

@@ -1,13 +1,16 @@
 package pw.tales.cofdsystem.parser.parsers;
 
-class DotsLevelsTestCase extends haxe.unit.TestCase {
+class DotsLevelsTestCase extends haxe.unit.TestCase
+{
     public static var parser = new DotsLevelsParser();
 
-    public function assertArrayEquals(a:Array<Int>, b:Array<Int>) {
+    public function assertArrayEquals(a:Array<Int>, b:Array<Int>)
+    {
         assertEquals(a.toString(), b.toString());
     }
 
-    public function testParser() {
+    public function testParser()
+    {
         var result = parser.parse("3");
         assertEquals("•••", result.getHumanReadable());
         assertArrayEquals([3], result.getLevels());

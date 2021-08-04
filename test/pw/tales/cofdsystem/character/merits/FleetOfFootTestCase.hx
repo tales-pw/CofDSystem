@@ -3,8 +3,10 @@ package pw.tales.cofdsystem.character.merits;
 import pw.tales.cofdsystem.character.traits.advantages.SpeedAdvantage;
 import pw.tales.cofdsystem.character.traits.merits.fleet_of_foot.FleetOfFootMerit;
 
-class FleetOfFootTestCase extends CofDSystemTestCase {
-    public function testFleetOfFoot() {
+class FleetOfFootTestCase extends CofDSystemTestCase
+{
+    public function testFleetOfFoot()
+    {
         var manager = c1.getTraitManager();
 
         var speed:SpeedAdvantage = cast(manager.getTrait(SpeedAdvantage.TYPE));

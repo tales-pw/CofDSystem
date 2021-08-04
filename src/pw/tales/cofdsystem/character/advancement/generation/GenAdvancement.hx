@@ -14,13 +14,15 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.game_object.traits.value_trait.events.ValueTraitUpdateEvent;
 
 @:expose("GenAdvancement")
-class GenAdvancement extends Trait {
+class GenAdvancement extends Trait
+{
     public static final DN = "generation_advancement";
     public static final TYPE:TraitType<GenAdvancement> = new GenAdvancementType(DN);
 
     public var restrictions:Array<GenAdvancementItem<Dynamic, Dynamic>> = [];
 
-    public function new(gameObject:GameObject) {
+    public function new(gameObject:GameObject)
+    {
         super(DN, gameObject, TYPE);
         restrictions.push(new GenAttributeAdvancement(gameObject));
         restrictions.push(new GenSkillAdvancement(gameObject));
@@ -32,20 +34,28 @@ class GenAdvancement extends Trait {
         this.eventBus.addHandler(ValueTraitUpdateEvent, this.canBeUpdated);
     }
 
-    public function canBeAdded(event:TraitAddEvent) {
-        if (this.gameObject.getState() != GameObjectState.ACTIVE) return;
+    public function canBeAdded(event:TraitAddEvent)
+    {
+        if (this.gameObject.getState() != GameObjectState.ACTIVE)
+            return;
 
-        for (restriction in this.restrictions) {
-            if (event.isCancelled()) return;
+        for (restriction in this.restrictions)
+        {
+            if (event.isCancelled())
+                return;
             restriction.canBeAdded(event);
         }
     }
 
-    public function canBeUpdated(event:ValueTraitUpdateEvent) {
-        if (this.gameObject.getState() != GameObjectState.ACTIVE) return;
+    public function canBeUpdated(event:ValueTraitUpdateEvent)
+    {
+        if (this.gameObject.getState() != GameObjectState.ACTIVE)
+            return;
 
-        for (restriction in this.restrictions) {
-            if (event.isCancelled()) return;
+        for (restriction in this.restrictions)
+        {
+            if (event.isCancelled())
+                return;
             restriction.canBeUpdated(event);
         }
     }

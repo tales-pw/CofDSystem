@@ -9,7 +9,8 @@ import pw.tales.cofdsystem.utils.registry.Registry;
 import pw.tales.cofdsystem.weapon.prefabs.WeaponPrefab;
 
 @:expose('CofDSystem')
-class CofDSystem {
+class CofDSystem
+{
     public static final version = Version.get();
     public static final versionCheck = Version.shouldCheck();
 
@@ -25,7 +26,8 @@ class CofDSystem {
 
     public function new() {}
 
-    public function act(action:IAction) {
+    public function act(action:IAction)
+    {
         action.execute();
     }
 }

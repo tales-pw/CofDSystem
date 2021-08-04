@@ -12,8 +12,10 @@ import pw.tales.cofdsystem.game_object.health_helper.HealthTraitHelper;
 import pw.tales.cofdsystem.mocks.BasicAction;
 
 @:nullSafety(Off)
-class HealthTestCase extends CofDSystemTestCase {
-    private function prepareHealthAdvantage(bashing:Int, lethal:Int, aggravated:Int):HealthAdvantage {
+class HealthTestCase extends CofDSystemTestCase
+{
+    private function prepareHealthAdvantage(bashing:Int, lethal:Int, aggravated:Int):HealthAdvantage
+    {
         var health:HealthAdvantage = cast c1.getTrait(HealthAdvantage.TYPE);
         assertEquals(health.getValue(), 6);
 
@@ -26,7 +28,8 @@ class HealthTestCase extends CofDSystemTestCase {
         return health;
     }
 
-    private function methodTestHealthPenalty(diff:Int, result:Null<Int>) {
+    private function methodTestHealthPenalty(diff:Int, result:Null<Int>)
+    {
         var manager = c1.getTraitManager();
         manager.getTrait(Attributes.STAMINA).setValue(1);
 
@@ -43,27 +46,33 @@ class HealthTestCase extends CofDSystemTestCase {
         assertEquals(result, roll.getRequest().getAppliedModifiers()[HealthAdvantage.DN]);
     }
 
-    public function testPenalty0HPLeft() {
+    public function testPenalty0HPLeft()
+    {
         this.methodTestHealthPenalty(0, -3);
     }
 
-    public function testPenalty1HPLeft() {
+    public function testPenalty1HPLeft()
+    {
         this.methodTestHealthPenalty(1, -3);
     }
 
-    public function testPenalty2HPLeft() {
+    public function testPenalty2HPLeft()
+    {
         this.methodTestHealthPenalty(2, -2);
     }
 
-    public function testPenalty3HPLeft() {
+    public function testPenalty3HPLeft()
+    {
         this.methodTestHealthPenalty(3, -1);
     }
 
-    public function testPenalty4HPLeft() {
+    public function testPenalty4HPLeft()
+    {
         this.methodTestHealthPenalty(4, null);
     }
 
-    public function testHealthRollPenaltyForResistedAction() {
+    public function testHealthRollPenaltyForResistedAction()
+    {
         var maxHealth = c2.getTrait(HealthAdvantage.TYPE).getValue();
         HealthTraitHelper.get(c2).dealDamage(new Damage(maxHealth, 0, 0));
 
@@ -78,7 +87,8 @@ class HealthTestCase extends CofDSystemTestCase {
         assertEquals(null, roll.getRequest().getAppliedModifiers()[HealthAdvantage.DN]);
     }
 
-    public function testSimpleDamage() {
+    public function testSimpleDamage()
+    {
         c1.getTrait(Attributes.STAMINA).setValue(2);
         var health:HealthAdvantage = cast(c1.getTrait(HealthAdvantage.TYPE));
         assertEquals(7, health.getValue());
@@ -109,7 +119,8 @@ class HealthTestCase extends CofDSystemTestCase {
         assertEquals(1, health.getAggravated());
     }
 
-    public function testUpgradingBashingWithBashing() {
+    public function testUpgradingBashingWithBashing()
+    {
         var health:HealthAdvantage = this.prepareHealthAdvantage(6, 0, 0);
 
         health.dealDamage(new Damage(1, 0, 0));
@@ -118,7 +129,8 @@ class HealthTestCase extends CofDSystemTestCase {
         assertEquals(0, health.getAggravated());
     }
 
-    public function testUpgradingBashingWithLethal() {
+    public function testUpgradingBashingWithLethal()
+    {
         var health:HealthAdvantage = this.prepareHealthAdvantage(6, 0, 0);
 
         health.dealDamage(new Damage(0, 1, 0));
@@ -127,7 +139,8 @@ class HealthTestCase extends CofDSystemTestCase {
         assertEquals(0, health.getAggravated());
     }
 
-    public function testUpgradingBashingWithAggravated() {
+    public function testUpgradingBashingWithAggravated()
+    {
         var health:HealthAdvantage = this.prepareHealthAdvantage(6, 0, 0);
 
         health.dealDamage(new Damage(0, 0, 1));
@@ -136,7 +149,8 @@ class HealthTestCase extends CofDSystemTestCase {
         assertEquals(1, health.getAggravated());
     }
 
-    public function testUpgradingLethalWithBashing() {
+    public function testUpgradingLethalWithBashing()
+    {
         var health:HealthAdvantage = this.prepareHealthAdvantage(0, 6, 0);
 
         health.dealDamage(new Damage(1, 0, 0));
@@ -145,7 +159,8 @@ class HealthTestCase extends CofDSystemTestCase {
         assertEquals(1, health.getAggravated());
     }
 
-    public function testUpgradingLethalWithLethal() {
+    public function testUpgradingLethalWithLethal()
+    {
         var health:HealthAdvantage = this.prepareHealthAdvantage(0, 6, 0);
 
         health.dealDamage(new Damage(0, 1, 0));
@@ -154,7 +169,8 @@ class HealthTestCase extends CofDSystemTestCase {
         assertEquals(1, health.getAggravated());
     }
 
-    public function testUpgradingLethalWithAggravated() {
+    public function testUpgradingLethalWithAggravated()
+    {
         var health:HealthAdvantage = this.prepareHealthAdvantage(0, 6, 0);
 
         health.dealDamage(new Damage(0, 0, 1));
@@ -163,12 +179,14 @@ class HealthTestCase extends CofDSystemTestCase {
         assertEquals(1, health.getAggravated());
     }
 
-    public function testDeath() {
+    public function testDeath()
+    {
         var health:HealthAdvantage = cast(c1.getTrait(HealthAdvantage.TYPE));
         assertEquals(health.getValue(), 6);
 
         var hasDied = false;
-        c1.getEventBus().addHandler(GameObjectDiedEvent, function(e:GameObjectDiedEvent) {
+        c1.getEventBus().addHandler(GameObjectDiedEvent, function(e:GameObjectDiedEvent)
+        {
             hasDied = true;
         });
 

@@ -2,7 +2,8 @@ package pw.tales.cofdsystem.dices;
 
 import haxe.ds.StringMap;
 
-class EnumExplode {
+class EnumExplode
+{
     private static final MAP = new StringMap();
 
     public static final NONE:EnumExplode = new EnumExplode("none");
@@ -14,22 +15,26 @@ class EnumExplode {
     private var name:String;
     private var explode:Int;
 
-    private function new(name:String, explode:Int = -1) {
+    private function new(name:String, explode:Int = -1)
+    {
         this.name = name;
         this.explode = explode;
 
         MAP.set(this.name, this);
     }
 
-    public static function findByName(name:String) {
+    public static function findByName(name:String)
+    {
         return MAP.get(name);
     }
 
-    public function getName():String {
+    public function getName():String
+    {
         return this.name;
     }
 
-    public function getExplode():Int {
+    public function getExplode():Int
+    {
         return this.explode;
     }
 }

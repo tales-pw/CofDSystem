@@ -1,4 +1,3 @@
 package pw.tales.cofdsystem.action.events;
 
-class ActionPerformedEvent extends ActionEvent {
-}
+class ActionPerformedEvent extends ActionEvent {}

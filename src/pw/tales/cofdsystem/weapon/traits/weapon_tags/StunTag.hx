@@ -9,15 +9,18 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
  *   @see <https://tales.pw/page/stun_(weapon_tag)>
 **/
 @RegisterTraitTypes
-class StunTag extends WeaponTag {
+class StunTag extends WeaponTag
+{
     public static final DN = "stun_(weapon_tag)";
     public static final TYPE:TraitType<StunTag> = cast TraitType.createType(DN, create);
 
-    public function new(gameObject:GameObject) {
+    public function new(gameObject:GameObject)
+    {
         super(DN, gameObject, TYPE);
     }
 
-    public static function create(dn:String, gameObject:GameObject, t:TraitType<StunTag>):StunTag {
+    public static function create(dn:String, gameObject:GameObject, t:TraitType<StunTag>):StunTag
+    {
         return new StunTag(gameObject);
     }
 }

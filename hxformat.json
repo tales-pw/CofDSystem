@@ -1,0 +1,11 @@
+{
+  "lineEnds": {
+    "blockCurly": {
+      "leftCurly": "both",
+      "emptyCurly": "noBreak"
+    }
+  },
+  "indentation": {
+    "character": "    "
+  }
+}

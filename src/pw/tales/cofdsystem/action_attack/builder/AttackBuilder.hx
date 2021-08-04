@@ -17,7 +17,8 @@ import pw.tales.cofdsystem.common.EnumHand;
 import pw.tales.cofdsystem.common.EnumSide;
 import pw.tales.cofdsystem.game_object.GameObject;
 
-class AttackBuilder {
+class AttackBuilder
+{
     private final system:CofDSystem;
 
     private var specifiedTarget:Null<EnumSpecifiedTarget> = null;
@@ -34,22 +35,27 @@ class AttackBuilder {
     private var targetResistType = EnumResistType.DEFAULT;
     private var targetModifier = 0;
 
-    public function new(actor:GameObject, target:GameObject) {
+    public function new(actor:GameObject, target:GameObject)
+    {
         this.system = actor.getSystem();
         this.actor = actor;
         this.target = target;
     }
 
-    public function getActor(): GameObject {
+    public function getActor():GameObject
+    {
         return this.actor;
     }
 
-    public function getTarget(): GameObject {
+    public function getTarget():GameObject
+    {
         return this.target;
     }
 
-    public function getGameObject(side: EnumSide): GameObject {
-        switch (side) {
+    public function getGameObject(side:EnumSide):GameObject
+    {
+        switch (side)
+        {
             case EnumSide.ACTOR:
                 return this.getActor();
             case EnumSide.TARGET:
@@ -60,20 +66,25 @@ class AttackBuilder {
         throw "wrong side";
     }
 
-    public function isRelated(gameObject:GameObject) {
+    public function isRelated(gameObject:GameObject)
+    {
         return this.actor == gameObject || this.target == gameObject;
     }
 
-    public function setAllOut(allOut:Bool) {
+    public function setAllOut(allOut:Bool)
+    {
         this.actorAllOut = allOut;
     }
 
-    public function setTarget(specifiedTarget:EnumSpecifiedTarget) {
+    public function setTarget(specifiedTarget:EnumSpecifiedTarget)
+    {
         this.specifiedTarget = specifiedTarget;
     }
 
-    public function setModifier(side:EnumSide, value:Int) {
-        switch (side) {
+    public function setModifier(side:EnumSide, value:Int)
+    {
+        switch (side)
+        {
             case EnumSide.ACTOR:
                 this.actorModifier = value;
             case EnumSide.TARGET:
@@ -82,15 +93,18 @@ class AttackBuilder {
         return this;
     }
 
-    public function spendWillpower(side:EnumSide, value:Bool = true):AttackBuilder {
+    public function spendWillpower(side:EnumSide, value:Bool = true):AttackBuilder
+    {
         var gameObject = this.getGameObject(side);
         var willpower = gameObject.getTrait(WillpowerAdvantage.TYPE);
 
-        if (willpower == null || !willpower.canUse()) {
+        if (willpower == null || !willpower.canUse())
+        {
             throw new NoWillpowerBuilderException(this);
         }
 
-        switch (side) {
+        switch (side)
+        {
             case EnumSide.ACTOR:
                 this.actorWillpower = value;
             case EnumSide.TARGET:
@@ -100,8 +114,10 @@ class AttackBuilder {
         return this;
     }
 
-    public function setHand(side:EnumSide, hand:EnumHand):AttackBuilder {
-        switch (side) {
+    public function setHand(side:EnumSide, hand:EnumHand):AttackBuilder
+    {
+        switch (side)
+        {
             case EnumSide.ACTOR:
                 this.actorHand = hand;
             case EnumSide.TARGET:
@@ -110,19 +126,22 @@ class AttackBuilder {
         return this;
     }
 
-    public function setResist(resistType:EnumResistType):AttackBuilder {
+    public function setResist(resistType:EnumResistType):AttackBuilder
+    {
         this.targetResistType = resistType;
         return this;
     }
 
-    public function createOpposition():OppositionCompetitive {
+    public function createOpposition():OppositionCompetitive
+    {
         var oppositionBuilder = new OppositionBuilder();
         oppositionBuilder.setActor(actor);
         oppositionBuilder.setTarget(target);
 
         oppositionBuilder.setTraits(EnumSide.ACTOR, [Attributes.STRENGTH.getDN(), Skills.BRAWL.getDN()]);
 
-        switch (targetResistType) {
+        switch (targetResistType)
+        {
             case EnumResistType.DEFAULT:
                 oppositionBuilder.setOppositionType(EnumOpposition.RESISTED);
                 oppositionBuilder.setTraits(EnumSide.TARGET, [DefenceAdvantage.DN]);
@@ -134,34 +153,41 @@ class AttackBuilder {
                 oppositionBuilder.setTraits(EnumSide.TARGET, [DefenceAdvantage.DN, DefenceAdvantage.DN]);
         }
 
-        if (this.actorModifier != 0) {
+        if (this.actorModifier != 0)
+        {
             oppositionBuilder.setModifier(EnumSide.ACTOR, this.actorModifier);
         }
 
-        if (this.targetModifier != 0) {
+        if (this.targetModifier != 0)
+        {
             oppositionBuilder.setModifier(EnumSide.TARGET, this.targetModifier);
         }
 
         return cast(oppositionBuilder.build());
     }
 
-    public function build():IAction {
+    public function build():IAction
+    {
         var opposition:OppositionCompetitive = this.createOpposition();
 
         var attackAction:AttackAction = new AttackAction(opposition, this.system);
         var action:IAction = attackAction;
 
-        if (specifiedTarget != null) action.addModification(
-            new SpecifiedTarget(specifiedTarget.getTarget())
-        );
+        if (specifiedTarget != null)
+            action.addModification(new SpecifiedTarget(specifiedTarget.getTarget()));
 
-        if (actorAllOut) action.addModification(new AllOutAttack(actor));
+        if (actorAllOut)
+            action.addModification(new AllOutAttack(actor));
 
-        if (actorWillpower) action.addModification(new Willpower(actor));
-        if (targetWillpower) action.addModification(new Willpower(target));
+        if (actorWillpower)
+            action.addModification(new Willpower(actor));
+        if (targetWillpower)
+            action.addModification(new Willpower(target));
 
-        if (actorHand == EnumHand.OFFHAND) action.addModification(new Offhand(actor));
-        if (targetHand == EnumHand.OFFHAND) action.addModification(new Offhand(actor));
+        if (actorHand == EnumHand.OFFHAND)
+            action.addModification(new Offhand(actor));
+        if (targetHand == EnumHand.OFFHAND)
+            action.addModification(new Offhand(actor));
 
         return action;
     }

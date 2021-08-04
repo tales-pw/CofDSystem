@@ -10,34 +10,43 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.utils.events.IEvent;
 import pw.tales.cofdsystem.utils.events.SubEventBus;
 
-class EquipmentTrait extends Trait {
+class EquipmentTrait extends Trait
+{
     private final holderEventBus:SubEventBus;
 
-    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>) {
+    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
+    {
         super(dn, gameObject, type);
         this.holderEventBus = new SubEventBus(this.system.events, this.filterHolderEvent);
     }
 
-    private function getHolder():Null<GameObject> {
+    private function getHolder():Null<GameObject>
+    {
         var equippable = this.gameObject.getTrait(Equippable.TYPE);
-        if (equippable == null) return null;
+        if (equippable == null)
+            return null;
         return equippable.getHolder();
     }
 
-    private function getHand():Null<EnumHand> {
+    private function getHand():Null<EnumHand>
+    {
         var holdingHang = this.gameObject.getTrait(HoldingHand.TYPE);
-        if (holdingHang == null) return null;
+        if (holdingHang == null)
+            return null;
         return holdingHang.getHand();
     }
 
-    private function filterHolderEvent(event:IEvent):Bool {
+    private function filterHolderEvent(event:IEvent):Bool
+    {
         var holder = this.getHolder();
-        if (holder == null) return false;
+        if (holder == null)
+            return false;
         var e:IGameObjectEvent = Std.downcast(event, IGameObjectEvent);
         return e != null && e.isRelated(holder);
     }
 
-    override public function onRemoved() {
+    override public function onRemoved()
+    {
         this.holderEventBus.disable();
         super.onRemoved();
     }

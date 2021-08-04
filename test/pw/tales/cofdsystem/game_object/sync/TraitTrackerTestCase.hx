@@ -5,8 +5,10 @@ import pw.tales.cofdsystem.character.traits.attribute.Attributes;
 import pw.tales.cofdsystem.mocks.CharacterMock;
 
 @:nullSafety(Off)
-class TraitTrackerTestCase extends haxe.unit.TestCase {
-    public function testAddTrait() {
+class TraitTrackerTestCase extends haxe.unit.TestCase
+{
+    public function testAddTrait()
+    {
         var system = new CofDSystem();
         var c1 = new CharacterMock(system);
 
@@ -18,7 +20,8 @@ class TraitTrackerTestCase extends haxe.unit.TestCase {
         assertEquals(Std.string([]), Std.string(tracker.getRemove()));
     }
 
-    public function testUpdateTrait() {
+    public function testUpdateTrait()
+    {
         var system = new CofDSystem();
         var c1 = new CharacterMock(system);
 
@@ -37,7 +40,8 @@ class TraitTrackerTestCase extends haxe.unit.TestCase {
         assertEquals(Std.string([]), Std.string(tracker.getRemove()));
     }
 
-    public function testRemoveNewTrait() {
+    public function testRemoveNewTrait()
+    {
         var system = new CofDSystem();
         var c1 = new CharacterMock(system);
 
@@ -51,7 +55,8 @@ class TraitTrackerTestCase extends haxe.unit.TestCase {
         assertEquals(Std.string([]), Std.string(tracker.getRemove()));
     }
 
-    public function testRemoveOldTrait() {
+    public function testRemoveOldTrait()
+    {
         var system = new CofDSystem();
         var c1 = new CharacterMock(system);
 

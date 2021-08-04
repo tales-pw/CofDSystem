@@ -19,7 +19,8 @@ import pw.tales.cofdsystem.utils.Utility;
 /**
     This class is responsible for managing GameObject's traits.
 **/
-class TraitManager {
+class TraitManager
+{
     /** Bound system object. Field is mostly used for quicker access to value stored in GameObject. **/
     private final system:CofDSystem;
 
@@ -29,7 +30,8 @@ class TraitManager {
     /** Registry that stores all GameObject's traits. **/
     private final traits:Registry<Trait> = new Registry<Trait>();
 
-    public function new(gameObject:GameObject) {
+    public function new(gameObject:GameObject)
+    {
         this.gameObject = gameObject;
         this.system = gameObject.getSystem();
     }
@@ -45,18 +47,23 @@ class TraitManager {
         @param    dn    dn for newly create trait. If is not passed, dn will be generated.
         @returns        Created Trait.
     **/
-    public function addTrait<T:Trait>(type:TraitType<T>, dn:String = null):T {
-        if (!type.isMultiInstanced()) {
+    public function addTrait<T:Trait>(type:TraitType<T>, dn:String = null):T
+    {
+        if (!type.isMultiInstanced())
+        {
             var trait = this.getTrait(type);
-            if (trait != null) throw new MITraitAddException(this.gameObject, type);
+            if (trait != null)
+                throw new MITraitAddException(this.gameObject, type);
         }
 
         if (!type.canAdd(gameObject))
             throw new CreationRejectedException(this.gameObject, type);
 
         var trait:T;
-        if (dn == null) trait = type.create(this.gameObject);
-        else trait = type.createWithDN(dn, this.gameObject);
+        if (dn == null)
+            trait = type.create(this.gameObject);
+        else
+            trait = type.createWithDN(dn, this.gameObject);
 
         this.system.events.post(new TraitPreAttachEvent(trait));
         this.traits.register(trait);
@@ -66,7 +73,8 @@ class TraitManager {
         return trait;
     }
 
-    public function removeTrait<T:Trait>(trait:T) {
+    public function removeTrait<T:Trait>(trait:T)
+    {
         var event = new TraitRemoveEvent(trait);
         this.system.events.post(event);
 
@@ -92,15 +100,20 @@ class TraitManager {
                                           different.
     **/
     @:nullSafety(Off)
-    public function getTrait<T:Trait>(type:TraitType<T>, dn:String = null):T {
-        if (dn == null) {
-            if (type.isMultiInstanced()) throw new MITraitFetchException(this.gameObject, type);
+    public function getTrait<T:Trait>(type:TraitType<T>, dn:String = null):T
+    {
+        if (dn == null)
+        {
+            if (type.isMultiInstanced())
+                throw new MITraitFetchException(this.gameObject, type);
             dn = type.getDN();
         }
 
         var record = traits.getRecord(dn);
-        if (record == null) return null;
-        if (record.getType() != type) throw new WrongTypeException(this.gameObject, record, type);
+        if (record == null)
+            return null;
+        if (record.getType() != type)
+            throw new WrongTypeException(this.gameObject, record, type);
 
         return cast(record);
     }
@@ -112,9 +125,11 @@ class TraitManager {
         @returns        Wanted Trait or null if it's not found.
     **/
     @:nullSafety(Off)
-    public function getTraitByDn(dn:String):Trait {
+    public function getTraitByDn(dn:String):Trait
+    {
         var record:IRecord = traits.getRecord(dn);
-        if (record == null) return null;
+        if (record == null)
+            return null;
         return cast(record);
     }
 
@@ -124,9 +139,11 @@ class TraitManager {
         @param    dn  Trait's DN.
         @returns      Trait's value or 0 if it's not found.
     **/
-    public function getValue(dn:String):Int {
+    public function getValue(dn:String):Int
+    {
         var record = traits.getRecord(dn);
-        if (record == null) return 0;
+        if (record == null)
+            return 0;
         return record.getValue();
     }
 
@@ -137,17 +154,21 @@ class TraitManager {
 
         @returns Registry.
     **/
-    public function getTraits():Registry<Trait> {
+    public function getTraits():Registry<Trait>
+    {
         return this.traits;
     }
 
-    public function deactivate() {
-        for (trait in traits.items()) {
+    public function deactivate()
+    {
+        for (trait in traits.items())
+        {
             trait.onRemoved();
         }
     }
 
-    public function toString() {
+    public function toString()
+    {
         var className = Utility.getClassName(Type.getClass(this));
         return '${className}[owner=${this.gameObject.getDN()}]';
     }
