@@ -1,0 +1,9 @@
+{
+    "haxe.configurations": [
+        ["-cp", "src", "-cp", "test"],
+        ["build.hxml"],
+    ],
+    "haxe.displayServer": {
+        "arguments": ["-v"],
+    }
+}
