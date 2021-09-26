@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem;
 
+import pw.tales.cofdsystem.character.WornArmorTestCase;
 import pw.tales.cofdsystem.character.tilts.LegWrackTiltTestCase;
 import pw.tales.cofdsystem.character.tilts.BlindedTiltTestCase;
 import pw.tales.cofdsystem.character.tilts.ArmWrackTiltTestCase;
@@ -77,6 +78,7 @@ class MainTest
         // Equipment
         r.add(new ArmorTestCase());
         r.add(new WeaponTestCase());
+        r.add(new WornArmorTestCase());
 
         // Advantages
         r.add(new HealthTestCase());
