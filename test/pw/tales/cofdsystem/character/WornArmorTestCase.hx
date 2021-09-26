@@ -37,7 +37,10 @@ class WornArmorTestCase extends CofDSystemTestCase {
         // Don armor and then don another one
         trait.setArmor(armor1);
         trait.setArmor(armor2);
-        this.assertEquals(trait.getArmor(), armor2);
+
         this.assertEquals(armor1.getEquipper(), null);
+
+        this.assertEquals(trait.getArmor(), armor2);
+        this.assertEquals(armor2.getEquipper(), this.c1);
     }
 }
