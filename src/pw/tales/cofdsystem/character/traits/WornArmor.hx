@@ -24,11 +24,10 @@ class WornArmor extends Trait
         if (this.armor != null)
             this.armor.unsetHolder();
 
-        if (armor != null)
-        {
-            armor.setHolder(this.gameObject);
-            this.armor = armor;
-        }
+        this.armor = armor;
+
+        if (this.armor != null)
+            this.armor.setHolder(this.gameObject);
     }
 
     public function getArmor():Null<Armor>
