@@ -4,17 +4,20 @@ import pw.tales.cofdsystem.armor.prefabs.ArmorPrefab;
 import pw.tales.cofdsystem.character.traits.WornArmor;
 import thx.Uuid;
 
-class WornArmorTestCase extends CofDSystemTestCase {
+class WornArmorTestCase extends CofDSystemTestCase
+{
     public final ARMOR = new ArmorPrefab(Uuid.create(), "", 0, 0, 0, 0, 0);
 
-    public function testCreate() {
+    public function testCreate()
+    {
         var trait = WornArmor.create("dn", this.c1, WornArmor.TYPE);
 
         this.assertEquals(trait.getDN(), WornArmor.TYPE.getDN());
         this.assertEquals(trait.getArmor(), null);
     }
 
-    public function testSetArmor() {
+    public function testSetArmor()
+    {
         var trait = this.c1.getTrait(WornArmor.TYPE);
         var armor = ARMOR.createArmor(this.system);
 
@@ -22,14 +25,15 @@ class WornArmorTestCase extends CofDSystemTestCase {
         trait.setArmor(armor);
         this.assertEquals(trait.getArmor(), armor);
         this.assertEquals(armor.getEquipper(), this.c1);
-        
+
         // Doff armor
         trait.setArmor(null);
         this.assertEquals(trait.getArmor(), null);
         this.assertEquals(armor.getEquipper(), null);
     }
 
-    public function testReplaceArmor() {
+    public function testReplaceArmor()
+    {
         var trait = this.c1.getTrait(WornArmor.TYPE);
         var armor1 = ARMOR.createArmor(this.system);
         var armor2 = ARMOR.createArmor(this.system);
