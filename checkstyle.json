@@ -250,9 +250,9 @@
     {
       "type": "Return",
       "props": {
-        "allowEmptyReturn": true,
-        "enforceReturnType": false,
-        "enforceReturnTypeForAnonymous": false
+        "allowEmptyReturn": false,
+        "enforceReturnType": true,
+        "enforceReturnTypeForAnonymous": true
       }
     },
     {
