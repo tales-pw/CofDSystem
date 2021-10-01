@@ -61,4 +61,8 @@ class Accessor
     {
         return this.gameObject;
     }
+
+    public function equals(other: Accessor):Bool {
+        return this == other || this.gameObject == other.gameObject;
+    }
 }
