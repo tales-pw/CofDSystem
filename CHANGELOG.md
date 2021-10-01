@@ -13,6 +13,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Added methods to remove GameObject from Scenes, Initiative and Turns.
 - Added isRelated method for ActionBuilder.
 - Tilts removed in the end of the Scene.
+- Added equals method for Accessor.
 
 ### Changed
 

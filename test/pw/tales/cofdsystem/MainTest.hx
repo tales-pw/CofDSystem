@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem;
 
+import pw.tales.cofdsystem.game_object.prefabs.AccessorTestCase;
 import pw.tales.cofdsystem.character.WornArmorTestCase;
 import pw.tales.cofdsystem.character.tilts.LegWrackTiltTestCase;
 import pw.tales.cofdsystem.character.tilts.BlindedTiltTestCase;
@@ -40,6 +41,7 @@ class MainTest
         r.add(new GameObjectTestCase());
         r.add(new ManagerTestCase());
         r.add(new GameObjectSynchronizationTestCase());
+        r.add(new AccessorTestCase());
 
         // Advatnages
         r.add(new WillpowerAdvantageTestCase());

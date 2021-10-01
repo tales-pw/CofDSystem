@@ -30,9 +30,9 @@ class Utility
     }
 
     @:nullSafety(Off)
-    public static function downcast<S>(value:Dynamic, c:Class<S>):Null<S>
+    public static function downcast<S>(value:Null<Dynamic>, c:Class<S>):Null<S>
     {
-        return cast(Std.downcast(value, cast(c)));
+        return cast Std.downcast(value, cast(c));
     }
 
     public static function getClassName(clazz:Class<Dynamic>):String
