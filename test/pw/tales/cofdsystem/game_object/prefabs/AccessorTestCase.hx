@@ -21,7 +21,6 @@ class AccessorTestCase extends CofDSystemTestCase
         assertTrue(accessor1.equals(accessor2));
     }
 
-    @:nullSafety(Off)
     public function testEqualsNotEqual()
     {
         var accessor1 = new TestAccessor(this.c1);

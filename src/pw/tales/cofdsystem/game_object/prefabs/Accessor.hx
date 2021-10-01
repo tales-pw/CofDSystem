@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.game_object.prefabs;
 
+import pw.tales.cofdsystem.utils.Utility;
 import pw.tales.cofdsystem.game_object.prefabs.exceptions.NoTraitAccessorException;
 import pw.tales.cofdsystem.game_object.trait_manager.TraitManager;
 import pw.tales.cofdsystem.game_object.traits.text.TextTrait;
@@ -62,8 +63,7 @@ class Accessor
         return this.gameObject;
     }
 
-    @:nullSafety(Off)
-    public function equals(other:Any):Bool
+    public function equals(other:Null<Dynamic>):Bool
     {
         if (this == other)
         {
@@ -72,7 +72,7 @@ class Accessor
 
         var thisClass = Type.getClass(this);
 
-        var otherTyped:Null<Accessor> = Std.downcast(other, thisClass);
+        var otherTyped:Null<Accessor> = Utility.downcast(other, thisClass);
 
         if (otherTyped == null)
         {
