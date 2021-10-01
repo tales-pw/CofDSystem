@@ -70,15 +70,14 @@ class Accessor
             return true;
         }
 
-        var thisClass = Type.getClass(this);
+        var clazz = Type.getClass(this);
+        var otherAccessor:Null<Accessor> = Utility.downcast(other, clazz);
 
-        var otherTyped:Null<Accessor> = Utility.downcast(other, thisClass);
-
-        if (otherTyped == null)
+        if (otherAccessor == null)
         {
             return false;
         }
 
-        return this.getGameObject() == otherTyped.getGameObject();
+        return this.getGameObject() == otherAccessor.getGameObject();
     }
 }
