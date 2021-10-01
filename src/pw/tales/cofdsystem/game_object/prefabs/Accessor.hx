@@ -62,8 +62,23 @@ class Accessor
         return this.gameObject;
     }
 
-    public function equals(other:Accessor):Bool
+    @:nullSafety(Off)
+    public function equals(other:Any):Bool
     {
-        return this == other || this.gameObject == other.gameObject;
+        if (this == other)
+        {
+            return true;
+        }
+
+        var thisClass = Type.getClass(this);
+
+        var otherTyped:Null<Accessor> = Std.downcast(other, thisClass);
+
+        if (otherTyped == null)
+        {
+            return false;
+        }
+
+        return this.getGameObject() == otherTyped.getGameObject();
     }
 }
