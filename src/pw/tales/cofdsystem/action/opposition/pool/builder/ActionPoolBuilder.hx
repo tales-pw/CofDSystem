@@ -23,6 +23,12 @@ class ActionPoolBuilder
         return this;
     }
 
+    public function setExplode(explode:EnumExplode):ActionPoolBuilder
+    {
+        this.explode = explode;
+        return this;
+    }
+
     public function setTraits(traits:Array<String>):ActionPoolBuilder
     {
         this.traits = traits;

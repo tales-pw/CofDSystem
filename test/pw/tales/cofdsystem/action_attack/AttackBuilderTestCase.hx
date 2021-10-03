@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.action_attack;
 
+import pw.tales.cofdsystem.dices.EnumExplode;
 import pw.tales.cofdsystem.action_attack.builder.AttackBuilder;
 import pw.tales.cofdsystem.character.traits.advantages.health.HealthAdvantage;
 import pw.tales.cofdsystem.character.traits.advantages.willpower.WillpowerAdvantage;
@@ -97,5 +98,33 @@ class AttackBuilderTestCase extends CofDSystemTestCase
         assertTrue(build.isRelated(c1));
         assertTrue(build.isRelated(c2));
         assertFalse(build.isRelated(c3));
+    }
+
+    private function methodTestExplode(actorExplode:EnumExplode, targetExplode:EnumExplode):Void
+    {
+        var action:AttackAction = new AttackBuilder(c1, c2).setExplode(EnumSide.ACTOR, actorExplode).setExplode(EnumSide.TARGET, targetExplode).build();
+
+        system.act(action);
+
+        var result = action.getOpposition().getActorPool().getRequest().getExplode();
+        assertEquals(result, actorExplode);
+
+        var result = action.getOpposition().getTargetPool().getRequest().getExplode();
+        assertEquals(result, targetExplode);
+    }
+
+    public function testExplodeActor()
+    {
+        this.methodTestExplode(EnumExplode.DEFAULT, EnumExplode.ROTE_ACTION);
+    }
+
+    public function testExplodeTarget()
+    {
+        this.methodTestExplode(EnumExplode.ROTE_ACTION, EnumExplode.DEFAULT);
+    }
+
+    public function testExplodeBoth()
+    {
+        this.methodTestExplode(EnumExplode.ROTE_ACTION, EnumExplode.ROTE_ACTION);
     }
 }

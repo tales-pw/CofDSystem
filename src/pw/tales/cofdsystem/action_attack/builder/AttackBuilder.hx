@@ -1,10 +1,10 @@
 package pw.tales.cofdsystem.action_attack.builder;
 
+import pw.tales.cofdsystem.dices.EnumExplode;
 import pw.tales.cofdsystem.action.opposition.builder.CompetitionBuilder;
 import pw.tales.cofdsystem.action.opposition.builder.EnumCompetition;
 import pw.tales.cofdsystem.action_attack.builder.exceptions.NoWillpowerBuilderException;
 import pw.tales.cofdsystem.character.traits.advantages.willpower.WillpowerAdvantage;
-import pw.tales.cofdsystem.action.IAction;
 import pw.tales.cofdsystem.action.modifications.Offhand;
 import pw.tales.cofdsystem.action.modifications.Willpower;
 import pw.tales.cofdsystem.action.opposition.base.OppositionCompetitive;
@@ -82,6 +82,12 @@ class AttackBuilder
         return this;
     }
 
+    public function setExplode(side:EnumSide, explode:EnumExplode):AttackBuilder
+    {
+        this.competitionBuilder.setExplode(side, explode);
+        return this;
+    }
+
     public function setTarget(specifiedTarget:EnumSpecifiedTarget):AttackBuilder
     {
         this.specifiedTarget = specifiedTarget;
@@ -136,11 +142,10 @@ class AttackBuilder
         return this;
     }
 
-    public function build():IAction
+    public function build():AttackAction
     {
         var opposition:OppositionCompetitive = this.competitionBuilder.build();
-        var attackAction:AttackAction = new AttackAction(opposition, this.system);
-        var action:IAction = attackAction;
+        var action:AttackAction = new AttackAction(opposition, this.system);
 
         // Add modification for specified attack
         if (specifiedTarget != null)

@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.action.opposition.builder;
 
+import pw.tales.cofdsystem.dices.EnumExplode;
 import pw.tales.cofdsystem.action.opposition.base.OppositionCompetitive;
 import pw.tales.cofdsystem.action.opposition.pool.builder.ActionPoolBuilder;
 import pw.tales.cofdsystem.action.opposition.base.Opposition;
@@ -31,6 +32,13 @@ class CompetitionBuilder
             return this.targetPoolBuilder;
 
         throw "Unknown side.";
+    }
+
+    public function setExplode(side:EnumSide, explode:EnumExplode):CompetitionBuilder
+    {
+        var poolBuilder = this.getPoolBuilder(side);
+        poolBuilder.setExplode(explode);
+        return this;
     }
 
     public function setModifier(side:EnumSide, modifier:Int):CompetitionBuilder
