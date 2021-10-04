@@ -42,7 +42,7 @@ class Action implements IAction
         return this.eventBus;
     }
 
-    public function addModification(modification:IModification)
+    public function addModification(modification:IModification):Void
     {
         this.modifications.push(modification);
         modification.init(this);
@@ -63,16 +63,16 @@ class Action implements IAction
         return this.time;
     }
 
-    private function beforeAction() {}
+    private function beforeAction():Void {}
 
-    private function perform() {}
+    private function perform():Void {}
 
-    private function roll()
+    private function roll():Void
     {
         this.opposition.roll(this);
     }
 
-    private function afterAction()
+    private function afterAction():Void
     {
         this.eventBus.post(new ActionPerformedEvent(this));
         this.eventBus.disable();

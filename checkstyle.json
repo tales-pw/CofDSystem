@@ -252,7 +252,7 @@
       "props": {
         "allowEmptyReturn": false,
         "enforceReturnType": true,
-        "enforceReturnTypeForAnonymous": true
+        "enforceReturnTypeForAnonymous": false
       }
     },
     {
