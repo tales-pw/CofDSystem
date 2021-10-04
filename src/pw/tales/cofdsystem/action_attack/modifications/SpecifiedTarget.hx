@@ -19,7 +19,7 @@ class SpecifiedTarget implements IModification
         this.target = target;
     }
 
-    public function init(action:IAction)
+    public function init(action:IAction):Void
     {
         var eventBus = action.getEventBus();
         eventBus.addHandler(ActionBuildPoolEvent, this.applyPenalty, HandlerPriority.NORMAL);
@@ -33,7 +33,7 @@ class SpecifiedTarget implements IModification
         roll.getRequest().addModifier(this.target.getAttackModifer(), DN);
     }
 
-    public function applyEffect(event:AttackDamageEvent)
+    public function applyEffect(event:AttackDamageEvent):Void
     {
         this.target.apply(event.getAction());
     }

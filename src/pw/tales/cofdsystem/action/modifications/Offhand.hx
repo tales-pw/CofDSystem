@@ -18,14 +18,14 @@ class Offhand implements IModification
         this.gameObject = gameObject;
     }
 
-    public function init(action:IAction)
+    public function init(action:IAction):Void
     {
         var eventBus = action.getEventBus();
         eventBus.addHandler(ActionBuildPoolEvent, this.applyRollModifier, HandlerPriority.NORMAL);
         eventBus.addHandler(ActionGetHandEvent, this.onHandEvent, HandlerPriority.NORMAL);
     }
 
-    private function onHandEvent(event:ActionGetHandEvent)
+    private function onHandEvent(event:ActionGetHandEvent):Void
     {
         if (event.getGameObject() == this.gameObject)
         {
@@ -33,7 +33,7 @@ class Offhand implements IModification
         }
     }
 
-    private function applyRollModifier(event:ActionBuildPoolEvent)
+    private function applyRollModifier(event:ActionBuildPoolEvent):Void
     {
         if (!event.isPoolOwner(this.gameObject))
             return;

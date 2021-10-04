@@ -18,7 +18,7 @@ class AllOutAttack implements IModification
         this.gameObject = gameObject;
     }
 
-    public function init(action:IAction)
+    public function init(action:IAction):Void
     {
         var eventBus = action.getEventBus();
         eventBus.addHandler(ActionBuildPoolEvent, this.applyRollBonus, HandlerPriority.NORMAL);
