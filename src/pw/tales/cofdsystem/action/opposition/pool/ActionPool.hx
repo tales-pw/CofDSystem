@@ -29,7 +29,7 @@ class ActionPool
         return this.request.getTraits();
     }
 
-    public function hasTrait(dn:String)
+    public function hasTrait(dn:String):Bool
     {
         return this.getTraits().indexOf(dn) != -1;
     }
