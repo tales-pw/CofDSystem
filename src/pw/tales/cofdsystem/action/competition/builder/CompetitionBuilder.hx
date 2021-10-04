@@ -1,13 +1,10 @@
-package pw.tales.cofdsystem.action.opposition.builder;
+package pw.tales.cofdsystem.action.competition.builder;
 
 import pw.tales.cofdsystem.dices.EnumExplode;
-import pw.tales.cofdsystem.action.opposition.base.OppositionCompetitive;
-import pw.tales.cofdsystem.action.opposition.pool.builder.ActionPoolBuilder;
-import pw.tales.cofdsystem.action.opposition.base.Opposition;
-import pw.tales.cofdsystem.action.opposition.Contested;
-import pw.tales.cofdsystem.action.opposition.Resisted;
-import pw.tales.cofdsystem.action.opposition.Simple;
+import pw.tales.cofdsystem.action.competition.Contested;
+import pw.tales.cofdsystem.action.competition.Resisted;
 import pw.tales.cofdsystem.common.EnumSide;
+import pw.tales.cofdsystem.action.pool.builder.ActionPoolBuilder;
 import pw.tales.cofdsystem.game_object.GameObject;
 
 class CompetitionBuilder
@@ -61,16 +58,9 @@ class CompetitionBuilder
         return this;
     }
 
-    private function createSimple():Simple
+    public function build():Competition
     {
-        var actorRoll = this.actorPoolBuilder.build();
-        var opposition:Simple = new Simple(actorRoll, 0);
-        return opposition;
-    }
-
-    public function build():OppositionCompetitive
-    {
-        var obj:OppositionCompetitive;
+        var obj:Competition;
 
         var actorRoll = this.actorPoolBuilder.build();
         var targetRoll = this.targetPoolBuilder.build();

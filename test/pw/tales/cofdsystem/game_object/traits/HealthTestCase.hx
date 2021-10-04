@@ -1,9 +1,8 @@
 package pw.tales.cofdsystem.game_object.traits;
 
 import pw.tales.cofdsystem.action.EnumTime;
-import pw.tales.cofdsystem.action.opposition.pool.ActionPool;
-import pw.tales.cofdsystem.action.opposition.Resisted;
-import pw.tales.cofdsystem.action.opposition.Simple;
+import pw.tales.cofdsystem.action.pool.ActionPool;
+import pw.tales.cofdsystem.action.competition.Resisted;
 import pw.tales.cofdsystem.character.traits.advantages.health.events.GameObjectDiedEvent;
 import pw.tales.cofdsystem.character.traits.advantages.health.HealthAdvantage;
 import pw.tales.cofdsystem.character.traits.attribute.Attributes;
@@ -37,9 +36,7 @@ class HealthTestCase extends CofDSystemTestCase
         HealthTraitHelper.get(c1).dealDamage(new Damage(maxHealth - diff, 0, 0));
 
         var actorRoll = new ActionPool(c1, []);
-        var opposition = new Simple(actorRoll, 0);
-
-        var action = new BasicAction(opposition, EnumTime.INSTANT, this.system);
+        var action = new BasicAction(actorRoll, EnumTime.INSTANT, this.system);
         action.execute();
 
         var roll = opposition.getPool(c1);

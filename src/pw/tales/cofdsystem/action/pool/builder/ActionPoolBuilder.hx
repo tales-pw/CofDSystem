@@ -1,4 +1,4 @@
-package pw.tales.cofdsystem.action.opposition.pool.builder;
+package pw.tales.cofdsystem.action.pool.builder;
 
 import pw.tales.cofdsystem.dices.EnumExplode;
 import pw.tales.cofdsystem.game_object.GameObject;

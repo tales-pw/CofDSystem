@@ -2,7 +2,7 @@ package pw.tales.cofdsystem.weapon.traits;
 
 import pw.tales.cofdsystem.action.events.ActionGetHandEvent;
 import pw.tales.cofdsystem.action.IAction;
-import pw.tales.cofdsystem.action.opposition.pool.ActionPool;
+import pw.tales.cofdsystem.action.pool.ActionPool;
 import pw.tales.cofdsystem.common.EnumHand;
 import pw.tales.cofdsystem.equipment.traits.EquipmentTrait;
 

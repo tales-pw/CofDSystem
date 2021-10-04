@@ -1,6 +1,6 @@
 package pw.tales.cofdsystem.action.events.roll;
 
-import pw.tales.cofdsystem.action.opposition.pool.ActionPool;
+import pw.tales.cofdsystem.action.pool.ActionPool;
 
 class ActionRollEvent extends ActionEvent
 {

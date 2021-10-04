@@ -1,8 +1,9 @@
 package pw.tales.cofdsystem.action_attack;
 
+import pw.tales.cofdsystem.action.competition.Competition;
+import pw.tales.cofdsystem.action.RollAction;
 import pw.tales.cofdsystem.action.Action;
 import pw.tales.cofdsystem.action.EnumTime;
-import pw.tales.cofdsystem.action.opposition.base.OppositionCompetitive;
 import pw.tales.cofdsystem.action_attack.events.AttackDamageDealtEvent;
 import pw.tales.cofdsystem.action_attack.events.AttackDamageGetEvent;
 import pw.tales.cofdsystem.action_attack.events.AttackDamageGetTypeEvent;
@@ -14,25 +15,16 @@ import pw.tales.cofdsystem.damage.Damage;
 import pw.tales.cofdsystem.damage.DamageType;
 import pw.tales.cofdsystem.game_object.health_helper.HealthTraitHelper;
 
-class AttackAction extends Action
+class AttackAction extends RollAction
 {
-    private final competitiveOpposition:OppositionCompetitive;
+    private final competition:Competition;
+
     private var damage:Null<Damage> = null;
 
-    public function new(opposition:OppositionCompetitive, system:CofDSystem)
+    public function new(competition:Competition, system:CofDSystem)
     {
-        super(opposition, EnumTime.INSTANT, system);
-        this.competitiveOpposition = opposition;
-    }
-
-    public function getCompetitiveOpposition():OppositionCompetitive
-    {
-        return this.competitiveOpposition;
-    }
-
-    override public function getOpposition():OppositionCompetitive
-    {
-        return this.competitiveOpposition;
+        super(competition, EnumTime.INSTANT, system);
+        this.competition = competition;
     }
 
     public function getDamage():Damage
@@ -42,7 +34,7 @@ class AttackAction extends Action
         return this.damage;
     }
 
-    private function createDamageType(value:Int, damageType:DamageType)
+    private function createDamageType(value:Int, damageType:DamageType):Damage
     {
         if (damageType == DamageType.AGGRAVATED)
             return new Damage(0, 0, value);
@@ -53,13 +45,13 @@ class AttackAction extends Action
         return new Damage(value, 0, 0);
     }
 
-    private override function beforeAction()
+    private override function beforeAction():Void
     {
         super.beforeAction();
         system.events.post(new AttackInitiatedEvent(this));
     }
 
-    private override function perform()
+    private override function perform():Void
     {
         var opposition = this.getOpposition();
         var actor = opposition.getActorPool().getGameObject();

@@ -1,7 +1,7 @@
 package pw.tales.cofdsystem.action.events.pool;
 
-import pw.tales.cofdsystem.action.opposition.pool.ActionPool;
 import pw.tales.cofdsystem.game_object.GameObject;
+import pw.tales.cofdsystem.action.pool.ActionPool;
 
 class ActionPoolEvent extends ActionEvent
 {

@@ -1,13 +1,13 @@
 package pw.tales.cofdsystem.action_attack.builder;
 
+import pw.tales.cofdsystem.action.competition.Competition;
 import pw.tales.cofdsystem.dices.EnumExplode;
-import pw.tales.cofdsystem.action.opposition.builder.CompetitionBuilder;
-import pw.tales.cofdsystem.action.opposition.builder.EnumCompetition;
+import pw.tales.cofdsystem.action.competition.builder.CompetitionBuilder;
+import pw.tales.cofdsystem.action.competition.builder.EnumCompetition;
 import pw.tales.cofdsystem.action_attack.builder.exceptions.NoWillpowerBuilderException;
 import pw.tales.cofdsystem.character.traits.advantages.willpower.WillpowerAdvantage;
 import pw.tales.cofdsystem.action.modifications.Offhand;
 import pw.tales.cofdsystem.action.modifications.Willpower;
-import pw.tales.cofdsystem.action.opposition.base.OppositionCompetitive;
 import pw.tales.cofdsystem.action_attack.modifications.AllOutAttack;
 import pw.tales.cofdsystem.action_attack.modifications.SpecifiedTarget;
 import pw.tales.cofdsystem.character.traits.advantages.DefenceAdvantage;
@@ -144,8 +144,8 @@ class AttackBuilder
 
     public function build():AttackAction
     {
-        var opposition:OppositionCompetitive = this.competitionBuilder.build();
-        var action:AttackAction = new AttackAction(opposition, this.system);
+        var competition:Competition = this.competitionBuilder.build();
+        var action:AttackAction = new AttackAction(competition, this.system);
 
         // Add modification for specified attack
         if (specifiedTarget != null)
