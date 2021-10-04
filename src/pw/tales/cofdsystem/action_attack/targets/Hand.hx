@@ -25,7 +25,7 @@ class Hand implements ITarget
 
         if (totalDamage > 0)
         {
-            var gameObject = action.getOpposition().getTargetPool().getGameObject();
+            var gameObject = action.getCompetition().getTarget();
             gameObject.getTraitManager().addTrait(ArmWrackTilt.TYPE);
         }
     }

@@ -106,10 +106,10 @@ class AttackBuilderTestCase extends CofDSystemTestCase
 
         system.act(action);
 
-        var result = action.getOpposition().getActorPool().getRequest().getExplode();
+        var result = action.getCompetition().getActorPool().getRequest().getExplode();
         assertEquals(result, actorExplode);
 
-        var result = action.getOpposition().getTargetPool().getRequest().getExplode();
+        var result = action.getCompetition().getTargetPool().getRequest().getExplode();
         assertEquals(result, targetExplode);
     }
 

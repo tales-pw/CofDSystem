@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.weapon_ranged.traits;
 
+import pw.tales.cofdsystem.utils.Utility;
 import pw.tales.cofdsystem.weapon_ranged.events.RangedWeaponDefenceEvent;
 import pw.tales.cofdsystem.action.events.pool.ActionBuildPoolEvent;
 import pw.tales.cofdsystem.action.events.pool.ActionPoolEvent;
@@ -30,23 +31,24 @@ class RangedWeapon extends WeaponTrait
         return event.getCanApply();
     }
 
-    public function changeTraits(event:ActionPoolEvent)
+    public function changeTraits(event:ActionPoolEvent):Void
     {
-        var action = event.getAction();
-        var attackAction:Null<AttackAction> = Std.downcast(action, AttackAction);
+        var action = Utility.downcast(event.getAction(), AttackAction);
 
-        if (attackAction == null)
+        if (action == null)
             return;
+
         if (!this.doesHolderAct(action))
             return;
+
         if (!this.isActionWithWeapon(action))
             return;
 
-        var opposition = attackAction.getCompetitiveOpposition();
+        var competition = action.getCompetition();
 
-        opposition.getActorPool().getRequest().setTraits([Attributes.DEXTERITY.getDN(), Skills.SHOOTING.getDN()]);
+        competition.getActorPool().getRequest().setTraits([Attributes.DEXTERITY.getDN(), Skills.SHOOTING.getDN()]);
 
-        var targetPool = opposition.getTargetPool();
+        var targetPool = competition.getTargetPool();
         if (!canApplyDefence(targetPool.getGameObject()))
         {
             targetPool.getRequest().setTraits([]);

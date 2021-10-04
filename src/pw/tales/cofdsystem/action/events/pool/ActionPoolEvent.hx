@@ -3,11 +3,11 @@ package pw.tales.cofdsystem.action.events.pool;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.action.pool.ActionPool;
 
-class ActionPoolEvent extends ActionEvent
+class ActionPoolEvent extends RollActionEvent
 {
     private var pool:ActionPool;
 
-    public function new(action:IAction, pool:ActionPool)
+    public function new(action:RollAction, pool:ActionPool)
     {
         super(action);
         this.pool = pool;
@@ -25,6 +25,6 @@ class ActionPoolEvent extends ActionEvent
 
     public function isActorPool():Bool
     {
-        return this.pool == this.getAction().getOpposition().getActorPool();
+        return this.pool == this.rollAction.getActionRoll().getActorPool();
     }
 }

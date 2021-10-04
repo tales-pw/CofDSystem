@@ -2,7 +2,6 @@ package pw.tales.cofdsystem.action.competition;
 
 import pw.tales.cofdsystem.action.events.pool.ActionBuildPoolEvent;
 import pw.tales.cofdsystem.action.pool.ActionPool;
-import pw.tales.cofdsystem.action.IAction;
 
 class Contested extends Competition
 {
@@ -22,14 +21,14 @@ class Contested extends Competition
         return roll == this.actorPool || roll == this.targetPool;
     }
 
-    override public function roll(action:IAction):Void
+    override public function roll(action:RollAction):Void
     {
         var system = action.getSystem();
 
         system.events.post(new ActionBuildPoolEvent(action, this.actorPool));
         system.events.post(new ActionBuildPoolEvent(action, this.targetPool));
 
-        this.actorPool.roll(action);
-        this.targetPool.roll(action);
+        this.actorPool.rollWithPoolEvents(action);
+        this.targetPool.rollWithPoolEvents(action);
     }
 }

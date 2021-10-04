@@ -1,6 +1,7 @@
 package pw.tales.cofdsystem.action.competition;
 
 import pw.tales.cofdsystem.game_object.GameObject;
+import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.action.pool.ActionPool;
 
 class Competition implements IActionRoll
@@ -14,9 +15,12 @@ class Competition implements IActionRoll
         this.targetPool = targetPool;
     }
 
-    public function roll(action:IAction):Void {}
-
     public function willRoll(roll:ActionPool):Bool
+    {
+        throw new haxe.exceptions.NotImplementedException();
+    }
+
+    public function getWinnerPool():ActionPool
     {
         throw new haxe.exceptions.NotImplementedException();
     }
@@ -25,4 +29,41 @@ class Competition implements IActionRoll
     {
         return this.actorPool.isRelated(gameObject) || this.targetPool.isRelated(gameObject);
     }
+
+    public function getActorPool():ActionPool
+    {
+        return this.actorPool;
+    }
+
+    public function getTargetPool():ActionPool
+    {
+        return this.targetPool;
+    }
+
+    public function getActor():GameObject
+    {
+        return this.actorPool.getGameObject();
+    }
+
+    public function getTarget():GameObject
+    {
+        return this.targetPool.getGameObject();
+    }
+
+    public function getPool(gameObject:GameObject):Null<ActionPool>
+    {
+        if (this.actorPool.isRelated(gameObject))
+        {
+            return this.actorPool;
+        }
+
+        if (this.targetPool.isRelated(gameObject))
+        {
+            return this.targetPool;
+        }
+
+        return null;
+    }
+
+    public function roll(action:RollAction):Void {}
 }

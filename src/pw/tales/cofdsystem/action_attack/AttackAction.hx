@@ -27,6 +27,11 @@ class AttackAction extends RollAction
         this.competition = competition;
     }
 
+    public function getCompetition():Competition
+    {
+        return this.competition;
+    }
+
     public function getDamage():Damage
     {
         if (this.damage == null)
@@ -53,18 +58,19 @@ class AttackAction extends RollAction
 
     private override function perform():Void
     {
-        var opposition = this.getOpposition();
-        var actor = opposition.getActorPool().getGameObject();
-        var target = opposition.getTargetPool().getGameObject();
+        var actorPool = this.competition.getActorPool();
+        var targetPool = this.competition.getTargetPool();
 
-        if (opposition.getWinnerPool() == opposition.getActorPool())
+        var target = targetPool.getGameObject();
+
+        if (this.competition.getWinnerPool() == actorPool)
         {
             system.events.post(new AttackHitEvent(this));
 
-            var successes = opposition.getActorPool().getResponse().getSuccesses();
-            if (opposition.getTargetPool().getResponse() != null)
+            var successes = actorPool.getResponse().getSuccesses();
+            if (targetPool.getResponse() != null)
             {
-                successes -= opposition.getTargetPool().getResponse().getSuccesses();
+                successes -= targetPool.getResponse().getSuccesses();
             }
             var damageType = DamageType.BASHING;
 

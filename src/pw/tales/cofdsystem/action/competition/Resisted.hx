@@ -22,7 +22,7 @@ class Resisted extends Competition
         return roll == this.actorPool;
     }
 
-    override public function roll(action:IAction):Void
+    override public function roll(action:RollAction):Void
     {
         var system = action.getSystem();
 
@@ -32,6 +32,6 @@ class Resisted extends Competition
         var resist = targetPool.getRequest().getPoolSize();
         this.actorPool.getRequest().addModifier(-resist, "resist");
 
-        this.actorPool.roll(system);
+        this.actorPool.rollWithPoolEvents(action);
     }
 }

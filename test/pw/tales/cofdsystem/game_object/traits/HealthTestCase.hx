@@ -35,12 +35,11 @@ class HealthTestCase extends CofDSystemTestCase
         var maxHealth = manager.getTrait(HealthAdvantage.TYPE).getValue();
         HealthTraitHelper.get(c1).dealDamage(new Damage(maxHealth - diff, 0, 0));
 
-        var actorRoll = new ActionPool(c1, []);
-        var action = new BasicAction(actorRoll, EnumTime.INSTANT, this.system);
+        var pool = new ActionPool(c1, []);
+        var action = new BasicAction(pool, EnumTime.INSTANT, this.system);
         action.execute();
 
-        var roll = opposition.getPool(c1);
-        assertEquals(result, roll.getRequest().getAppliedModifiers()[HealthAdvantage.DN]);
+        assertEquals(result, pool.getRequest().getAppliedModifiers()[HealthAdvantage.DN]);
     }
 
     public function testPenalty0HPLeft()

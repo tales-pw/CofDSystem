@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.action.pool;
 
+import pw.tales.cofdsystem.action.events.pool.ActionBuildPoolEvent;
 import pw.tales.cofdsystem.action.events.roll.ActionPostRollEvent;
 import pw.tales.cofdsystem.action.events.roll.ActionPreRollEvent;
 import pw.tales.cofdsystem.dices.requests.RollRequestTrait;
@@ -53,15 +54,31 @@ class ActionPool implements IActionRoll
         return this.gameObject == gameObject;
     }
 
-    public function roll(action:IAction):Void
-    {
-        system.events.post(new ActionPreRollEvent(action, this));
-        this.response = system.dices.roll(request);
-        system.events.post(new ActionPostRollEvent(action, this));
-    }
-
     public function willRoll(roll:ActionPool):Bool
     {
         return this == roll;
+    }
+
+    public function getActor():GameObject
+    {
+        return this.gameObject;
+    }
+
+    public function getActorPool():ActionPool
+    {
+        return this;
+    }
+
+    public function rollWithPoolEvents(action:RollAction):Void
+    {
+        system.events.post(new ActionPreRollEvent(action, this));
+        this.response = this.system.dices.roll(request);
+        system.events.post(new ActionPostRollEvent(action, this));
+    }
+
+    public function roll(action:RollAction):Void
+    {
+        system.events.post(new ActionBuildPoolEvent(action, this));
+        this.rollWithPoolEvents(action);
     }
 }

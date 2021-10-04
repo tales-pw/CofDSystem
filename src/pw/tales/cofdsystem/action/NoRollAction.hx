@@ -11,4 +11,14 @@ class NoRollAction extends Action
         super(time, system);
         this.actor = actor;
     }
+
+    public override function getActor():GameObject
+    {
+        return this.actor;
+    }
+
+    public override function isRelated(gameObject:GameObject):Bool
+    {
+        return this.actor == gameObject;
+    }
 }

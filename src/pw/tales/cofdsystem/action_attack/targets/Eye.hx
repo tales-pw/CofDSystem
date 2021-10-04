@@ -25,7 +25,7 @@ class Eye implements ITarget
 
         if (totalDamage > 0)
         {
-            var gameObject = action.getOpposition().getTargetPool().getGameObject();
+            var gameObject = action.getCompetition().getTargetPool().getGameObject();
             gameObject.getTraitManager().addTrait(BlindedTilt.TYPE);
         }
     }

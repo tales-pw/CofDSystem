@@ -1,5 +1,7 @@
 package pw.tales.cofdsystem.action;
 
+import pw.tales.cofdsystem.action.pool.ActionPool;
+import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.action.events.ActionPerformedEvent;
 import pw.tales.cofdsystem.action.events.IActionEvent;
 import pw.tales.cofdsystem.utils.events.IEvent;
@@ -72,5 +74,15 @@ class Action implements IAction
         this.beforeAction();
         this.perform();
         this.afterAction();
+    }
+
+    public function getActor():GameObject
+    {
+        throw new haxe.exceptions.NotImplementedException();
+    }
+
+    public function isRelated(gameObject:GameObject):Bool
+    {
+        throw new haxe.exceptions.NotImplementedException();
     }
 }

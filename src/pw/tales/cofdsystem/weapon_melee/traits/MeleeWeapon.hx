@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.weapon_melee.traits;
 
+import pw.tales.cofdsystem.utils.Utility;
 import pw.tales.cofdsystem.action.events.pool.ActionBuildPoolEvent;
 import pw.tales.cofdsystem.action.events.pool.ActionPoolEvent;
 import pw.tales.cofdsystem.action_attack.AttackAction;
@@ -22,15 +23,18 @@ class MeleeWeapon extends WeaponTrait
         this.holderEventBus.addHandler(ActionBuildPoolEvent, this.changeTraits, Weapon.ATTACK_POOL_PRIORITY);
     }
 
-    public function changeTraits(event:ActionPoolEvent)
+    public function changeTraits(event:ActionPoolEvent):Void
     {
-        var action = event.getAction();
-        var opposition = action.getOpposition();
+        var action = Utility.downcast(event.getAction(), AttackAction);
 
-        if (!Std.isOfType(action, AttackAction))
+        if (action == null)
+        {
             return;
+        }
+
         if (!this.doesHolderAct(action))
             return;
+
         if (!this.isActionWithWeapon(action))
             return;
 
