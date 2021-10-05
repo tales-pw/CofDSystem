@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.character.tilts;
 
+import haxe.unit.TestCase;
 import thx.error.NotImplemented;
 import pw.tales.cofdsystem.character.traits.tilts.TiltType;
 import pw.tales.cofdsystem.scene.Scene;
@@ -28,5 +29,10 @@ class BaseTiltTestCase extends CofDSystemTestCase
 
         // Disappears after scene end
         assertTrue(c1.getTraitManager().getTrait(tiltType, tilt.getDN()) == null);
+    }
+
+    public override function getBaseTest():Class<TestCase>
+    {
+        return BaseTiltTestCase;
     }
 }
