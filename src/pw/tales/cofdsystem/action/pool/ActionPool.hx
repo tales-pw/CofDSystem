@@ -12,8 +12,8 @@ class ActionPool implements IActionRoll
 {
     private final gameObject:GameObject;
     private final system:CofDSystem;
-
-    private var request:RollRequestTrait;
+    private final request:RollRequestTrait;
+    
     private var response:RollResponse;
 
     public function new(gameObject:GameObject, traits:Array<String>)

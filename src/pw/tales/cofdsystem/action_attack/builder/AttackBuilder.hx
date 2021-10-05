@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.action_attack.builder;
 
+import pw.tales.cofdsystem.builder.exceptions.UnknownSideException;
 import pw.tales.cofdsystem.action.competition.Competition;
 import pw.tales.cofdsystem.dices.EnumExplode;
 import pw.tales.cofdsystem.action.competition.builder.CompetitionBuilder;
@@ -65,10 +66,9 @@ class AttackBuilder
                 return this.getActor();
             case EnumSide.TARGET:
                 return this.getTarget();
+            default:
+                throw new UnknownSideException();
         }
-
-        // Should be unreachable.
-        throw "wrong side";
     }
 
     public function isRelated(gameObject:GameObject):Bool
@@ -82,16 +82,31 @@ class AttackBuilder
         return this;
     }
 
+    public function getExplode(side:EnumSide):EnumExplode
+    {
+        return this.competitionBuilder.getExplode(side);
+    }
+
     public function setExplode(side:EnumSide, explode:EnumExplode):AttackBuilder
     {
         this.competitionBuilder.setExplode(side, explode);
         return this;
     }
 
-    public function setTarget(specifiedTarget:EnumSpecifiedTarget):AttackBuilder
+    public function getSpecifiedTarget():Null<EnumSpecifiedTarget>
+    {
+        return this.specifiedTarget;
+    }
+
+    public function setSpecifiedTarget(specifiedTarget:EnumSpecifiedTarget):AttackBuilder
     {
         this.specifiedTarget = specifiedTarget;
         return this;
+    }
+
+    public function getModifier(side:EnumSide):Int
+    {
+        return this.competitionBuilder.getModifier(side);
     }
 
     public function setModifier(side:EnumSide, value:Int):AttackBuilder
@@ -100,7 +115,20 @@ class AttackBuilder
         return this;
     }
 
-    public function spendWillpower(side:EnumSide, value:Bool = true):AttackBuilder
+    public function getSpendWillpower(side:EnumSide):Bool
+    {
+        switch (side)
+        {
+            case EnumSide.ACTOR:
+                return this.actorWillpower;
+            case EnumSide.TARGET:
+                return this.targetWillpower;
+            default:
+                throw new UnknownSideException();
+        }
+    }
+
+    public function setSpendWillpower(side:EnumSide, value:Bool = true):AttackBuilder
     {
         var gameObject = this.getGameObject(side);
         var willpower = gameObject.getTrait(WillpowerAdvantage.TYPE);
@@ -116,9 +144,24 @@ class AttackBuilder
                 this.actorWillpower = value;
             case EnumSide.TARGET:
                 this.targetWillpower = value;
+            default:
+                throw new UnknownSideException();
         }
 
         return this;
+    }
+
+    public function getHand(side:EnumSide):EnumHand
+    {
+        switch (side)
+        {
+            case EnumSide.ACTOR:
+                return this.actorHand;
+            case EnumSide.TARGET:
+                return this.targetHand;
+            default:
+                throw new UnknownSideException();
+        }
     }
 
     public function setHand(side:EnumSide, hand:EnumHand):AttackBuilder
@@ -129,6 +172,8 @@ class AttackBuilder
                 this.actorHand = hand;
             case EnumSide.TARGET:
                 this.targetHand = hand;
+            default:
+                throw new UnknownSideException();
         }
         return this;
     }

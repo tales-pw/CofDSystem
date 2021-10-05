@@ -36,7 +36,7 @@ class AttackBuilderTestCase extends CofDSystemTestCase
 
     public function testWillpowerActor()
     {
-        var action = new AttackBuilder(c1, c2).spendWillpower(EnumSide.ACTOR).build();
+        var action = new AttackBuilder(c1, c2).setSpendWillpower(EnumSide.ACTOR).build();
         system.act(action);
 
         var health:HealthAdvantage = cast c2.getTrait(HealthAdvantage.TYPE);
@@ -55,7 +55,7 @@ class AttackBuilderTestCase extends CofDSystemTestCase
 
     public function testWillpowerTarget()
     {
-        var action = new AttackBuilder(c1, c2).spendWillpower(EnumSide.TARGET).build();
+        var action = new AttackBuilder(c1, c2).setSpendWillpower(EnumSide.TARGET).build();
         system.act(action);
 
         var health:HealthAdvantage = cast c2.getTrait(HealthAdvantage.TYPE);
@@ -74,7 +74,7 @@ class AttackBuilderTestCase extends CofDSystemTestCase
 
     public function testWillpowerBoth()
     {
-        var action = new AttackBuilder(c1, c2).spendWillpower(EnumSide.TARGET).spendWillpower(EnumSide.ACTOR).build();
+        var action = new AttackBuilder(c1, c2).setSpendWillpower(EnumSide.TARGET).setSpendWillpower(EnumSide.ACTOR).build();
 
         system.act(action);
 

@@ -17,16 +17,31 @@ class ActionPoolBuilder
         this.gameObject = gameObject;
     }
 
+    public function getModifier():Int
+    {
+        return this.modifier;
+    }
+
     public function setModifier(modifier:Int):ActionPoolBuilder
     {
         this.modifier = modifier;
         return this;
     }
 
+    public function getExplode():EnumExplode
+    {
+        return this.explode;
+    }
+
     public function setExplode(explode:EnumExplode):ActionPoolBuilder
     {
         this.explode = explode;
         return this;
+    }
+
+    public function getTraits():Array<String>
+    {
+        return this.traits;
     }
 
     public function setTraits(traits:Array<String>):ActionPoolBuilder

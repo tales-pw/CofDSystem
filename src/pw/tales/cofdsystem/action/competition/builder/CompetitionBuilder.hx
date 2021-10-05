@@ -31,11 +31,23 @@ class CompetitionBuilder
         throw "Unknown side.";
     }
 
+    public function getExplode(side:EnumSide):EnumExplode
+    {
+        var poolBuilder = this.getPoolBuilder(side);
+        return poolBuilder.getExplode();
+    }
+
     public function setExplode(side:EnumSide, explode:EnumExplode):CompetitionBuilder
     {
         var poolBuilder = this.getPoolBuilder(side);
         poolBuilder.setExplode(explode);
         return this;
+    }
+
+    public function getModifier(side:EnumSide):Int
+    {
+        var poolBuilder = this.getPoolBuilder(side);
+        return poolBuilder.getModifier();
     }
 
     public function setModifier(side:EnumSide, modifier:Int):CompetitionBuilder
