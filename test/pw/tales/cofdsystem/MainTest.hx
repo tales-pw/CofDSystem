@@ -2,10 +2,11 @@ package pw.tales.cofdsystem;
 
 import pw.tales.cofdsystem.utils.Utility;
 import haxe.unit.TestRunner;
+import haxe.unit.TestCase;
 
 class MainTest
 {
-    static public function shouldSkip(test:haxe.unit.TestCase):Bool
+    static public function shouldSkip(test:TestCase):Bool
     {
         var testSkip = Utility.downcast(test, WithBaseTest);
 
@@ -21,7 +22,7 @@ class MainTest
     {
         var r = new TestRunner();
 
-        var testClasses = CompileTime.getAllClasses("pw.tales.cofdsystem", true, haxe.unit.TestCase);
+        var testClasses = CompileTime.getAllClasses("pw.tales.cofdsystem", true, TestCase);
 
         for (clazz in testClasses)
         {

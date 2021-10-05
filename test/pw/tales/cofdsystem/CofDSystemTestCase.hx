@@ -1,12 +1,12 @@
 package pw.tales.cofdsystem;
 
-import haxe.unit.TestCase;
 import pw.tales.cofdsystem.character.prefabs.HumanPrefab;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.mocks.DiceRollerMock;
+import haxe.unit.TestCase;
 
 @:nullSafety(Off)
-class CofDSystemTestCase extends haxe.unit.TestCase implements WithBaseTest
+class CofDSystemTestCase extends TestCase implements WithBaseTest
 {
     private var system:CofDSystem;
     private var c1:GameObject;

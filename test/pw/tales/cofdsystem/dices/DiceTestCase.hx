@@ -2,8 +2,9 @@ package pw.tales.cofdsystem.dices;
 
 import pw.tales.cofdsystem.dices.DiceRoller;
 import pw.tales.cofdsystem.utils.math.MathValue;
+import haxe.unit.TestCase;
 
-class DiceTestCase extends haxe.unit.TestCase
+class DiceTestCase extends TestCase
 {
     public function testDiceRolls()
     {

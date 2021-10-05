@@ -1,6 +1,8 @@
 package pw.tales.cofdsystem;
 
+import haxe.unit.TestCase;
+
 interface WithBaseTest
 {
-    function getBaseTest():Class<haxe.unit.TestCase>;
+    function getBaseTest():Class<TestCase>;
 }
