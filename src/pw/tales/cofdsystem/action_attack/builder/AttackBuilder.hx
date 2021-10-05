@@ -76,6 +76,11 @@ class AttackBuilder
         return this.actor == gameObject || this.target == gameObject;
     }
 
+    public function isAllOut():Bool
+    {
+        return this.actorAllOut;
+    }
+
     public function setAllOut(allOut:Bool):AttackBuilder
     {
         this.actorAllOut = allOut;
@@ -178,7 +183,12 @@ class AttackBuilder
         return this;
     }
 
-    public function setResist(resistType:EnumResistType):AttackBuilder
+    public function getResistType():EnumResistType
+    {
+        return this.targetResistType;
+    }
+
+    public function setResistType(resistType:EnumResistType):AttackBuilder
     {
         this.targetResistType = resistType;
 
