@@ -4,7 +4,8 @@ import haxe.ds.StringMap;
 
 class EnumExplode
 {
-    private static final MAP = new StringMap();
+    private static final KEY_VALUE = new StringMap();
+    private static final VALUES = new Array<EnumExplode>();
 
     public static final NONE:EnumExplode = new EnumExplode("none");
     public static final DEFAULT:EnumExplode = new EnumExplode("default", 10);
@@ -12,20 +13,28 @@ class EnumExplode
     public static final EIGHT_AGAIN:EnumExplode = new EnumExplode("eight_again", 8);
     public static final ROTE_ACTION:EnumExplode = new EnumExplode("rote_action");
 
-    private var name:String;
-    private var explode:Int;
+    private final name:String;
+    private final explode:Int;
 
     private function new(name:String, explode:Int = -1)
     {
         this.name = name;
         this.explode = explode;
 
-        MAP.set(this.name, this);
+        KEY_VALUE.set(this.name, this);
+        VALUES.push(this);
     }
 
-    public static function findByName(name:String)
+    public static function findByName(name:String):Null<EnumExplode>
     {
-        return MAP.get(name);
+        return KEY_VALUE.get(name);
+    }
+
+    public function next():EnumExplode
+    {
+        var i = VALUES.indexOf(this) + 1;
+        i = i >= VALUES.length ? 0 : i;
+        return VALUES[i];
     }
 
     public function getName():String
