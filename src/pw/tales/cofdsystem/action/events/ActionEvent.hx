@@ -16,18 +16,18 @@ class ActionEvent implements IActionEvent
         return this.action;
     }
 
-    public function isActor(gameObject:GameObject)
+    public function isActor(gameObject:GameObject):Bool
     {
-        return action.getOpposition().getActorPool().getGameObject() == gameObject;
+        return this.action.getActor() == gameObject;
     }
 
-    public function isRelatedAction(action:IAction)
+    public function isRelatedAction(action:IAction):Bool
     {
         return this.action == action;
     }
 
-    public function isRelated(character:GameObject):Bool
+    public function isRelated(gameObject:GameObject):Bool
     {
-        return action.getOpposition().isRelated(character);
+        return this.action.isRelated(gameObject);
     }
 }

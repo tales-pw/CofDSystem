@@ -15,14 +15,14 @@ class Willpower implements IModification
         this.gameObject = gameObject;
     }
 
-    public function init(action:IAction)
+    public function init(action:IAction):Void
     {
         var eventBus = action.getEventBus();
         eventBus.addHandler(ActionBuildPoolEvent, this.applyRollBonus, HandlerPriority.NORMAL);
         eventBus.addHandler(ActionBuildResistEvent, this.applyResistBonus, HandlerPriority.NORMAL);
     }
 
-    private function applyRollBonus(event:ActionBuildPoolEvent)
+    private function applyRollBonus(event:ActionBuildPoolEvent):Void
     {
         if (!event.isPoolOwner(this.gameObject))
             return;
@@ -34,7 +34,7 @@ class Willpower implements IModification
         request.addModifier(3, WillpowerAdvantage.DN);
     }
 
-    private function applyResistBonus(event:ActionBuildResistEvent)
+    private function applyResistBonus(event:ActionBuildResistEvent):Void
     {
         if (!event.isPoolOwner(this.gameObject))
             return;
@@ -46,7 +46,7 @@ class Willpower implements IModification
         request.addModifier(2, WillpowerAdvantage.DN);
     }
 
-    private function burnWillpower()
+    private function burnWillpower():Void
     {
         var willpower = this.gameObject.getTrait(WillpowerAdvantage.TYPE);
         willpower.burnWillpower();

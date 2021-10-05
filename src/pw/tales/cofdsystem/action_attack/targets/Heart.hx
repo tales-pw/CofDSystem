@@ -25,7 +25,7 @@ class Heart implements ITarget
 
         if (totalDamage >= 5)
         {
-            var gameObject = action.getOpposition().getTargetPool().getGameObject();
+            var gameObject = action.getCompetition().getTarget();
             gameObject.getSystem().events.post(new HeartPiercedEvent(gameObject));
         }
     }

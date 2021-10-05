@@ -25,6 +25,6 @@ class AttackEvent extends ActionEvent
 
     public function isTarget(gameObject:GameObject)
     {
-        return attackAction.getOpposition().getTargetPool().getGameObject() == gameObject;
+        return attackAction.getCompetition().getTarget() == gameObject;
     }
 }

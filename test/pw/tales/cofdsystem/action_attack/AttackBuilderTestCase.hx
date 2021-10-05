@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.action_attack;
 
+import pw.tales.cofdsystem.dices.EnumExplode;
 import pw.tales.cofdsystem.action_attack.builder.AttackBuilder;
 import pw.tales.cofdsystem.character.traits.advantages.health.HealthAdvantage;
 import pw.tales.cofdsystem.character.traits.advantages.willpower.WillpowerAdvantage;
@@ -35,7 +36,7 @@ class AttackBuilderTestCase extends CofDSystemTestCase
 
     public function testWillpowerActor()
     {
-        var action = new AttackBuilder(c1, c2).spendWillpower(EnumSide.ACTOR).build();
+        var action = new AttackBuilder(c1, c2).setSpendWillpower(EnumSide.ACTOR).build();
         system.act(action);
 
         var health:HealthAdvantage = cast c2.getTrait(HealthAdvantage.TYPE);
@@ -54,7 +55,7 @@ class AttackBuilderTestCase extends CofDSystemTestCase
 
     public function testWillpowerTarget()
     {
-        var action = new AttackBuilder(c1, c2).spendWillpower(EnumSide.TARGET).build();
+        var action = new AttackBuilder(c1, c2).setSpendWillpower(EnumSide.TARGET).build();
         system.act(action);
 
         var health:HealthAdvantage = cast c2.getTrait(HealthAdvantage.TYPE);
@@ -73,7 +74,7 @@ class AttackBuilderTestCase extends CofDSystemTestCase
 
     public function testWillpowerBoth()
     {
-        var action = new AttackBuilder(c1, c2).spendWillpower(EnumSide.TARGET).spendWillpower(EnumSide.ACTOR).build();
+        var action = new AttackBuilder(c1, c2).setSpendWillpower(EnumSide.TARGET).setSpendWillpower(EnumSide.ACTOR).build();
 
         system.act(action);
 
@@ -97,5 +98,33 @@ class AttackBuilderTestCase extends CofDSystemTestCase
         assertTrue(build.isRelated(c1));
         assertTrue(build.isRelated(c2));
         assertFalse(build.isRelated(c3));
+    }
+
+    private function methodTestExplode(actorExplode:EnumExplode, targetExplode:EnumExplode):Void
+    {
+        var action:AttackAction = new AttackBuilder(c1, c2).setExplode(EnumSide.ACTOR, actorExplode).setExplode(EnumSide.TARGET, targetExplode).build();
+
+        system.act(action);
+
+        var result = action.getCompetition().getActorPool().getRequest().getExplode();
+        assertEquals(result, actorExplode);
+
+        var result = action.getCompetition().getTargetPool().getRequest().getExplode();
+        assertEquals(result, targetExplode);
+    }
+
+    public function testExplodeActor()
+    {
+        this.methodTestExplode(EnumExplode.DEFAULT, EnumExplode.ROTE_ACTION);
+    }
+
+    public function testExplodeTarget()
+    {
+        this.methodTestExplode(EnumExplode.ROTE_ACTION, EnumExplode.DEFAULT);
+    }
+
+    public function testExplodeBoth()
+    {
+        this.methodTestExplode(EnumExplode.ROTE_ACTION, EnumExplode.ROTE_ACTION);
     }
 }

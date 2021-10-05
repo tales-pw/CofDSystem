@@ -2,7 +2,7 @@ package pw.tales.cofdsystem.weapon.traits;
 
 import pw.tales.cofdsystem.action.events.ActionGetHandEvent;
 import pw.tales.cofdsystem.action.IAction;
-import pw.tales.cofdsystem.action.opposition.pool.ActionPool;
+import pw.tales.cofdsystem.action.pool.ActionPool;
 import pw.tales.cofdsystem.common.EnumHand;
 import pw.tales.cofdsystem.equipment.traits.EquipmentTrait;
 
@@ -11,7 +11,7 @@ class WeaponTrait extends EquipmentTrait
     private function getActionHand(action:IAction):EnumHand
     {
         var eventBus = action.getEventBus();
-        var actor = action.getOpposition().getActorPool().getGameObject();
+        var actor = action.getActor();
 
         var handEvent = new ActionGetHandEvent(action, actor);
         eventBus.post(handEvent);
@@ -22,7 +22,7 @@ class WeaponTrait extends EquipmentTrait
     public function doesHolderAct(action:IAction):Bool
     {
         var holder = this.getHolder();
-        return holder != null && action.getOpposition().getActorPool().getGameObject() == holder;
+        return holder != null && action.getActor() == holder;
     }
 
     public function isHolderPool(pool:ActionPool):Bool

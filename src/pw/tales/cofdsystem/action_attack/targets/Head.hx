@@ -24,12 +24,11 @@ class Head implements ITarget
         var damage = action.getDamage();
         var totalDamage = damage.getBashing() + damage.getLethal() + damage.getAggravated();
 
-        var gameObject = action.getOpposition().getTargetPool().getGameObject();
+        var gameObject = action.getCompetition().getTarget();
         var size:SizeAdvantage = gameObject.getTrait(SizeAdvantage.TYPE);
 
         if (totalDamage > 0)
         {
-            var gameObject = action.getOpposition().getTargetPool().getGameObject();
             gameObject.getTraitManager().addTrait(StunnedTilt.TYPE);
         }
     }

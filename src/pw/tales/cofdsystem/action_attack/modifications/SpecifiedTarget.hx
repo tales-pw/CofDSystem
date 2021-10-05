@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.action_attack.modifications;
 
+import pw.tales.cofdsystem.utils.Utility;
 import pw.tales.cofdsystem.action.events.pool.ActionBuildPoolEvent;
 import pw.tales.cofdsystem.action.IAction;
 import pw.tales.cofdsystem.action.IModification;
@@ -19,7 +20,7 @@ class SpecifiedTarget implements IModification
         this.target = target;
     }
 
-    public function init(action:IAction)
+    public function init(action:IAction):Void
     {
         var eventBus = action.getEventBus();
         eventBus.addHandler(ActionBuildPoolEvent, this.applyPenalty, HandlerPriority.NORMAL);
@@ -28,12 +29,18 @@ class SpecifiedTarget implements IModification
 
     public function applyPenalty(event:ActionBuildPoolEvent):Void
     {
-        var opposition = event.getAction().getOpposition();
-        var roll = opposition.getActorPool();
-        roll.getRequest().addModifier(this.target.getAttackModifer(), DN);
+        var action = Utility.downcast(event.getAction(), AttackAction);
+
+        if (action == null)
+        {
+            return;
+        }
+
+        var pool = action.getCompetition().getActorPool();
+        pool.getRequest().addModifier(this.target.getAttackModifer(), DN);
     }
 
-    public function applyEffect(event:AttackDamageEvent)
+    public function applyEffect(event:AttackDamageEvent):Void
     {
         this.target.apply(event.getAction());
     }
