@@ -1,7 +1,6 @@
 package pw.tales.cofdsystem.action.competition;
 
 import pw.tales.cofdsystem.game_object.GameObject;
-import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.action.pool.ActionPool;
 
 class Competition implements IActionRoll

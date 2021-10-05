@@ -2,7 +2,6 @@ package pw.tales.cofdsystem.action_attack;
 
 import pw.tales.cofdsystem.action.competition.Competition;
 import pw.tales.cofdsystem.action.RollAction;
-import pw.tales.cofdsystem.action.Action;
 import pw.tales.cofdsystem.action.EnumTime;
 import pw.tales.cofdsystem.action_attack.events.AttackDamageDealtEvent;
 import pw.tales.cofdsystem.action_attack.events.AttackDamageGetEvent;
@@ -68,7 +67,7 @@ class AttackAction extends RollAction
             system.events.post(new AttackHitEvent(this));
 
             var successes = actorPool.getResponse().getSuccesses();
-            if (targetPool.getResponse() != null)
+            if (this.competition.willRoll(targetPool))
             {
                 successes -= targetPool.getResponse().getSuccesses();
             }

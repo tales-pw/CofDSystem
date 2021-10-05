@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.action.pool;
 
+import pw.tales.cofdsystem.action.pool.exceptions.PoolNotRolledException;
 import pw.tales.cofdsystem.action.events.pool.ActionBuildPoolEvent;
 import pw.tales.cofdsystem.action.events.roll.ActionPostRollEvent;
 import pw.tales.cofdsystem.action.events.roll.ActionPreRollEvent;
@@ -7,14 +8,13 @@ import pw.tales.cofdsystem.dices.requests.RollRequestTrait;
 import pw.tales.cofdsystem.dices.RollResponse;
 import pw.tales.cofdsystem.game_object.GameObject;
 
-@:nullSafety(Off)
 class ActionPool implements IActionRoll
 {
     private final gameObject:GameObject;
     private final system:CofDSystem;
     private final request:RollRequestTrait;
-    
-    private var response:RollResponse;
+
+    private var response:Null<RollResponse> = null;
 
     public function new(gameObject:GameObject, traits:Array<String>)
     {
@@ -46,6 +46,11 @@ class ActionPool implements IActionRoll
 
     public function getResponse():RollResponse
     {
+        if (this.response == null)
+        {
+            throw new PoolNotRolledException(this);
+        }
+
         return this.response;
     }
 
