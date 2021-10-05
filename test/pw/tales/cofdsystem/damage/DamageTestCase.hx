@@ -1,8 +1,9 @@
 package pw.tales.cofdsystem.damage;
 
 import pw.tales.cofdsystem.damage.Damage;
+import haxe.unit.TestCase;
 
-class DamageTestCase extends haxe.unit.TestCase
+class DamageTestCase extends TestCase
 {
     public function assertDamage(expecitedB:Int, expectedL:Int, expectedA:Int, damage:Damage)
     {

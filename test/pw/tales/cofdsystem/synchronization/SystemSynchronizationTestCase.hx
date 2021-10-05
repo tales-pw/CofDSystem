@@ -6,8 +6,9 @@ import pw.tales.cofdsystem.weapon.traits.weapon_tags.AccurateTag;
 import pw.tales.cofdsystem.weapon.traits.weapon_tags.BrawlTag;
 import pw.tales.cofdsystem.weapon_melee.prefabs.MeleeWeaponPrefab;
 import pw.tales.cofdsystem.weapon_ranged.prefabs.RangedWeaponPrefab;
+import haxe.unit.TestCase;
 
-class SystemSynchronizationTestCase extends haxe.unit.TestCase
+class SystemSynchronizationTestCase extends TestCase
 {
     public function testFullSync()
     {

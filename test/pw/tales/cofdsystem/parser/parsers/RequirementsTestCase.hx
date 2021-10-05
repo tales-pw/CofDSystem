@@ -1,6 +1,8 @@
 package pw.tales.cofdsystem.parser.parsers;
 
-class RequirementsTestCase extends haxe.unit.TestCase
+import haxe.unit.TestCase;
+
+class RequirementsTestCase extends TestCase
 {
     public static var parser = new RequirementsParser();
 

@@ -1,6 +1,8 @@
 package pw.tales.cofdsystem.parser.parsers;
 
-class DotsLevelsTestCase extends haxe.unit.TestCase
+import haxe.unit.TestCase;
+
+class DotsLevelsTestCase extends TestCase
 {
     public static var parser = new DotsLevelsParser();
 

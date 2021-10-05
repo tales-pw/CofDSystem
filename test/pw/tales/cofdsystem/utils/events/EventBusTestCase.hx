@@ -1,6 +1,8 @@
 package pw.tales.cofdsystem.utils.events;
 
-class EventBusTestCase extends haxe.unit.TestCase
+import haxe.unit.TestCase;
+
+class EventBusTestCase extends TestCase
 {
     public function testEvent()
     {

@@ -1,97 +1,38 @@
 package pw.tales.cofdsystem;
 
-import pw.tales.cofdsystem.game_object.prefabs.AccessorTestCase;
-import pw.tales.cofdsystem.character.WornArmorTestCase;
-import pw.tales.cofdsystem.character.tilts.LegWrackTiltTestCase;
-import pw.tales.cofdsystem.character.tilts.BlindedTiltTestCase;
-import pw.tales.cofdsystem.character.tilts.ArmWrackTiltTestCase;
-import pw.tales.cofdsystem.character.tilts.StunnedTiltTestCase;
+import pw.tales.cofdsystem.utils.Utility;
 import haxe.unit.TestRunner;
-import pw.tales.cofdsystem.action_attack.AttackBuilderTestCase;
-import pw.tales.cofdsystem.character.advancement.GenAdvancementTestCase;
-import pw.tales.cofdsystem.character.advantages.WillpowerAdvantageTestCase;
-import pw.tales.cofdsystem.character.equipment.ArmorTestCase;
-import pw.tales.cofdsystem.character.equipment.WeaponTestCase;
-import pw.tales.cofdsystem.character.merits.AmbidextrousTestCase;
-import pw.tales.cofdsystem.character.merits.FleetOfFootTestCase;
-import pw.tales.cofdsystem.character.merits.GiantTestCase;
-import pw.tales.cofdsystem.character.merits.SmallFramedTestCase;
-import pw.tales.cofdsystem.damage.DamageTestCase;
-import pw.tales.cofdsystem.damage.DamageUtilTestCase;
-import pw.tales.cofdsystem.dices.DiceTestCase;
-import pw.tales.cofdsystem.game_object.GameObjectTestCase;
-import pw.tales.cofdsystem.game_object.sync.TraitTrackerTestCase;
-import pw.tales.cofdsystem.game_object.traits.HealthTestCase;
-import pw.tales.cofdsystem.game_object.traits.ManagerTestCase;
-import pw.tales.cofdsystem.parser.parsers.DotsLevelsTestCase;
-import pw.tales.cofdsystem.parser.parsers.RequirementsTestCase;
-import pw.tales.cofdsystem.range.RangeTestCase;
-import pw.tales.cofdsystem.scene.InitiativeTestCase;
-import pw.tales.cofdsystem.scene.TurnsTestCase;
-import pw.tales.cofdsystem.synchronization.GameObjectSynchronizationTestCase;
-import pw.tales.cofdsystem.synchronization.SystemSynchronizationTestCase;
-import pw.tales.cofdsystem.utils.events.EventBusTestCase;
+import haxe.unit.TestCase;
 
 class MainTest
 {
+    static public function shouldSkip(test:TestCase):Bool
+    {
+        var testSkip = Utility.downcast(test, WithBaseTest);
+
+        if (testSkip == null)
+        {
+            return false;
+        }
+
+        return testSkip.getBaseTest() == Type.getClass(test);
+    }
+
     static public function main()
     {
         var r = new TestRunner();
 
-        r.add(new GameObjectTestCase());
-        r.add(new ManagerTestCase());
-        r.add(new GameObjectSynchronizationTestCase());
-        r.add(new AccessorTestCase());
+        var testClasses = CompileTime.getAllClasses("pw.tales.cofdsystem", true, TestCase);
 
-        // Advatnages
-        r.add(new WillpowerAdvantageTestCase());
+        for (clazz in testClasses)
+        {
+            var test = Type.createInstance(clazz, []);
 
-        // Merits
-        r.add(new AmbidextrousTestCase());
-        r.add(new FleetOfFootTestCase());
-        r.add(new GiantTestCase());
-        r.add(new SmallFramedTestCase());
-
-        // Tilts
-        r.add(new ArmWrackTiltTestCase());
-        r.add(new BlindedTiltTestCase());
-        r.add(new LegWrackTiltTestCase());
-        r.add(new StunnedTiltTestCase());
-
-        // Utils
-        r.add(new EventBusTestCase());
-        r.add(new DiceTestCase());
-        r.add(new RangeTestCase());
-
-        // Damage
-        r.add(new DamageTestCase());
-        r.add(new DamageUtilTestCase());
-
-        // Parsers
-        r.add(new DotsLevelsTestCase());
-        r.add(new RequirementsTestCase());
-
-        // Advancement
-        r.add(new GenAdvancementTestCase());
-
-        // Attack
-        r.add(new AttackBuilderTestCase());
-
-        // Equipment
-        r.add(new ArmorTestCase());
-        r.add(new WeaponTestCase());
-        r.add(new WornArmorTestCase());
-
-        // Advantages
-        r.add(new HealthTestCase());
-        r.add(new TraitTrackerTestCase());
-
-        // Scene
-        r.add(new TurnsTestCase());
-        r.add(new InitiativeTestCase());
-
-        // Sync
-        r.add(new SystemSynchronizationTestCase());
+            if (!shouldSkip(test))
+            {
+                r.add(test);
+            }
+        }
 
         r.run();
     }
