@@ -1,6 +1,8 @@
 package pw.tales.cofdsystem.damage;
 
-class DamageUtilTestCase extends haxe.unit.TestCase
+import haxe.unit.TestCase;
+
+class DamageUtilTestCase extends TestCase
 {
     public function testBallistic()
     {

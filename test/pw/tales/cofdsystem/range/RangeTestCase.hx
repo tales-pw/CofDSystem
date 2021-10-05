@@ -1,8 +1,9 @@
 package pw.tales.cofdsystem.range;
 
 import pw.tales.cofdsystem.common.EnumRange;
+import haxe.unit.TestCase;
 
-class RangeTestCase extends haxe.unit.TestCase
+class RangeTestCase extends TestCase
 {
     public function assertRangeEquals(range:EnumRange, meters:Int)
     {

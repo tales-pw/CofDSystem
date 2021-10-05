@@ -3,9 +3,10 @@ package pw.tales.cofdsystem.game_object.sync;
 import pw.tales.cofdsystem.character.traits.attribute.Attribute;
 import pw.tales.cofdsystem.character.traits.attribute.Attributes;
 import pw.tales.cofdsystem.mocks.CharacterMock;
+import haxe.unit.TestCase;
 
 @:nullSafety(Off)
-class TraitTrackerTestCase extends haxe.unit.TestCase
+class TraitTrackerTestCase extends TestCase
 {
     public function testAddTrait()
     {

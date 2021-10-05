@@ -1,8 +1,9 @@
 package pw.tales.cofdsystem.game_object;
 
 import pw.tales.cofdsystem.character.traits.attribute.Attributes;
+import haxe.unit.TestCase;
 
-class GameObjectTestCase extends haxe.unit.TestCase
+class GameObjectTestCase extends TestCase
 {
     public final system:CofDSystem = new CofDSystem();
 

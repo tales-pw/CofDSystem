@@ -2,8 +2,9 @@ package pw.tales.cofdsystem.scene;
 
 import pw.tales.cofdsystem.mocks.CharacterMock;
 import pw.tales.cofdsystem.mocks.DiceRollerMock;
+import haxe.unit.TestCase;
 
-class TurnsTestCase extends haxe.unit.TestCase
+class TurnsTestCase extends TestCase
 {
     public function testInitiative()
     {

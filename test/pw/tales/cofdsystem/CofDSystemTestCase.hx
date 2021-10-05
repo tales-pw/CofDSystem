@@ -3,9 +3,10 @@ package pw.tales.cofdsystem;
 import pw.tales.cofdsystem.character.prefabs.HumanPrefab;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.mocks.DiceRollerMock;
+import haxe.unit.TestCase;
 
 @:nullSafety(Off)
-class CofDSystemTestCase extends haxe.unit.TestCase
+class CofDSystemTestCase extends TestCase implements WithBaseTest
 {
     private var system:CofDSystem;
     private var c1:GameObject;
@@ -20,5 +21,10 @@ class CofDSystemTestCase extends haxe.unit.TestCase
         this.c1 = HumanPrefab.INSTANCE.createGameObject(system);
         this.c2 = HumanPrefab.INSTANCE.createGameObject(system);
         this.c3 = HumanPrefab.INSTANCE.createGameObject(system);
+    }
+
+    public function getBaseTest():Class<TestCase>
+    {
+        return CofDSystemTestCase;
     }
 }
