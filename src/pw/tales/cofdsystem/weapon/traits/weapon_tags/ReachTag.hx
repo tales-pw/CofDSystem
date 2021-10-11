@@ -64,9 +64,7 @@ class ReachTag extends WeaponTag
 
         // Only apply bonus if enemy doesn't have weapon with reach.
         if (this.checkTargetHasReach(attack))
-        {
             return;
-        }
 
         pool.getRequest().addModifier(1, DN);
     }
