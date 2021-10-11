@@ -36,7 +36,7 @@ class APIRangedSerialization implements ISerialization
                     tags.push(tag);
             }
 
-            system.weapons.register(new RangedWeaponPrefab(record.dn, record.name, record.initiative, record.damage, tags));
+            system.weapons.register(new RangedWeaponPrefab(record.dn, record.name, record.initiative, record.damage, record.size, tags));
         }
     }
 }

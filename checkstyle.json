@@ -223,7 +223,7 @@
     {
       "type": "ParameterNumber",
       "props": {
-        "max": 5,
+        "max": 10,
         "ignoreOverriddenMethods": false
       }
     },

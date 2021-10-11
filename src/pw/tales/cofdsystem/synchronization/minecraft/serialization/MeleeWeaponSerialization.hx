@@ -10,6 +10,7 @@ typedef MeleeWeaponData = {
     name:Null<String>,
     initiative:Int,
     damage:Int,
+    size:Int,
     tags:Array<String>
 }
 
@@ -25,6 +26,7 @@ class MeleeWeaponSerialization
             name: weapon.getName(),
             initiative: weapon.getInitiativeMod(),
             damage: weapon.getDamageMod(),
+            size: weapon.getSize(),
             tags: [for (tag in weapon.getWeaponTags()) tag.getDN()]
         };
     }
@@ -40,6 +42,6 @@ class MeleeWeaponSerialization
             tags.push(record);
         }
 
-        return new MeleeWeaponPrefab(data.dn, data.name, data.initiative, data.damage, tags);
+        return new MeleeWeaponPrefab(data.dn, data.name, data.initiative, data.damage, data.size, tags);
     }
 }

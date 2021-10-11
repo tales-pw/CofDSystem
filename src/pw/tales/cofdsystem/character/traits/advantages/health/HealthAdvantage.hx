@@ -1,9 +1,9 @@
 package pw.tales.cofdsystem.character.traits.advantages.health;
 
+import pw.tales.cofdsystem.game_object.traits.advantages.SizeAdvantage;
 import pw.tales.cofdsystem.action.events.pool.ActionBuildPoolEvent;
 import pw.tales.cofdsystem.character.traits.advantages.health.events.GameObjectDamagedEvent;
 import pw.tales.cofdsystem.character.traits.advantages.health.events.GameObjectDiedEvent;
-import pw.tales.cofdsystem.character.traits.advantages.SizeAdvantage;
 import pw.tales.cofdsystem.character.traits.attribute.Attributes.*;
 import pw.tales.cofdsystem.damage.Damage;
 import pw.tales.cofdsystem.dices.pool.builder.PBTrait;
@@ -64,7 +64,7 @@ class HealthAdvantage extends AdvantageExpression implements IHealthTrait
         return this.getValue() - this.getFilledDamage();
     }
 
-    public function isDead()
+    public function isDead():Bool
     {
         var healthValue = this.getValue();
         return this.aggravated >= healthValue;
@@ -143,12 +143,12 @@ class HealthAdvantage extends AdvantageExpression implements IHealthTrait
         this.notifyUpdated();
     }
 
-    private function setHealthTrait(event:GetHealthTraitEvent)
+    private function setHealthTrait(event:GetHealthTraitEvent):Void
     {
         event.setHealthTrait(this);
     }
 
-    private function applyHealthPenalty(event:ActionBuildPoolEvent)
+    private function applyHealthPenalty(event:ActionBuildPoolEvent):Void
     {
         if (!event.isPoolOwner(this.gameObject))
             return;

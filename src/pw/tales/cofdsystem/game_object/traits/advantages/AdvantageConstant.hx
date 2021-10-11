@@ -5,12 +5,19 @@ import pw.tales.cofdsystem.game_object.GameObject;
 
 class AdvantageConstant extends Advantage
 {
-    private final value:Int;
+    @Serialize("value")
+    private var value:Int;
 
     public function new(gameObject:GameObject, type:TraitType<Dynamic>, value:Int)
     {
         super(gameObject, type);
         this.value = value;
+    }
+
+    public function setValue(value:Int):Void
+    {
+        this.value = value;
+        this.notifyUpdated();
     }
 
     override public function getValue():Int

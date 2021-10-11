@@ -1,6 +1,6 @@
 package pw.tales.cofdsystem.character.traits.merits.small_framed;
 
-import pw.tales.cofdsystem.character.traits.advantages.SizeAdvantage;
+import pw.tales.cofdsystem.game_object.traits.advantages.SizeAdvantage;
 import pw.tales.cofdsystem.character.traits.merits.Merit;
 import pw.tales.cofdsystem.game_object.events.AdvantageModEvent;
 import pw.tales.cofdsystem.game_object.GameObject;
@@ -18,10 +18,11 @@ class SmallFramedMerit extends Merit
         this.eventBus.addHandler(AdvantageModEvent, this.onAdvantageModEvent, HandlerPriority.NORMAL);
     }
 
-    private function onAdvantageModEvent(event:AdvantageModEvent)
+    private function onAdvantageModEvent(event:AdvantageModEvent): Void
     {
         if (event.getAdvantage().getType() != SizeAdvantage.TYPE)
             return;
+
         event.apply(-1);
     }
 }

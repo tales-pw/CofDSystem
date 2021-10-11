@@ -1,6 +1,6 @@
 package pw.tales.cofdsystem.action_attack.targets;
 
-import pw.tales.cofdsystem.character.traits.advantages.SizeAdvantage;
+import pw.tales.cofdsystem.game_object.traits.advantages.SizeAdvantage;
 import pw.tales.cofdsystem.character.traits.tilts.stunned.StunnedTilt;
 
 class Head implements ITarget
@@ -25,9 +25,9 @@ class Head implements ITarget
         var totalDamage = damage.getBashing() + damage.getLethal() + damage.getAggravated();
 
         var gameObject = action.getCompetition().getTarget();
-        var size:SizeAdvantage = gameObject.getTrait(SizeAdvantage.TYPE);
+        var size = gameObject.getTrait(SizeAdvantage.TYPE);
 
-        if (totalDamage > 0)
+        if (totalDamage >= size.getValue() - 1)
         {
             gameObject.getTraitManager().addTrait(StunnedTilt.TYPE);
         }
