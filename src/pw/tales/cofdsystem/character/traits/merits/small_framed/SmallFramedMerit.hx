@@ -18,7 +18,7 @@ class SmallFramedMerit extends Merit
         this.eventBus.addHandler(AdvantageModEvent, this.onAdvantageModEvent, HandlerPriority.NORMAL);
     }
 
-    private function onAdvantageModEvent(event:AdvantageModEvent): Void
+    private function onAdvantageModEvent(event:AdvantageModEvent):Void
     {
         if (event.getAdvantage().getType() != SizeAdvantage.TYPE)
             return;

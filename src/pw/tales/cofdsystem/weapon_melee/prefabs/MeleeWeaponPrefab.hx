@@ -6,7 +6,7 @@ import pw.tales.cofdsystem.weapon_melee.traits.MeleeWeapon;
 
 class MeleeWeaponPrefab extends WeaponPrefab
 {
-    private override function setUpGameObject(weaponGameObject:GameObject): Void
+    private override function setUpGameObject(weaponGameObject:GameObject):Void
     {
         super.setUpGameObject(weaponGameObject);
 

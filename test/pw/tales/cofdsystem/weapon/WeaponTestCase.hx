@@ -1,4 +1,4 @@
-package pw.tales.cofdsystem.character.equipment;
+package pw.tales.cofdsystem.weapon;
 
 import pw.tales.cofdsystem.action_attack.builder.AttackBuilder;
 import pw.tales.cofdsystem.character.traits.attribute.Attributes;

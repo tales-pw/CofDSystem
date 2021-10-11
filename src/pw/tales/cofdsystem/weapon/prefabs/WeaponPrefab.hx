@@ -52,7 +52,8 @@ class WeaponPrefab extends EquipmentPrefab implements IWeapon
         return this.damage;
     }
 
-    public function getSize(): Int {
+    public function getSize():Int
+    {
         return this.size;
     }
 
