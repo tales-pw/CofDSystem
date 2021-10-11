@@ -4,7 +4,6 @@ import pw.tales.cofdsystem.character.traits.advantages.DefenceAdvantage;
 import pw.tales.cofdsystem.action.events.pool.ActionPoolEvent;
 import pw.tales.cofdsystem.action_attack.AttackAction;
 import pw.tales.cofdsystem.game_object.traits.advantages.SizeAdvantage;
-import pw.tales.cofdsystem.action.events.pool.ActionBuildResistEvent;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 
@@ -25,6 +24,9 @@ class ConcealedTag extends WeaponTag
         this.holderEventBus.addHandler(ActionPoolEvent, this.applyBonus);
     }
 
+    /**
+        Get shield defence bonus based on its size.
+    **/
     private function getShieldMod():Int
     {
         var size = this.gameObject.getTrait(SizeAdvantage.TYPE);
@@ -35,6 +37,15 @@ class ConcealedTag extends WeaponTag
         }
 
         return size.getValue();
+    }
+
+    /**
+        Get if has another better shield in use.
+    **/
+    private function isOtherShieldBetter(value:Int):Bool
+    {
+        // TODO: implement
+        return false;
     }
 
     public function applyBonus(e:ActionPoolEvent):Void
@@ -53,6 +64,11 @@ class ConcealedTag extends WeaponTag
             return;
 
         var value = this.getShieldMod();
+
+        // Check if other shield is better
+        if (this.isOtherShieldBetter(value))
+            return;
+
         request.addModifier(value, this.getDN());
     }
 

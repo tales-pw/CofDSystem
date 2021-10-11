@@ -1,7 +1,6 @@
 package pw.tales.cofdsystem.weapon.traits.weapon_tags;
 
 import pw.tales.cofdsystem.action.events.pool.ActionBuildPoolEvent;
-import pw.tales.cofdsystem.action_attack.AttackAction;
 import pw.tales.cofdsystem.character.traits.attribute.Attributes;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
@@ -24,18 +23,17 @@ class FinesseTag extends WeaponTag
         this.holderEventBus.addHandler(ActionBuildPoolEvent, this.replaceStrWithDex);
     }
 
-    public function replaceStrWithDex(e:ActionBuildPoolEvent)
+    public function replaceStrWithDex(event:ActionBuildPoolEvent):Void
     {
-        var action = e.getAction();
-        var pool = e.getActionPool();
+        var action = event.getAction();
+        var pool = event.getActionPool();
 
-        if (!Std.isOfType(action, AttackAction))
-            return;
+        // Is this holder's pool event.
         if (!this.isHolderPool(pool))
             return;
-        if (!this.isHolderActor(action))
-            return;
-        if (!this.isActionWithWeapon(action))
+
+        // Is this holder's attack action.
+        if (!this.isHolderAttack(action))
             return;
 
         var oldTraits = pool.getRequest().getTraits();

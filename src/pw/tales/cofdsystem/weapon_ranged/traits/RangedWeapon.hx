@@ -33,18 +33,19 @@ class RangedWeapon extends WeaponTrait
 
     public function changeTraits(event:ActionPoolEvent):Void
     {
-        var action = Utility.downcast(event.getAction(), AttackAction);
+        var action = event.getAction();
+        var pool = event.getActionPool();
 
-        if (action == null)
+        // Is this holder's pool event.
+        if (!this.isHolderPool(pool))
             return;
 
-        if (!this.isHolderActor(action))
+        // Is this holder's attack action.
+        if (!this.isHolderAttack(action))
             return;
 
-        if (!this.isActionWithWeapon(action))
-            return;
-
-        var competition = action.getCompetition();
+        var attack = cast Utility.downcast(action, AttackAction);
+        var competition = attack.getCompetition();
 
         competition.getActorPool().getRequest().setTraits([Attributes.DEXTERITY.getDN(), Skills.SHOOTING.getDN()]);
 

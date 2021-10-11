@@ -24,15 +24,12 @@ class MercyTag extends WeaponTag
         this.holderEventBus.addHandler(AttackDamageGetTypeEvent, this.makeBashing, HandlerPriority.after([Weapon.ATTACK_POOL_PRIORITY]));
     }
 
-    private function makeBashing(e:AttackDamageGetTypeEvent)
+    private function makeBashing(e:AttackDamageGetTypeEvent):Void
     {
         var action = e.getAction();
 
-        if (!Std.isOfType(action, AttackAction))
-            return;
-        if (!this.isHolderActor(action))
-            return;
-        if (!this.isActionWithWeapon(action))
+        // Is this holder's attack action.
+        if (!this.isHolderAttack(action))
             return;
 
         e.setDamageType(DamageType.BASHING);

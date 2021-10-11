@@ -18,15 +18,11 @@ class LethalDamage extends WeaponTrait
         this.holderEventBus.addHandler(AttackDamageGetTypeEvent, this.makeLethal);
     }
 
-    private function makeLethal(event:AttackDamageGetTypeEvent)
+    private function makeLethal(event:AttackDamageGetTypeEvent):Void
     {
         var action = event.getAction();
 
-        if (!Std.isOfType(action, AttackAction))
-            return;
-        if (!this.isHolderActor(action))
-            return;
-        if (!this.isActionWithWeapon(action))
+        if (!this.isHolderAttack(action))
             return;
 
         event.setDamageType(DamageType.LETHAL);

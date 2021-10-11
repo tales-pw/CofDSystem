@@ -1,8 +1,9 @@
 package pw.tales.cofdsystem.weapon.traits.weapon_tags;
 
+import pw.tales.cofdsystem.character.traits.HeldWeapon;
+import pw.tales.cofdsystem.utils.Utility;
 import pw.tales.cofdsystem.action.events.pool.ActionPoolEvent;
 import pw.tales.cofdsystem.action_attack.AttackAction;
-import pw.tales.cofdsystem.character.traits.advantages.DefenceAdvantage;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 
@@ -23,19 +24,49 @@ class ReachTag extends WeaponTag
         this.holderEventBus.addHandler(ActionPoolEvent, this.applyBonuses);
     }
 
-    public function applyBonuses(e:ActionPoolEvent)
+    public function checkTargetHasReach(attack:AttackAction):Bool
+    {
+        var target = attack.getCompetition().getTarget();
+        var heldWeapon = target.getTrait(HeldWeapon.TYPE);
+
+        var main = heldWeapon.getMainHand();
+        var off = heldWeapon.getOffHand();
+
+        var tags = [];
+
+        if (main != null)
+        {
+            tags = tags.concat(main.getWeaponTags());
+        }
+
+        if (off != null)
+        {
+            tags = tags.concat(off.getWeaponTags());
+        }
+
+        return tags.contains(ReachTag.TYPE);
+    }
+
+    public function applyBonuses(e:ActionPoolEvent):Void
     {
         var action = e.getAction();
         var pool = e.getActionPool();
 
-        if (!Std.isOfType(action, AttackAction))
-            return;
+        // Is this holder's pool event.
         if (!this.isHolderPool(pool))
             return;
-        if (!this.isActionWithWeapon(action))
+
+        // Is this is attack with holder defence.
+        if (!this.isHolderDefence(action))
             return;
-        if (!pool.hasTrait(DefenceAdvantage.TYPE.getDN()))
+
+        var attack:AttackAction = cast Utility.downcast(action, AttackAction);
+
+        // Only apply bonus if enemy doesn't have weapon with reach.
+        if (this.checkTargetHasReach(attack))
+        {
             return;
+        }
 
         pool.getRequest().addModifier(1, DN);
     }

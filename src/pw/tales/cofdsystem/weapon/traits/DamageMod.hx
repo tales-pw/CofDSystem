@@ -1,6 +1,5 @@
 package pw.tales.cofdsystem.weapon.traits;
 
-import pw.tales.cofdsystem.action_attack.AttackAction;
 import pw.tales.cofdsystem.action_attack.events.AttackSuccesesEvent;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
@@ -17,15 +16,11 @@ class DamageMod extends WeaponMod
         this.holderEventBus.addHandler(AttackSuccesesEvent, this.applyDamage);
     }
 
-    public function applyDamage(event:AttackSuccesesEvent)
+    public function applyDamage(event:AttackSuccesesEvent):Void
     {
         var action = event.getAction();
 
-        if (!Std.isOfType(action, AttackAction))
-            return;
-        if (!this.isHolderActor(action))
-            return;
-        if (!this.isActionWithWeapon(action))
+        if (this.isHolderAttack(action))
             return;
 
         event.setDamageSucceses(event.getDamageSucceses() + this.getValue());

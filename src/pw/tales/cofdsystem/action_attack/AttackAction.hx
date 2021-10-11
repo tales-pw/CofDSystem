@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.action_attack;
 
+import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.action.competition.Competition;
 import pw.tales.cofdsystem.action.RollAction;
 import pw.tales.cofdsystem.action.EnumTime;
@@ -29,6 +30,11 @@ class AttackAction extends RollAction
     public function getCompetition():Competition
     {
         return this.competition;
+    }
+
+    public function getTarget():GameObject
+    {
+        return this.competition.getTarget();
     }
 
     public function getDamage():Damage

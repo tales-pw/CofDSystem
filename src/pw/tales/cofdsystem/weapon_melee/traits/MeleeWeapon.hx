@@ -1,9 +1,7 @@
 package pw.tales.cofdsystem.weapon_melee.traits;
 
-import pw.tales.cofdsystem.utils.Utility;
 import pw.tales.cofdsystem.action.events.pool.ActionBuildPoolEvent;
 import pw.tales.cofdsystem.action.events.pool.ActionPoolEvent;
-import pw.tales.cofdsystem.action_attack.AttackAction;
 import pw.tales.cofdsystem.character.traits.attribute.Attributes;
 import pw.tales.cofdsystem.character.traits.skill.Skills;
 import pw.tales.cofdsystem.game_object.GameObject;
@@ -25,17 +23,15 @@ class MeleeWeapon extends WeaponTrait
 
     public function changeTraits(event:ActionPoolEvent):Void
     {
-        var action = Utility.downcast(event.getAction(), AttackAction);
+        var action = event.getAction();
+        var pool = event.getActionPool();
 
-        if (action == null)
-        {
-            return;
-        }
-
-        if (!this.isHolderActor(action))
+        // Is this holder's pool event.
+        if (!this.isHolderPool(pool))
             return;
 
-        if (!this.isActionWithWeapon(action))
+        // Is this holder's attack action.
+        if (!this.isHolderAttack(action))
             return;
 
         event.getActionPool().getRequest().setTraits([Attributes.STRENGTH.getDN(), Skills.WEAPONRY.getDN()]);

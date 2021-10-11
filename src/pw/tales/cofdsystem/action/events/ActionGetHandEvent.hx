@@ -20,7 +20,7 @@ class ActionGetHandEvent extends ActionEvent
         return this.gameObject;
     }
 
-    public function setHand(hand:EnumHand)
+    public function setHand(hand:EnumHand):Void
     {
         this.hand = hand;
     }

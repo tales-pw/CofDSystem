@@ -20,16 +20,12 @@ class ExplodeTag extends WeaponTag
         var action = e.getAction();
         var pool = e.getActionPool();
 
-        if (!Std.isOfType(action, AttackAction))
-            return;
-
+        // Is this holder's pool event.
         if (!this.isHolderPool(pool))
             return;
 
-        if (!this.isHolderActor(action))
-            return;
-
-        if (!this.isActionWithWeapon(action))
+        // Is this holder's attack action.
+        if (!this.isHolderAttack(action))
             return;
 
         final explode = this.getExplode();
