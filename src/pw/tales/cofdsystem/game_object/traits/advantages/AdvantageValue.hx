@@ -3,8 +3,9 @@ package pw.tales.cofdsystem.game_object.traits.advantages;
 import pw.tales.cofdsystem.game_object.events.AdvantageModEvent;
 import pw.tales.cofdsystem.game_object.GameObject;
 
-class AdvantageConstant extends Advantage
+class AdvantageValue extends Advantage
 {
+    @Optional
     @Serialize("value")
     private var value:Int;
 

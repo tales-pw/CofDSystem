@@ -1,12 +1,12 @@
 package pw.tales.cofdsystem.game_object.traits.advantages;
 
 import pw.tales.cofdsystem.game_object.GameObject;
-import pw.tales.cofdsystem.game_object.traits.advantages.AdvantageConstant;
+import pw.tales.cofdsystem.game_object.traits.advantages.AdvantageValue;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 
 @RegisterTraitTypes
 @:expose("SizeAdvantage")
-class SizeAdvantage extends AdvantageConstant
+class SizeAdvantage extends AdvantageValue
 {
     public static final DN = "Размер";
     public static final TYPE:TraitType<SizeAdvantage> = cast TraitType.createType(DN, create);
