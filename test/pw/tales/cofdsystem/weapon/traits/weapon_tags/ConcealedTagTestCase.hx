@@ -7,20 +7,25 @@ import pw.tales.cofdsystem.common.EnumHand;
 import pw.tales.cofdsystem.character.traits.HeldWeapon;
 import pw.tales.cofdsystem.weapon.prefabs.WeaponPrefab;
 
-class TestConcealedTag extends CofDSystemTestCase
+class ConcealedTagTestCase extends CofDSystemTestCase
 {
     private function createShieldPrefab(size:Int):WeaponPrefab
     {
         return new WeaponPrefab("shield", "name", 0, 0, size, [ConcealedTag.TYPE]);
     }
 
-    private function methodTestShield(size:Int)
+    private function setupc1(size:Int):Void
     {
         var prefab = this.createShieldPrefab(size);
         var weapon = prefab.createWeapon(this.system);
 
         var trait = this.c1.getTrait(HeldWeapon.TYPE);
         trait.setHand(EnumHand.HAND, weapon);
+    }
+
+    private function methodTestShield(size:Int)
+    {
+        this.setupc1(size);
 
         var action = new AttackBuilder(c2, c1).build();
         system.act(action);
@@ -48,11 +53,7 @@ class TestConcealedTag extends CofDSystemTestCase
 
     public function testConcealedNotAppliedWhenActorWithShield()
     {
-        var prefab = this.createShieldPrefab(3);
-        var weapon = prefab.createWeapon(this.system);
-
-        var trait = this.c1.getTrait(HeldWeapon.TYPE);
-        trait.setHand(EnumHand.HAND, weapon);
+        this.setupc1(3);
 
         var action = new AttackBuilder(c1, c2).build();
         system.act(action);
