@@ -1,21 +1,17 @@
-package pw.tales.cofdsystem.weapon;
+package pw.tales.cofdsystem.weapon.traits.weapon_tags;
 
 import pw.tales.cofdsystem.weapon.traits.weapon_tags.ConcealedTag;
 import haxe.Exception;
-import pw.tales.cofdsystem.character.traits.skill.Skills;
-import pw.tales.cofdsystem.character.traits.attribute.Attributes;
 import pw.tales.cofdsystem.action_attack.builder.AttackBuilder;
 import pw.tales.cofdsystem.common.EnumHand;
 import pw.tales.cofdsystem.character.traits.HeldWeapon;
 import pw.tales.cofdsystem.weapon.prefabs.WeaponPrefab;
 
-class TestShieldTestCase extends CofDSystemTestCase
+class TestConcealedTag extends CofDSystemTestCase
 {
     private function createShieldPrefab(size:Int):WeaponPrefab
     {
-        return new WeaponPrefab("shield", "name", 0, 0, size, [
-            ConcealedTag.TYPE
-        ]);
+        return new WeaponPrefab("shield", "name", 0, 0, size, [ConcealedTag.TYPE]);
     }
 
     private function methodTestShield(size:Int)
@@ -42,11 +38,29 @@ class TestShieldTestCase extends CofDSystemTestCase
         assertEquals(modifiers[ConcealedTag.TYPE.getDN()], size);
     }
 
-    public function testShield()
+    public function testConcealedAppliedWhenTargetWithShield()
     {
         for (size in 1...5)
         {
             this.methodTestShield(size);
         }
+    }
+
+    public function testConcealedNotAppliedWhenActorWithShield()
+    {
+        var prefab = this.createShieldPrefab(3);
+        var weapon = prefab.createWeapon(this.system);
+
+        var trait = this.c1.getTrait(HeldWeapon.TYPE);
+        trait.setHand(EnumHand.HAND, weapon);
+
+        var action = new AttackBuilder(c1, c2).build();
+        system.act(action);
+
+        var pool = action.getCompetition().getPool(c1);
+        var request = pool.getRequest();
+        var modifiers = request.getAppliedModifiers();
+
+        assertEquals(modifiers[ConcealedTag.TYPE.getDN()], null);
     }
 }

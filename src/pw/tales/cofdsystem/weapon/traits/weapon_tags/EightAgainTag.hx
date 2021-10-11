@@ -23,17 +23,20 @@ class EightAgainTag extends WeaponTag
         this.holderEventBus.addHandler(ActionBuildPoolEvent, this.applyExplode);
     }
 
-    public function applyExplode(e:ActionBuildPoolEvent)
+    public function applyExplode(e:ActionBuildPoolEvent):Void
     {
         var action = e.getAction();
         var pool = e.getActionPool();
 
         if (!Std.isOfType(action, AttackAction))
             return;
+
         if (!this.isHolderPool(pool))
             return;
-        if (!this.doesHolderAct(action))
+
+        if (!this.isHolderActor(action))
             return;
+
         if (!this.isActionWithWeapon(action))
             return;
 

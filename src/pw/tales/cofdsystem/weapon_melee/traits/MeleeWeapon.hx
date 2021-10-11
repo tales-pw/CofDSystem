@@ -32,7 +32,7 @@ class MeleeWeapon extends WeaponTrait
             return;
         }
 
-        if (!this.doesHolderAct(action))
+        if (!this.isHolderActor(action))
             return;
 
         if (!this.isActionWithWeapon(action))

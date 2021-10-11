@@ -23,7 +23,7 @@ class DamageMod extends WeaponMod
 
         if (!Std.isOfType(action, AttackAction))
             return;
-        if (!this.doesHolderAct(action))
+        if (!this.isHolderActor(action))
             return;
         if (!this.isActionWithWeapon(action))
             return;

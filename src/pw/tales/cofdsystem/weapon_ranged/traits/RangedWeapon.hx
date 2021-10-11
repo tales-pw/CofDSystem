@@ -38,7 +38,7 @@ class RangedWeapon extends WeaponTrait
         if (action == null)
             return;
 
-        if (!this.doesHolderAct(action))
+        if (!this.isHolderActor(action))
             return;
 
         if (!this.isActionWithWeapon(action))
