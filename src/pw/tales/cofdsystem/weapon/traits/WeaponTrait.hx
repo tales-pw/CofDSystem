@@ -19,7 +19,7 @@ class WeaponTrait extends EquipmentTrait
         return handEvent.getHand();
     }
 
-    public function doesHolderAct(action:IAction):Bool
+    public function isHolderActor(action:IAction):Bool
     {
         var holder = this.getHolder();
         return holder != null && action.getActor() == holder;
