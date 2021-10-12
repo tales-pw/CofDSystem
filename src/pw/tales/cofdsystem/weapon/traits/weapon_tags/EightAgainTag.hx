@@ -1,8 +1,5 @@
 package pw.tales.cofdsystem.weapon.traits.weapon_tags;
 
-import pw.tales.cofdsystem.weapon.traits.weapon_tags.base.ExplodeTag;
-import pw.tales.cofdsystem.action.events.pool.ActionBuildPoolEvent;
-import pw.tales.cofdsystem.action_attack.AttackAction;
 import pw.tales.cofdsystem.dices.EnumExplode;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.TraitType;

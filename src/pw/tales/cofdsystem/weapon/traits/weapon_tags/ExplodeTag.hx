@@ -1,8 +1,7 @@
-package pw.tales.cofdsystem.weapon.traits.weapon_tags.base;
+package pw.tales.cofdsystem.weapon.traits.weapon_tags;
 
-import pw.tales.cofdsystem.action_attack.AttackAction;
+import haxe.exceptions.NotImplementedException;
 import pw.tales.cofdsystem.action.events.pool.ActionBuildPoolEvent;
-import thx.error.NotImplemented;
 import pw.tales.cofdsystem.dices.EnumExplode;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.game_object.GameObject;
@@ -34,6 +33,6 @@ class ExplodeTag extends WeaponTag
 
     public function getExplode():EnumExplode
     {
-        throw new NotImplemented();
+        throw new NotImplementedException();
     }
 }

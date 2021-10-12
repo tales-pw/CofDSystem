@@ -1,9 +1,8 @@
 package pw.tales.cofdsystem.weapon.traits.weapon_tags;
 
-import pw.tales.cofdsystem.weapon.traits.weapon_tags.base.ExplodeTag;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.dices.EnumExplode;
-import pw.tales.cofdsystem.weapon.traits.weapon_tags.base.ExplodeTagTestCase;
+import pw.tales.cofdsystem.weapon.traits.weapon_tags.ExplodeTagTestCase;
 
 class EightAgainTagTestCase extends ExplodeTagTestCase
 {

@@ -5,12 +5,18 @@ import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.mocks.DiceRollerMock;
 import haxe.unit.TestCase;
 
-@:nullSafety(Off)
 class CofDSystemTestCase extends TestCase implements WithBaseTest
 {
+    @:nullSafety(Off)
     private var system:CofDSystem;
+
+    @:nullSafety(Off)
     private var c1:GameObject;
+
+    @:nullSafety(Off)
     private var c2:GameObject;
+
+    @:nullSafety(Off)
     private var c3:GameObject;
 
     override public function setup()

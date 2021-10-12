@@ -1,6 +1,5 @@
 package pw.tales.cofdsystem.weapon.traits.weapon_tags;
 
-import pw.tales.cofdsystem.action_attack.AttackAction;
 import pw.tales.cofdsystem.action_attack.events.AttackDamageGetTypeEvent;
 import pw.tales.cofdsystem.damage.DamageType;
 import pw.tales.cofdsystem.game_object.GameObject;

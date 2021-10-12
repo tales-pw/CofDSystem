@@ -1,35 +1,17 @@
-package pw.tales.cofdsystem.weapon.traits.weapon_tags.base;
+package pw.tales.cofdsystem.weapon.traits.weapon_tags;
 
+import pw.tales.cofdsystem.weapon.traits.weapon_tags.ExplodeTag;
 import pw.tales.cofdsystem.action_attack.builder.EnumResistType;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.action_attack.AttackAction;
 import pw.tales.cofdsystem.action_attack.builder.AttackBuilder;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
-import pw.tales.cofdsystem.weapon.prefabs.WeaponPrefab;
 import thx.error.NotImplemented;
 import pw.tales.cofdsystem.dices.EnumExplode;
 import haxe.unit.TestCase;
-import pw.tales.cofdsystem.common.EnumHand;
-import pw.tales.cofdsystem.character.traits.HeldWeapon;
 
-class ExplodeTagTestCase extends CofDSystemTestCase
+class ExplodeTagTestCase extends WeaponTagTestCase
 {
-    override public function setup()
-    {
-        super.setup();
-
-        var prefab = this.createShieldPrefab();
-        var weapon = prefab.createWeapon(this.system);
-
-        var trait = this.c1.getTrait(HeldWeapon.TYPE);
-        trait.setHand(EnumHand.HAND, weapon);
-    }
-
-    private function createShieldPrefab():WeaponPrefab
-    {
-        return new WeaponPrefab("shield", "name", 0, 0, 0, [this.getTagType()]);
-    }
-
     private function getGOExplode(action:AttackAction, gameObject:GameObject):EnumExplode
     {
         var pool = action.getCompetition().getPool(gameObject);
@@ -60,7 +42,7 @@ class ExplodeTagTestCase extends CofDSystemTestCase
         return ExplodeTagTestCase;
     }
 
-    public function getTagType():TraitType<ExplodeTag>
+    public override function getTagType():TraitType<ExplodeTag>
     {
         throw new NotImplemented();
     }
