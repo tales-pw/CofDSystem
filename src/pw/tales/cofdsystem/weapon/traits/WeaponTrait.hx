@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.weapon.traits;
 
+import pw.tales.cofdsystem.utils.events.HandlerPriority;
 import pw.tales.cofdsystem.utils.Utility;
 import pw.tales.cofdsystem.action_attack.AttackAction;
 import pw.tales.cofdsystem.action.events.ActionGetHandEvent;
@@ -10,6 +11,8 @@ import pw.tales.cofdsystem.equipment.traits.EquipmentTrait;
 
 class WeaponTrait extends EquipmentTrait
 {
+    public static final PRIORITY = HandlerPriority.NORMAL;
+
     private function getActionHand(action:IAction):EnumHand
     {
         var eventBus = action.getEventBus();

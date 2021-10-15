@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.weapon.traits.weapon_tags;
 
+import pw.tales.cofdsystem.utils.events.HandlerPriority;
 import pw.tales.cofdsystem.action.events.pool.ActionBuildPoolEvent;
 import pw.tales.cofdsystem.character.traits.skill.Skills;
 import pw.tales.cofdsystem.game_object.GameObject;
@@ -17,10 +18,12 @@ class BrawlTag extends WeaponTag
     public static final DN = "brawl_(weapon_tag)";
     public static final TYPE:TraitType<BrawlTag> = cast TraitType.createType(DN, create);
 
+    public static final PRIORITY = HandlerPriority.lower([WeaponTrait.PRIORITY]);
+
     public function new(gameObject:GameObject)
     {
         super(DN, gameObject, TYPE);
-        this.holderEventBus.addHandler(ActionBuildPoolEvent, this.changeTraits);
+        this.holderEventBus.addHandler(ActionBuildPoolEvent, this.changeTraits, PRIORITY);
     }
 
     public function changeTraits(e:ActionBuildPoolEvent):Void

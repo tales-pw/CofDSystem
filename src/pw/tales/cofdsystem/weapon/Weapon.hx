@@ -12,8 +12,6 @@ import pw.tales.cofdsystem.weapon.traits.weapon_tags.WeaponTags;
 
 class Weapon extends Equipment implements IWeapon
 {
-    public static final ATTACK_POOL_PRIORITY = HandlerPriority.NORMAL;
-
     public function new(gameObject:GameObject)
     {
         super(gameObject);

@@ -22,7 +22,7 @@ class CofDSystemTestCase extends TestCase implements WithBaseTest
     override public function setup()
     {
         this.system = new CofDSystem();
-        system.dices = cast new DiceRollerMock([], 8);
+        system.dices = new DiceRollerMock([], 8);
 
         this.c1 = HumanPrefab.INSTANCE.createGameObject(system);
         this.c2 = HumanPrefab.INSTANCE.createGameObject(system);

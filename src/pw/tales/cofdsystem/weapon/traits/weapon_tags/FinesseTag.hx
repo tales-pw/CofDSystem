@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.weapon.traits.weapon_tags;
 
+import pw.tales.cofdsystem.utils.events.HandlerPriority;
 import pw.tales.cofdsystem.action.events.pool.ActionBuildPoolEvent;
 import pw.tales.cofdsystem.character.traits.attribute.Attributes;
 import pw.tales.cofdsystem.game_object.GameObject;
@@ -17,10 +18,12 @@ class FinesseTag extends WeaponTag
     public static final DN = "finesse_(weapon_tag)";
     public static final TYPE:TraitType<FinesseTag> = cast TraitType.createType(DN, create);
 
+    public static final PRIORITY = HandlerPriority.lower([WeaponTrait.PRIORITY]);
+
     public function new(gameObject:GameObject)
     {
         super(DN, gameObject, TYPE);
-        this.holderEventBus.addHandler(ActionBuildPoolEvent, this.replaceStrWithDex);
+        this.holderEventBus.addHandler(ActionBuildPoolEvent, this.replaceStrWithDex, PRIORITY);
     }
 
     public function replaceStrWithDex(event:ActionBuildPoolEvent):Void

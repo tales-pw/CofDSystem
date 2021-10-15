@@ -21,7 +21,7 @@ class RangedWeapon extends WeaponTrait
     public function new(gameObject:GameObject)
     {
         super(DN, gameObject, TYPE);
-        this.holderEventBus.addHandler(ActionBuildPoolEvent, this.changeTraits, Weapon.ATTACK_POOL_PRIORITY);
+        this.holderEventBus.addHandler(ActionBuildPoolEvent, this.changeTraits, WeaponTrait.PRIORITY);
     }
 
     private function canApplyDefence(gameObject:GameObject):Bool

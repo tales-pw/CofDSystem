@@ -1,11 +1,9 @@
 package pw.tales.cofdsystem.weapon.traits.weapon_tags;
 
-import pw.tales.cofdsystem.weapon.traits.weapon_tags.ExplodeTag;
 import pw.tales.cofdsystem.action_attack.builder.EnumResistType;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.action_attack.AttackAction;
 import pw.tales.cofdsystem.action_attack.builder.AttackBuilder;
-import pw.tales.cofdsystem.game_object.traits.TraitType;
 import thx.error.NotImplemented;
 import pw.tales.cofdsystem.dices.EnumExplode;
 import haxe.unit.TestCase;
@@ -40,11 +38,6 @@ class ExplodeTagTestCase extends WeaponTagTestCase
     public override function getBaseTest():Class<TestCase>
     {
         return ExplodeTagTestCase;
-    }
-
-    public override function getTagType():TraitType<ExplodeTag>
-    {
-        throw new NotImplemented();
     }
 
     public function getExpectedExplode():EnumExplode

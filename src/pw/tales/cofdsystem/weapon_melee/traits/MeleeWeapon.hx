@@ -18,7 +18,7 @@ class MeleeWeapon extends WeaponTrait
     public function new(gameObject:GameObject)
     {
         super(DN, gameObject, TYPE);
-        this.holderEventBus.addHandler(ActionBuildPoolEvent, this.changeTraits, Weapon.ATTACK_POOL_PRIORITY);
+        this.holderEventBus.addHandler(ActionBuildPoolEvent, this.changeTraits, WeaponTrait.PRIORITY);
     }
 
     public function changeTraits(event:ActionPoolEvent):Void

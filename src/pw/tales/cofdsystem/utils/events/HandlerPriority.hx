@@ -15,14 +15,14 @@ class HandlerPriority
         return copy;
     }
 
-    public static function before(prorities:Array<Int>):Int
+    public static function lower(prorities:Array<Int>):Int
     {
         if (prorities.length == 0)
             return NORMAL;
-        return sortedCopy(prorities)[prorities.length] + 1;
+        return sortedCopy(prorities)[prorities.length - 1] + 1;
     }
 
-    public static function after(prorities:Array<Int>):Int
+    public static function higher(prorities:Array<Int>):Int
     {
         if (prorities.length == 0)
             return NORMAL;

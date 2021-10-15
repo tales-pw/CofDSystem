@@ -17,10 +17,12 @@ class MercyTag extends WeaponTag
     public static final DN = "mercy_(weapon_tag)";
     public static final TYPE:TraitType<MercyTag> = cast TraitType.createType(DN, create);
 
+    public static final PRIORITY = HandlerPriority.lower([WeaponTrait.PRIORITY]);
+
     public function new(gameObject:GameObject)
     {
         super(DN, gameObject, TYPE);
-        this.holderEventBus.addHandler(AttackDamageGetTypeEvent, this.makeBashing, HandlerPriority.after([Weapon.ATTACK_POOL_PRIORITY]));
+        this.holderEventBus.addHandler(AttackDamageGetTypeEvent, this.makeBashing, PRIORITY);
     }
 
     private function makeBashing(e:AttackDamageGetTypeEvent):Void
