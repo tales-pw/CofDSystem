@@ -22,6 +22,15 @@ class ReachTagTestCase extends WeaponTagTestCase
         this.assertBonus(action, c2, null);
     }
 
+    public function testNotApplied()
+    {
+        var action = new AttackBuilder(c1, c2).build();
+        system.act(action);
+
+        this.assertBonus(action, c1, null);
+        this.assertBonus(action, c2, null);
+    }
+
     public function testNotAppliedWhenEnemyHasReach()
     {
         var weapon = c2.getTrait(HeldWeapon.TYPE).getMainHand();
