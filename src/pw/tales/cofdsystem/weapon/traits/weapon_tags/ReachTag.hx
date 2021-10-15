@@ -26,8 +26,8 @@ class ReachTag extends WeaponTag
 
     public function checkTargetHasReach(attack:AttackAction):Bool
     {
-        var target = attack.getCompetition().getTarget();
-        var heldWeapon = target.getTrait(HeldWeapon.TYPE);
+        var attacker = attack.getCompetition().getActor();
+        var heldWeapon = attacker.getTrait(HeldWeapon.TYPE);
 
         var main = heldWeapon.getMainHand();
         var off = heldWeapon.getOffHand();
