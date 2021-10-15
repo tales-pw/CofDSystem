@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.armor.traits.armor_rating;
 
+import pw.tales.cofdsystem.weapon_ranged.traits.RangedWeapon;
 import pw.tales.cofdsystem.action.Action;
 import pw.tales.cofdsystem.character.traits.HeldWeapon;
 import pw.tales.cofdsystem.action_attack.AttackAction;
@@ -50,6 +51,20 @@ class ArmorRating extends EquipmentTrait
         return this.ballistic;
     }
 
+    private function isRangedWeaponAttack(action:AttackAction):Bool
+    {
+        var weapon = action.getWeapon();
+
+        if (weapon == null)
+        {
+            return false;
+        }
+
+        var gameObject = weapon.getGameObject();
+
+        return gameObject.getTrait(RangedWeapon.TYPE) != null;
+    }
+
     private function applyArmorAbsorption(event:AttackDamageGetEvent):Void
     {
         var holder = this.getHolder();
@@ -66,6 +81,11 @@ class ArmorRating extends EquipmentTrait
 
         var general = this.getGeneral();
         var ballistic = this.getBallistic();
+
+        if (!this.isRangedWeaponAttack(action))
+        {
+            ballistic = 0;
+        }
 
         var armorGetEvent = new AttackArmorGetEvent(action, general, ballistic);
         system.events.post(armorGetEvent);

@@ -7,6 +7,7 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.common.EnumHand;
 import pw.tales.cofdsystem.character.traits.HeldWeapon;
 import haxe.exceptions.NotImplementedException;
+import pw.tales.cofdsystem.weapon.prefabs.WeaponPrefab;
 import haxe.unit.TestCase;
 
 class WeaponTagTestCase extends CofDSystemTestCase
@@ -57,7 +58,7 @@ class WeaponTagTestCase extends CofDSystemTestCase
         this.assertArrayEquals(traits.map(v -> v.getDN()), request.getTraits());
     }
 
-    private function createPrefab()
+    private function createPrefab():WeaponPrefab
     {
         return new MeleeWeaponPrefab("weapon", null, 0, 0, 0, [this.getTagType()]);
     }
