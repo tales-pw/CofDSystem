@@ -14,9 +14,10 @@ class EquipmentMod extends EquipmentTrait
         super(dn, gameObject, type);
     }
 
-    public function setValue(value:Int)
+    public function setValue(value:Int):Void
     {
         this.value = value;
+        this.notifyUpdated();
     }
 
     public override function getValue():Int

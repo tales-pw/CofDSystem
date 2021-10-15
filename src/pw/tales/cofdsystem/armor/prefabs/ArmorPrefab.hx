@@ -69,13 +69,13 @@ class ArmorPrefab extends EquipmentPrefab implements IArmor
         return this.speedMod;
     }
 
-    public function toString(): String
+    public function toString():String
     {
         var clazz = Type.getClass(this);
         return '${Utility.getClassName(clazz)}[dn=$dn,general=$general, ballistic=$ballistic]';
     }
 
-    private override function setUpGameObject(armorGameObject:GameObject): Void
+    private override function setUpGameObject(armorGameObject:GameObject):Void
     {
         super.setUpGameObject(armorGameObject);
 
