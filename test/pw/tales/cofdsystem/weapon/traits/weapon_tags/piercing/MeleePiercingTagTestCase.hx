@@ -9,7 +9,7 @@ class MeleePiercingTagTestCase extends PiercingTagTestCase
 {
     private override function createPrefab():WeaponPrefab
     {
-        return new MeleeWeaponPrefab("weapon", null, 0, 0, 0, [this.getTagType()]);
+        return new MeleeWeaponPrefab("weapon", null, 0, 0, 0, 0, [this.getTagType()]);
     }
 
     public function testApplyToGeneral()

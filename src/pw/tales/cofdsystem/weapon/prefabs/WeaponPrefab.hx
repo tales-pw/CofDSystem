@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.weapon.prefabs;
 
+import pw.tales.cofdsystem.armor.traits.StrengthReq;
 import pw.tales.cofdsystem.game_object.traits.advantages.SizeAdvantage;
 import pw.tales.cofdsystem.equipment.prefabs.EquipmentPrefab;
 import pw.tales.cofdsystem.equipment.traits.HoldingHand;
@@ -16,17 +17,19 @@ class WeaponPrefab extends EquipmentPrefab implements IWeapon
     private var name:Null<String>;
     private var initiative:Int;
     private var damage:Int;
+    private var strength:Int;
     private var size:Int;
 
     private var tags:Array<TraitType<Dynamic>>;
 
-    public function new(dn:String, name:Null<String>, initiative:Int, damage:Int, size:Int, tags:Array<TraitType<Dynamic>>)
+    public function new(dn:String, name:Null<String>, initiative:Int, damage:Int, size:Int, strength:Int, tags:Array<TraitType<Dynamic>>)
     {
         super(dn);
         this.name = name;
         this.initiative = initiative;
         this.damage = damage;
         this.size = size;
+        this.strength = strength;
         this.tags = tags;
     }
 
@@ -50,6 +53,11 @@ class WeaponPrefab extends EquipmentPrefab implements IWeapon
     public function getDamageMod():Int
     {
         return this.damage;
+    }
+
+    public function getStrengthReq():Int
+    {
+        return this.strength;
     }
 
     public function getSize():Int
@@ -76,6 +84,9 @@ class WeaponPrefab extends EquipmentPrefab implements IWeapon
 
         var size = manager.addTrait(SizeAdvantage.TYPE);
         size.setValue(this.size);
+
+        var strengthReq = manager.addTrait(StrengthReq.TYPE);
+        strengthReq.setValue(this.strength);
 
         manager.addTrait(LethalDamage.TYPE);
         manager.addTrait(HoldingHand.TYPE);

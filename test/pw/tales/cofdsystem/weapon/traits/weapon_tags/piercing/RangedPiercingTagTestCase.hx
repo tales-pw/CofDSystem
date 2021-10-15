@@ -9,7 +9,7 @@ class RangedPiercingTagTestCase extends PiercingTagTestCase
 {
     private override function createPrefab():WeaponPrefab
     {
-        return new RangedWeaponPrefab("weapon", null, 0, 0, 0, [this.getTagType()]);
+        return new RangedWeaponPrefab("weapon", null, 0, 0, 0, 0, [this.getTagType()]);
     }
 
     public function testApplyToGeneral()
