@@ -1,8 +1,6 @@
 package pw.tales.cofdsystem.weapon.traits.weapon_tags;
 
 import pw.tales.cofdsystem.character.traits.HeldWeapon;
-import pw.tales.cofdsystem.common.EnumHand;
-import pw.tales.cofdsystem.equipment.traits.HoldingHand;
 import pw.tales.cofdsystem.action_attack.builder.AttackBuilder;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 
