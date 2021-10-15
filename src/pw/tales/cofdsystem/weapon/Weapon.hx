@@ -43,7 +43,7 @@ class Weapon extends Equipment implements IWeapon
         }
     }
 
-    public function unsetEquipper()
+    public function unsetEquipper():Void
     {
         super.unsetHolder();
 
@@ -53,7 +53,7 @@ class Weapon extends Equipment implements IWeapon
         } catch (NoTraitAccessorException) {}
     }
 
-    public function setEquipper(gameObject:GameObject, hand:EnumHand)
+    public function setEquipper(gameObject:GameObject, hand:EnumHand):Void
     {
         super.setHolder(gameObject);
 

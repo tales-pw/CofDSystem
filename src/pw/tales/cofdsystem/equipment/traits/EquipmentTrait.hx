@@ -45,7 +45,7 @@ class EquipmentTrait extends Trait
         return e != null && e.isRelated(holder);
     }
 
-    override public function onRemoved()
+    override public function onRemoved():Void
     {
         this.holderEventBus.disable();
         super.onRemoved();

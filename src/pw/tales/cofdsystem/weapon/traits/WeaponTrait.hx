@@ -3,26 +3,13 @@ package pw.tales.cofdsystem.weapon.traits;
 import pw.tales.cofdsystem.utils.events.HandlerPriority;
 import pw.tales.cofdsystem.utils.Utility;
 import pw.tales.cofdsystem.action_attack.AttackAction;
-import pw.tales.cofdsystem.action.events.ActionGetHandEvent;
 import pw.tales.cofdsystem.action.IAction;
 import pw.tales.cofdsystem.action.pool.ActionPool;
-import pw.tales.cofdsystem.common.EnumHand;
 import pw.tales.cofdsystem.equipment.traits.EquipmentTrait;
 
 class WeaponTrait extends EquipmentTrait
 {
     public static final PRIORITY = HandlerPriority.NORMAL;
-
-    private function getActionHand(action:IAction):EnumHand
-    {
-        var eventBus = action.getEventBus();
-        var actor = action.getActor();
-
-        var handEvent = new ActionGetHandEvent(action, actor);
-        eventBus.post(handEvent);
-
-        return handEvent.getHand();
-    }
 
     public function isHolderPool(pool:ActionPool):Bool
     {
@@ -30,11 +17,16 @@ class WeaponTrait extends EquipmentTrait
         return pool.getGameObject() == holder;
     }
 
-    public function isActionWithWeapon(action:IAction):Bool
+    public function isActionWithWeapon(attack:AttackAction):Bool
     {
-        var weaponHand = this.getHand();
-        var actionHand = this.getActionHand(action);
-        return weaponHand != null && weaponHand == actionHand;
+        var weapon = attack.getWeapon();
+
+        if (weapon == null)
+        {
+            return false;
+        }
+
+        return weapon.getGameObject() == this.gameObject;
     }
 
     /**
@@ -57,7 +49,7 @@ class WeaponTrait extends EquipmentTrait
             return false;
 
         // Is this attack with this weapon.
-        if (!this.isActionWithWeapon(action))
+        if (!this.isActionWithWeapon(attack))
             return false;
 
         return true;

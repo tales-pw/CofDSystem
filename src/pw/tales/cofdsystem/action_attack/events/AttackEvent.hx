@@ -23,7 +23,7 @@ class AttackEvent extends ActionEvent
         return this.attackAction;
     }
 
-    public function isTarget(gameObject:GameObject)
+    public function isTarget(gameObject:GameObject):Bool
     {
         return attackAction.getCompetition().getTarget() == gameObject;
     }

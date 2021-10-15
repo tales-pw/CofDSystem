@@ -32,7 +32,7 @@ class ReachTagTestCase extends WeaponTagTestCase
     public function testNotAppliedWhenEnemyHasReach()
     {
         var weapon = c2.getTrait(HeldWeapon.TYPE).getMainHand();
-        @:nullSafety(Off) 
+        @:nullSafety(Off)
         weapon.getGameObject().getTraitManager().addTrait(this.getTagType());
 
         var action = new AttackBuilder(c2, c1).build();
