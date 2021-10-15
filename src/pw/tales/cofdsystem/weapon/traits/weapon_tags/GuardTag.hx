@@ -28,13 +28,10 @@ class GuardTag extends WeaponTag
         var pool = e.getActionPool();
         var request = pool.getRequest();
 
-        if (!Std.isOfType(action, AttackAction))
-            return;
-
         if (!this.isHolderPool(pool))
             return;
 
-        if (!this.isActionWithWeapon(action))
+        if (!this.isHolderDefence(action))
             return;
 
         request.addModifier(1, this.getDN());
