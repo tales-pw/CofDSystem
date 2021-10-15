@@ -29,17 +29,18 @@ class Damage
         return this.aggravated;
     }
 
-    public function getTuple(): Array<Int> {
+    public function getTuple():Array<Int>
+    {
         return [this.bashing, this.lethal, this.aggravated];
     }
 
-    public function enusreBashing(): Void
+    public function enusreBashing():Void
     {
         if (bashing == 0 && lethal == 0 && aggravated == 0)
             bashing = 1;
     }
 
-    public function applyGeneralArmor(generalArmor:Int): Void
+    public function applyGeneralArmor(generalArmor:Int):Void
     {
         if (aggravated != 0 && generalArmor != 0)
         {

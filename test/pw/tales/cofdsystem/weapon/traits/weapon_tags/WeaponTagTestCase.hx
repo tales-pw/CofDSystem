@@ -54,7 +54,7 @@ class WeaponTagTestCase extends CofDSystemTestCase
     {
         var pool = action.getCompetition().getPool(gameObject);
         var request = pool.getRequest();
-        assertEquals(Std.string(traits.map(v -> v.getDN())), Std.string(request.getTraits()));
+        this.assertArrayEquals(traits.map(v -> v.getDN()), request.getTraits());
     }
 
     private function createPrefab()

@@ -4,7 +4,8 @@ import pw.tales.cofdsystem.common.EnumSide;
 import pw.tales.cofdsystem.action_attack.builder.AttackBuilder;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 
-class MercyTagTestCase extends WeaponTagTestCase {
+class MercyTagTestCase extends WeaponTagTestCase
+{
     private override function getTagType():TraitType<Dynamic>
     {
         return MercyTag.TYPE;

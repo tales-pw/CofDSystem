@@ -29,10 +29,10 @@ class CofDSystemTestCase extends TestCase implements WithBaseTest
         this.c3 = HumanPrefab.INSTANCE.createGameObject(system);
     }
 
-    public function assertArrayEquals(arg0:Array<Dynamic>, arg1:Array<Dynamic>): Void {
-        assertEquals(Std.string(arg0), Std.string(arg1));
+    public function assertArrayEquals(expected:Array<Dynamic>, actual:Array<Dynamic>):Void
+    {
+        assertEquals(Std.string(expected), Std.string(actual));
     }
-
 
     public function getBaseTest():Class<TestCase>
     {

@@ -34,12 +34,14 @@ class PiercingTag extends WeaponTag
         ballistic = ballistic - piercing;
         if (ballistic < 0)
         {
-            piercing = Std.int(Math.abs(ballistic));
+            piercing = ballistic;
             ballistic = 0;
         } else
         {
             piercing = piercing - event.getBallistic();
         }
+
+        piercing = Std.int(Math.abs(piercing));
 
         general = general - piercing;
         if (general < 0)
