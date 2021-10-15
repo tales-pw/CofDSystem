@@ -1,8 +1,7 @@
-package pw.tales.cofdsystem.armor.traits;
+package pw.tales.cofdsystem.equipment.traits;
 
 import pw.tales.cofdsystem.action.events.pool.ActionPoolEvent;
 import pw.tales.cofdsystem.action_attack.AttackAction;
-import pw.tales.cofdsystem.character.traits.attribute.Attribute;
 import pw.tales.cofdsystem.character.traits.attribute.Attributes;
 import pw.tales.cofdsystem.equipment.traits.EquipmentMod;
 import pw.tales.cofdsystem.game_object.GameObject;
@@ -20,15 +19,17 @@ class StrengthReq extends EquipmentMod
         this.holderEventBus.addHandler(ActionPoolEvent, this.applyMod);
     }
 
-    private function applyMod(event:ActionPoolEvent)
+    private function applyMod(event:ActionPoolEvent): Void
     {
         var holder = this.getHolder();
         var action = event.getAction();
 
         if (holder == null)
             return;
+
         if (!event.isPoolOwner(holder))
             return;
+
         if (!Std.isOfType(action, AttackAction))
             return;
 

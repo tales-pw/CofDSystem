@@ -1,6 +1,6 @@
 package pw.tales.cofdsystem.weapon.prefabs;
 
-import pw.tales.cofdsystem.armor.traits.StrengthReq;
+import pw.tales.cofdsystem.equipment.traits.StrengthReq;
 import pw.tales.cofdsystem.game_object.traits.advantages.SizeAdvantage;
 import pw.tales.cofdsystem.equipment.prefabs.EquipmentPrefab;
 import pw.tales.cofdsystem.equipment.traits.HoldingHand;

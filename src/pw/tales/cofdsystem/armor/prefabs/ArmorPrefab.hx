@@ -1,9 +1,9 @@
 package pw.tales.cofdsystem.armor.prefabs;
 
+import pw.tales.cofdsystem.equipment.traits.StrengthReq;
 import pw.tales.cofdsystem.armor.traits.armor_rating.ArmorRating;
 import pw.tales.cofdsystem.armor.traits.DefenceModifer;
 import pw.tales.cofdsystem.armor.traits.SpeedModifer;
-import pw.tales.cofdsystem.armor.traits.StrengthReq;
 import pw.tales.cofdsystem.equipment.prefabs.EquipmentPrefab;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.utils.Utility;
@@ -69,13 +69,13 @@ class ArmorPrefab extends EquipmentPrefab implements IArmor
         return this.speedMod;
     }
 
-    public function toString()
+    public function toString(): String
     {
         var clazz = Type.getClass(this);
         return '${Utility.getClassName(clazz)}[dn=$dn,general=$general, ballistic=$ballistic]';
     }
 
-    private override function setUpGameObject(armorGameObject:GameObject)
+    private override function setUpGameObject(armorGameObject:GameObject): Void
     {
         super.setUpGameObject(armorGameObject);
 
