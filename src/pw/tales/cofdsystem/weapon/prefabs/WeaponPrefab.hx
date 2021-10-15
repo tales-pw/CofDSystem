@@ -1,5 +1,7 @@
 package pw.tales.cofdsystem.weapon.prefabs;
 
+import pw.tales.cofdsystem.equipment.traits.StrengthReq;
+import pw.tales.cofdsystem.game_object.traits.advantages.SizeAdvantage;
 import pw.tales.cofdsystem.equipment.prefabs.EquipmentPrefab;
 import pw.tales.cofdsystem.equipment.traits.HoldingHand;
 import pw.tales.cofdsystem.game_object.GameObject;
@@ -15,15 +17,19 @@ class WeaponPrefab extends EquipmentPrefab implements IWeapon
     private var name:Null<String>;
     private var initiative:Int;
     private var damage:Int;
+    private var strength:Int;
+    private var size:Int;
 
     private var tags:Array<TraitType<Dynamic>>;
 
-    public function new(dn:String, name:Null<String>, initiative:Int, damage:Int, tags:Array<TraitType<Dynamic>>)
+    public function new(dn:String, name:Null<String>, initiative:Int, damage:Int, size:Int, strength:Int, tags:Array<TraitType<Dynamic>>)
     {
         super(dn);
         this.name = name;
         this.initiative = initiative;
         this.damage = damage;
+        this.size = size;
+        this.strength = strength;
         this.tags = tags;
     }
 
@@ -49,22 +55,38 @@ class WeaponPrefab extends EquipmentPrefab implements IWeapon
         return this.damage;
     }
 
+    public function getStrengthReq():Int
+    {
+        return this.strength;
+    }
+
+    public function getSize():Int
+    {
+        return this.size;
+    }
+
     public function getWeaponTags():Array<TraitType<Dynamic>>
     {
         return this.tags;
     }
 
-    private override function setUpGameObject(weaponGameObject:GameObject)
+    private override function setUpGameObject(gameObject:GameObject):Void
     {
-        super.setUpGameObject(weaponGameObject);
+        super.setUpGameObject(gameObject);
 
-        final manager = weaponGameObject.getTraitManager();
+        final manager = gameObject.getTraitManager();
 
-        var initiativeMod:InitiativeMod = manager.addTrait(InitiativeMod.TYPE);
+        var initiativeMod = manager.addTrait(InitiativeMod.TYPE);
         initiativeMod.setValue(this.getInitiativeMod());
 
-        var damageMod:DamageMod = manager.addTrait(DamageMod.TYPE);
+        var damageMod = manager.addTrait(DamageMod.TYPE);
         damageMod.setValue(this.getDamageMod());
+
+        var size = manager.addTrait(SizeAdvantage.TYPE);
+        size.setValue(this.size);
+
+        var strengthReq = manager.addTrait(StrengthReq.TYPE);
+        strengthReq.setValue(this.strength);
 
         manager.addTrait(LethalDamage.TYPE);
         manager.addTrait(HoldingHand.TYPE);

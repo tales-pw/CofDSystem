@@ -4,7 +4,6 @@ import pw.tales.cofdsystem.character.traits.advantages.DefenceAdvantage;
 import pw.tales.cofdsystem.character.traits.advantages.health.HealthAdvantage;
 import pw.tales.cofdsystem.character.traits.advantages.InitiativeAdvantage;
 import pw.tales.cofdsystem.character.traits.advantages.IntegrityAdvantage;
-import pw.tales.cofdsystem.character.traits.advantages.SizeAdvantage;
 import pw.tales.cofdsystem.character.traits.advantages.SpeedAdvantage;
 import pw.tales.cofdsystem.character.traits.advantages.WealthAdvantage;
 import pw.tales.cofdsystem.character.traits.advantages.willpower.WillpowerAdvantage;
@@ -15,12 +14,13 @@ import pw.tales.cofdsystem.character.traits.skill.Skills;
 import pw.tales.cofdsystem.character.traits.WornArmor;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.prefabs.Prefab;
+import pw.tales.cofdsystem.game_object.traits.advantages.SizeAdvantage;
 
 class HumanPrefab extends Prefab
 {
     public static final INSTANCE = new HumanPrefab("human");
 
-    private override function setUpGameObject(gameObject:GameObject)
+    private override function setUpGameObject(gameObject:GameObject):Void
     {
         var traitManager = gameObject.getTraitManager();
 

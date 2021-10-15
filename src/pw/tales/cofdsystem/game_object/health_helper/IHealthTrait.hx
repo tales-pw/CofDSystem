@@ -4,5 +4,5 @@ import pw.tales.cofdsystem.damage.Damage;
 
 interface IHealthTrait
 {
-    public function dealDamage(damage:Damage):Void;
+    function dealDamage(damage:Damage):Void;
 }

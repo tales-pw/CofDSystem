@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.dices;
 
+import pw.tales.cofdsystem.utils.Utility;
 import haxe.ds.StringMap;
 
 class EnumExplode
@@ -45,5 +46,11 @@ class EnumExplode
     public function getExplode():Int
     {
         return this.explode;
+    }
+
+    public function toString():String
+    {
+        var className = Utility.getClassName(Type.getClass(this));
+        return '${className}[dn=${this.name}]';
     }
 }

@@ -1,9 +1,9 @@
 package pw.tales.cofdsystem.armor;
 
+import pw.tales.cofdsystem.equipment.traits.StrengthReq;
 import pw.tales.cofdsystem.armor.traits.armor_rating.ArmorRating;
 import pw.tales.cofdsystem.armor.traits.DefenceModifer;
 import pw.tales.cofdsystem.armor.traits.SpeedModifer;
-import pw.tales.cofdsystem.armor.traits.StrengthReq;
 import pw.tales.cofdsystem.equipment.Equipment;
 import pw.tales.cofdsystem.game_object.GameObject;
 
@@ -45,12 +45,12 @@ class Armor extends Equipment implements IArmor
         return this.getInt(SpeedModifer.TYPE);
     }
 
-    public override function setHolder(gameObject:GameObject)
+    public override function setHolder(gameObject:GameObject):Void
     {
         super.setHolder(gameObject);
     }
 
-    public override function unsetHolder()
+    public override function unsetHolder():Void
     {
         super.ensureEquipable().unset();
     }

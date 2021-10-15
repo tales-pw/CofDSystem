@@ -13,7 +13,7 @@ class PiercingTagType extends TraitType<PiercingTag>
         this.level = level;
     }
 
-    public function getLevel()
+    public function getLevel():Int
     {
         return this.level;
     }

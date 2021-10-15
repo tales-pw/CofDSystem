@@ -17,8 +17,10 @@ class Prefab implements IPrefab
         return this.dn;
     }
 
-    private function setUpGameObject(gameObject:GameObject)
+    private function setUpGameObject(gameObject:GameObject):Void
+    {
         throw new NotImplemented();
+    }
 
     public function createGameObject(system:CofDSystem):GameObject
     {

@@ -29,13 +29,18 @@ class Damage
         return this.aggravated;
     }
 
-    public function enusreBashing()
+    public function getTuple():Array<Int>
+    {
+        return [this.bashing, this.lethal, this.aggravated];
+    }
+
+    public function enusreBashing():Void
     {
         if (bashing == 0 && lethal == 0 && aggravated == 0)
             bashing = 1;
     }
 
-    public function applyGeneralArmor(generalArmor:Int)
+    public function applyGeneralArmor(generalArmor:Int):Void
     {
         if (aggravated != 0 && generalArmor != 0)
         {
@@ -57,7 +62,7 @@ class Damage
         }
     }
 
-    public function applyBallisticArmor(ballisticArmor:Int)
+    public function applyBallisticArmor(ballisticArmor:Int):Void
     {
         var bashingIncrement = Std.int(Math.min(ballisticArmor, lethal));
         lethal = Std.int(Math.max(lethal - ballisticArmor, 0));

@@ -1,6 +1,5 @@
 package pw.tales.cofdsystem.weapon.traits.weapon_tags.piercing;
 
-import pw.tales.cofdsystem.action_attack.AttackAction;
 import pw.tales.cofdsystem.armor.traits.armor_rating.events.AttackArmorGetEvent;
 import pw.tales.cofdsystem.game_object.GameObject;
 
@@ -20,36 +19,35 @@ class PiercingTag extends WeaponTag
         this.holderEventBus.addHandler(AttackArmorGetEvent, this.applyPiercing);
     }
 
-    public function applyPiercing(e:AttackArmorGetEvent)
+    public function applyPiercing(event:AttackArmorGetEvent):Void
     {
-        var action = e.getAction();
+        var action = event.getAction();
 
-        if (!Std.isOfType(action, AttackAction))
-            return;
-        if (!this.doesHolderAct(action))
-            return;
-        if (!this.isActionWithWeapon(action))
+        // Is this holder's attack action.
+        if (!this.isHolderAttack(action))
             return;
 
-        var general = e.getGeneral();
-        var ballistic = e.getBallistic();
+        var general = event.getGeneral();
+        var ballistic = event.getBallistic();
         var piercing = this.piercingType.getLevel();
 
         ballistic = ballistic - piercing;
         if (ballistic < 0)
         {
-            piercing = Std.int(Math.abs(ballistic));
+            piercing = ballistic;
             ballistic = 0;
         } else
         {
-            piercing = piercing - e.getBallistic();
+            piercing = piercing - event.getBallistic();
         }
+
+        piercing = Std.int(Math.abs(piercing));
 
         general = general - piercing;
         if (general < 0)
             general = 0;
 
-        e.setGeneral(general);
-        e.setBallistic(ballistic);
+        event.setGeneral(general);
+        event.setBallistic(ballistic);
     }
 }

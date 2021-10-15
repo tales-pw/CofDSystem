@@ -12,8 +12,6 @@ import pw.tales.cofdsystem.weapon.traits.weapon_tags.WeaponTags;
 
 class Weapon extends Equipment implements IWeapon
 {
-    public static final ATTACK_POOL_PRIORITY = HandlerPriority.NORMAL;
-
     public function new(gameObject:GameObject)
     {
         super(gameObject);
@@ -45,7 +43,7 @@ class Weapon extends Equipment implements IWeapon
         }
     }
 
-    public function unsetEquipper()
+    public function unsetEquipper():Void
     {
         super.unsetHolder();
 
@@ -55,7 +53,7 @@ class Weapon extends Equipment implements IWeapon
         } catch (NoTraitAccessorException) {}
     }
 
-    public function setEquipper(gameObject:GameObject, hand:EnumHand)
+    public function setEquipper(gameObject:GameObject, hand:EnumHand):Void
     {
         super.setHolder(gameObject);
 

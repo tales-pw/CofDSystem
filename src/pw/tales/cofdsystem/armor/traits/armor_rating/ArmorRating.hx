@@ -1,5 +1,9 @@
 package pw.tales.cofdsystem.armor.traits.armor_rating;
 
+import pw.tales.cofdsystem.weapon_ranged.traits.RangedWeapon;
+import pw.tales.cofdsystem.action.Action;
+import pw.tales.cofdsystem.character.traits.HeldWeapon;
+import pw.tales.cofdsystem.action_attack.AttackAction;
 import pw.tales.cofdsystem.action_attack.events.AttackDamageGetEvent;
 import pw.tales.cofdsystem.armor.traits.armor_rating.events.AttackArmorGetEvent;
 import pw.tales.cofdsystem.damage.DamageUtil;
@@ -25,13 +29,13 @@ class ArmorRating extends EquipmentTrait
         this.holderEventBus.addHandler(AttackDamageGetEvent, this.applyArmorAbsorption);
     }
 
-    public function setGeneral(general:Int)
+    public function setGeneral(general:Int):Void
     {
         this.general = general;
         this.notifyUpdated();
     }
 
-    public function setBallistic(ballistic:Int)
+    public function setBallistic(ballistic:Int):Void
     {
         this.ballistic = ballistic;
         this.notifyUpdated();
@@ -47,12 +51,27 @@ class ArmorRating extends EquipmentTrait
         return this.ballistic;
     }
 
-    private function applyArmorAbsorption(event:AttackDamageGetEvent)
+    private function isRangedWeaponAttack(action:AttackAction):Bool
+    {
+        var weapon = action.getWeapon();
+
+        if (weapon == null)
+        {
+            return false;
+        }
+
+        var gameObject = weapon.getGameObject();
+
+        return gameObject.getTrait(RangedWeapon.TYPE) != null;
+    }
+
+    private function applyArmorAbsorption(event:AttackDamageGetEvent):Void
     {
         var holder = this.getHolder();
 
         if (holder == null)
             return;
+
         if (!event.isTarget(holder))
             return;
 
@@ -60,11 +79,19 @@ class ArmorRating extends EquipmentTrait
         var action = event.getAction();
         var system = action.getSystem();
 
-        var armorGetEvent = new AttackArmorGetEvent(action, this.getGeneral(), this.getBallistic());
+        var general = this.getGeneral();
+        var ballistic = this.getBallistic();
+
+        if (!this.isRangedWeaponAttack(action))
+        {
+            ballistic = 0;
+        }
+
+        var armorGetEvent = new AttackArmorGetEvent(action, general, ballistic);
         system.events.post(armorGetEvent);
 
-        var general = armorGetEvent.getGeneral();
-        var ballistic = armorGetEvent.getBallistic();
+        general = armorGetEvent.getGeneral();
+        ballistic = armorGetEvent.getBallistic();
 
         // Absorb damage
         var damage = DamageUtil.INSTANCE.simpleAbsorb(general, ballistic, event.getDamage());

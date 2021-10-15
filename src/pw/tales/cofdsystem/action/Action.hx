@@ -1,5 +1,7 @@
 package pw.tales.cofdsystem.action;
 
+import pw.tales.cofdsystem.action.events.ActionGetHandEvent;
+import pw.tales.cofdsystem.common.EnumHand;
 import pw.tales.cofdsystem.action.pool.ActionPool;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.action.events.ActionPerformedEvent;

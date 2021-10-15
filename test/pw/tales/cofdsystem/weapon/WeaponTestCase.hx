@@ -1,4 +1,4 @@
-package pw.tales.cofdsystem.character.equipment;
+package pw.tales.cofdsystem.weapon;
 
 import pw.tales.cofdsystem.action_attack.builder.AttackBuilder;
 import pw.tales.cofdsystem.character.traits.attribute.Attributes;
@@ -16,8 +16,8 @@ import thx.Uuid;
 @:nullSafety(Off)
 class WeaponTestCase extends CofDSystemTestCase
 {
-    public final GENERIC_MELEE_WEAPON = new MeleeWeaponPrefab(Uuid.create(), "", -2, 0, []);
-    public final GENERIC_RANGED_WEAPON = new RangedWeaponPrefab(Uuid.create(), "", -2, 0, []);
+    public final GENERIC_MELEE_WEAPON = new MeleeWeaponPrefab(Uuid.create(), "", -2, 0, 0, 0, []);
+    public final GENERIC_RANGED_WEAPON = new RangedWeaponPrefab(Uuid.create(), "", -2, 0, 0, 0, []);
 
     override public function setup()
     {

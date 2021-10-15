@@ -1,6 +1,6 @@
 package pw.tales.cofdsystem.game_object.traits;
 
-import pw.tales.cofdsystem.character.traits.advantages.SizeAdvantage;
+import pw.tales.cofdsystem.game_object.traits.advantages.SizeAdvantage;
 import pw.tales.cofdsystem.character.traits.merits.giant.GiantMerit;
 import haxe.unit.TestCase;
 
@@ -14,12 +14,10 @@ class ManagerTestCase extends TestCase
         var gameObject = new GameObject("game_object", system);
         var manager = gameObject.getTraitManager();
 
-        manager.addTrait(SizeAdvantage.TYPE);
-
-        var size:SizeAdvantage = cast manager.getTrait(SizeAdvantage.TYPE);
+        var size = manager.addTrait(SizeAdvantage.TYPE);
         assertEquals(5, size.getValue());
 
-        var giant:GiantMerit = cast manager.addTrait(GiantMerit.TYPE);
+        var giant = manager.addTrait(GiantMerit.TYPE);
         assertEquals(6, size.getValue());
 
         manager.removeTrait(giant);

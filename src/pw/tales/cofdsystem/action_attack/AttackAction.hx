@@ -1,5 +1,10 @@
 package pw.tales.cofdsystem.action_attack;
 
+import pw.tales.cofdsystem.character.traits.HeldWeapon;
+import pw.tales.cofdsystem.weapon.Weapon;
+import pw.tales.cofdsystem.common.EnumHand;
+import pw.tales.cofdsystem.action.events.ActionGetHandEvent;
+import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.action.competition.Competition;
 import pw.tales.cofdsystem.action.RollAction;
 import pw.tales.cofdsystem.action.EnumTime;
@@ -29,6 +34,37 @@ class AttackAction extends RollAction
     public function getCompetition():Competition
     {
         return this.competition;
+    }
+
+    public function getHand():EnumHand
+    {
+        var eventBus = this.getEventBus();
+        var actor = this.getActor();
+
+        var handEvent = new ActionGetHandEvent(this, actor);
+        eventBus.post(handEvent);
+
+        return handEvent.getHand();
+    }
+
+    public function getWeapon():Null<Weapon>
+    {
+        var hand = this.getHand();
+        var attacker = this.getActor();
+
+        var trait = attacker.getTrait(HeldWeapon.TYPE);
+
+        if (trait == null)
+        {
+            return null;
+        }
+
+        return trait.getHand(hand);
+    }
+
+    public function getTarget():GameObject
+    {
+        return this.competition.getTarget();
     }
 
     public function getDamage():Damage

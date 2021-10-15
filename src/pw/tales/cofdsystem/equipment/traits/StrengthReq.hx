@@ -1,8 +1,8 @@
-package pw.tales.cofdsystem.armor.traits;
+package pw.tales.cofdsystem.equipment.traits;
 
+import pw.tales.cofdsystem.equipment.events.StrengthReqEvent;
 import pw.tales.cofdsystem.action.events.pool.ActionPoolEvent;
 import pw.tales.cofdsystem.action_attack.AttackAction;
-import pw.tales.cofdsystem.character.traits.attribute.Attribute;
 import pw.tales.cofdsystem.character.traits.attribute.Attributes;
 import pw.tales.cofdsystem.equipment.traits.EquipmentMod;
 import pw.tales.cofdsystem.game_object.GameObject;
@@ -20,15 +20,24 @@ class StrengthReq extends EquipmentMod
         this.holderEventBus.addHandler(ActionPoolEvent, this.applyMod);
     }
 
-    private function applyMod(event:ActionPoolEvent)
+    private function getModifiedValue():Int
+    {
+        var event = new StrengthReqEvent(this.gameObject, this.value);
+        this.eventBus.post(event);
+        return event.getValue();
+    }
+
+    private function applyMod(event:ActionPoolEvent):Void
     {
         var holder = this.getHolder();
         var action = event.getAction();
 
         if (holder == null)
             return;
+
         if (!event.isPoolOwner(holder))
             return;
+
         if (!Std.isOfType(action, AttackAction))
             return;
 
@@ -36,8 +45,9 @@ class StrengthReq extends EquipmentMod
         if (strengthTrait == null)
             return;
 
+        var value = this.getModifiedValue();
         var strength = strengthTrait.getValue();
-        var mod = 3 * Std.int(Math.min(strength - this.getValue(), 0));
+        var mod = 3 * Std.int(Math.min(strength - value, 0));
 
         if (mod != 0)
         {

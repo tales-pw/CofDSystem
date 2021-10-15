@@ -22,17 +22,16 @@ class GuardTag extends WeaponTag
         this.holderEventBus.addHandler(ActionPoolEvent, this.applyBonus);
     }
 
-    public function applyBonus(e:ActionPoolEvent)
+    public function applyBonus(e:ActionPoolEvent):Void
     {
         var action = e.getAction();
         var pool = e.getActionPool();
         var request = pool.getRequest();
 
-        if (!Std.isOfType(action, AttackAction))
-            return;
         if (!this.isHolderPool(pool))
             return;
-        if (!this.isActionWithWeapon(action))
+
+        if (!this.isHolderDefence(action))
             return;
 
         request.addModifier(1, this.getDN());

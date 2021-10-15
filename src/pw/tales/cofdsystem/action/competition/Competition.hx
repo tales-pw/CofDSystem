@@ -49,7 +49,7 @@ class Competition implements IActionRoll
         return this.targetPool.getGameObject();
     }
 
-    public function getPool(gameObject:GameObject):Null<ActionPool>
+    public function getPool(gameObject:GameObject):ActionPool
     {
         if (this.actorPool.isRelated(gameObject))
         {
@@ -61,7 +61,7 @@ class Competition implements IActionRoll
             return this.targetPool;
         }
 
-        return null;
+        throw "${gameObject} is not part of action.";
     }
 
     public function roll(action:RollAction):Void {}

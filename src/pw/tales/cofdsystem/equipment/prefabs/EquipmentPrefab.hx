@@ -6,7 +6,7 @@ import pw.tales.cofdsystem.game_object.prefabs.Prefab;
 
 class EquipmentPrefab extends Prefab
 {
-    private override function setUpGameObject(equipmentGameObject:GameObject)
+    private override function setUpGameObject(equipmentGameObject:GameObject):Void
     {
         final manager = equipmentGameObject.getTraitManager();
         manager.addTrait(Equippable.TYPE);
