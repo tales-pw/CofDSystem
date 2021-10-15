@@ -26,7 +26,8 @@ class TwoHandedTag extends WeaponTag
     {
         var holder = this.getHolder();
 
-        if (holder == null) {
+        if (holder == null)
+        {
             return false;
         }
 

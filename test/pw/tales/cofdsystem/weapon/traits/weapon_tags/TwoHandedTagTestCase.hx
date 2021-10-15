@@ -6,18 +6,20 @@ import pw.tales.cofdsystem.action_attack.builder.AttackBuilder;
 import pw.tales.cofdsystem.equipment.traits.StrengthReq;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 
-class TwoHandedTagTestCase extends WeaponTagTestCase {
+class TwoHandedTagTestCase extends WeaponTagTestCase
+{
     private override function getTagType():TraitType<Dynamic>
     {
         return TwoHandedTag.TYPE;
     }
 
-    public function test() {
+    public function test()
+    {
         this.weapon.getGameObject().getTrait(StrengthReq.TYPE).setValue(4);
         this.c1.getTrait(Attributes.STRENGTH).setValue(3);
 
         this.c1.getTrait(HeldWeapon.TYPE).setOffHand(this.createNoTagWeapon());
-        
+
         var action = new AttackBuilder(c2, c1).build();
         system.act(action);
 

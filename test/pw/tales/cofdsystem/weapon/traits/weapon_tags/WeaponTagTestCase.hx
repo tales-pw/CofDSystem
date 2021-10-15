@@ -43,23 +43,9 @@ class WeaponTagTestCase extends CofDSystemTestCase
         return weapon;
     }
 
-    private function assertBonusNamed(action:AttackAction, gameObject:GameObject, name: String, value:Null<Int>) {
-        var pool = action.getCompetition().getPool(gameObject);
-        var request = pool.getRequest();
-        var modifiers = request.getAppliedModifiers();
-        assertEquals(value, modifiers[name]);
-    }
-
     private function assertBonus(action:AttackAction, gameObject:GameObject, value:Null<Int>):Void
     {
         this.assertBonusNamed(action, gameObject, this.getTagType().getDN(), value);
-    }
-
-    private function assertTraits(action:AttackAction, gameObject:GameObject, traits:Array<TraitType<Dynamic>>)
-    {
-        var pool = action.getCompetition().getPool(gameObject);
-        var request = pool.getRequest();
-        this.assertArrayEquals(traits.map(v -> v.getDN()), request.getTraits());
     }
 
     private function createPrefab():WeaponPrefab
