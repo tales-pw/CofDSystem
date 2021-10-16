@@ -12,7 +12,7 @@ class SmallFramedMerit extends Merit
 {
     public static final TYPE = new SmallFramedType("Small_Framed");
 
-    public function new(dn:String, gameObject:GameObject, type: MeritType, customName:Null<String> = null)
+    public function new(dn:String, gameObject:GameObject, type:MeritType, customName:Null<String> = null)
     {
         super(dn, gameObject, type, customName);
         this.eventBus.addHandler(AdvantageModEvent, this.onAdvantageModEvent, HandlerPriority.NORMAL);
