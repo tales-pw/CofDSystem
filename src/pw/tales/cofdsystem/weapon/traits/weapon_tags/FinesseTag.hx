@@ -16,7 +16,7 @@ import pw.tales.cofdsystem.utils.Utility;
 class FinesseTag extends WeaponTag
 {
     public static final DN = "finesse_(weapon_tag)";
-    public static final TYPE:TraitType<FinesseTag> = cast TraitType.createType(DN, FinesseTag.new);
+    public static final TYPE = cast TraitType.createType(DN, FinesseTag.new);
 
     public static final PRIORITY = HandlerPriority.lower([WeaponTrait.PRIORITY]);
 

@@ -12,5 +12,5 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 class GrappleTag extends WeaponTag
 {
     public static final DN = "grapple_(weapon_tag)";
-    public static final TYPE:TraitType<GrappleTag> = cast TraitType.createType(DN, GrappleTag.new);
+    public static final TYPE = cast TraitType.createType(DN, GrappleTag.new);
 }

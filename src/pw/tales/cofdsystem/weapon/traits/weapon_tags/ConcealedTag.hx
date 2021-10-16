@@ -16,7 +16,7 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 class ConcealedTag extends WeaponTag
 {
     public static final DN = "concealed_(weapon_tag)";
-    public static final TYPE:TraitType<ConcealedTag> = cast TraitType.createType(DN, ConcealedTag.new);
+    public static final TYPE = cast TraitType.createType(DN, ConcealedTag.new);
 
     public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
     {

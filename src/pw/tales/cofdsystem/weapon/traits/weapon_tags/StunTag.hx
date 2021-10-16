@@ -12,5 +12,5 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 class StunTag extends WeaponTag
 {
     public static final DN = "stun_(weapon_tag)";
-    public static final TYPE:TraitType<StunTag> = cast TraitType.createType(DN, StunTag.new);
+    public static final TYPE = cast TraitType.createType(DN, StunTag.new);
 }

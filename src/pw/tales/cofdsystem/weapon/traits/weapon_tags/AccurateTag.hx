@@ -13,7 +13,7 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 class AccurateTag extends WeaponTag
 {
     public static final DN = "accurate_(weapon_tag)";
-    public static final TYPE:TraitType<AccurateTag> = cast TraitType.createType(DN, AccurateTag.new);
+    public static final TYPE = cast TraitType.createType(DN, AccurateTag.new);
 
     public function new(dn:String, gameObject:GameObject, type:TraitType<AccurateTag>)
     {

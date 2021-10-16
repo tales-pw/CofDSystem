@@ -7,11 +7,11 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 class HoldingHand extends Trait
 {
     public static final DN = "holding_hand";
-    public static final TYPE:TraitType<HoldingHand> = TraitType.createType(DN, HoldingHand.new);
+    public static final TYPE = TraitType.createType(DN, HoldingHand.new);
 
     private var hand:Null<EnumHand>;
 
-    public function setHand(hand:EnumHand): Void
+    public function setHand(hand:EnumHand):Void
     {
         this.hand = hand;
         this.notifyUpdated();
@@ -22,7 +22,7 @@ class HoldingHand extends Trait
         return this.hand;
     }
 
-    public function unset(): Void
+    public function unset():Void
     {
         this.hand = null;
         this.notifyUpdated();

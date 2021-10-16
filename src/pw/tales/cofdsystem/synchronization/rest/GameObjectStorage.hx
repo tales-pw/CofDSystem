@@ -39,23 +39,23 @@ class GameObjectStorage
         return storage;
     }
 
-    public dynamic function onGameObject(gameObject:GameObject): Void {}
+    public dynamic function onGameObject(gameObject:GameObject):Void {}
 
-    public dynamic function onUpdated(version:String): Void {}
+    public dynamic function onUpdated(version:String):Void {}
 
-    public dynamic function onError(data:Dynamic, context:Dynamic): Void {}
+    public dynamic function onError(data:Dynamic, context:Dynamic):Void {}
 
-    public function setClientToken(token:String): Void
+    public function setClientToken(token:String):Void
     {
         this.clientToken = token;
     }
 
-    public function setServerToken(token:String): Void
+    public function setServerToken(token:String):Void
     {
         this.serverToken = token;
     }
 
-    private function handleResponse(serializedData:Null<String>, context:Dynamic): Void
+    private function handleResponse(serializedData:Null<String>, context:Dynamic):Void
     {
         if (serializedData == null)
             throw "No data";
@@ -80,7 +80,7 @@ class GameObjectStorage
         this.onError(data, context);
     }
 
-    private function addTokenToRequest(request:haxe.Http): Void
+    private function addTokenToRequest(request:haxe.Http):Void
     {
         if (this.serverToken != null)
         {
@@ -120,7 +120,7 @@ class GameObjectStorage
         return request;
     }
 
-    public function create(dn:String, traitTypes:Array<String> = null): Void
+    public function create(dn:String, traitTypes:Array<String> = null):Void
     {
         var http = prepareRequest('${host}/game_objects/${dn}', {
             "dn": dn,
@@ -135,13 +135,13 @@ class GameObjectStorage
         http.request(true);
     }
 
-    public function read(dn:String): Void
+    public function read(dn:String):Void
     {
         var http = prepareRequest('${host}/game_objects/${dn}', {"dn": dn});
         http.request();
     }
 
-    public function update(gameObject:GameObject, update:Array<Trait> = null, remove:Array<String> = null): Void
+    public function update(gameObject:GameObject, update:Array<Trait> = null, remove:Array<String> = null):Void
     {
         if (update == null)
             update = [];

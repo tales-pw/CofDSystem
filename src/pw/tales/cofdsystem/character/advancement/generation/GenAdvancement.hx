@@ -17,7 +17,7 @@ import pw.tales.cofdsystem.game_object.traits.value_trait.events.ValueTraitUpdat
 class GenAdvancement extends Trait
 {
     public static final DN = "generation_advancement";
-    public static final TYPE:TraitType<GenAdvancement> = new GenAdvancementType(DN);
+    public static final TYPE = new GenAdvancementType(DN);
 
     public var restrictions:Array<GenAdvancementItem<Dynamic, Dynamic>> = [];
 

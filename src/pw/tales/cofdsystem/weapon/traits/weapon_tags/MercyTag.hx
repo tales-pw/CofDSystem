@@ -15,7 +15,7 @@ import pw.tales.cofdsystem.utils.events.HandlerPriority;
 class MercyTag extends WeaponTag
 {
     public static final DN = "mercy_(weapon_tag)";
-    public static final TYPE:TraitType<MercyTag> = cast TraitType.createType(DN, MercyTag.new);
+    public static final TYPE = cast TraitType.createType(DN, MercyTag.new);
 
     public static final PRIORITY = HandlerPriority.lower([WeaponTrait.PRIORITY]);
 

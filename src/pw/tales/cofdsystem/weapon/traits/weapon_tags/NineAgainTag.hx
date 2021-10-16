@@ -13,7 +13,7 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 class NineAgainTag extends ExplodeTag
 {
     public static final DN = "9-again_(weapon_tag)";
-    public static final TYPE:TraitType<NineAgainTag> = cast TraitType.createType(DN, NineAgainTag.new);
+    public static final TYPE = cast TraitType.createType(DN, NineAgainTag.new);
 
     public override function getExplode():EnumExplode
     {

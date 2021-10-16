@@ -13,7 +13,7 @@ import pw.tales.cofdsystem.utils.Utility;
 class ExpAdvancement extends Trait
 {
     public static final DN = "experience_advancement";
-    public static final TYPE:TraitType<ExpAdvancement> = new ExpAdvancementType(DN);
+    public static final TYPE = new ExpAdvancementType(DN);
 
     public function new(gameObject:GameObject)
     {

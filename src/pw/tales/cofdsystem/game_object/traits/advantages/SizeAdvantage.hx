@@ -9,7 +9,7 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 class SizeAdvantage extends AdvantageValue
 {
     public static final DN = "Размер";
-    public static final TYPE:TraitType<SizeAdvantage> = TraitType.createType(DN, SizeAdvantage.new);
+    public static final TYPE = TraitType.createType(DN, SizeAdvantage.new);
 
     public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
     {

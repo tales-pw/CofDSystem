@@ -11,7 +11,7 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 class StrengthReq extends EquipmentMod
 {
     public static final DN = "Свойство:Strength_Requirements";
-    public static final TYPE:TraitType<StrengthReq> = TraitType.createType(DN, StrengthReq.new);
+    public static final TYPE = TraitType.createType(DN, StrengthReq.new);
 
     public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
     {

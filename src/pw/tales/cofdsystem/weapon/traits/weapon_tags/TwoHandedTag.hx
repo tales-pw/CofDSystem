@@ -14,7 +14,7 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 class TwoHandedTag extends WeaponTag
 {
     public static final DN = "two-handed_(weapon_tag)";
-    public static final TYPE:TraitType<TwoHandedTag> = cast TraitType.createType(DN, TwoHandedTag.new);
+    public static final TYPE = cast TraitType.createType(DN, TwoHandedTag.new);
 
     public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
     {

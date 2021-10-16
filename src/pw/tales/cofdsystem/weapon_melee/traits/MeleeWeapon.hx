@@ -12,7 +12,7 @@ import pw.tales.cofdsystem.weapon.traits.WeaponTrait;
 class MeleeWeapon extends WeaponTrait
 {
     public static final DN = "melee_weapon";
-    public static final TYPE:TraitType<MeleeWeapon> = cast TraitType.createType(DN, MeleeWeapon.new);
+    public static final TYPE = cast TraitType.createType(DN, MeleeWeapon.new);
 
     public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
     {

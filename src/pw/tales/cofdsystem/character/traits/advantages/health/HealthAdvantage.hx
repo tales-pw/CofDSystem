@@ -19,7 +19,7 @@ import pw.tales.cofdsystem.utils.events.HandlerPriority;
 class HealthAdvantage extends AdvantageExpression implements IHealthTrait
 {
     public static final DN = "Здоровье";
-    public static final TYPE:TraitType<HealthAdvantage> = TraitType.createType(DN, HealthAdvantage.new);
+    public static final TYPE = TraitType.createType(DN, HealthAdvantage.new);
 
     private static final EXPR = new PBTrait(SizeAdvantage.DN).plus(new PBTrait(STAMINA.getDN()));
 

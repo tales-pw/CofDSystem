@@ -15,7 +15,7 @@ import pw.tales.cofdsystem.weapon.traits.WeaponTrait;
 class RangedWeapon extends WeaponTrait
 {
     public static final DN = "ranged_weapon";
-    public static final TYPE:TraitType<RangedWeapon> = TraitType.createType(DN, RangedWeapon.new);
+    public static final TYPE = TraitType.createType(DN, RangedWeapon.new);
 
     public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
     {

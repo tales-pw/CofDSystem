@@ -12,7 +12,7 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 class WillpowerAdvantage extends AdvantageExpression
 {
     public static final DN = "Сила_воли";
-    public static final TYPE:TraitType<WillpowerAdvantage> = TraitType.createType(DN, WillpowerAdvantage.new);
+    public static final TYPE = TraitType.createType(DN, WillpowerAdvantage.new);
 
     private static final EXPR = new PBTrait(RESOLVE.getDN()).plus(new PBTrait(COMPOSURE.getDN()));
 

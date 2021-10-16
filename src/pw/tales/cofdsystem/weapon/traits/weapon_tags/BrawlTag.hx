@@ -16,7 +16,7 @@ import pw.tales.cofdsystem.utils.Utility;
 class BrawlTag extends WeaponTag
 {
     public static final DN = "brawl_(weapon_tag)";
-    public static final TYPE:TraitType<BrawlTag> = cast TraitType.createType(DN, BrawlTag.new);
+    public static final TYPE = cast TraitType.createType(DN, BrawlTag.new);
 
     public static final PRIORITY = HandlerPriority.lower([WeaponTrait.PRIORITY]);
 
