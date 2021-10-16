@@ -13,6 +13,6 @@ class SizeAdvantage extends AdvantageValue
 
     public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
     {
-        super(dn, gameObject, TYPE, 5);
+        super(dn, gameObject, type, 5);
     }
 }

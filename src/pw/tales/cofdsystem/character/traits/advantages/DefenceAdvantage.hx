@@ -13,7 +13,7 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 class DefenceAdvantage extends AdvantageExpression
 {
     public static final DN = "Защита";
-    public static final TYPE = cast TraitType.createType(DN, DefenceAdvantage.new);
+    public static final TYPE = TraitType.createType(DN, DefenceAdvantage.new);
 
     private static final EXPR = new PBMin(new PBTrait(DEXTERITY.getDN()), new PBTrait(WITS.getDN())).plus(new PBTrait(ATHLETICS.getDN()));
 

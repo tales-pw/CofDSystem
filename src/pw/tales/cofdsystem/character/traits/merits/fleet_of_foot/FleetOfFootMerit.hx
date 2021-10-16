@@ -12,9 +12,9 @@ class FleetOfFootMerit extends Merit
 {
     public static final TYPE:FleetOfFootType = new FleetOfFootType("Fleet_of_Foot");
 
-    public function new(dn:String, gameObject:GameObject, customName:Null<String> = null)
+    public function new(dn:String, gameObject:GameObject, type: MeritType, customName:Null<String> = null)
     {
-        super(dn, gameObject, TYPE, customName);
+        super(dn, gameObject, type, customName);
         this.eventBus.addHandler(AdvantageModEvent, this.onAdvantageModEvent, HandlerPriority.NORMAL);
     }
 

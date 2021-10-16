@@ -21,7 +21,7 @@ class WillpowerAdvantage extends AdvantageExpression
 
     public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
     {
-        super(dn, gameObject, TYPE, EXPR);
+        super(dn, gameObject, type, EXPR);
     }
 
     public function canUse():Bool
