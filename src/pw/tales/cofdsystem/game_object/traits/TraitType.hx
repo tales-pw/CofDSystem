@@ -1,9 +1,9 @@
 package pw.tales.cofdsystem.game_object.traits;
 
+import haxe.exceptions.NotImplementedException;
 import pw.tales.cofdsystem.game_object.events.TraitAddEvent;
 import pw.tales.cofdsystem.utils.registry.IRecord;
 import pw.tales.cofdsystem.utils.Utility;
-import thx.error.AbstractMethod;
 import thx.Uuid;
 
 typedef TraitFactoryMethod<Y:Trait> = (dn:String, gameObject:GameObject, t:TraitType<Y>) -> Y;
@@ -33,7 +33,7 @@ class TraitType<T:Trait> implements IRecord
         this.dn = dn;
     }
 
-    public function getDN()
+    public function getDN():String
     {
         return this.dn;
     }
@@ -50,14 +50,14 @@ class TraitType<T:Trait> implements IRecord
         return this.name;
     }
 
-    public function setName(name:Null<String>)
+    public function setName(name:Null<String>):Void
     {
         this.name = name;
     }
 
     public function isMultiInstanced():Bool
     {
-        return false;
+        return this.multiInstanced;
     }
 
     public function setMultiInstanced(multiInstanced:Bool):TraitType<T>
@@ -77,15 +77,26 @@ class TraitType<T:Trait> implements IRecord
     {
         if (this.factoryMethod != null)
             return this.factoryMethod(dn, gameObject, this);
-        throw new AbstractMethod();
+
+        throw new NotImplementedException();
     }
 
     public function create(gameObject:GameObject):T
     {
-        return createWithDN(Uuid.create(), gameObject);
+        var newDn;
+
+        if (this.isMultiInstanced())
+        {
+            newDn = Uuid.create();
+        } else
+        {
+            newDn = this.getDN();
+        }
+
+        return createWithDN(newDn, gameObject);
     }
 
-    private function toString()
+    private function toString():String
     {
         var className = Utility.getClassName(Type.getClass(this));
         return '${className}[${this.getDN()}]';

@@ -12,6 +12,6 @@ class GiantMeritType extends MeritType
 
     override public function createWithDN(dn:String, gameObject:GameObject):GiantMerit
     {
-        return new GiantMerit(this.getDN(), gameObject);
+        return new GiantMerit(dn, gameObject, this);
     }
 }

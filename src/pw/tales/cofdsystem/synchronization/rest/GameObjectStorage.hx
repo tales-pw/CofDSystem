@@ -39,23 +39,23 @@ class GameObjectStorage
         return storage;
     }
 
-    public dynamic function onGameObject(gameObject:GameObject) {}
+    public dynamic function onGameObject(gameObject:GameObject):Void {}
 
-    public dynamic function onUpdated(version:String) {}
+    public dynamic function onUpdated(version:String):Void {}
 
-    public dynamic function onError(data:Dynamic, context:Dynamic) {}
+    public dynamic function onError(data:Dynamic, context:Dynamic):Void {}
 
-    public function setClientToken(token:String)
+    public function setClientToken(token:String):Void
     {
         this.clientToken = token;
     }
 
-    public function setServerToken(token:String)
+    public function setServerToken(token:String):Void
     {
         this.serverToken = token;
     }
 
-    private function handleResponse(serializedData:Null<String>, context:Dynamic)
+    private function handleResponse(serializedData:Null<String>, context:Dynamic):Void
     {
         if (serializedData == null)
             throw "No data";
@@ -80,7 +80,7 @@ class GameObjectStorage
         this.onError(data, context);
     }
 
-    private function addTokenToRequest(request:haxe.Http)
+    private function addTokenToRequest(request:haxe.Http):Void
     {
         if (this.serverToken != null)
         {
@@ -120,7 +120,7 @@ class GameObjectStorage
         return request;
     }
 
-    public function create(dn:String, traitTypes:Array<String> = null)
+    public function create(dn:String, traitTypes:Array<String> = null):Void
     {
         var http = prepareRequest('${host}/game_objects/${dn}', {
             "dn": dn,
@@ -135,13 +135,13 @@ class GameObjectStorage
         http.request(true);
     }
 
-    public function read(dn:String)
+    public function read(dn:String):Void
     {
         var http = prepareRequest('${host}/game_objects/${dn}', {"dn": dn});
         http.request();
     }
 
-    public function update(gameObject:GameObject, update:Array<Trait> = null, remove:Array<String> = null)
+    public function update(gameObject:GameObject, update:Array<Trait> = null, remove:Array<String> = null):Void
     {
         if (update == null)
             update = [];

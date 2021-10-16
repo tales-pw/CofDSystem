@@ -9,23 +9,13 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 class IntegrityAdvantage extends Advantage
 {
     public static final DN = "Целостность";
-    public static final TYPE:TraitType<IntegrityAdvantage> = cast TraitType.createType(DN, create);
+    public static final TYPE = TraitType.createType(DN, IntegrityAdvantage.new);
 
     @Serialize("points")
     private var points:Int = 7;
 
-    public function new(gameObject:GameObject)
-    {
-        super(gameObject, TYPE);
-    }
-
     override public function getValue():Int
     {
         return this.points;
-    }
-
-    public static function create(dn:String, gameObject:GameObject, t:TraitType<IntegrityAdvantage>):IntegrityAdvantage
-    {
-        return new IntegrityAdvantage(gameObject);
     }
 }

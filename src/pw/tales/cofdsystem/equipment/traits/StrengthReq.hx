@@ -4,7 +4,6 @@ import pw.tales.cofdsystem.equipment.events.StrengthReqEvent;
 import pw.tales.cofdsystem.action.events.pool.ActionPoolEvent;
 import pw.tales.cofdsystem.action_attack.AttackAction;
 import pw.tales.cofdsystem.character.traits.attribute.Attributes;
-import pw.tales.cofdsystem.equipment.traits.EquipmentMod;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 
@@ -12,11 +11,11 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 class StrengthReq extends EquipmentMod
 {
     public static final DN = "Свойство:Strength_Requirements";
-    public static final TYPE:TraitType<StrengthReq> = cast TraitType.createType(DN, create);
+    public static final TYPE = TraitType.createType(DN, StrengthReq.new);
 
-    public function new(gameObject:GameObject)
+    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
     {
-        super(DN, gameObject, TYPE);
+        super(dn, gameObject, type);
         this.holderEventBus.addHandler(ActionPoolEvent, this.applyMod);
     }
 
@@ -55,10 +54,5 @@ class StrengthReq extends EquipmentMod
             request.addModifier(mod, StrengthReq.DN);
             request.addIgnoreLimit(StrengthReq.DN);
         }
-    }
-
-    public static function create(dn:String, gameObject:GameObject, t:TraitType<StrengthReq>):StrengthReq
-    {
-        return new StrengthReq(gameObject);
     }
 }

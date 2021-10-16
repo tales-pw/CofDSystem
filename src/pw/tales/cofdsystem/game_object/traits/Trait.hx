@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.game_object.traits;
 
+import pw.tales.cofdsystem.game_object.events.CollectEvent;
 import haxe.DynamicAccess;
 import pw.tales.cofdsystem.game_object.events.traits.TraitPostDeserializeEvent;
 import pw.tales.cofdsystem.game_object.events.traits.TraitPostEvent;
@@ -103,7 +104,7 @@ class Trait implements IRecord
         changes in current trait (mostly to store
         updated data or update view).
     **/
-    public function notifyUpdated()
+    public function notifyUpdated():Void
     {
         this.eventBus.post(new TraitPostUpdateEvent(this));
     }
@@ -113,14 +114,14 @@ class Trait implements IRecord
         GameObject. Needed to setup some additional things
         such as additional traits for templates, for example.
     **/
-    public function onAttached() {}
+    public function onAttached():Void {}
 
     /**
         Is called when trait is remove from GameObject.
         Needed to cleanup some side effects after trait
         is removed.
     **/
-    public function onRemoved()
+    public function onRemoved():Void
     {
         this.eventBus.disable();
     }
@@ -175,15 +176,20 @@ class Trait implements IRecord
     }
 
     /** Make current state  object's head of changes. **/
-    public function acceptChanges()
+    public function acceptChanges():Void
     {
         this.version = TraitVersion.VERSION(this.serialize());
     }
 
     /** Revert all changes to trait. **/
-    public function revertChanges()
+    public function revertChanges():Void
     {
         this.deserialize(this.version);
+    }
+
+    public function collect(e:CollectEvent<Dynamic>):Void
+    {
+        e.collect(this);
     }
 
     public function toString():String

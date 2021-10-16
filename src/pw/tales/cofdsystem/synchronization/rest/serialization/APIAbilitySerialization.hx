@@ -25,7 +25,7 @@ class APIAbilitySerialization implements ISerialization
 
     public function new() {}
 
-    public function handle(system:CofDSystem, data:Dynamic)
+    public function handle(system:CofDSystem, data:Dynamic):Void
     {
         var abilities:DynamicAccess<ApiAbility> = data.abilities;
 

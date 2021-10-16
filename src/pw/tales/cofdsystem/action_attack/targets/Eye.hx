@@ -1,6 +1,6 @@
 package pw.tales.cofdsystem.action_attack.targets;
 
-import pw.tales.cofdsystem.character.traits.tilts.blinded.BlindedTilt;
+import pw.tales.cofdsystem.character.traits.tilts.BlindedTilt;
 
 class Eye implements ITarget
 {

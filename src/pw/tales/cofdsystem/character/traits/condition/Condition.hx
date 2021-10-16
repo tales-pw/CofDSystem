@@ -19,10 +19,10 @@ class Condition extends Trait
     public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
     {
         super(dn, gameObject, type);
-        this.eventBus.addHandler(ConditionsCollectEvent, (e:ConditionsCollectEvent) -> e.collect(this));
+        this.eventBus.addHandler(ConditionsCollectEvent, this.collect);
     }
 
-    public function setCustomName(customName:String)
+    public function setCustomName(customName:String):Void
     {
         this.customName = customName;
         this.notifyUpdated();
@@ -33,13 +33,13 @@ class Condition extends Trait
         return this.customName;
     }
 
-    public function setDescription(description:String)
+    public function setDescription(description:String):Void
     {
         this.description = description;
         this.notifyUpdated();
     }
 
-    public function getDescription()
+    public function getDescription():String
     {
         return this.description;
     }
@@ -48,6 +48,7 @@ class Condition extends Trait
     {
         if (customName != null)
             return this.customName;
+
         return super.getDisplayName();
     }
 }

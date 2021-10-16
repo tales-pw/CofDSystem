@@ -2,12 +2,12 @@ package pw.tales.cofdsystem.character.tilts;
 
 import haxe.unit.TestCase;
 import thx.error.NotImplemented;
-import pw.tales.cofdsystem.character.traits.tilts.TiltType;
 import pw.tales.cofdsystem.scene.Scene;
+import pw.tales.cofdsystem.game_object.traits.TraitType;
 
 class BaseTiltTestCase extends CofDSystemTestCase
 {
-    public function getTiltType():TiltType
+    public function getTiltType():TraitType<Dynamic>
     {
         throw new NotImplemented();
     }

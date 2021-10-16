@@ -8,14 +8,6 @@ class WornArmorTestCase extends CofDSystemTestCase
 {
     public final ARMOR = new ArmorPrefab(Uuid.create(), "", 0, 0, 0, 0, 0);
 
-    public function testCreate()
-    {
-        var trait = WornArmor.create("dn", this.c1, WornArmor.TYPE);
-
-        this.assertEquals(trait.getDN(), WornArmor.TYPE.getDN());
-        this.assertEquals(trait.getArmor(), null);
-    }
-
     public function testSetArmor()
     {
         var trait = this.c1.getTrait(WornArmor.TYPE);

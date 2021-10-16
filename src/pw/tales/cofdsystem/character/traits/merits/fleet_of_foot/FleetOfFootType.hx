@@ -12,6 +12,6 @@ class FleetOfFootType extends MeritType
 
     override public function createWithDN(dn:String, gameObject:GameObject):FleetOfFootMerit
     {
-        return new FleetOfFootMerit(this.getDN(), gameObject);
+        return new FleetOfFootMerit(dn, gameObject, this);
     }
 }

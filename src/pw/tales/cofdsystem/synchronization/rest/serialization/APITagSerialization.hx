@@ -17,7 +17,7 @@ class APITagSerialization implements ISerialization
 
     public function new() {}
 
-    public function handle(system:CofDSystem, data:Dynamic)
+    public function handle(system:CofDSystem, data:Dynamic):Void
     {
         var weaponTag:DynamicAccess<ApiWeaponTag> = data.weapon_tags;
         for (dn in weaponTag.keys())

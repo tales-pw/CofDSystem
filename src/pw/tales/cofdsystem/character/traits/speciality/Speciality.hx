@@ -1,8 +1,8 @@
 package pw.tales.cofdsystem.character.traits.speciality;
 
+import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.character.traits.skill.Skill;
 import pw.tales.cofdsystem.character.traits.speciality.events.SpecialitiesCollectEvent;
-import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.Trait;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 
@@ -11,7 +11,7 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 class Speciality extends Trait
 {
     public static final DN = "Специализация";
-    public static final TYPE:TraitType<Speciality> = cast TraitType.createType(DN, create).setMultiInstanced(true);
+    public static final TYPE = TraitType.createType(DN, Speciality.new).setMultiInstanced(true);
 
     @Serialize("name")
     private var name:String = "";
@@ -19,26 +19,20 @@ class Speciality extends Trait
     @Serialize("skill")
     private var skillDn:String = "";
 
-    @overload public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
+    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
     {
         super(dn, gameObject, type);
-        this.eventBus.addHandler(SpecialitiesCollectEvent, (e:SpecialitiesCollectEvent) -> e.collect(this));
+        this.eventBus.addHandler(SpecialitiesCollectEvent, this.collect);
     }
 
-    public function getName()
+    public function getName():String
     {
         return name;
     }
 
-    public function setName(name:String)
+    public function setName(name:String):Void
     {
         this.name = name;
-        this.notifyUpdated();
-    }
-
-    public function setSkill(skill:Skill)
-    {
-        this.skillDn = skill.getDN();
         this.notifyUpdated();
     }
 
@@ -47,8 +41,9 @@ class Speciality extends Trait
         return cast this.gameObject.getTraitManager().getTraitByDn(this.skillDn);
     }
 
-    public static function create(dn:String, gameObject:GameObject, t:TraitType<Speciality>):Speciality
+    public function setSkill(skill:Skill):Void
     {
-        return new Speciality(dn, gameObject, t);
+        this.skillDn = skill.getDN();
+        this.notifyUpdated();
     }
 }

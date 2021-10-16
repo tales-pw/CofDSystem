@@ -9,9 +9,9 @@ class AdvantageValue extends Advantage
     @Serialize("value")
     private var value:Int;
 
-    public function new(gameObject:GameObject, type:TraitType<Dynamic>, value:Int)
+    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>, value:Int)
     {
-        super(gameObject, type);
+        super(dn, gameObject, type);
         this.value = value;
     }
 

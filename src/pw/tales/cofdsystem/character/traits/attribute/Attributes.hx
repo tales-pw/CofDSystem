@@ -1,7 +1,7 @@
 package pw.tales.cofdsystem.character.traits.attribute;
 
 @RegisterTraitTypes
-@:expose('Attributes')
+@:expose("Attributes")
 class Attributes
 {
     // Mental

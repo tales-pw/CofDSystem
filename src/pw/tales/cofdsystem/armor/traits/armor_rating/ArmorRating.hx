@@ -1,8 +1,6 @@
 package pw.tales.cofdsystem.armor.traits.armor_rating;
 
 import pw.tales.cofdsystem.weapon_ranged.traits.RangedWeapon;
-import pw.tales.cofdsystem.action.Action;
-import pw.tales.cofdsystem.character.traits.HeldWeapon;
 import pw.tales.cofdsystem.action_attack.AttackAction;
 import pw.tales.cofdsystem.action_attack.events.AttackDamageGetEvent;
 import pw.tales.cofdsystem.armor.traits.armor_rating.events.AttackArmorGetEvent;
@@ -15,7 +13,7 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 class ArmorRating extends EquipmentTrait
 {
     public static final DN = "Свойство:Rating";
-    public static final TYPE:TraitType<ArmorRating> = cast TraitType.createType(DN, create);
+    public static final TYPE = TraitType.createType(DN, ArmorRating.new);
 
     @Serialize("general")
     private var general:Int = 0;
@@ -23,9 +21,9 @@ class ArmorRating extends EquipmentTrait
     @Serialize("ballistic")
     private var ballistic:Int = 0;
 
-    public function new(gameObject:GameObject)
+    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
     {
-        super(DN, gameObject, TYPE);
+        super(dn, gameObject, type);
         this.holderEventBus.addHandler(AttackDamageGetEvent, this.applyArmorAbsorption);
     }
 
@@ -96,10 +94,5 @@ class ArmorRating extends EquipmentTrait
         // Absorb damage
         var damage = DamageUtil.INSTANCE.simpleAbsorb(general, ballistic, event.getDamage());
         event.setDamage(damage);
-    }
-
-    public static function create(dn:String, gameObject:GameObject, t:TraitType<ArmorRating>):ArmorRating
-    {
-        return new ArmorRating(gameObject);
     }
 }

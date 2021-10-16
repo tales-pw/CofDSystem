@@ -14,24 +14,18 @@ import pw.tales.cofdsystem.weapon.traits.InitiativeMod;
 class InitiativeAdvantage extends AdvantageExpression
 {
     public static final DN = "Модификатор_Инициативы";
-    public static final TYPE:TraitType<InitiativeMod> = cast TraitType.createType(DN, create);
+    public static final TYPE = TraitType.createType(DN, InitiativeAdvantage.new);
 
     private static final EXPR = new PBTrait(DEXTERITY.getDN()).plus(new PBTrait(COMPOSURE.getDN()));
 
-    public function new(gameObject:GameObject)
+    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
     {
-        super(gameObject, TYPE, EXPR);
+        super(dn, gameObject, type, EXPR);
         this.eventBus.addHandler(InitiativeModifiersEvent, this.applyInitiativeMod, HandlerPriority.NORMAL);
     }
 
-    private function applyInitiativeMod(event:InitiativeModifiersEvent)
+    private function applyInitiativeMod(event:InitiativeModifiersEvent):Void
     {
-        var gameObject = event.getGameObject();
         event.apply(this.getValue());
-    }
-
-    public static function create(dn:String, gameObject:GameObject, t:TraitType<InitiativeAdvantage>):InitiativeAdvantage
-    {
-        return new InitiativeAdvantage(gameObject);
     }
 }

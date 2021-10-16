@@ -2,11 +2,10 @@ package pw.tales.cofdsystem.character.traits.skill;
 
 import pw.tales.cofdsystem.character.traits.skill.events.SkillCollectEvent;
 import pw.tales.cofdsystem.character.traits.skill.events.SkillGroupCollectEvent;
-import pw.tales.cofdsystem.character.traits.skill.SkillGroup;
 import pw.tales.cofdsystem.game_object.GameObject;
 
 @RegisterTraitTypes
-@:expose('Skills')
+@:expose("Skills")
 class Skills
 {
     // Mental

@@ -5,7 +5,7 @@ import pw.tales.cofdsystem.utils.EnumNamed;
 @:expose("SkillGroup")
 class SkillGroup extends EnumNamed
 {
-    public static var VALUES = new Map<String, SkillGroup>();
+    public static final VALUES = new Map<String, SkillGroup>();
 
     public static final MENTAL = new SkillGroup("mental", -3);
     public static final PHYSICAL = new SkillGroup("physical", -1);

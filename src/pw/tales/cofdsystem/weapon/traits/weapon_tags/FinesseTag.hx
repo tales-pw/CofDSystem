@@ -16,13 +16,13 @@ import pw.tales.cofdsystem.utils.Utility;
 class FinesseTag extends WeaponTag
 {
     public static final DN = "finesse_(weapon_tag)";
-    public static final TYPE:TraitType<FinesseTag> = cast TraitType.createType(DN, create);
+    public static final TYPE = cast TraitType.createType(DN, FinesseTag.new);
 
     public static final PRIORITY = HandlerPriority.lower([WeaponTrait.PRIORITY]);
 
-    public function new(gameObject:GameObject)
+    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
     {
-        super(DN, gameObject, TYPE);
+        super(dn, gameObject, type);
         this.holderEventBus.addHandler(ActionBuildPoolEvent, this.replaceStrWithDex, PRIORITY);
     }
 
@@ -43,10 +43,5 @@ class FinesseTag extends WeaponTag
         var newTraits = Utility.replace(oldTraits, Attributes.STRENGTH.getDN(), Attributes.DEXTERITY.getDN());
 
         pool.getRequest().setTraits(newTraits);
-    }
-
-    public static function create(dn:String, gameObject:GameObject, t:TraitType<FinesseTag>):FinesseTag
-    {
-        return new FinesseTag(gameObject);
     }
 }

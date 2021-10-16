@@ -19,28 +19,28 @@ class Aspiration extends TextTrait
         this.eventBus.addHandler(AspirationsCollectEvent, (e:AspirationsCollectEvent) -> e.collect(this));
     }
 
-    public function setTitle(title:String)
+    public function setTitle(title:String):Void
     {
         this.setText(title);
     }
 
-    public function getTitle()
+    public function getTitle():String
     {
         return this.getText();
     }
 
-    public function setDescription(description:String)
+    public function setDescription(description:String):Void
     {
         this.description = description;
         notifyUpdated();
     }
 
-    public function getDescription()
+    public function getDescription():String
     {
         return this.description;
     }
 
-    public function accomplish()
+    public function accomplish():Void
     {
         var experience = gameObject.getTrait(Experience.TYPE);
         experience.grantBeat();

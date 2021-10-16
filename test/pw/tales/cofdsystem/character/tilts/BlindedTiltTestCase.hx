@@ -1,11 +1,11 @@
 package pw.tales.cofdsystem.character.tilts;
 
-import pw.tales.cofdsystem.character.traits.tilts.blinded.BlindedTilt;
-import pw.tales.cofdsystem.character.traits.tilts.TiltType;
+import pw.tales.cofdsystem.character.traits.tilts.BlindedTilt;
+import pw.tales.cofdsystem.game_object.traits.TraitType;
 
 class BlindedTiltTestCase extends BaseTiltTestCase
 {
-    public override function getTiltType():TiltType
+    public override function getTiltType():TraitType<Dynamic>
     {
         return BlindedTilt.TYPE;
     }
