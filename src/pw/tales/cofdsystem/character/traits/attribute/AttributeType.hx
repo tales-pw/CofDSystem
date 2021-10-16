@@ -5,6 +5,8 @@ import pw.tales.cofdsystem.game_object.traits.value_trait.ValueTraitType;
 
 class AttributeType extends ValueTraitType<Attribute>
 {
+    public static final STARTING_VALUE = 1;
+
     private final purpose:AttributePurpose;
     private final group:AttributeGroup;
 
@@ -27,6 +29,6 @@ class AttributeType extends ValueTraitType<Attribute>
 
     override public function createWithDN(dn:String, gameObject:GameObject):Attribute
     {
-        return new Attribute(gameObject, this);
+        return new Attribute(dn, gameObject, this, STARTING_VALUE);
     }
 }

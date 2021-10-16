@@ -73,7 +73,7 @@ class TraitManager
         return trait;
     }
 
-    public function removeTrait<T:Trait>(trait:T)
+    public function removeTrait<T:Trait>(trait:T):Void
     {
         var event = new TraitRemoveEvent(trait);
         this.system.events.post(event);
@@ -159,7 +159,7 @@ class TraitManager
         return this.traits;
     }
 
-    public function deactivate()
+    public function deactivate():Void
     {
         for (trait in traits.items())
         {
@@ -167,7 +167,7 @@ class TraitManager
         }
     }
 
-    public function toString()
+    public function toString():String
     {
         var className = Utility.getClassName(Type.getClass(this));
         return '${className}[owner=${this.gameObject.getDN()}]';

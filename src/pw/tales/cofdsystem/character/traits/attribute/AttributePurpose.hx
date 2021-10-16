@@ -4,7 +4,7 @@ import pw.tales.cofdsystem.utils.EnumNamed;
 
 class AttributePurpose extends EnumNamed
 {
-    private static var VALUES = new Map<String, AttributePurpose>();
+    private static final VALUES = new Map<String, AttributePurpose>();
 
     public static final POWER = new AttributePurpose("power");
     public static final FINESSE = new AttributePurpose("finesse");

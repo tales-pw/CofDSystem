@@ -4,7 +4,7 @@ import pw.tales.cofdsystem.utils.EnumNamed;
 
 class AttributeGroup extends EnumNamed
 {
-    public static var VALUES = new Map<String, AttributeGroup>();
+    public static final VALUES = new Map<String, AttributeGroup>();
 
     public static final MENTAL = new AttributeGroup("mental");
     public static final PHYSICAL = new AttributeGroup("physical");

@@ -11,13 +11,13 @@ class AmbidextrousMerit extends Merit
 {
     public static final TYPE:AmbidextrousMeritType = new AmbidextrousMeritType("Ambidextrous");
 
-    public function new(dn:String, gameObject:GameObject, ?customName:String)
+    public function new(dn:String, gameObject:GameObject, customName:Null<String> = null)
     {
         super(dn, gameObject, TYPE, customName);
         this.eventBus.addHandler(OffhandModiferEvent, this.onOffhandModifer, HandlerPriority.NORMAL);
     }
 
-    private function onOffhandModifer(event:OffhandModiferEvent)
+    private function onOffhandModifer(event:OffhandModiferEvent):Void
     {
         event.setModifer(0);
     }

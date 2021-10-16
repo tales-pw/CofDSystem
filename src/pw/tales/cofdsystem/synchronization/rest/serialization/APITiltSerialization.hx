@@ -1,7 +1,8 @@
 package pw.tales.cofdsystem.synchronization.rest.serialization;
 
+import pw.tales.cofdsystem.character.traits.tilts.Tilt;
+import pw.tales.cofdsystem.game_object.traits.TraitType;
 import haxe.DynamicAccess;
-import pw.tales.cofdsystem.character.traits.tilts.TiltType;
 import pw.tales.cofdsystem.synchronization.rest.ISerialization;
 
 typedef ApiTilt = {
@@ -16,17 +17,17 @@ class APITiltSerialization implements ISerialization
 
     public function new() {}
 
-    public function handle(system:CofDSystem, data:Dynamic)
+    public function handle(system:CofDSystem, data:Dynamic):Void
     {
         var tilts:DynamicAccess<ApiTilt> = data.tilts;
         for (dn in tilts.keys())
         {
             var record = tilts.get(dn);
 
-            var type:TiltType = cast(system.traits.getRecord(dn));
+            var type = cast(system.traits.getRecord(dn));
             if (type == null)
             {
-                type = new TiltType(dn);
+                type = TraitType.createType(dn, Tilt.new);
                 system.traits.register(type);
             }
 

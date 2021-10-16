@@ -19,7 +19,7 @@ import pw.tales.cofdsystem.utils.events.HandlerPriority;
 class HealthAdvantage extends AdvantageExpression implements IHealthTrait
 {
     public static final DN = "Здоровье";
-    public static final TYPE:TraitType<HealthAdvantage> = cast TraitType.createType(DN, create);
+    public static final TYPE:TraitType<HealthAdvantage> = TraitType.createType(DN, HealthAdvantage.new);
 
     private static final EXPR = new PBTrait(SizeAdvantage.DN).plus(new PBTrait(STAMINA.getDN()));
 
@@ -32,9 +32,9 @@ class HealthAdvantage extends AdvantageExpression implements IHealthTrait
     @Serialize("aggravated")
     private var aggravated:Int = 0;
 
-    public function new(gameObject:GameObject)
+    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
     {
-        super(gameObject, TYPE, EXPR);
+        super(dn, gameObject, TYPE, EXPR);
         this.eventBus.addHandler(ActionBuildPoolEvent, this.applyHealthPenalty, HandlerPriority.NORMAL);
         this.eventBus.addHandler(GetHealthTraitEvent, this.setHealthTrait, HandlerPriority.NORMAL);
     }
@@ -70,7 +70,7 @@ class HealthAdvantage extends AdvantageExpression implements IHealthTrait
         return this.aggravated >= healthValue;
     }
 
-    private function applyDamage(damage:Damage)
+    private function applyDamage(damage:Damage):Void
     {
         var maxHealth = this.getValue();
 
@@ -165,10 +165,5 @@ class HealthAdvantage extends AdvantageExpression implements IHealthTrait
             penalty = -3;
 
         event.getActionPool().getRequest().addModifier(penalty, HealthAdvantage.DN);
-    }
-
-    public static function create(dn:String, gameObject:GameObject, t:TraitType<HealthAdvantage>):HealthAdvantage
-    {
-        return new HealthAdvantage(gameObject);
     }
 }

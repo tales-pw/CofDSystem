@@ -12,16 +12,16 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 class WillpowerAdvantage extends AdvantageExpression
 {
     public static final DN = "Сила_воли";
-    public static final TYPE:TraitType<WillpowerAdvantage> = cast TraitType.createType(DN, create);
+    public static final TYPE:TraitType<WillpowerAdvantage> = TraitType.createType(DN, WillpowerAdvantage.new);
 
     private static final EXPR = new PBTrait(RESOLVE.getDN()).plus(new PBTrait(COMPOSURE.getDN()));
 
     @Serialize("points")
     private var points:Null<Int> = null;
 
-    public function new(gameObject:GameObject)
+    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
     {
-        super(gameObject, TYPE, EXPR);
+        super(dn, gameObject, TYPE, EXPR);
     }
 
     public function canUse():Bool
@@ -47,10 +47,5 @@ class WillpowerAdvantage extends AdvantageExpression
 
         this.points = newPoints;
         this.notifyUpdated();
-    }
-
-    public static function create(dn:String, gameObject:GameObject, t:TraitType<WillpowerAdvantage>):WillpowerAdvantage
-    {
-        return new WillpowerAdvantage(gameObject);
     }
 }

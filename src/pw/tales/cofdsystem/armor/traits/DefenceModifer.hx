@@ -10,23 +10,18 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 class DefenceModifer extends EquipmentMod
 {
     public static final DN = "Свойство:Defense";
-    public static final TYPE:TraitType<DefenceModifer> = cast TraitType.createType(DN, create);
+    public static final TYPE = TraitType.createType(DN, DefenceModifer.new);
 
-    public function new(gameObject:GameObject)
+    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
     {
-        super(DN, gameObject, TYPE);
+        super(dn, gameObject, type);
         this.holderEventBus.addHandler(AdvantageModEvent, this.applyMod);
     }
 
-    private function applyMod(event:AdvantageModEvent)
+    private function applyMod(event:AdvantageModEvent):Void
     {
         if (event.getAdvantage().getType() != DefenceAdvantage.TYPE)
             return;
         event.apply(this.value);
-    }
-
-    public static function create(dn:String, gameObject:GameObject, t:TraitType<DefenceModifer>):DefenceModifer
-    {
-        return new DefenceModifer(gameObject);
     }
 }

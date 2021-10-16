@@ -8,11 +8,11 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 class DamageMod extends WeaponMod
 {
     public static final DN = "Свойство:Damage";
-    public static final TYPE:TraitType<DamageMod> = cast TraitType.createType(DN, create);
+    public static final TYPE = TraitType.createType(DN, DamageMod.new);
 
-    public function new(gameObject:GameObject)
+    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
     {
-        super(DN, gameObject, TYPE);
+        super(dn, gameObject, type);
         this.holderEventBus.addHandler(AttackSuccesesEvent, this.applyDamage);
     }
 
@@ -24,10 +24,5 @@ class DamageMod extends WeaponMod
             return;
 
         event.setDamageSucceses(event.getDamageSucceses() + this.getValue());
-    }
-
-    public static function create(dn:String, gameObject:GameObject, t:TraitType<DamageMod>):DamageMod
-    {
-        return new DamageMod(gameObject);
     }
 }

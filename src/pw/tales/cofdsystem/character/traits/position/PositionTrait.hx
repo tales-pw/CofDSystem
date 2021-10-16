@@ -9,7 +9,7 @@ import pw.tales.cofdsystem.game_object.traits.Trait;
 class PositionTrait extends Trait
 {
     public static final DN = "position";
-    public static final TYPE:PositionType = new PositionType(DN);
+    public static final TYPE = new PositionType(DN);
 
     private var provider:Null<PositionProvider> = null;
 

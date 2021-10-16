@@ -21,7 +21,7 @@ class APIRangedSerialization implements ISerialization
 
     public function new() {}
 
-    public function handle(system:CofDSystem, data:Dynamic)
+    public function handle(system:CofDSystem, data:Dynamic):Void
     {
         var rangedWeapons:DynamicAccess<ApiRangedWeapon> = data.ranged_weapons;
         for (dn in rangedWeapons.keys())

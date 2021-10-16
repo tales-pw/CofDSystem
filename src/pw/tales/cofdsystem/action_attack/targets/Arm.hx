@@ -2,7 +2,7 @@ package pw.tales.cofdsystem.action_attack.targets;
 
 import pw.tales.cofdsystem.character.traits.attribute.Attribute;
 import pw.tales.cofdsystem.character.traits.attribute.Attributes;
-import pw.tales.cofdsystem.character.traits.tilts.arm_wrack.ArmWrackTilt;
+import pw.tales.cofdsystem.character.traits.tilts.ArmWrackTilt;
 
 class Arm implements ITarget
 {
@@ -26,7 +26,7 @@ class Arm implements ITarget
         var totalDamage = damage.getBashing() + damage.getLethal() + damage.getAggravated();
 
         var gameObject = action.getCompetition().getTarget();
-        var stamina:Attribute = gameObject.getTrait(Attributes.STAMINA);
+        var stamina = gameObject.getTrait(Attributes.STAMINA);
 
         if (totalDamage > stamina.getValue())
         {

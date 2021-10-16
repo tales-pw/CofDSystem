@@ -2,7 +2,7 @@ package pw.tales.cofdsystem.action_attack.targets;
 
 import pw.tales.cofdsystem.character.traits.attribute.Attribute;
 import pw.tales.cofdsystem.character.traits.attribute.Attributes;
-import pw.tales.cofdsystem.character.traits.tilts.leg_wrack.LegWrackTilt;
+import pw.tales.cofdsystem.character.traits.tilts.LegWrackTilt;
 
 class Leg implements ITarget
 {

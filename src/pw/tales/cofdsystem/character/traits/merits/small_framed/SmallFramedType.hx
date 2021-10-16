@@ -12,6 +12,6 @@ class SmallFramedType extends MeritType
 
     override public function createWithDN(dn:String, gameObject:GameObject):SmallFramedMerit
     {
-        return new SmallFramedMerit(this.getDN(), gameObject);
+        return new SmallFramedMerit(dn, gameObject);
     }
 }

@@ -1,6 +1,6 @@
 package pw.tales.cofdsystem.action_attack.targets;
 
-import pw.tales.cofdsystem.character.traits.tilts.arm_wrack.ArmWrackTilt;
+import pw.tales.cofdsystem.character.traits.tilts.ArmWrackTilt;
 
 class Hand implements ITarget
 {

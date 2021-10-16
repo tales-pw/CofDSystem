@@ -16,7 +16,7 @@ class APIConditionSerialization implements ISerialization
 
     public function new() {}
 
-    public function handle(system:CofDSystem, data:Dynamic)
+    public function handle(system:CofDSystem, data:Dynamic):Void
     {
         var conditions:DynamicAccess<ApiCondition> = data.conditions;
         for (dn in conditions.keys())

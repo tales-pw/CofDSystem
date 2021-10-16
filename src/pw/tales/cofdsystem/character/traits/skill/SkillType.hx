@@ -20,6 +20,6 @@ class SkillType extends ValueTraitType<Skill>
 
     override public function createWithDN(dn:String, gameObject:GameObject):Skill
     {
-        return new Skill(gameObject, this);
+        return new Skill(dn, gameObject, this);
     }
 }

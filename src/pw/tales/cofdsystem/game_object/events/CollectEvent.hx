@@ -4,7 +4,7 @@ class CollectEvent<T> extends GameObjectEvent
 {
     private final collected:Array<T> = [];
 
-    public function collect(aspiration:T)
+    public function collect(aspiration:T):Void
     {
         this.collected.push(aspiration);
     }

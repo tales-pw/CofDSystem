@@ -12,15 +12,15 @@ class WealthAdvantage extends Advantage
 {
     // TODO: Somehow merge it with ValueTrait. Turning Avdantage into interface is a valid choice.
     public static final DN = "Богатство";
-    public static final TYPE:TraitType<WealthAdvantage> = cast TraitType.createType(DN, create);
+    public static final TYPE = TraitType.createType(DN, WealthAdvantage.new);
 
     @Serialize("points")
     private var points:Int = 0;
 
-    public function new(gameObject:GameObject)
+    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
     {
-        super(gameObject, TYPE);
-        this.eventBus.addHandler(GenMeritCollectEvent, (e:GenMeritCollectEvent) -> e.collect(this));
+        super(dn, gameObject, type);
+        this.eventBus.addHandler(GenMeritCollectEvent, this.collect);
     }
 
     public function canUpdate(newValue:Int):Bool
@@ -41,10 +41,5 @@ class WealthAdvantage extends Advantage
     public override function getValue():Int
     {
         return this.points;
-    }
-
-    public static function create(dn:String, gameObject:GameObject, t:TraitType<WealthAdvantage>):WealthAdvantage
-    {
-        return new WealthAdvantage(gameObject);
     }
 }

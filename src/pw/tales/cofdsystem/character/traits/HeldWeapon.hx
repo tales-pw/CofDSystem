@@ -13,14 +13,14 @@ import pw.tales.cofdsystem.weapon.Weapon;
 class HeldWeapon extends Trait
 {
     public static final DN = "weapon";
-    public static final TYPE:TraitType<HeldWeapon> = cast TraitType.createType(DN, create);
+    public static final TYPE = TraitType.createType(DN, HeldWeapon.new);
 
     private var mainHand:Null<Weapon> = null;
     private var offHand:Null<Weapon> = null;
 
-    public function new(gameObject:GameObject)
+    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
     {
-        super(TYPE.getDN(), gameObject, TYPE);
+        super(dn, gameObject, type);
         this.eventBus.addHandler(InitiativeModifiersEvent, this.applyInitiativeMod, HandlerPriority.NORMAL);
     }
 
@@ -61,12 +61,12 @@ class HeldWeapon extends Trait
         return this.offHand;
     }
 
-    public function setMainHand(mainHand:Null<Weapon>)
+    public function setMainHand(mainHand:Null<Weapon>):Void
     {
         this.setHand(EnumHand.HAND, mainHand);
     }
 
-    public function setOffHand(offHand:Null<Weapon>)
+    public function setOffHand(offHand:Null<Weapon>):Void
     {
         this.setHand(EnumHand.OFFHAND, offHand);
     }
@@ -90,14 +90,9 @@ class HeldWeapon extends Trait
         return 0;
     }
 
-    private function applyInitiativeMod(event:InitiativeModifiersEvent)
+    private function applyInitiativeMod(event:InitiativeModifiersEvent):Void
     {
         var finalMod = this.calculateWeaponsInitiativeMod(this.gameObject);
         event.apply(finalMod);
-    }
-
-    public static function create(dn:String, gameObject:GameObject, t:TraitType<HeldWeapon>):HeldWeapon
-    {
-        return new HeldWeapon(gameObject);
     }
 }

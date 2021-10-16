@@ -12,21 +12,21 @@ import pw.tales.cofdsystem.utils.events.IEvent;
 @:expose("Skill")
 class Skill extends ValueTrait
 {
-    public function new(gameObject:GameObject, type:SkillType)
+    public function new(dn:String, gameObject:GameObject, type:SkillType)
     {
-        super(type.getDN(), gameObject, type, 0);
+        super(dn, gameObject, type, 0);
 
-        this.eventBus.addHandler(SkillCollectEvent, (e:SkillCollectEvent) -> e.collect(this));
+        this.eventBus.addHandler(SkillCollectEvent, this.collect);
         this.eventBus.addHandler(SkillGroupCollectEvent, (e:SkillGroupCollectEvent) ->
         {
             if (e.getGroup() == type.getGroup())
-                e.collect(this);
+                this.collect(e);
         });
     }
 
-    private function isSkillSpeciality(v:Trait)
+    private function isSkillSpeciality(trait:Trait):Bool
     {
-        var speciality:Null<Speciality> = Std.downcast(v, Speciality);
+        var speciality:Null<Speciality> = Std.downcast(trait, Speciality);
         if (speciality == null)
             return false;
         return speciality.getSkill() == this;
