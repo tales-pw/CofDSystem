@@ -15,13 +15,13 @@ import pw.tales.cofdsystem.utils.events.HandlerPriority;
 class MercyTag extends WeaponTag
 {
     public static final DN = "mercy_(weapon_tag)";
-    public static final TYPE:TraitType<MercyTag> = cast TraitType.createType(DN, create);
+    public static final TYPE:TraitType<MercyTag> = cast TraitType.createType(DN, MercyTag.new);
 
     public static final PRIORITY = HandlerPriority.lower([WeaponTrait.PRIORITY]);
 
-    public function new(gameObject:GameObject)
+    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
     {
-        super(DN, gameObject, TYPE);
+        super(dn, gameObject, type);
         this.holderEventBus.addHandler(AttackDamageGetTypeEvent, this.makeBashing, PRIORITY);
     }
 
@@ -34,10 +34,5 @@ class MercyTag extends WeaponTag
             return;
 
         e.setDamageType(DamageType.BASHING);
-    }
-
-    public static function create(dn:String, gameObject:GameObject, t:TraitType<MercyTag>):MercyTag
-    {
-        return new MercyTag(gameObject);
     }
 }

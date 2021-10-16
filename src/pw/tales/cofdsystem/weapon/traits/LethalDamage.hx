@@ -9,11 +9,11 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 class LethalDamage extends WeaponTrait
 {
     public static final DN = "lethal_damage";
-    public static final TYPE = TraitType.createType(DN, create);
+    public static final TYPE = TraitType.createType(DN, LethalDamage.new);
 
-    public function new(gameObject:GameObject)
+    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
     {
-        super(DN, gameObject, TYPE);
+        super(dn, gameObject, type);
         this.holderEventBus.addHandler(AttackDamageGetTypeEvent, this.makeLethal);
     }
 
@@ -25,10 +25,5 @@ class LethalDamage extends WeaponTrait
             return;
 
         event.setDamageType(DamageType.LETHAL);
-    }
-
-    public static function create(dn:String, gameObject:GameObject, t:TraitType<LethalDamage>):LethalDamage
-    {
-        return new LethalDamage(gameObject);
     }
 }

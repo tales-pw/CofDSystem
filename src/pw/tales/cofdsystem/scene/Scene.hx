@@ -33,12 +33,12 @@ class Scene implements IRecord
         return this;
     }
 
-    public function add(gameObject:GameObject)
+    public function add(gameObject:GameObject): Void
     {
         this.initiative.add(gameObject);
     }
 
-    public function remove(gameObject:GameObject)
+    public function remove(gameObject:GameObject): Void
     {
         this.initiative.remove(gameObject);
         this.turns.remove(gameObject);
@@ -64,12 +64,12 @@ class Scene implements IRecord
         return this.dn;
     }
 
-    public function begin()
+    public function begin(): Void
     {
         this.system.events.post(SceneEvent.START(this));
     }
 
-    public function end()
+    public function end():Void
     {
         this.system.events.post(SceneEvent.END(this));
     }

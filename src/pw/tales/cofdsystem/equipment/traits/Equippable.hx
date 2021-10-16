@@ -7,16 +7,11 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 class Equippable extends Trait
 {
     public static final DN = "Equippable";
-    public static final TYPE:TraitType<Equippable> = cast TraitType.createType(DN, create);
+    public static final TYPE:TraitType<Equippable> = TraitType.createType(DN, Equippable.new);
 
     private var holder:Null<GameObject> = null;
 
-    public function new(gameObject:GameObject)
-    {
-        super(DN, gameObject, TYPE);
-    }
-
-    public function setHolder(holder:GameObject)
+    public function setHolder(holder:GameObject): Void
     {
         this.holder = holder;
         this.notifyUpdated();
@@ -27,14 +22,9 @@ class Equippable extends Trait
         return this.holder;
     }
 
-    public function unset()
+    public function unset(): Void
     {
         this.holder = null;
         this.notifyUpdated();
-    }
-
-    public static function create(dn:String, gameObject:GameObject, t:TraitType<Equippable>):Equippable
-    {
-        return new Equippable(gameObject);
     }
 }

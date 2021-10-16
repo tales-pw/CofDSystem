@@ -16,13 +16,13 @@ import pw.tales.cofdsystem.utils.Utility;
 class BrawlTag extends WeaponTag
 {
     public static final DN = "brawl_(weapon_tag)";
-    public static final TYPE:TraitType<BrawlTag> = cast TraitType.createType(DN, create);
+    public static final TYPE:TraitType<BrawlTag> = cast TraitType.createType(DN, BrawlTag.new);
 
     public static final PRIORITY = HandlerPriority.lower([WeaponTrait.PRIORITY]);
 
-    public function new(gameObject:GameObject)
+    public function new(dn:String, gameObject:GameObject, type:TraitType<BrawlTag>)
     {
-        super(DN, gameObject, TYPE);
+        super(dn, gameObject, type);
         this.holderEventBus.addHandler(ActionBuildPoolEvent, this.changeTraits, PRIORITY);
     }
 
@@ -43,10 +43,5 @@ class BrawlTag extends WeaponTag
         var newTraits = Utility.replace(oldTraits, Skills.WEAPONRY.getDN(), Skills.BRAWL.getDN());
 
         pool.getRequest().setTraits(newTraits);
-    }
-
-    public static function create(dn:String, gameObject:GameObject, t:TraitType<BrawlTag>):BrawlTag
-    {
-        return new BrawlTag(gameObject);
     }
 }

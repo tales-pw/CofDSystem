@@ -14,11 +14,11 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 class GuardTag extends WeaponTag
 {
     public static final DN = "guard_(weapon_tag)";
-    public static final TYPE:TraitType<GuardTag> = cast TraitType.createType(DN, create);
+    public static final TYPE:TraitType<GuardTag> = cast TraitType.createType(DN, GuardTag.new);
 
-    public function new(gameObject:GameObject)
+    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
     {
-        super(DN, gameObject, TYPE);
+        super(dn, gameObject, type);
         this.holderEventBus.addHandler(ActionPoolEvent, this.applyBonus);
     }
 
@@ -35,10 +35,5 @@ class GuardTag extends WeaponTag
             return;
 
         request.addModifier(1, this.getDN());
-    }
-
-    public static function create(dn:String, gameObject:GameObject, t:TraitType<GuardTag>):GuardTag
-    {
-        return new GuardTag(gameObject);
     }
 }
