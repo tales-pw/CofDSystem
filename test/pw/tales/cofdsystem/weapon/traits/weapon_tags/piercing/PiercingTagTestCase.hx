@@ -1,5 +1,7 @@
 package pw.tales.cofdsystem.weapon.traits.weapon_tags.piercing;
 
+import pw.tales.cofdsystem.weapon.prefabs.WeaponPrefab;
+import haxe.exceptions.NotImplementedException;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.character.traits.WornArmor;
@@ -17,9 +19,18 @@ class PiercingTagTestCase extends WeaponTagTestCase
 
     public function setupGOArmor(gameObject:GameObject, general:Int, ballistic:Int):Void
     {
-        var armorPrefab = new ArmorPrefab("armor", null, general, ballistic, 0, 0, 0);
+        var armorPrefab:ArmorPrefab = {
+            dn: "armor",
+            general: general,
+            ballistic: ballistic
+        };
         var armor = armorPrefab.createArmor(this.system);
         gameObject.getTrait(WornArmor.TYPE).setArmor(armor);
+    }
+
+    private override function createPrefab():WeaponPrefab
+    {
+        throw new NotImplementedException();
     }
 
     public override function getBaseTest():Class<TestCase>

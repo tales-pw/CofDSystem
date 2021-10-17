@@ -1,7 +1,7 @@
 package pw.tales.cofdsystem.weapon.traits.weapon_tags.piercing;
 
-import pw.tales.cofdsystem.weapon.prefabs.WeaponPrefab;
 import pw.tales.cofdsystem.weapon_ranged.prefabs.RangedWeaponPrefab;
+import pw.tales.cofdsystem.weapon.prefabs.WeaponPrefab;
 import pw.tales.cofdsystem.common.EnumSide;
 import pw.tales.cofdsystem.action_attack.builder.AttackBuilder;
 
@@ -9,7 +9,11 @@ class RangedPiercingTagTestCase extends PiercingTagTestCase
 {
     private override function createPrefab():WeaponPrefab
     {
-        return new RangedWeaponPrefab("weapon", null, 0, 0, 0, 0, [this.getTagType()]);
+        var weapon:RangedWeaponPrefab = {
+            dn: "weapon",
+            tags: [this.getTagType()]
+        };
+        return weapon;
     }
 
     public function testApplyToGeneral()

@@ -12,7 +12,11 @@ class StrengthReqTestCase extends CofDSystemTestCase
 
     public function createWeapon():Weapon
     {
-        return new MeleeWeaponPrefab("weapon", null, 0, 0, 0, 4, []).createWeapon(this.system);
+        var prefab:MeleeWeaponPrefab = {
+            dn: "weapon",
+            strength: 4
+        };
+        return prefab.createWeapon(this.system);
     }
 
     public function testApply()

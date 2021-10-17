@@ -11,7 +11,11 @@ import thx.Uuid;
 @:nullSafety(Off)
 class ArmorTestCase extends CofDSystemTestCase
 {
-    private static final ARMOR = new ArmorPrefab(Uuid.create(), "", 2, 2, 0, 0, 0);
+    private static final ARMOR:ArmorPrefab = {
+        dn: Uuid.create(),
+        general: 2,
+        ballistic: 2
+    };
 
     override public function setup()
     {

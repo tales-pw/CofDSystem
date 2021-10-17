@@ -12,7 +12,9 @@ import haxe.unit.TestCase;
 
 class WeaponTagTestCase extends CofDSystemTestCase
 {
-    private static final NO_TAG_WEAPON = new MeleeWeaponPrefab("no_tag_weapon", null, 0, 0, 0, 0, []);
+    private static final NO_TAG_WEAPON:MeleeWeaponPrefab = {
+        dn: "no_tag_weapon"
+    };
 
     @:nullSafety(Off)
     private var weapon:Weapon;
@@ -50,7 +52,11 @@ class WeaponTagTestCase extends CofDSystemTestCase
 
     private function createPrefab():WeaponPrefab
     {
-        return new MeleeWeaponPrefab("weapon", null, 0, 0, 0, 0, [this.getTagType()]);
+        var weapon:MeleeWeaponPrefab = {
+            dn: "weapon",
+            tags: [this.getTagType()],
+        };
+        return weapon;
     }
 
     private function getTagType():TraitType<Dynamic>
