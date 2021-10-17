@@ -1,16 +1,12 @@
 package pw.tales.cofdsystem.game_object.prefabs;
 
+import pw.tales.cofdsystem.utils.Utility;
 import thx.error.NotImplemented;
 import thx.Uuid;
 
-class Prefab implements IPrefab
+@:structInit class Prefab implements IPrefab
 {
     private final dn:String;
-
-    public function new(dn:String)
-    {
-        this.dn = dn;
-    }
 
     public function getDN():String
     {
@@ -31,5 +27,11 @@ class Prefab implements IPrefab
 
         gameObject.setState(GameObjectState.ACTIVE);
         return gameObject;
+    }
+
+    public function toString():String
+    {
+        var clazz = Type.getClass(this);
+        return '${Utility.getClassName(clazz)}[dn=${dn}]';
     }
 }

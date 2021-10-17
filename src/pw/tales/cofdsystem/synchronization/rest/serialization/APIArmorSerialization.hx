@@ -28,7 +28,15 @@ class APIArmorSerialization implements ISerialization
         for (dn in armors.keys())
         {
             var record:ApiArmor = armors.get(dn);
-            var armor = new ArmorPrefab(dn, record.name, record.general_armor, record.ballistic_armor, record.defense, record.speed, record.strength);
+            var armor:ArmorPrefab = {
+                dn: dn,
+                name: record.name,
+                general: record.general_armor,
+                ballistic: record.ballistic_armor,
+                defenceMod: record.defense,
+                speedMod: record.speed,
+                strengthReq: record.strength
+            };
 
             system.armors.register(armor);
         }

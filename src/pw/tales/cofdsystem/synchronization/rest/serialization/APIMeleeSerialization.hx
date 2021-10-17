@@ -36,7 +36,17 @@ class APIMeleeSerialization implements ISerialization
                     tags.push(tag);
             }
 
-            system.weapons.register(new MeleeWeaponPrefab(record.dn, record.name, record.initiative, record.damage, record.size, record.strength, tags));
+            final weapon:MeleeWeaponPrefab = {
+                dn: record.dn,
+                name: record.name,
+                initiative: record.initiative,
+                damage: record.damage,
+                size: record.size,
+                strength: record.strength,
+                tags: tags
+            };
+
+            system.weapons.register(weapon);
         }
     }
 }

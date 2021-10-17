@@ -6,31 +6,17 @@ import pw.tales.cofdsystem.armor.traits.DefenceModifer;
 import pw.tales.cofdsystem.armor.traits.SpeedModifer;
 import pw.tales.cofdsystem.equipment.prefabs.EquipmentPrefab;
 import pw.tales.cofdsystem.game_object.GameObject;
-import pw.tales.cofdsystem.utils.Utility;
 
-class ArmorPrefab extends EquipmentPrefab implements IArmor
+@:structInit class ArmorPrefab extends EquipmentPrefab implements IArmor
 {
-    private var name:Null<String>;
+    private final name:Null<String> = null;
 
-    private var ballistic:Int;
-    private var general:Int;
+    private final ballistic:Int = 0;
+    private final general:Int = 0;
 
-    private var defenceMod:Int;
-    private var speedMod:Int;
-    private var strengthReq:Int;
-
-    public function new(dn:String, name:Null<String>, general:Int, ballistic:Int, defenceMod:Int, speedMod:Int, strengthReq:Int)
-    {
-        super(dn);
-        this.name = name;
-
-        this.general = general;
-        this.ballistic = ballistic;
-
-        this.defenceMod = defenceMod;
-        this.speedMod = speedMod;
-        this.strengthReq = strengthReq;
-    }
+    private final defenceMod:Int = 0;
+    private final speedMod:Int = 0;
+    private final strengthReq:Int = 0;
 
     public function getName():Null<String>
     {
@@ -67,12 +53,6 @@ class ArmorPrefab extends EquipmentPrefab implements IArmor
     public function getSpeedMod():Int
     {
         return this.speedMod;
-    }
-
-    public function toString():String
-    {
-        var clazz = Type.getClass(this);
-        return '${Utility.getClassName(clazz)}[dn=$dn,general=$general, ballistic=$ballistic]';
     }
 
     private override function setUpGameObject(armorGameObject:GameObject):Void

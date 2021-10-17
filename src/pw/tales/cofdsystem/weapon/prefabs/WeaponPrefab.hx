@@ -6,32 +6,20 @@ import pw.tales.cofdsystem.equipment.prefabs.EquipmentPrefab;
 import pw.tales.cofdsystem.equipment.traits.HoldingHand;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
-import pw.tales.cofdsystem.utils.Utility;
 import pw.tales.cofdsystem.weapon.traits.DamageMod;
 import pw.tales.cofdsystem.weapon.traits.InitiativeMod;
 import pw.tales.cofdsystem.weapon.traits.LethalDamage;
 import pw.tales.cofdsystem.weapon.Weapon;
 
-class WeaponPrefab extends EquipmentPrefab implements IWeapon
+@:structInit class WeaponPrefab extends EquipmentPrefab implements IWeapon
 {
-    private var name:Null<String>;
-    private var initiative:Int;
-    private var damage:Int;
-    private var strength:Int;
-    private var size:Int;
+    private final name:Null<String> = null;
+    private final initiative:Int = 0;
+    private final damage:Int = 0;
+    private final strength:Int = 0;
+    private final size:Int = 0;
 
-    private var tags:Array<TraitType<Dynamic>>;
-
-    public function new(dn:String, name:Null<String>, initiative:Int, damage:Int, size:Int, strength:Int, tags:Array<TraitType<Dynamic>>)
-    {
-        super(dn);
-        this.name = name;
-        this.initiative = initiative;
-        this.damage = damage;
-        this.size = size;
-        this.strength = strength;
-        this.tags = tags;
-    }
+    private final tags:Array<TraitType<Dynamic>> = [];
 
     public function getName():Null<String>
     {
@@ -100,11 +88,5 @@ class WeaponPrefab extends EquipmentPrefab implements IWeapon
     public function createWeapon(system:CofDSystem):Weapon
     {
         return new Weapon(this.createGameObject(system));
-    }
-
-    public function toString():String
-    {
-        var clazz = Type.getClass(this);
-        return '${Utility.getClassName(clazz)}[dn=${dn},damageMod=${damage},iniativeMod=${initiative}]';
     }
 }
