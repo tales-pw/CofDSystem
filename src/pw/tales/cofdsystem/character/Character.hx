@@ -5,6 +5,7 @@ import pw.tales.cofdsystem.game_object.prefabs.Accessor;
 import pw.tales.cofdsystem.game_object.traits.text.TextTraitType;
 
 @RegisterTraitTypes
+@:expose("Character")
 class Character extends Accessor
 {
     public static final NAME = new TextTraitType("Name");

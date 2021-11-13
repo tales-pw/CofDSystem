@@ -9,6 +9,7 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.weapon.traits.WeaponTrait;
 
 @RegisterTraitTypes
+@:expose("MeleeWeapon")
 class MeleeWeapon extends WeaponTrait
 {
     public static final DN = "melee_weapon";

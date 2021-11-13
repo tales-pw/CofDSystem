@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.utils.events;
 
+@:expose("EventBus")
 class EventBus implements IEventBus
 {
     private var handlers:Array<EventHandlerRecord<Dynamic>> = [];

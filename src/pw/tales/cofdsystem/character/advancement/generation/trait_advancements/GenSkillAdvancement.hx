@@ -4,6 +4,7 @@ import pw.tales.cofdsystem.character.traits.skill.SkillType;
 import pw.tales.cofdsystem.character.traits.skill.Skill;
 import pw.tales.cofdsystem.game_object.GameObject;
 
+@:expose("GenSkillAdvancement")
 class GenSkillAdvancement extends GenGroupAdvancement<Skill, SkillType>
 {
     private static final FREEBUYS:Array<Int> = [11, 7, 4];

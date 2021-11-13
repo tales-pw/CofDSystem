@@ -4,6 +4,7 @@ import pw.tales.cofdsystem.equipment.traits.EquipmentTrait;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 
+@:expose("EquipmentMod")
 class EquipmentMod extends EquipmentTrait
 {
     @Serialize("value")

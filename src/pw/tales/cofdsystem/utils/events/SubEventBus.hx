@@ -3,6 +3,7 @@ package pw.tales.cofdsystem.utils.events;
 typedef EventFilter = (event:IEvent) -> Bool
 
 @:nullSafety(Off)
+@:expose("SubEventBus")
 class SubEventBus implements IEventBus
 {
     public static final NO_FILTER:EventFilter = cast((event:IEvent) -> true);

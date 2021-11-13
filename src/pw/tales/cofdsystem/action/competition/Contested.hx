@@ -3,6 +3,7 @@ package pw.tales.cofdsystem.action.competition;
 import pw.tales.cofdsystem.action.events.pool.ActionBuildPoolEvent;
 import pw.tales.cofdsystem.action.pool.ActionPool;
 
+@:expose("Contested")
 class Contested extends Competition
 {
     override public function getWinnerPool():ActionPool

@@ -7,6 +7,7 @@ import pw.tales.cofdsystem.common.EnumHand;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.utils.events.HandlerPriority;
 
+@:expose("Offhand")
 class Offhand implements IModification
 {
     public static final DN = "offhand";

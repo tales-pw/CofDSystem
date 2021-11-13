@@ -4,6 +4,7 @@ import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.utils.math.IMathOperation;
 import pw.tales.cofdsystem.utils.math.MathValue;
 
+@:expose("NodeNumber")
 class NodeNumber implements INodePoolBuilder
 {
     private var number:Int;

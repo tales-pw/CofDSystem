@@ -15,6 +15,7 @@ typedef ApiMeleeWeapon = {
     categories:Array<String>
 }
 
+@:expose("APIMeleeSerialization")
 class APIMeleeSerialization implements ISerialization
 {
     public static final INSTANCE:APIMeleeSerialization = new APIMeleeSerialization();

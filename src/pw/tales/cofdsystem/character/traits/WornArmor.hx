@@ -5,7 +5,7 @@ import pw.tales.cofdsystem.game_object.traits.Trait;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 
 @RegisterTraitTypes
-@:expose("Armor")
+@:expose("WornArmor")
 class WornArmor extends Trait
 {
     public static final DN = "worn_armor";

@@ -10,6 +10,7 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
  *   @see <https://tales.pw/page/accurate_(weapon_tag)>
 **/
 @RegisterTraitTypes
+@:expose("AccurateTag")
 class AccurateTag extends WeaponTag
 {
     public static final DN = "accurate_(weapon_tag)";

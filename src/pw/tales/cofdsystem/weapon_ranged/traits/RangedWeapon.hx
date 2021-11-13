@@ -12,6 +12,7 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.weapon.traits.WeaponTrait;
 
 @RegisterTraitTypes
+@:expose("RangedWeapon")
 class RangedWeapon extends WeaponTrait
 {
     public static final DN = "ranged_weapon";

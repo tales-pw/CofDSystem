@@ -2,6 +2,7 @@ package pw.tales.cofdsystem.action_attack.targets;
 
 import pw.tales.cofdsystem.character.traits.tilts.ArmWrackTilt;
 
+@:expose("Hand")
 class Hand implements ITarget
 {
     public static final instance = new Hand();

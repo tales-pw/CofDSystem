@@ -10,8 +10,8 @@ import pw.tales.cofdsystem.utils.events.SubEventBus;
 import pw.tales.cofdsystem.utils.registry.IRecord;
 import pw.tales.cofdsystem.utils.Utility;
 
-@:expose('GameObject')
 @:nullSafety(Off)
+@:expose("GameObject")
 class GameObject implements IRecord
 {
     private final dn:String;

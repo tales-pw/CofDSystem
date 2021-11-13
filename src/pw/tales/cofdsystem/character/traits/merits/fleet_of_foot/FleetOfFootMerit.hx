@@ -7,7 +7,7 @@ import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.utils.events.HandlerPriority;
 
 @RegisterTraitTypes
-@:expose("SmallFramedMerit")
+@:expose("FleetOfFootMerit")
 class FleetOfFootMerit extends Merit
 {
     public static final TYPE:FleetOfFootType = new FleetOfFootType("Fleet_of_Foot");

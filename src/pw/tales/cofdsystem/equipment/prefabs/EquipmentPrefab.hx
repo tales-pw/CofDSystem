@@ -4,7 +4,8 @@ import pw.tales.cofdsystem.equipment.traits.Equippable;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.prefabs.Prefab;
 
-@:structInit class EquipmentPrefab extends Prefab
+@:structInit @:expose("EquipmentPrefab")
+class EquipmentPrefab extends Prefab
 {
     private override function setUpGameObject(equipmentGameObject:GameObject):Void
     {

@@ -7,6 +7,7 @@ import pw.tales.cofdsystem.common.EnumSide;
 import pw.tales.cofdsystem.action.pool.builder.ActionPoolBuilder;
 import pw.tales.cofdsystem.game_object.GameObject;
 
+@:expose("CompetitionBuilder")
 class CompetitionBuilder
 {
     private final actorPoolBuilder:ActionPoolBuilder;

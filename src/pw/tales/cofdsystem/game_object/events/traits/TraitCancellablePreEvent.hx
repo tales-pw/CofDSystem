@@ -1,6 +1,6 @@
 package pw.tales.cofdsystem.game_object.events.traits;
 
-@:expose("TraitPreCancellableEvent")
+@:expose("TraitCancellablePreEvent")
 class TraitCancellablePreEvent extends TraitPreEvent
 {
     private var cancelled = false;

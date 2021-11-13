@@ -6,6 +6,7 @@ import pw.tales.cofdsystem.synchronization.GameObjectSynchronization;
 
 @:expose("GameObjectStorage")
 @:nullSafety(Off)
+@:expose("GameObjectStorage")
 class GameObjectStorage
 {
     // Response types

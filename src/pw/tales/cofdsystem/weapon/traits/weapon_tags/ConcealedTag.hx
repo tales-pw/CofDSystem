@@ -13,6 +13,7 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
  *   @see <https://tales.pw/page/concealed_(weapon_tag)>
 **/
 @RegisterTraitTypes
+@:expose("ConcealedTag")
 class ConcealedTag extends WeaponTag
 {
     public static final DN = "concealed_(weapon_tag)";

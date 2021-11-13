@@ -9,6 +9,7 @@ import pw.tales.cofdsystem.action_attack.events.AttackDamageEvent;
 import pw.tales.cofdsystem.action_attack.targets.ITarget;
 import pw.tales.cofdsystem.utils.events.HandlerPriority;
 
+@:expose("SpecifiedTarget")
 class SpecifiedTarget implements IModification
 {
     public static final DN = "specified_attack";

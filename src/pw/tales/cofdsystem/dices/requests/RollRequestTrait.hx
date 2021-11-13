@@ -2,6 +2,7 @@ package pw.tales.cofdsystem.dices.requests;
 
 import pw.tales.cofdsystem.game_object.GameObject;
 
+@:expose("RollRequestTrait")
 class RollRequestTrait extends ABSRollRequest
 {
     private var gameObject:GameObject;

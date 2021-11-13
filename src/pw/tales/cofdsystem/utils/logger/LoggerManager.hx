@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.utils.logger;
 
+@:expose("LoggerManager")
 class LoggerManager
 {
     private static var LOGGER:ILogger = new TraceLogger();

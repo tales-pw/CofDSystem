@@ -5,6 +5,7 @@ import pw.tales.cofdsystem.scene.initiative.Initiative;
 import pw.tales.cofdsystem.scene.turns.events.TurnEvent;
 
 /** Handles turn rotation, who's turn now, starting and ending turns. **/
+@:expose("Turns")
 class Turns
 {
     private final system:CofDSystem;

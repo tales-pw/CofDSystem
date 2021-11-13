@@ -4,6 +4,7 @@ import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.utils.math.IMathOperation;
 import pw.tales.cofdsystem.utils.math.MathOr;
 
+@:expose("NodeOr")
 class NodeOr implements INodeCheck
 {
     private var node1:INodeCheck;

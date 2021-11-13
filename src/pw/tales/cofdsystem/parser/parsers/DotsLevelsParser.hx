@@ -11,6 +11,7 @@ import pw.tales.cofdsystem.parser.nodes.NodeDotsRange;
 using parsihax.Parser;
 
 @SuppressWarnings("checkstyle:Type")
+@:expose("DotsLevelsParser")
 class DotsLevelsParser
 {
     private static final OR_LITERAL = " или ".string();

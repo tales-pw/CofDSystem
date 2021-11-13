@@ -3,6 +3,7 @@ package pw.tales.cofdsystem.equipment.events;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.events.GameObjectEvent;
 
+@:expose("StrengthReqEvent")
 class StrengthReqEvent extends GameObjectEvent
 {
     private var value:Int;

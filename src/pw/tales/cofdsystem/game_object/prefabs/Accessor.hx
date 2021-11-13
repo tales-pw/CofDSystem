@@ -9,7 +9,8 @@ import pw.tales.cofdsystem.game_object.traits.Trait;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 
 /**
- * Common class for wrapping GameObject to implement simplified
+ * Common @:expose("for")
+class for wrapping GameObject to implement simplified
  * access to traits with getters. Mostly for traits added by prefabs.
  *
  * Rules to follow when implementing Accessor:
@@ -17,14 +18,17 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
  *    removed from GameObject later.
  * 2) If there is no Trait in GameObject, getters should return
  *    default value or throw exception
- *    (usually subclass of NoTraitAccessorException).
+ *    (usually sub@:expose("of")
+class of NoTraitAccessorException).
  *
- * You may implement other logic in subclass (not just getter)
+ * You may implement other logic in sub@:expose("(not")
+class (not just getter)
  * but it should follow rules above
  *
  * Example of such class, getting character name:
  * >>> new Character(gameObject).getName()
 **/
+@:expose("Accessor")
 class Accessor
 {
     private final gameObject:GameObject;

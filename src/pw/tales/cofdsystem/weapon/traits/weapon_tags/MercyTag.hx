@@ -12,6 +12,7 @@ import pw.tales.cofdsystem.utils.events.HandlerPriority;
  *   @see <https://tales.pw/page/mercy_(weapon_tag)>
 **/
 @RegisterTraitTypes
+@:expose("MercyTag")
 class MercyTag extends WeaponTag
 {
     public static final DN = "mercy_(weapon_tag)";

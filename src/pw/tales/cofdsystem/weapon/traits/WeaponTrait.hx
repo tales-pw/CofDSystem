@@ -7,6 +7,7 @@ import pw.tales.cofdsystem.action.IAction;
 import pw.tales.cofdsystem.action.pool.ActionPool;
 import pw.tales.cofdsystem.equipment.traits.EquipmentTrait;
 
+@:expose("WeaponTrait")
 class WeaponTrait extends EquipmentTrait
 {
     public static final PRIORITY = HandlerPriority.NORMAL;

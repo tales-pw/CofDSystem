@@ -5,6 +5,7 @@ import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.Trait;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 
+@:expose("WrongTypeException")
 class WrongTypeException extends GameObjectException
 {
     private final trait:Trait;

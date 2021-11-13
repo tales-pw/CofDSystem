@@ -2,6 +2,7 @@ package pw.tales.cofdsystem.character.traits.attribute;
 
 import pw.tales.cofdsystem.utils.EnumNamed;
 
+@:expose("AttributeGroup")
 class AttributeGroup extends EnumNamed
 {
     public static final VALUES = new Map<String, AttributeGroup>();

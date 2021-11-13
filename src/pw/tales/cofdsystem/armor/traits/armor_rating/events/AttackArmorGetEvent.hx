@@ -3,6 +3,7 @@ package pw.tales.cofdsystem.armor.traits.armor_rating.events;
 import pw.tales.cofdsystem.action_attack.AttackAction;
 import pw.tales.cofdsystem.action_attack.events.AttackEvent;
 
+@:expose("AttackArmorGetEvent")
 class AttackArmorGetEvent extends AttackEvent
 {
     private var general:Int;

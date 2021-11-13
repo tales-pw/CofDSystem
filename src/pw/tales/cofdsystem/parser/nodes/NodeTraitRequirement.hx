@@ -6,6 +6,7 @@ import pw.tales.cofdsystem.utils.math.IMathOperation;
 import pw.tales.cofdsystem.utils.math.MathMore;
 import pw.tales.cofdsystem.utils.math.MathValue;
 
+@:expose("NodeTraitRequirement")
 class NodeTraitRequirement implements INodeCheck
 {
     private var trait:NodeTrait;

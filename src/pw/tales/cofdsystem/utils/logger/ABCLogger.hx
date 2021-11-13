@@ -2,6 +2,7 @@ package pw.tales.cofdsystem.utils.logger;
 
 import thx.error.NotImplemented;
 
+@:expose("ABCLogger")
 class ABCLogger implements ILogger
 {
     public function new() {}

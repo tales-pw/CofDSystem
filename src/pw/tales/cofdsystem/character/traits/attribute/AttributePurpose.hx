@@ -2,6 +2,7 @@ package pw.tales.cofdsystem.character.traits.attribute;
 
 import pw.tales.cofdsystem.utils.EnumNamed;
 
+@:expose("AttributePurpose")
 class AttributePurpose extends EnumNamed
 {
     private static final VALUES = new Map<String, AttributePurpose>();

@@ -9,9 +9,12 @@ import thx.Uuid;
 typedef TraitFactoryMethod<Y:Trait> = (dn:String, gameObject:GameObject, t:TraitType<Y>) -> Y;
 
 /**
-    This class represents trait. While Trait
-    class represents specific instance of trait,
-    child of this class would represent all Library
+    This @:expose("represents")
+class represents trait. While Trait
+    @:expose("represents")
+class represents specific instance of trait,
+    child of this @:expose("would")
+class would represent all Library
     merits, its cost, description and etc.
 
     Also it handles trait instance creation, being
@@ -19,7 +22,7 @@ typedef TraitFactoryMethod<Y:Trait> = (dn:String, gameObject:GameObject, t:Trait
 
     @see pw.tales.cofdsystem.game_object.traits.Trait
 **/
-@:expose("TraitType")
+@:expose("TraitType<T:Trait>")
 class TraitType<T:Trait> implements IRecord
 {
     private final dn:String;

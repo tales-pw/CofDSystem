@@ -5,6 +5,7 @@ import pw.tales.cofdsystem.game_object.events.AdvantageModEvent;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.utils.math.IMathOperation;
 
+@:expose("AdvantageExpression")
 class AdvantageExpression extends Advantage
 {
     private final pool:IMathOperation<Int>;

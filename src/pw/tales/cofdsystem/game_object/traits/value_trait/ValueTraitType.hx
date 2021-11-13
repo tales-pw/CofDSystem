@@ -3,6 +3,7 @@ package pw.tales.cofdsystem.game_object.traits.value_trait;
 import pw.tales.cofdsystem.character.advancement.experience.IAdvanceableType;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 
+@:expose("ValueTraitType<T:ValueTrait>")
 class ValueTraitType<T:ValueTrait> extends TraitType<T> implements IAdvanceableType
 {
     private var dotCost:Null<Int> = null;

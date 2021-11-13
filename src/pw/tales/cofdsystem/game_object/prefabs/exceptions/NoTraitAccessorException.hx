@@ -2,6 +2,7 @@ package pw.tales.cofdsystem.game_object.prefabs.exceptions;
 
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 
+@:expose("NoTraitAccessorException")
 class NoTraitAccessorException extends AccessorException
 {
     public function new(gameObject:GameObject, type:TraitType<Dynamic>)

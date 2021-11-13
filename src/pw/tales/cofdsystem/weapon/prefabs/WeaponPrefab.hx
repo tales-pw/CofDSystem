@@ -11,7 +11,8 @@ import pw.tales.cofdsystem.weapon.traits.InitiativeMod;
 import pw.tales.cofdsystem.weapon.traits.LethalDamage;
 import pw.tales.cofdsystem.weapon.Weapon;
 
-@:structInit class WeaponPrefab extends EquipmentPrefab implements IWeapon
+@:structInit @:expose("WeaponPrefab")
+class WeaponPrefab extends EquipmentPrefab implements IWeapon
 {
     private final name:Null<String> = null;
     private final initiative:Int = 0;

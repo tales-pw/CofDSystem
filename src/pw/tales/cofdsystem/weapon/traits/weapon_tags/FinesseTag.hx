@@ -13,6 +13,7 @@ import pw.tales.cofdsystem.utils.Utility;
  *   @see <https://tales.pw/page/finesse_(weapon_tag)>
 **/
 @RegisterTraitTypes
+@:expose("FinesseTag")
 class FinesseTag extends WeaponTag
 {
     public static final DN = "finesse_(weapon_tag)";

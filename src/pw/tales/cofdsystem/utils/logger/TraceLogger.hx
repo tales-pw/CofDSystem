@@ -1,6 +1,7 @@
 package pw.tales.cofdsystem.utils.logger;
 
 @SuppressWarnings("checkstyle:Trace")
+@:expose("TraceLogger")
 class TraceLogger implements ILogger
 {
     public function new() {}

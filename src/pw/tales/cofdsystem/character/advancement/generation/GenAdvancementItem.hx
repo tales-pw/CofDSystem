@@ -8,6 +8,7 @@ import pw.tales.cofdsystem.game_object.traits.value_trait.events.ValueTraitUpdat
 import pw.tales.cofdsystem.utils.Utility;
 import thx.error.AbstractMethod;
 
+@:expose("GenAdvancementItem<T:Trait,")
 class GenAdvancementItem<T:Trait, TY:TraitType<T>>
 {
     private final gameObject:GameObject;

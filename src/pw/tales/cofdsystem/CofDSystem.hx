@@ -8,7 +8,7 @@ import pw.tales.cofdsystem.utils.events.EventBus;
 import pw.tales.cofdsystem.utils.registry.Registry;
 import pw.tales.cofdsystem.weapon.prefabs.WeaponPrefab;
 
-@:expose('CofDSystem')
+@:expose("CofDSystem")
 class CofDSystem
 {
     public static final version = Version.get();

@@ -16,6 +16,7 @@ typedef ApiAbility = {
     requirements:Array<String>
 }
 
+@:expose("APIAbilitySerialization")
 class APIAbilitySerialization implements ISerialization
 {
     public static final INSTANCE:APIAbilitySerialization = new APIAbilitySerialization();

@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.action.events;
 
+@:expose("RollActionEvent")
 class RollActionEvent extends ActionEvent
 {
     private var rollAction:RollAction;

@@ -12,6 +12,7 @@ import pw.tales.cofdsystem.parser.nodes.NodeTrait;
 
 using parsihax.Parser;
 
+@:expose("ParserPool")
 class ParserPool
 {
     public static final FULL_PARSER:ParseObject<INodePoolBuilder> = (function()

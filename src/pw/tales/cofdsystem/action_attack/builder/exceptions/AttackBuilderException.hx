@@ -6,6 +6,7 @@ import pw.tales.cofdsystem.exceptions.CofDSystemException;
 /**
  * Abstract Exception for exception in attack builder action.
 **/
+@:expose("AttackBuilderException")
 class AttackBuilderException extends CofDSystemException
 {
     private final attackBuilder:AttackBuilder;

@@ -9,6 +9,7 @@ import pw.tales.cofdsystem.utils.registry.IRecord;
 import pw.tales.cofdsystem.utils.Utility;
 import thx.Uuid;
 
+@:expose("Scene")
 class Scene implements IRecord
 {
     private var dn:String = Uuid.create();

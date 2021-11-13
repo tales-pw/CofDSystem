@@ -15,6 +15,7 @@ typedef ApiArmor = {
     availability:String
 }
 
+@:expose("APIArmorSerialization")
 class APIArmorSerialization implements ISerialization
 {
     public static final INSTANCE:APIArmorSerialization = new APIArmorSerialization();

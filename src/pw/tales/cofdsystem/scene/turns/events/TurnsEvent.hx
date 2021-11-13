@@ -2,6 +2,7 @@ package pw.tales.cofdsystem.scene.turns.events;
 
 import pw.tales.cofdsystem.utils.events.IEvent;
 
+@:expose("TurnsEvent")
 class TurnsEvent implements IEvent
 {
     private final intitiative:Turns;

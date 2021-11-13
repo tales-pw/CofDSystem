@@ -3,6 +3,7 @@ package pw.tales.cofdsystem.character.traits.merits.giant;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.character.traits.merits.MeritType;
 
+@:expose("GiantMeritType")
 class GiantMeritType extends MeritType
 {
     override public function isMultiInstanced():Bool

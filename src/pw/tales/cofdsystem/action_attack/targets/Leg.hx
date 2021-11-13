@@ -4,6 +4,7 @@ import pw.tales.cofdsystem.character.traits.attribute.Attribute;
 import pw.tales.cofdsystem.character.traits.attribute.Attributes;
 import pw.tales.cofdsystem.character.traits.tilts.LegWrackTilt;
 
+@:expose("Leg")
 class Leg implements ITarget
 {
     public static final instance = new Leg();

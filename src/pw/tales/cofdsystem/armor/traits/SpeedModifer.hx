@@ -7,6 +7,7 @@ import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 
 @RegisterTraitTypes
+@:expose("SpeedModifer")
 class SpeedModifer extends EquipmentMod
 {
     public static final DN = "Свойство:Speed";

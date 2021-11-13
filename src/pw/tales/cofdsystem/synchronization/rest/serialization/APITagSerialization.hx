@@ -11,6 +11,7 @@ typedef ApiWeaponTag = {
     categories:Array<String>
 }
 
+@:expose("APITagSerialization")
 class APITagSerialization implements ISerialization
 {
     public static final INSTANCE:APITagSerialization = new APITagSerialization();

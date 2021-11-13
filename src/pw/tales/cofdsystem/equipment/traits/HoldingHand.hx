@@ -4,6 +4,7 @@ import pw.tales.cofdsystem.common.EnumHand;
 import pw.tales.cofdsystem.game_object.traits.Trait;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 
+@:expose("HoldingHand")
 class HoldingHand extends Trait
 {
     public static final DN = "holding_hand";

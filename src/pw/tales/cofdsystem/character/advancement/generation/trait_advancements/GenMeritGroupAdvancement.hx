@@ -7,6 +7,7 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 
 using Lambda;
 
+@:expose("GenMeritGroupAdvancement<T:Trait,")
 class GenMeritGroupAdvancement<T:Trait, TY:TraitType<T>> extends GenAdvancementItem<T, TY>
 {
     public static final MERIT_GENERATION_LIMIT = 10;

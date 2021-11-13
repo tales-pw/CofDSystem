@@ -5,6 +5,7 @@ import pw.tales.cofdsystem.action.NoRollAction;
 import pw.tales.cofdsystem.character.traits.WornArmor;
 import pw.tales.cofdsystem.game_object.GameObject;
 
+@:expose("DonAction")
 class DonAction extends NoRollAction
 {
     private final armor:Null<Armor>;

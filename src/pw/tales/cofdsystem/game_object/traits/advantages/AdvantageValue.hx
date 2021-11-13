@@ -3,6 +3,7 @@ package pw.tales.cofdsystem.game_object.traits.advantages;
 import pw.tales.cofdsystem.game_object.events.AdvantageModEvent;
 import pw.tales.cofdsystem.game_object.GameObject;
 
+@:expose("AdvantageValue")
 class AdvantageValue extends Advantage
 {
     @Optional

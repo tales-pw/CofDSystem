@@ -2,6 +2,7 @@ package pw.tales.cofdsystem.parser.exception;
 
 import pw.tales.cofdsystem.exceptions.CofDSystemException;
 
+@:expose("ParsingException")
 class ParsingException extends CofDSystemException
 {
     private var error:String;

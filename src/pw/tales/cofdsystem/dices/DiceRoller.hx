@@ -2,6 +2,7 @@ package pw.tales.cofdsystem.dices;
 
 import pw.tales.cofdsystem.dices.EnumExplode.EnumExplode;
 
+@:expose("DiceRoller")
 class DiceRoller
 {
     public function new() {}

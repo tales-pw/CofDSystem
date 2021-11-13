@@ -5,6 +5,7 @@ typedef Item<K, V> = {
     value:V
 }
 
+@:expose("Utility")
 class Utility
 {
     public inline static function values<K, V>(map:Map<K, V>):Array<V>

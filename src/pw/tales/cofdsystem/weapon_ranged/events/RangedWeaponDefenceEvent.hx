@@ -2,6 +2,7 @@ package pw.tales.cofdsystem.weapon_ranged.events;
 
 import pw.tales.cofdsystem.game_object.events.GameObjectEvent;
 
+@:expose("RangedWeaponDefenceEvent")
 class RangedWeaponDefenceEvent extends GameObjectEvent
 {
     private var canApply:Bool = false;

@@ -7,6 +7,7 @@ import pw.tales.cofdsystem.common.EnumHand;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.weapon.Weapon;
 
+@:expose("PickAction")
 class PickAction extends NoRollAction
 {
     private final weapon:Null<Weapon>;

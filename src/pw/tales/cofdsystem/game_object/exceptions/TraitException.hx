@@ -2,6 +2,7 @@ package pw.tales.cofdsystem.game_object.exceptions;
 
 import pw.tales.cofdsystem.game_object.traits.Trait;
 
+@:expose("TraitException")
 class TraitException extends GameObjectException
 {
     private final trait:Trait;

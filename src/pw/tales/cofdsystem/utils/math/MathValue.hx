@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.utils.math;
 
+@:expose("MathValue<T:Dynamic>")
 class MathValue<T:Dynamic> implements IMathOperation<T>
 {
     private var value:T;

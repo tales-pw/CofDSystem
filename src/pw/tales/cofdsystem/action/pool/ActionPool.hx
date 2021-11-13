@@ -8,6 +8,7 @@ import pw.tales.cofdsystem.dices.requests.RollRequestTrait;
 import pw.tales.cofdsystem.dices.RollResponse;
 import pw.tales.cofdsystem.game_object.GameObject;
 
+@:expose("ActionPool")
 class ActionPool implements IActionRoll
 {
     private final gameObject:GameObject;

@@ -3,6 +3,7 @@ package pw.tales.cofdsystem.action.pool.builder;
 import pw.tales.cofdsystem.dices.EnumExplode;
 import pw.tales.cofdsystem.game_object.GameObject;
 
+@:expose("ActionPoolBuilder")
 class ActionPoolBuilder
 {
     public static final CUSTOM_MODIFIER = "Модификатор";

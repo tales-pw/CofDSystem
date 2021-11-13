@@ -3,6 +3,7 @@ package pw.tales.cofdsystem.scene.turns.events;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.scene.turns.Turns;
 
+@:expose("TurnEvent")
 class TurnEvent extends TurnsEvent
 {
     private final gameObject:GameObject;

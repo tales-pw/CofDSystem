@@ -8,6 +8,7 @@ import pw.tales.cofdsystem.game_object.GameObject;
  *
  *   @see <https://tales.pw/page/piercing_(weapon_tag)>
 **/
+@:expose("PiercingTag")
 class PiercingTag extends WeaponTag
 {
     private final piercingType:PiercingTagType;

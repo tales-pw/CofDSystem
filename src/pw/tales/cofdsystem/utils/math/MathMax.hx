@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.utils.math;
 
+@:expose("MathMax")
 class MathMax extends MathBinaryOperation<Int>
 {
     override public function calculate():Int

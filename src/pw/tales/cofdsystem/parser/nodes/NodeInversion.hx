@@ -4,6 +4,7 @@ import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.utils.math.IMathOperation;
 import pw.tales.cofdsystem.utils.math.MathNegation;
 
+@:expose("NodeInversion")
 class NodeInversion implements INodePoolBuilder
 {
     private var operand:INodePoolBuilder;

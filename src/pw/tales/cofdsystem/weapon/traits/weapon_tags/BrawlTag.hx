@@ -13,6 +13,7 @@ import pw.tales.cofdsystem.utils.Utility;
  *    @see <https://tales.pw/page/brawl_(weapon_tag)>
 **/
 @RegisterTraitTypes
+@:expose("BrawlTag")
 class BrawlTag extends WeaponTag
 {
     public static final DN = "brawl_(weapon_tag)";

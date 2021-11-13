@@ -10,6 +10,7 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.utils.events.IEvent;
 import pw.tales.cofdsystem.utils.events.SubEventBus;
 
+@:expose("EquipmentTrait")
 class EquipmentTrait extends Trait
 {
     private final holderEventBus:SubEventBus;

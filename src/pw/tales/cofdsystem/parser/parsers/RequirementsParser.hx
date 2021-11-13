@@ -17,6 +17,7 @@ import pw.tales.cofdsystem.parser.ParserHelper;
 using parsihax.Parser;
 
 @:expose
+@:expose("RequirementsParser")
 class RequirementsParser extends Parser
 {
     private static final AND_LITERAL = [" и ".string(), ", ".string()].alt().as("separator");

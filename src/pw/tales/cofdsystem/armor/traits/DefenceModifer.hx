@@ -7,6 +7,7 @@ import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 
 @RegisterTraitTypes
+@:expose("DefenceModifer")
 class DefenceModifer extends EquipmentMod
 {
     public static final DN = "Свойство:Defense";

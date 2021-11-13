@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.character.traits.position;
 
+@:expose("Position")
 class Position
 {
     public var x:Int;

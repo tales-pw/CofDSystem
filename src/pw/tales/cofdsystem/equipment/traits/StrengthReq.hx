@@ -8,6 +8,7 @@ import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 
 @RegisterTraitTypes
+@:expose("StrengthReq")
 class StrengthReq extends EquipmentMod
 {
     public static final DN = "Свойство:Strength_Requirements";

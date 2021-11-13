@@ -3,6 +3,7 @@ package pw.tales.cofdsystem.utils.registry;
 import pw.tales.cofdsystem.utils.registry.exceptions.OverwriteForbiddenException;
 
 @:nullSafety(Off)
+@:expose("Registry<T:IRecord>")
 class Registry<T:IRecord>
 {
     private var registry:Map<String, T>;

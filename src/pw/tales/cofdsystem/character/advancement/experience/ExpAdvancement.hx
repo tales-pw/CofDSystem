@@ -10,6 +10,7 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.game_object.traits.value_trait.events.ValueTraitUpdateEvent;
 import pw.tales.cofdsystem.utils.Utility;
 
+@:expose("ExpAdvancement")
 class ExpAdvancement extends Trait
 {
     public static final DN = "experience_advancement";

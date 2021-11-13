@@ -5,6 +5,7 @@ import pw.tales.cofdsystem.damage.DamageType;
 /**
  * Event used to change type of damage dealt by attack.
 **/
+@:expose("AttackDamageGetTypeEvent")
 class AttackDamageGetTypeEvent extends AttackEvent
 {
     private var damageType:DamageType;

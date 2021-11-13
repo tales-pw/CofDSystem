@@ -18,6 +18,7 @@ import pw.tales.cofdsystem.common.EnumHand;
 import pw.tales.cofdsystem.common.EnumSide;
 import pw.tales.cofdsystem.game_object.GameObject;
 
+@:expose("AttackBuilder")
 class AttackBuilder
 {
     private final system:CofDSystem;

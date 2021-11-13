@@ -3,6 +3,7 @@ package pw.tales.cofdsystem.scene.events;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.events.IGameObjectEvent;
 
+@:expose("SceneEvent")
 class SceneEvent implements IGameObjectEvent
 {
     private final scene:Scene;

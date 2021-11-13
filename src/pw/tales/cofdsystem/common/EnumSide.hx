@@ -3,6 +3,7 @@ package pw.tales.cofdsystem.common;
 import haxe.ds.StringMap;
 import pw.tales.cofdsystem.utils.EnumNamed;
 
+@:expose("EnumSide")
 class EnumSide extends EnumNamed
 {
     public static var VALUES = new StringMap<EnumSide>();

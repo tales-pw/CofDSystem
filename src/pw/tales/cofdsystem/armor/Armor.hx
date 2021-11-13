@@ -7,6 +7,7 @@ import pw.tales.cofdsystem.armor.traits.SpeedModifer;
 import pw.tales.cofdsystem.equipment.Equipment;
 import pw.tales.cofdsystem.game_object.GameObject;
 
+@:expose("Armor")
 class Armor extends Equipment implements IArmor
 {
     public function new(gameObject:GameObject)

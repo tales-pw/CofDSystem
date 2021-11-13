@@ -2,6 +2,7 @@ package pw.tales.cofdsystem.action_attack.targets;
 
 import pw.tales.cofdsystem.character.traits.tilts.BlindedTilt;
 
+@:expose("Eye")
 class Eye implements ITarget
 {
     public static final instance = new Eye();

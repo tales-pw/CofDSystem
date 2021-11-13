@@ -9,6 +9,7 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
  *   @see <https://tales.pw/page/grapple_(weapon_tag)>
 **/
 @RegisterTraitTypes
+@:expose("GrappleTag")
 class GrappleTag extends WeaponTag
 {
     public static final DN = "grapple_(weapon_tag)";

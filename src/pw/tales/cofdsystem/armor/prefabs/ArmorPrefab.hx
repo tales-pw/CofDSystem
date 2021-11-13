@@ -7,7 +7,8 @@ import pw.tales.cofdsystem.armor.traits.SpeedModifer;
 import pw.tales.cofdsystem.equipment.prefabs.EquipmentPrefab;
 import pw.tales.cofdsystem.game_object.GameObject;
 
-@:structInit class ArmorPrefab extends EquipmentPrefab implements IArmor
+@:structInit @:expose("ArmorPrefab")
+class ArmorPrefab extends EquipmentPrefab implements IArmor
 {
     private final name:Null<String> = null;
 
