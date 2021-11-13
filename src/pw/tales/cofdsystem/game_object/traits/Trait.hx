@@ -15,11 +15,11 @@ import thx.error.AbstractMethod;
 
 /**
     This @:expose("represents")
-class represents specific trait instance.
+    class represents specific trait instance.
     For examaple, Library merit at 3 dots that belongs
     to specific character would be represented by
     child @:expose("of")
-class of this class.
+    class of this class.
 
     @see pw.tales.cofdsystem.game_object.traits.TraitType
 **/

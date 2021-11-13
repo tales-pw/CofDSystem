@@ -12,9 +12,10 @@ class LibVersion
 
     public static macro function shouldCheck():haxe.macro.Expr.ExprOf<Bool>
     {
-        var version: Version = Sys.getEnv("RELEASE_VERSION");
+        var version:Version = Sys.getEnv("RELEASE_VERSION");
 
-        if (version.hasPre) return macro false;
+        if (version.hasPre)
+            return macro false;
 
         return macro true;
     }

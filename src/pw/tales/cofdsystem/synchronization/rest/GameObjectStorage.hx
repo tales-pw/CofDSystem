@@ -4,7 +4,6 @@ import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.Trait;
 import pw.tales.cofdsystem.synchronization.GameObjectSynchronization;
 
-@:expose("GameObjectStorage")
 @:nullSafety(Off)
 @:expose("GameObjectStorage")
 class GameObjectStorage

@@ -18,7 +18,7 @@ import pw.tales.cofdsystem.utils.Utility;
 
 /**
     This @:expose("is")
-class is responsible for managing GameObject's traits.
+    class is responsible for managing GameObject's traits.
 **/
 @:expose("TraitManager")
 class TraitManager
