@@ -11,8 +11,8 @@ import pw.tales.cofdsystem.weapon.prefabs.WeaponPrefab;
 @:expose("CofDSystem")
 class CofDSystem
 {
-    public static final version = Version.get();
-    public static final versionCheck = Version.shouldCheck();
+    public static final version = LibVersion.get();
+    public static final versionCheck = LibVersion.shouldCheck();
 
     public var dices:DiceRoller = new DiceRoller();
 
