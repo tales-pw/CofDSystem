@@ -1,3 +1,3 @@
-import {CofDSystem} from "@tales-pw/cofdsystem";
+import {CofDSystem} from "./CofDSystem.js";
 
 export default CofDSystem;
