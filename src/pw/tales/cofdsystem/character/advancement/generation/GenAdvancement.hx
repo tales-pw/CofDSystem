@@ -34,7 +34,7 @@ class GenAdvancement extends Trait
         this.eventBus.addHandler(ValueTraitUpdateEvent, this.canBeUpdated);
     }
 
-    public function canBeAdded(event:TraitAddEvent): Void
+    public function canBeAdded(event:TraitAddEvent):Void
     {
         if (this.gameObject.getState() != GameObjectState.ACTIVE)
             return;
@@ -47,7 +47,7 @@ class GenAdvancement extends Trait
         }
     }
 
-    public function canBeUpdated(event:ValueTraitUpdateEvent): Void
+    public function canBeUpdated(event:ValueTraitUpdateEvent):Void
     {
         if (this.gameObject.getState() != GameObjectState.ACTIVE)
             return;
