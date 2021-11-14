@@ -6,10 +6,10 @@ import pw.tales.cofdsystem.game_object.events.TraitRemoveEvent;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.GameObjectState;
 import pw.tales.cofdsystem.game_object.traits.Trait;
-import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.game_object.traits.value_trait.events.ValueTraitUpdateEvent;
 import pw.tales.cofdsystem.utils.Utility;
 
+@RegisterTraitTypes
 @:expose("ExpAdvancement")
 class ExpAdvancement extends Trait
 {
