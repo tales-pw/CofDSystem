@@ -22,7 +22,7 @@ typedef TraitFactoryMethod<Y:Trait> = (dn:String, gameObject:GameObject, t:Trait
 
     @see pw.tales.cofdsystem.game_object.traits.Trait
 **/
-@:expose("TraitType<T:Trait>")
+@:expose("TraitType")
 class TraitType<T:Trait> implements IRecord
 {
     private final dn:String;

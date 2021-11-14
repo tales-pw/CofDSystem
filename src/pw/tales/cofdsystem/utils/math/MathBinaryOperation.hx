@@ -1,6 +1,6 @@
 package pw.tales.cofdsystem.utils.math;
 
-@:expose("MathBinaryOperation<T:Dynamic>")
+@:expose("MathBinaryOperation")
 class MathBinaryOperation<T:Dynamic> implements IMathOperation<T>
 {
     private var operand1:IMathOperation<T>;

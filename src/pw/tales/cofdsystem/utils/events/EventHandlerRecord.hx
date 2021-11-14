@@ -1,6 +1,6 @@
 package pw.tales.cofdsystem.utils.events;
 
-@:expose("EventHandlerRecord<T:IEvent>")
+@:expose("EventHandlerRecord")
 class EventHandlerRecord<T:IEvent>
 {
     public var type:Class<T>;

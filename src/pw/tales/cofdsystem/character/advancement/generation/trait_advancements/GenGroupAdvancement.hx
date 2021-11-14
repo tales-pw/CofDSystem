@@ -8,7 +8,7 @@ import thx.error.AbstractMethod;
 
 using pw.tales.cofdsystem.utils.Utility;
 
-@:expose("GenGroupAdvancement<T:ValueTrait,")
+@:expose("GenGroupAdvancement")
 class GenGroupAdvancement<T:ValueTrait, TY:ValueTraitType<T>> extends GenAdvancementItem<T, TY>
 {
     private final freebuys:Array<Int>;
