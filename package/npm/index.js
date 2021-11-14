@@ -1,3 +1,1 @@
-import {CofDSystem} from "./CofDSystem.js";
-
-module.exports = CofDSystem;
+module.exports = require("./CofDSystem.js")["CofDSystem"];
