@@ -1,10 +1,9 @@
 NPM_PACKAGE_ROOT=./out/js
-NPM_PACKAGE_TEMPLATE=template-package.json
-NPM_PACKAGE_CONFIG=${NPM_PACKAGE_ROOT}/package.json
+NPM_PACKAGE_TEMPLATE=./package/npm/*
 
 .ONESHELL:
 npm_prepare_package: build_js
-	cp ${NPM_PACKAGE_TEMPLATE} ${NPM_PACKAGE_CONFIG}
+	cp -r ${NPM_PACKAGE_TEMPLATE} ${NPM_PACKAGE_ROOT}
 
 	cd ${NPM_PACKAGE_ROOT}
 	
