@@ -1,3 +1,3 @@
 import {CofDSystem} from "./CofDSystem.js";
 
-export default CofDSystem;
+module.exports = CofDSystem;
