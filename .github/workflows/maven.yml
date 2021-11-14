@@ -21,4 +21,4 @@ jobs:
           RELEASE_VERSION: ${{ github.event.release.tag_name }}
           PACKAGES_TOKEN: ${{ secrets.PACKAGES_TOKEN }}
         run: |
-          make maven_publish
+          make -e maven_publish
