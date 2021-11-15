@@ -1,0 +1,27 @@
+name: Publish NPM package
+on:
+  release:
+    types:
+      - created
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: krdlab/setup-haxe@v1
+        with:
+          haxe-version: 4.2.1
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@tales-pw'
+
+      - uses: actions/checkout@v2
+
+      - name: Publsih to git NPM
+        env:
+          RELEASE_VERSION: ${{ github.event.release.tag_name }}
+          NODE_AUTH_TOKEN: ${{ secrets.PACKAGES_TOKEN }}
+        run: |
+          make -e npm_publish

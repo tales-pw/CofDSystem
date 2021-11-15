@@ -11,6 +11,7 @@ import pw.tales.cofdsystem.synchronization.rest.serialization.APITiltSerializati
 
 @:expose("SystemStorage")
 @:nullSafety(Off)
+@:expose("SystemStorage")
 class SystemStorage
 {
     public static final ROUTE:String = "system";

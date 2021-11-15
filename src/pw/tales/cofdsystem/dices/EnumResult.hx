@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.dices;
 
+@:expose("EnumResult")
 class EnumResult
 {
     public static final FAILURE = new EnumResult("failure");

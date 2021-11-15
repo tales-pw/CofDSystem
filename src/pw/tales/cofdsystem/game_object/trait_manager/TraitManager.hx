@@ -19,6 +19,7 @@ import pw.tales.cofdsystem.utils.Utility;
 /**
     This class is responsible for managing GameObject's traits.
 **/
+@:expose("TraitManager")
 class TraitManager
 {
     /** Bound system object. Field is mostly used for quicker access to value stored in GameObject. **/

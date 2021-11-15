@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.utils;
 
+@:expose("EnumNamed")
 class EnumNamed
 {
     private var name:String;

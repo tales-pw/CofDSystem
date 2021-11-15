@@ -3,6 +3,7 @@ package pw.tales.cofdsystem.character.traits.tilts;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 
 @RegisterTraitTypes
+@:expose("LegWrackTilt")
 class LegWrackTilt extends Tilt
 {
     public static final DN = "Leg_Wrack";

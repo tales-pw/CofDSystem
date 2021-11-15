@@ -5,6 +5,7 @@ import pw.tales.cofdsystem.utils.math.IMathOperation;
 import pw.tales.cofdsystem.utils.math.MathValue;
 import pw.tales.cofdsystem.utils.Utility;
 
+@:expose("NodeGroup")
 class NodeGroup implements INode implements INodeCheck
 {
     private var node:INode;

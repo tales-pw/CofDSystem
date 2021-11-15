@@ -2,6 +2,7 @@ package pw.tales.cofdsystem.action.events;
 
 import pw.tales.cofdsystem.game_object.GameObject;
 
+@:expose("ActionEvent")
 class ActionEvent implements IActionEvent
 {
     private var action:IAction;

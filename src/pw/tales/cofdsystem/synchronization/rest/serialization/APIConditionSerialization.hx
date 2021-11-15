@@ -10,6 +10,7 @@ typedef ApiCondition = {
     categories:Array<String>
 }
 
+@:expose("APIConditionSerialization")
 class APIConditionSerialization implements ISerialization
 {
     public static final INSTANCE:APIConditionSerialization = new APIConditionSerialization();

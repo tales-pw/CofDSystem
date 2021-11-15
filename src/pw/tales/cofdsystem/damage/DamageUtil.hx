@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.damage;
 
+@:expose("DamageUtil")
 class DamageUtil
 {
     public static final INSTANCE:DamageUtil = new DamageUtil();

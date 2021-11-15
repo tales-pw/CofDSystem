@@ -2,6 +2,7 @@ package pw.tales.cofdsystem.action_attack.events;
 
 import pw.tales.cofdsystem.damage.Damage;
 
+@:expose("AttackDamageEvent")
 class AttackDamageEvent extends AttackEvent
 {
     private var damage:Damage;

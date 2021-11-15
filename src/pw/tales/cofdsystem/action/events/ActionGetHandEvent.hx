@@ -3,6 +3,7 @@ package pw.tales.cofdsystem.action.events;
 import pw.tales.cofdsystem.common.EnumHand;
 import pw.tales.cofdsystem.game_object.GameObject;
 
+@:expose("ActionGetHandEvent")
 class ActionGetHandEvent extends ActionEvent
 {
     private var hand:EnumHand = EnumHand.HAND;

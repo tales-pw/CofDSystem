@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.game_object.events;
 
+@:expose("CollectEvent")
 class CollectEvent<T> extends GameObjectEvent
 {
     private final collected:Array<T> = [];

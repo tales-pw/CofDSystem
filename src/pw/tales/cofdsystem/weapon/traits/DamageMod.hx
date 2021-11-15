@@ -5,6 +5,7 @@ import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 
 @RegisterTraitTypes
+@:expose("DamageMod")
 class DamageMod extends WeaponMod
 {
     public static final DN = "Свойство:Damage";

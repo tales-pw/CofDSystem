@@ -2,6 +2,7 @@ package pw.tales.cofdsystem.dices.pool.builder;
 
 import pw.tales.cofdsystem.utils.math.MathSum;
 
+@:expose("PBSum")
 class PBSum extends PBBinary
 {
     public function new(operand1:IPoolBuilder, operand2:IPoolBuilder)

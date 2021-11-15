@@ -16,7 +16,8 @@ import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.prefabs.Prefab;
 import pw.tales.cofdsystem.game_object.traits.advantages.SizeAdvantage;
 
-@:structInit class HumanPrefab extends Prefab
+@:structInit @:expose("HumanPrefab")
+class HumanPrefab extends Prefab
 {
     public static final INSTANCE:HumanPrefab = {dn: "human"};
 

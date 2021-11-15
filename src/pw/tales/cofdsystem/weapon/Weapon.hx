@@ -10,6 +10,7 @@ import pw.tales.cofdsystem.weapon.traits.DamageMod;
 import pw.tales.cofdsystem.weapon.traits.InitiativeMod;
 import pw.tales.cofdsystem.weapon.traits.weapon_tags.WeaponTags;
 
+@:expose("Weapon")
 class Weapon extends Equipment implements IWeapon
 {
     public function new(gameObject:GameObject)

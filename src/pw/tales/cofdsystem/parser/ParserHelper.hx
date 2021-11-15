@@ -12,6 +12,7 @@ typedef SearchResult = {
 }
 
 @:nullSafety(Off)
+@:expose("ParserHelper")
 class ParserHelper extends Parser
 {
     private static function find(parser:ParseObject<Dynamic>, stream:String, i:Int):SearchResult

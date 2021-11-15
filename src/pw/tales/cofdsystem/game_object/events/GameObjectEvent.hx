@@ -1,6 +1,5 @@
 package pw.tales.cofdsystem.game_object.events;
 
-import pw.tales.cofdsystem.game_object.events.IGameObjectEvent;
 import pw.tales.cofdsystem.game_object.GameObject;
 
 /**
@@ -8,6 +7,7 @@ import pw.tales.cofdsystem.game_object.GameObject;
     Never instantiated by itself, consider it abstract, avoid subscribing
     to it, better use IGameObjectEvent, otherwise you may miss some events.
 **/
+@:expose("GameObjectEvent")
 class GameObjectEvent implements IGameObjectEvent
 {
     private final gameObject:GameObject;

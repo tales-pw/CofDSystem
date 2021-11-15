@@ -1,0 +1,9 @@
+{
+    "name": "@tales-pw/cofdsystem",
+    "version": "{}",
+    "main": "index.js",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/tales-pw/CofDSystem.git"
+    }
+}

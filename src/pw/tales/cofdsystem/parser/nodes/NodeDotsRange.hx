@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.parser.nodes;
 
+@:expose("NodeDotsRange")
 class NodeDotsRange implements INodeLevels
 {
     private var start:NodeDots;

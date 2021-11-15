@@ -11,6 +11,7 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
  *   @see <https://tales.pw/page/two-handed_(weapon_tag)>
 **/
 @RegisterTraitTypes
+@:expose("TwoHandedTag")
 class TwoHandedTag extends WeaponTag
 {
     public static final DN = "two-handed_(weapon_tag)";

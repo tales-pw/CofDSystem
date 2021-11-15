@@ -9,6 +9,7 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
  *   @see <https://tales.pw/page/stun_(weapon_tag)>
 **/
 @RegisterTraitTypes
+@:expose("StunTag")
 class StunTag extends WeaponTag
 {
     public static final DN = "stun_(weapon_tag)";

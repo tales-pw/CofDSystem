@@ -4,6 +4,7 @@ import pw.tales.cofdsystem.character.traits.attribute.Attribute;
 import pw.tales.cofdsystem.character.traits.attribute.AttributeType;
 import pw.tales.cofdsystem.game_object.GameObject;
 
+@:expose("GenAttributeAdvancement")
 class GenAttributeAdvancement extends GenGroupAdvancement<Attribute, AttributeType>
 {
     private static final FREEBUYS:Array<Int> = [5, 4, 3];

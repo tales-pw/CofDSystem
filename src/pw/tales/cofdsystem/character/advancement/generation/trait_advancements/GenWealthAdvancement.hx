@@ -6,6 +6,7 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 
 typedef WealthAdvantageType = TraitType<WealthAdvantage>;
 
+@:expose("GenWealthAdvancement")
 class GenWealthAdvancement extends GenMeritGroupAdvancement<WealthAdvantage, WealthAdvantageType>
 {
     public function new(gameObject:GameObject)

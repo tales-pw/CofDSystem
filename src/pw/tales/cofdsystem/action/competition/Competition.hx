@@ -3,6 +3,7 @@ package pw.tales.cofdsystem.action.competition;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.action.pool.ActionPool;
 
+@:expose("Competition")
 class Competition implements IActionRoll
 {
     private final actorPool:ActionPool;

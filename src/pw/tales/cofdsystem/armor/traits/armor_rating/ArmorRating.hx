@@ -10,6 +10,7 @@ import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 
 @RegisterTraitTypes
+@:expose("ArmorRating")
 class ArmorRating extends EquipmentTrait
 {
     public static final DN = "Свойство:Rating";

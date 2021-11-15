@@ -4,6 +4,7 @@ import pw.tales.cofdsystem.equipment.traits.Equippable;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.prefabs.Accessor;
 
+@:expose("Equipment")
 class Equipment extends Accessor
 {
     private function new(gameObject:GameObject)

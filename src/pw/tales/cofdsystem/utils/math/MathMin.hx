@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.utils.math;
 
+@:expose("MathMin")
 class MathMin extends MathBinaryOperation<Int>
 {
     override public function calculate():Int

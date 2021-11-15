@@ -3,6 +3,7 @@ package pw.tales.cofdsystem.weapon.traits.weapon_tags.piercing;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 
+@:expose("PiercingTagType")
 class PiercingTagType extends TraitType<PiercingTag>
 {
     private var level:Int;

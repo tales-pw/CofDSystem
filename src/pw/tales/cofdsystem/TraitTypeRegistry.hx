@@ -6,6 +6,7 @@ import pw.tales.cofdsystem.character.traits.merits.Merit;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.utils.registry.Registry;
 
+@:expose("TraitTypeRegistry")
 class TraitTypeRegistry extends Registry<TraitType<Dynamic>>
 {
     public static final AUTOREGISTER_ANNOTATION = "RegisterTraitTypes";

@@ -4,7 +4,8 @@ import pw.tales.cofdsystem.utils.Utility;
 import thx.error.NotImplemented;
 import thx.Uuid;
 
-@:structInit class Prefab implements IPrefab
+@:structInit @:expose("Prefab")
+class Prefab implements IPrefab
 {
     private final dn:String;
 

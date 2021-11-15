@@ -4,6 +4,7 @@ import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.Trait;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 
+@:expose("Equippable")
 class Equippable extends Trait
 {
     public static final DN = "Equippable";

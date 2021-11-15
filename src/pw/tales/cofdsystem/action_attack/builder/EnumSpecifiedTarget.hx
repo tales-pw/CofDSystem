@@ -10,6 +10,7 @@ import pw.tales.cofdsystem.action_attack.targets.ITarget;
 import pw.tales.cofdsystem.action_attack.targets.Leg;
 import pw.tales.cofdsystem.utils.EnumNamed;
 
+@:expose("EnumSpecifiedTarget")
 class EnumSpecifiedTarget extends EnumNamed
 {
     public static final VALUES = new StringMap<EnumSpecifiedTarget>();

@@ -4,6 +4,7 @@ import pw.tales.cofdsystem.character.traits.merits.Merit;
 import pw.tales.cofdsystem.character.traits.merits.MeritType;
 import pw.tales.cofdsystem.game_object.GameObject;
 
+@:expose("GenMeritAdvancement")
 class GenMeritAdvancement extends GenMeritGroupAdvancement<Merit, MeritType>
 {
     public function new(gameObject:GameObject)

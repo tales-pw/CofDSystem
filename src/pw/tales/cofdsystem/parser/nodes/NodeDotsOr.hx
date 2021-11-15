@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.parser.nodes;
 
+@:expose("NodeDotsOr")
 class NodeDotsOr implements INodeLevels
 {
     private var left:INodeLevels;

@@ -4,6 +4,7 @@ import pw.tales.cofdsystem.game_object.events.GameObjectEvent;
 import pw.tales.cofdsystem.damage.Damage;
 import pw.tales.cofdsystem.game_object.GameObject;
 
+@:expose("GameObjectDamagedEvent")
 class GameObjectDamagedEvent extends GameObjectEvent
 {
     private final damage:Damage;

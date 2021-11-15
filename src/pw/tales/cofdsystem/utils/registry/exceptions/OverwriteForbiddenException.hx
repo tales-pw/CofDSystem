@@ -2,6 +2,7 @@ package pw.tales.cofdsystem.utils.registry.exceptions;
 
 import pw.tales.cofdsystem.exceptions.CofDSystemException;
 
+@:expose("OverwriteForbiddenException")
 class OverwriteForbiddenException extends CofDSystemException
 {
     private final dn:String;

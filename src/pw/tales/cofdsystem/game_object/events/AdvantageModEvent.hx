@@ -2,6 +2,7 @@ package pw.tales.cofdsystem.game_object.events;
 
 import pw.tales.cofdsystem.game_object.traits.advantages.Advantage;
 
+@:expose("AdvantageModEvent")
 class AdvantageModEvent extends GameObjectEvent
 {
     private var finalModifier:Int = 0;

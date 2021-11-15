@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.action_attack.events;
 
+@:expose("AttackSuccesesEvent")
 class AttackSuccesesEvent extends AttackEvent
 {
     private var succeses:Int;

@@ -2,6 +2,7 @@ package pw.tales.cofdsystem.action;
 
 import pw.tales.cofdsystem.game_object.GameObject;
 
+@:expose("RollAction")
 class RollAction extends Action
 {
     private final actionRoll:IActionRoll;

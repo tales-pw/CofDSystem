@@ -3,6 +3,7 @@ package pw.tales.cofdsystem.dices;
 import pw.tales.cofdsystem.utils.Utility;
 import haxe.ds.StringMap;
 
+@:expose("EnumExplode")
 class EnumExplode
 {
     private static final KEY_VALUE = new StringMap();

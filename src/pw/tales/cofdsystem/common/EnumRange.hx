@@ -1,6 +1,7 @@
 package pw.tales.cofdsystem.common;
 
 @SuppressWarnings("checkstyle:Type")
+@:expose("EnumRange")
 class EnumRange
 {
     private static var VALUES:Array<EnumRange> = [];

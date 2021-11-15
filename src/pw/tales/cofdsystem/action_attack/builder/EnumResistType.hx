@@ -3,6 +3,7 @@ package pw.tales.cofdsystem.action_attack.builder;
 import haxe.ds.StringMap;
 import pw.tales.cofdsystem.utils.EnumNamed;
 
+@:expose("EnumResistType")
 class EnumResistType extends EnumNamed
 {
     public static var VALUES = new StringMap<EnumResistType>();

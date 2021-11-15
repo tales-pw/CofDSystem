@@ -1,11 +1,10 @@
-# noinspection PyUnresolvedReferences
 import os
 import setuptools
 from distutils.core import setup
 
 setup(
     name='CofDSystem',
-    version=os.environ.get("RELEASE_VERSION", "dev"),
+    version=os.environ["RELEASE_VERSION"],
     author='xunto',
     author_email='-',
     py_modules=['CofDSystem'],

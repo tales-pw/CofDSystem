@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.utils.events;
 
+@:expose("HandlerPriority")
 class HandlerPriority
 {
     public static final LOWEST:Int = 0;

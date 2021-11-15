@@ -6,6 +6,7 @@ import pw.tales.cofdsystem.utils.math.IMathOperation;
 /*
 
  */
+@:expose("PoolBuilder")
 class PoolBuilder implements IPoolBuilder
 {
     public function new() {}

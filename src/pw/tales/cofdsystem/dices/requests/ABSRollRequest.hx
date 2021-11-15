@@ -2,6 +2,7 @@ package pw.tales.cofdsystem.dices.requests;
 
 import thx.error.NotImplemented;
 
+@:expose("ABSRollRequest")
 class ABSRollRequest implements IRollRequest
 {
     private var explode:EnumExplode = EnumExplode.DEFAULT;

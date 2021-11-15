@@ -3,6 +3,7 @@ package pw.tales.cofdsystem.character.traits.aspiration;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 
+@:expose("AspirationType")
 class AspirationType extends TraitType<Aspiration>
 {
     override public function isMultiInstanced():Bool

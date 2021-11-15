@@ -5,6 +5,7 @@ import pw.tales.cofdsystem.action.events.pool.ActionBuildResistEvent;
 import pw.tales.cofdsystem.action.pool.ActionPool;
 import pw.tales.cofdsystem.dices.EnumResult;
 
+@:expose("Resisted")
 class Resisted extends Competition
 {
     override public function getWinnerPool():ActionPool

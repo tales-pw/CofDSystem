@@ -10,6 +10,7 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
  *   @see <https://tales.pw/page/8-again_(weapon_tag)>
 **/
 @RegisterTraitTypes
+@:expose("EightAgainTag")
 class EightAgainTag extends ExplodeTag
 {
     public static final DN = "8-again_(weapon_tag)";

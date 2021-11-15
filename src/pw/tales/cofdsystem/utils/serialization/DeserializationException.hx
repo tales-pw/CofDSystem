@@ -2,6 +2,7 @@ package pw.tales.cofdsystem.utils.serialization;
 
 import pw.tales.cofdsystem.exceptions.CofDSystemException;
 
+@:expose("DeserializationException")
 class DeserializationException extends CofDSystemException
 {
     private final data:Dynamic;

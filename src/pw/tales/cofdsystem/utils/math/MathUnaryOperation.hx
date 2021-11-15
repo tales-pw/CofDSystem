@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.utils.math;
 
+@:expose("MathUnaryOperation")
 class MathUnaryOperation<T:Dynamic> implements IMathOperation<T>
 {
     private var operand:IMathOperation<Int>;

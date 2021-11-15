@@ -6,6 +6,7 @@ import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 
 @RegisterTraitTypes
+@:expose("LethalDamage")
 class LethalDamage extends WeaponTrait
 {
     public static final DN = "lethal_damage";

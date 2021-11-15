@@ -4,6 +4,7 @@ import pw.tales.cofdsystem.dices.pool.math.PoolTrait;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.utils.math.IMathOperation;
 
+@:expose("PBTrait")
 class PBTrait extends PoolBuilder
 {
     private final dn:String;

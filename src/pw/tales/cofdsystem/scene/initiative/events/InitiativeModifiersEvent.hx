@@ -3,6 +3,7 @@ package pw.tales.cofdsystem.scene.initiative.events;
 import pw.tales.cofdsystem.game_object.events.IGameObjectEvent;
 import pw.tales.cofdsystem.game_object.GameObject;
 
+@:expose("InitiativeModifiersEvent")
 class InitiativeModifiersEvent extends InitiativeEvent implements IGameObjectEvent
 {
     private final gameObject:GameObject;

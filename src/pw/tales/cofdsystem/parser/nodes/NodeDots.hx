@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.parser.nodes;
 
+@:expose("NodeDots")
 class NodeDots extends NodeNumber implements INodeLevels
 {
     override public function getHumanReadable():String

@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.utils.events;
 
+@:expose("EventBus")
 class EventBus implements IEventBus
 {
     private var handlers:Array<EventHandlerRecord<Dynamic>> = [];
@@ -11,11 +12,11 @@ class EventBus implements IEventBus
         return new SubEventBus(this);
     }
 
-    public function post<T:IEvent>(event:T)
+    public function post<T:IEvent>(event:T):Void
     {
-        var filteredHandlers:Array<EventHandlerRecord<Dynamic>> = this.handlers.filter(function(value:EventHandlerRecord<Dynamic>)
+        var filteredHandlers = this.handlers.filter(value ->
         {
-            return Std.downcast(event, value.type) != null;
+            return Utility.downcast(event, value.type) != null;
         });
 
         for (handler in filteredHandlers)

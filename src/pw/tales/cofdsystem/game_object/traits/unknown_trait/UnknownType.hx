@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.game_object.traits.unknown_trait;
 
+@:expose("UnknownType")
 class UnknownType extends TraitType<UnknownTrait>
 {
     override public function isMultiInstanced():Bool

@@ -10,7 +10,6 @@ import pw.tales.cofdsystem.game_object.events.TraitAddEvent;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.GameObjectState;
 import pw.tales.cofdsystem.game_object.traits.Trait;
-import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.game_object.traits.value_trait.events.ValueTraitUpdateEvent;
 
 @:expose("GenAdvancement")
@@ -34,7 +33,7 @@ class GenAdvancement extends Trait
         this.eventBus.addHandler(ValueTraitUpdateEvent, this.canBeUpdated);
     }
 
-    public function canBeAdded(event:TraitAddEvent)
+    public function canBeAdded(event:TraitAddEvent):Void
     {
         if (this.gameObject.getState() != GameObjectState.ACTIVE)
             return;
@@ -47,7 +46,7 @@ class GenAdvancement extends Trait
         }
     }
 
-    public function canBeUpdated(event:ValueTraitUpdateEvent)
+    public function canBeUpdated(event:ValueTraitUpdateEvent):Void
     {
         if (this.gameObject.getState() != GameObjectState.ACTIVE)
             return;

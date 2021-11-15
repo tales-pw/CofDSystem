@@ -11,6 +11,7 @@ import pw.tales.cofdsystem.utils.events.IEventBus;
 import pw.tales.cofdsystem.utils.events.SubEventBus;
 import pw.tales.cofdsystem.utils.Utility;
 
+@:expose("Action")
 class Action implements IAction
 {
     private final system:CofDSystem;

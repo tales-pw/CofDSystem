@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.weapon.traits;
 
+@:expose("WeaponMod")
 class WeaponMod extends WeaponTrait
 {
     @Serialize("value")

@@ -5,6 +5,7 @@ import pw.tales.cofdsystem.game_object.traits.value_trait.exceptions.UpdateRejec
 import pw.tales.cofdsystem.game_object.traits.value_trait.events.ValueTraitUpdateEvent;
 import pw.tales.cofdsystem.game_object.traits.value_trait.ValueTraitType;
 
+@:expose("ValueTrait")
 class ValueTrait extends Trait implements IAdvanceableTrait
 {
     @Serialize("value")

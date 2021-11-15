@@ -4,6 +4,7 @@ import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.utils.math.IMathOperation;
 import pw.tales.cofdsystem.utils.math.MathValue;
 
+@:expose("PBValue")
 class PBValue extends PoolBuilder
 {
     private final value:Int;

@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.utils.math;
 
+@:expose("MathMore")
 class MathMore implements IMathOperation<Bool>
 {
     private var operand1:IMathOperation<Int>;

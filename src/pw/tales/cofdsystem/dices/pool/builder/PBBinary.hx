@@ -5,6 +5,7 @@ import pw.tales.cofdsystem.utils.math.IMathOperation;
 
 typedef BinaryProducer = (IMathOperation<Int>, IMathOperation<Int>) -> IMathOperation<Int>;
 
+@:expose("PBBinary")
 class PBBinary extends PoolBuilder
 {
     private final producer:BinaryProducer;

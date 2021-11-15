@@ -19,6 +19,7 @@ import pw.tales.cofdsystem.damage.Damage;
 import pw.tales.cofdsystem.damage.DamageType;
 import pw.tales.cofdsystem.game_object.health_helper.HealthTraitHelper;
 
+@:expose("AttackAction")
 class AttackAction extends RollAction
 {
     private final competition:Competition;

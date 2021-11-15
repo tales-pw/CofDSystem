@@ -3,6 +3,7 @@ package pw.tales.cofdsystem.character.traits.attribute;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.value_trait.ValueTraitType;
 
+@:expose("AttributeType")
 class AttributeType extends ValueTraitType<Attribute>
 {
     public static final STARTING_VALUE = 1;

@@ -6,6 +6,7 @@ import pw.tales.cofdsystem.character.traits.advantages.willpower.WillpowerAdvant
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.utils.events.HandlerPriority;
 
+@:expose("Willpower")
 class Willpower implements IModification
 {
     private final gameObject:GameObject;

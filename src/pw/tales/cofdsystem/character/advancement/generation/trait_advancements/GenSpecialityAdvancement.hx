@@ -7,6 +7,7 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 
 typedef SpecialityType = TraitType<Speciality>;
 
+@:expose("GenSpecialityAdvancement")
 class GenSpecialityAdvancement extends GenAdvancementItem<Speciality, SpecialityType>
 {
     public static final SPECIALITY_GENERATION_LIMIT = 3;

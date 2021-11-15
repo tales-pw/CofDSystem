@@ -13,6 +13,7 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
  *   @see <https://tales.pw/page/reach_(weapon_tag)>
 **/
 @RegisterTraitTypes
+@:expose("ReachTag")
 class ReachTag extends WeaponTag
 {
     public static final DN = "reach_(weapon_tag)";

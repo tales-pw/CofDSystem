@@ -3,6 +3,7 @@ package pw.tales.cofdsystem.dices.pool.math;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.utils.math.IMathOperation;
 
+@:expose("PoolTrait")
 class PoolTrait implements IMathOperation<Int>
 {
     private final gameObject:GameObject;

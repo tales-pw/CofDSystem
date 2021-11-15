@@ -5,6 +5,7 @@ import pw.tales.cofdsystem.damage.Damage;
 /**
  * Event used to change damage dealt by attack. Including armor absorption.
 **/
+@:expose("AttackDamageGetEvent")
 class AttackDamageGetEvent extends AttackDamageEvent
 {
     public function setDamage(damage:Damage)

@@ -3,7 +3,8 @@ package pw.tales.cofdsystem.character.prefabs;
 import pw.tales.cofdsystem.character.traits.Experience;
 import pw.tales.cofdsystem.game_object.GameObject;
 
-@:structInit class PlayerPrefab extends HumanPrefab
+@:structInit @:expose("PlayerPrefab")
+class PlayerPrefab extends HumanPrefab
 {
     public static final INSTANCE:PlayerPrefab = {dn: "player"};
 

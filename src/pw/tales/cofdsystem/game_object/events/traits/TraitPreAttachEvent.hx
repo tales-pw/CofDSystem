@@ -1,4 +1,4 @@
 package pw.tales.cofdsystem.game_object.events.traits;
 
-@:expose("TraitPreAttachedEvent")
+@:expose("TraitPreAttachEvent")
 class TraitPreAttachEvent extends TraitPreEvent {}

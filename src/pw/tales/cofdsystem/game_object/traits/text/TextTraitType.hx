@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.game_object.traits.text;
 
+@:expose("TextTraitType")
 class TextTraitType extends TraitType<TextTrait>
 {
     override public function createWithDN(dn:String, gameObject:GameObject):TextTrait

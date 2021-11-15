@@ -4,6 +4,7 @@ import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.utils.math.IMathOperation;
 import pw.tales.cofdsystem.utils.math.MathSum;
 
+@:expose("NodePoolSum")
 class NodePoolSum implements INodePoolBuilder
 {
     private var left:INodePoolBuilder;

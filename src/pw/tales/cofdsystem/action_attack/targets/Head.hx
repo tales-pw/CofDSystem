@@ -3,6 +3,7 @@ package pw.tales.cofdsystem.action_attack.targets;
 import pw.tales.cofdsystem.game_object.traits.advantages.SizeAdvantage;
 import pw.tales.cofdsystem.character.traits.tilts.StunnedTilt;
 
+@:expose("Head")
 class Head implements ITarget
 {
     public static final instance = new Head();

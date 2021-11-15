@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.dices.requests;
 
+@:expose("RollRequestPool")
 class RollRequestPool extends ABSRollRequest
 {
     private var poolSize:Int;

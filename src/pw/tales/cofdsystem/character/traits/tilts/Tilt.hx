@@ -7,6 +7,7 @@ import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.Trait;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 
+@:expose("Tilt")
 class Tilt extends Trait
 {
     public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)

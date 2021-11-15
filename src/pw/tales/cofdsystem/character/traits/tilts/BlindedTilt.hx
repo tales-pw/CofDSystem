@@ -3,6 +3,7 @@ package pw.tales.cofdsystem.character.traits.tilts;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 
 @RegisterTraitTypes
+@:expose("BlindedTilt")
 class BlindedTilt extends Tilt
 {
     public static final DN = "Blinded";

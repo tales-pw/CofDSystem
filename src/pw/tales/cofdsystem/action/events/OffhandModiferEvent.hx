@@ -2,6 +2,7 @@ package pw.tales.cofdsystem.action.events;
 
 import pw.tales.cofdsystem.game_object.events.GameObjectEvent;
 
+@:expose("OffhandModiferEvent")
 class OffhandModiferEvent extends GameObjectEvent
 {
     public var modifer:Int = -2;

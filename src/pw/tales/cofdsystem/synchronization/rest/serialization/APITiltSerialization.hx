@@ -11,6 +11,7 @@ typedef ApiTilt = {
     categories:Array<String>
 }
 
+@:expose("APITiltSerialization")
 class APITiltSerialization implements ISerialization
 {
     public static final INSTANCE:APITiltSerialization = new APITiltSerialization();

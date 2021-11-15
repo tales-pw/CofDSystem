@@ -4,7 +4,8 @@ import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.weapon.prefabs.WeaponPrefab;
 import pw.tales.cofdsystem.weapon_ranged.traits.RangedWeapon;
 
-@:structInit class RangedWeaponPrefab extends WeaponPrefab
+@:structInit @:expose("RangedWeaponPrefab")
+class RangedWeaponPrefab extends WeaponPrefab
 {
     private override function setUpGameObject(weaponGameObject:GameObject):Void
     {

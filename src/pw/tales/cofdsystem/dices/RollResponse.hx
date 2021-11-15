@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.dices;
 
+@:expose("RollResponse")
 class RollResponse
 {
     private var result:EnumResult;

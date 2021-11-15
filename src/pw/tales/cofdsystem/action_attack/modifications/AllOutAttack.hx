@@ -7,6 +7,7 @@ import pw.tales.cofdsystem.character.traits.advantages.DefenceAdvantage;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.utils.events.HandlerPriority;
 
+@:expose("AllOutAttack")
 class AllOutAttack implements IModification
 {
     public static final DN = "all_out";

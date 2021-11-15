@@ -8,6 +8,7 @@ import pw.tales.cofdsystem.scene.initiative.exceptions.AddedAgainException;
 import pw.tales.cofdsystem.scene.initiative.exceptions.ParticipantNotFoundException;
 
 /** Stores list of initiatives, their order, handles rolling for initiative and etc **/
+@:expose("Initiative")
 class Initiative
 {
     private final system:CofDSystem;

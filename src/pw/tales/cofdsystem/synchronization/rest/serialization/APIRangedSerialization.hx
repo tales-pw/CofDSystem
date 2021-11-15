@@ -15,6 +15,7 @@ typedef ApiRangedWeapon = {
     categories:Array<String>
 }
 
+@:expose("APIRangedSerialization")
 class APIRangedSerialization implements ISerialization
 {
     public static final INSTANCE:APIRangedSerialization = new APIRangedSerialization();

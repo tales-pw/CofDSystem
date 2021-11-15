@@ -9,6 +9,7 @@ typedef SerializationOptions = {
 }
 
 @:nullSafety(Off)
+@:expose("AnnotationSerialization")
 class AnnotationSerialization
 {
     public static final SERIALIZE_ANNOTATION:String = "Serialize";

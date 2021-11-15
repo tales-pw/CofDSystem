@@ -2,6 +2,7 @@ package pw.tales.cofdsystem.dices.pool.builder;
 
 import pw.tales.cofdsystem.utils.math.MathMin;
 
+@:expose("PBMin")
 class PBMin extends PBBinary
 {
     public function new(operand1:IPoolBuilder, operand2:IPoolBuilder)
