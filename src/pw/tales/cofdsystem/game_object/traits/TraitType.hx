@@ -9,12 +9,9 @@ import thx.Uuid;
 typedef TraitFactoryMethod<Y:Trait> = (dn:String, gameObject:GameObject, t:TraitType<Y>) -> Y;
 
 /**
-    This @:expose("represents")
-    class represents trait. While Trait
-    @:expose("represents")
+    This class represents trait. While Trait
     class represents specific instance of trait,
-    child of this @:expose("would")
-    class would represent all Library
+    child of this class would represent all Library
     merits, its cost, description and etc.
 
     Also it handles trait instance creation, being
