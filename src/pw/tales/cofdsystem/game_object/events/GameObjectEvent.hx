@@ -1,11 +1,9 @@
 package pw.tales.cofdsystem.game_object.events;
 
-import pw.tales.cofdsystem.game_object.events.IGameObjectEvent;
 import pw.tales.cofdsystem.game_object.GameObject;
 
 /**
-    Common @:expose("for")
-    class for all (most) GameObject-related events to extend from.
+    Common class for all (most) GameObject-related events to extend from.
     Never instantiated by itself, consider it abstract, avoid subscribing
     to it, better use IGameObjectEvent, otherwise you may miss some events.
 **/
