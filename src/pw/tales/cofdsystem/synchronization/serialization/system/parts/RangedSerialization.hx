@@ -1,10 +1,10 @@
-package pw.tales.cofdsystem.synchronization.rest.serialization;
+package pw.tales.cofdsystem.synchronization.serialization.system.parts;
 
 import haxe.DynamicAccess;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
-import pw.tales.cofdsystem.weapon_melee.prefabs.MeleeWeaponPrefab;
+import pw.tales.cofdsystem.weapon_ranged.prefabs.RangedWeaponPrefab;
 
-typedef ApiMeleeWeapon = {
+typedef ApiRangedWeapon = {
     dn:String,
     name:Null<String>,
     damage:Int,
@@ -15,19 +15,19 @@ typedef ApiMeleeWeapon = {
     categories:Array<String>
 }
 
-@:expose("APIMeleeSerialization")
-class APIMeleeSerialization implements ISerialization
+@:expose("RangedSerialization")
+class RangedSerialization implements IPartSerialization
 {
-    public static final INSTANCE:APIMeleeSerialization = new APIMeleeSerialization();
+    public static final INSTANCE = new RangedSerialization();
 
     public function new() {}
 
-    public function handle(system:CofDSystem, data:Dynamic):Void
+    public function update(system:CofDSystem, data:Dynamic):Void
     {
-        var melee_weapons:DynamicAccess<ApiMeleeWeapon> = data.melee_weapons;
-        for (dn in melee_weapons.keys())
+        var rangedWeapons:DynamicAccess<ApiRangedWeapon> = data.ranged_weapons;
+        for (dn in rangedWeapons.keys())
         {
-            var record = melee_weapons.get(dn);
+            var record = rangedWeapons.get(dn);
 
             var tags:Array<TraitType<Dynamic>> = [];
             for (tagDN in record.tags)
@@ -37,15 +37,15 @@ class APIMeleeSerialization implements ISerialization
                     tags.push(tag);
             }
 
-            final weapon:MeleeWeaponPrefab = {
+            var weapon:RangedWeaponPrefab = {
                 dn: record.dn,
                 name: record.name,
                 initiative: record.initiative,
                 damage: record.damage,
                 size: record.size,
-                strength: record.strength,
+                strength: data.strength,
                 tags: tags
-            };
+            }
 
             system.weapons.register(weapon);
         }

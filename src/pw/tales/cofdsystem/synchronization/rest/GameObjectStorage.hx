@@ -2,7 +2,7 @@ package pw.tales.cofdsystem.synchronization.rest;
 
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.Trait;
-import pw.tales.cofdsystem.synchronization.GameObjectSynchronization;
+import pw.tales.cofdsystem.synchronization.serialization.game_object.GameObjectSerialization;
 
 @:nullSafety(Off)
 @:expose("GameObjectStorage")
@@ -57,6 +57,8 @@ class GameObjectStorage
 
     private function handleResponse(serializedData:Null<String>, context:Dynamic):Void
     {
+        var serializer = new GameObjectSerialization(this.system);
+
         if (serializedData == null)
             throw "No data";
 
@@ -64,8 +66,23 @@ class GameObjectStorage
 
         if (data.type == GAME_OBJECT)
         {
-            var deserializer = GameObjectSynchronization.createDeserializer(system, context.gameObject);
-            this.onGameObject(deserializer.fromData(data.game_object));
+            var goData = data.game_object;
+            var gameObject:GameObject;
+
+            if (context.gameObject)
+            {
+                // We tried to update outdated game object.
+                // Instead of update full update game object
+                // is recieved.
+                gameObject = context.gameObject;
+                serializer.updateWithData(gameObject, goData);
+            } else
+            {
+                // Create new game object from recieved data.
+                gameObject = serializer.fromData(goData);
+            }
+
+            this.onGameObject(gameObject);
             return;
         }
 
@@ -145,6 +162,7 @@ class GameObjectStorage
     {
         if (update == null)
             update = [];
+
         if (remove == null)
             remove = [];
 

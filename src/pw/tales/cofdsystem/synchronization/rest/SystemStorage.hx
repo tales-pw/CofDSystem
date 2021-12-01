@@ -1,15 +1,7 @@
 package pw.tales.cofdsystem.synchronization.rest;
 
-import pw.tales.cofdsystem.synchronization.rest.exception.VersionMissmatchException;
-import pw.tales.cofdsystem.synchronization.rest.serialization.APIAbilitySerialization;
-import pw.tales.cofdsystem.synchronization.rest.serialization.APIArmorSerialization;
-import pw.tales.cofdsystem.synchronization.rest.serialization.APIConditionSerialization;
-import pw.tales.cofdsystem.synchronization.rest.serialization.APIMeleeSerialization;
-import pw.tales.cofdsystem.synchronization.rest.serialization.APIRangedSerialization;
-import pw.tales.cofdsystem.synchronization.rest.serialization.APITagSerialization;
-import pw.tales.cofdsystem.synchronization.rest.serialization.APITiltSerialization;
+import pw.tales.cofdsystem.synchronization.serialization.system.SystemSerialization;
 
-@:expose("SystemStorage")
 @:nullSafety(Off)
 @:expose("SystemStorage")
 class SystemStorage
@@ -18,42 +10,21 @@ class SystemStorage
 
     private final host:String;
 
-    private final handlers:Array<ISerialization> = [
-        APIAbilitySerialization.INSTANCE,
-        APIConditionSerialization.INSTANCE,
-        APITiltSerialization.INSTANCE,
-        APIArmorSerialization.INSTANCE,
-        APIMeleeSerialization.INSTANCE,
-        APIRangedSerialization.INSTANCE,
-        APITagSerialization.INSTANCE
-    ];
-
     public function new(host:String)
     {
         this.host = host;
     }
 
-    private dynamic function onSuccess() {}
+    private dynamic function onSuccess():Void {}
 
-    private function handleResponse(system:CofDSystem, serializedData:String)
+    private function handleResponse(system:CofDSystem, serializedData:String):Void
     {
-        var data:Dynamic = haxe.Json.parse(serializedData);
-
-        var remoteVersion:String = data.version;
-        if (CofDSystem.versionCheck && remoteVersion != CofDSystem.version)
-        {
-            throw new VersionMissmatchException(CofDSystem.version, remoteVersion);
-        }
-
-        for (handler in handlers)
-        {
-            handler.handle(system, data);
-        }
-
+        var serialization = SystemSerialization.INSTANCE;
+        serialization.update(system, serializedData);
         this.onSuccess();
     }
 
-    public function update(system:CofDSystem)
+    public function update(system:CofDSystem):Void
     {
         var http = new haxe.Http('${host}/system');
 

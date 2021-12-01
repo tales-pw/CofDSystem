@@ -1,14 +1,14 @@
-package pw.tales.cofdsystem.synchronization;
+package pw.tales.cofdsystem.synchronization.serialization.game_object;
 
+import pw.tales.cofdsystem.utils.serialization.DeserializationException;
 import haxe.Json;
-import pw.tales.cofdsystem.game_object.GameObject;
-import pw.tales.cofdsystem.game_object.GameObjectState;
-import pw.tales.cofdsystem.game_object.trait_manager.TraitManager;
-import pw.tales.cofdsystem.game_object.traits.Trait;
-import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.game_object.traits.unknown_trait.UnknownTrait;
 import pw.tales.cofdsystem.utils.logger.LoggerManager;
-import pw.tales.cofdsystem.utils.serialization.DeserializationException;
+import pw.tales.cofdsystem.game_object.GameObjectState;
+import pw.tales.cofdsystem.game_object.traits.TraitType;
+import pw.tales.cofdsystem.game_object.trait_manager.TraitManager;
+import pw.tales.cofdsystem.game_object.GameObject;
+import pw.tales.cofdsystem.game_object.traits.Trait;
 
 typedef GameObjectData = {
     version:String,
@@ -16,39 +16,14 @@ typedef GameObjectData = {
     traits:Array<Dynamic>
 }
 
-@:expose("GameObjectSynchronization")
-class GameObjectSynchronization
+@:expose("GameObjectSerialization")
+class GameObjectSerialization extends Serialization<GameObject, GameObjectData>
 {
-    // Things serializer needs to know
-    public var system:CofDSystem;
+    private var system:CofDSystem;
 
-    // What to serialize
-    public var gameObject:Null<GameObject>;
-
-    private function new(system:CofDSystem)
+    public function new(system:CofDSystem)
     {
         this.system = system;
-    }
-
-    public static function createDeserializer(system:CofDSystem, gameObject:GameObject = null):GameObjectSynchronization
-    {
-        var serializer = new GameObjectSynchronization(system);
-        serializer.gameObject = gameObject;
-        return serializer;
-    }
-
-    public static function create(s:CofDSystem, gameObject:GameObject):GameObjectSynchronization
-    {
-        var serializer = new GameObjectSynchronization(s);
-        serializer.gameObject = gameObject;
-        return serializer;
-    }
-
-    private function ensureGameObject(data:GameObjectData):GameObject
-    {
-        if (this.gameObject == null)
-            this.gameObject = new GameObject(data.dn, this.system);
-        return this.gameObject;
     }
 
     private function ensureTrait(manager:TraitManager, type:TraitType<Dynamic>, dn:String):Trait
@@ -67,9 +42,12 @@ class GameObjectSynchronization
         return oldTraits.filter((v:Trait) -> !newDNs.contains(v.getDN()));
     }
 
-    public function fromData(data:GameObjectData):GameObject
+    public override function createNewObj(data:GameObjectData):GameObject {
+        return new GameObject(data.dn, this.system);
+    }
+
+    public override function updateWithData(gameObject:GameObject, data:GameObjectData):GameObject
     {
-        var gameObject:GameObject = this.ensureGameObject(data);
         gameObject.setState(GameObjectState.LOADING);
 
         // Start updating given GameObject
@@ -91,7 +69,7 @@ class GameObjectSynchronization
             if (type == null)
             {
                 type = cast(UnknownTrait.TYPE);
-                logger.warning('Unable to identify trait type for data:' + '${Json.stringify(trait_data)}' + 'fallback to ${type}');
+                logger.warning('Unable to identify trait type for data: ${Json.stringify(trait_data)} fallback to ${type}');
             }
 
             var trait:Trait = this.ensureTrait(manager, type, trait_data.dn);
@@ -100,7 +78,7 @@ class GameObjectSynchronization
                 trait.deserialize(trait_data);
             } catch (e:DeserializationException)
             {
-                logger.warning('Unable to create ${trait.getType()} ' + 'from data ${Json.stringify(trait_data)} ' + 'because: ${e.message}.');
+                logger.warning('Unable to create ${trait.getType()} from data ${Json.stringify(trait_data)} because: ${e.message}.');
                 manager.removeTrait(trait);
                 trait = manager.addTrait(UnknownTrait.TYPE);
                 trait.deserialize(trait_data);
@@ -112,35 +90,20 @@ class GameObjectSynchronization
         return gameObject;
     }
 
-    public function toData():GameObjectData
+    public override function toData(gameObject:GameObject):GameObjectData
     {
-        if (this.gameObject == null)
-            throw "Unable to serialize gameObject as gameObject is not set";
-
         var data:GameObjectData = {
-            version: this.gameObject.version,
-            dn: this.gameObject.getDN(),
+            version: gameObject.version,
+            dn: gameObject.getDN(),
             traits: []
         };
 
-        var traitManager:TraitManager = this.gameObject.getTraitManager();
+        var traitManager:TraitManager = gameObject.getTraitManager();
         for (trait in traitManager.getTraits().items())
         {
             data.traits.push(trait.serialize());
         }
 
         return data;
-    }
-
-    public function deserialize(serializedData:String):GameObject
-    {
-        var data:GameObjectData = haxe.Json.parse(serializedData);
-        return this.fromData(data);
-    }
-
-    public function serialize():String
-    {
-        var data:GameObjectData = toData();
-        return haxe.Json.stringify(data);
     }
 }

@@ -1,4 +1,4 @@
-package pw.tales.cofdsystem.synchronization.rest.exception;
+package pw.tales.cofdsystem.synchronization.serialization.system.exceptions;
 
 import pw.tales.cofdsystem.exceptions.CofDSystemException;
 
