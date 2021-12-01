@@ -42,7 +42,8 @@ class GameObjectSerialization extends Serialization<GameObject, GameObjectData>
         return oldTraits.filter((v:Trait) -> !newDNs.contains(v.getDN()));
     }
 
-    public override function createNewObj(data:GameObjectData):GameObject {
+    public override function createNewObj(data:GameObjectData):GameObject
+    {
         return new GameObject(data.dn, this.system);
     }
 
