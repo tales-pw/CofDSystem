@@ -10,7 +10,7 @@ import pw.tales.cofdsystem.synchronization.serialization.system.parts.MeleeSeria
 import pw.tales.cofdsystem.synchronization.serialization.system.parts.RangedSerialization;
 import pw.tales.cofdsystem.synchronization.serialization.system.parts.TagSerialization;
 
-class SystemSerialization extends Serialization<CofDSystem, Dynamic>
+class SystemSerialization extends Serialization<CofDSystem, SystemData>
 {
     public static final INSTANCE = new SystemSerialization();
 
@@ -26,12 +26,12 @@ class SystemSerialization extends Serialization<CofDSystem, Dynamic>
 
     public function new() {}
 
-    public override function createNewObj(data:Dynamic):CofDSystem
+    public override function createNewObj(data:SystemData):CofDSystem
     {
         return new CofDSystem();
     }
 
-    public override function updateWithData(obj:CofDSystem, data:Dynamic):CofDSystem
+    public override function updateWithData(obj:CofDSystem, data:SystemData):CofDSystem
     {
         var remoteVersion:String = data.version;
         if (CofDSystem.versionCheck && remoteVersion != CofDSystem.version)
@@ -46,4 +46,7 @@ class SystemSerialization extends Serialization<CofDSystem, Dynamic>
 
         return obj;
     }
+
+    public override function toData(obj:CofDSystem):SystemData
+        throw "Not Implemented";
 }
