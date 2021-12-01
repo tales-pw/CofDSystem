@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.character.prefabs;
 
+import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.character.traits.advantages.DefenceAdvantage;
 import pw.tales.cofdsystem.character.traits.advantages.health.HealthAdvantage;
 import pw.tales.cofdsystem.character.traits.advantages.InitiativeAdvantage;
@@ -21,77 +22,80 @@ class HumanPrefab extends Prefab
 {
     public static final INSTANCE:HumanPrefab = {dn: "human"};
 
+    private static final TRAITS:Array<TraitType<Dynamic>> = [
+        // Utility
+        HeldWeapon.TYPE,
+        WornArmor.TYPE,
+        PositionTrait.TYPE,
+        // Person
+        Character.NAME,
+        Character.AGE,
+        Character.PLAYER,
+        Character.RACE,
+        Character.NATION,
+        Character.LANGUAGE,
+        Character.VIRTUE,
+        Character.VICE,
+        Character.CONCEPT,
+        // Attributes
+        // Mental
+        Attributes.INTELLIGENCE,
+        Attributes.WITS,
+        Attributes.RESOLVE,
+        // Physical
+        Attributes.STRENGTH,
+        Attributes.DEXTERITY,
+        Attributes.STAMINA,
+        // Social
+        Attributes.PRESENCE,
+        Attributes.MANIPULATION,
+        Attributes.COMPOSURE,
+        // Skills
+        // Mental
+        Skills.ACADEMICS,
+        Skills.ENIGMAS,
+        Skills.CRAFTS,
+        Skills.INVESTIGATION,
+        Skills.MEDICINE,
+        Skills.OCCULT,
+        Skills.POLITICS,
+        Skills.SCIENCE,
+        // Physical
+        Skills.ATHLETICS,
+        Skills.BRAWL,
+        Skills.RIDE,
+        Skills.SHOOTING,
+        Skills.LARCENY,
+        Skills.STEALTH,
+        Skills.SURVIVAL,
+        Skills.WEAPONRY,
+        // Social
+        Skills.ANIMAL_KEN,
+        Skills.EMPATHY,
+        Skills.EXPRESSION,
+        Skills.INTIMIDATION,
+        Skills.PERSUASION,
+        Skills.SOCIALIZE,
+        Skills.STREETWISE,
+        Skills.SUBTERFUGE,
+        // Advantages
+        DefenceAdvantage.TYPE,
+        HealthAdvantage.TYPE,
+        InitiativeAdvantage.TYPE,
+        IntegrityAdvantage.TYPE,
+        SizeAdvantage.TYPE,
+        SpeedAdvantage.TYPE,
+        WillpowerAdvantage.TYPE,
+        WealthAdvantage.TYPE,
+    ];
+
     private override function setUpGameObject(gameObject:GameObject):Void
     {
         var traitManager = gameObject.getTraitManager();
 
-        // Utility
-        traitManager.addTrait(HeldWeapon.TYPE);
-        traitManager.addTrait(WornArmor.TYPE);
-        traitManager.addTrait(PositionTrait.TYPE);
-
-        // Person
-        traitManager.addTrait(Character.NAME);
-        traitManager.addTrait(Character.AGE);
-        traitManager.addTrait(Character.PLAYER);
-
-        traitManager.addTrait(Character.RACE);
-        traitManager.addTrait(Character.NATION);
-        traitManager.addTrait(Character.LANGUAGE);
-
-        traitManager.addTrait(Character.VIRTUE);
-        traitManager.addTrait(Character.VICE);
-        traitManager.addTrait(Character.CONCEPT);
-
-        // Attributes
-        traitManager.addTrait(Attributes.INTELLIGENCE);
-        traitManager.addTrait(Attributes.WITS);
-        traitManager.addTrait(Attributes.RESOLVE);
-
-        traitManager.addTrait(Attributes.STRENGTH);
-        traitManager.addTrait(Attributes.DEXTERITY);
-        traitManager.addTrait(Attributes.STAMINA);
-
-        traitManager.addTrait(Attributes.PRESENCE);
-        traitManager.addTrait(Attributes.MANIPULATION);
-        traitManager.addTrait(Attributes.COMPOSURE);
-
-        // Skills
-        traitManager.addTrait(Skills.ACADEMICS);
-        traitManager.addTrait(Skills.ENIGMAS);
-        traitManager.addTrait(Skills.CRAFTS);
-        traitManager.addTrait(Skills.INVESTIGATION);
-        traitManager.addTrait(Skills.MEDICINE);
-        traitManager.addTrait(Skills.OCCULT);
-        traitManager.addTrait(Skills.POLITICS);
-        traitManager.addTrait(Skills.SCIENCE);
-
-        traitManager.addTrait(Skills.ATHLETICS);
-        traitManager.addTrait(Skills.BRAWL);
-        traitManager.addTrait(Skills.RIDE);
-        traitManager.addTrait(Skills.SHOOTING);
-        traitManager.addTrait(Skills.LARCENY);
-        traitManager.addTrait(Skills.STEALTH);
-        traitManager.addTrait(Skills.SURVIVAL);
-        traitManager.addTrait(Skills.WEAPONRY);
-
-        traitManager.addTrait(Skills.ANIMAL_KEN);
-        traitManager.addTrait(Skills.EMPATHY);
-        traitManager.addTrait(Skills.EXPRESSION);
-        traitManager.addTrait(Skills.INTIMIDATION);
-        traitManager.addTrait(Skills.PERSUASION);
-        traitManager.addTrait(Skills.SOCIALIZE);
-        traitManager.addTrait(Skills.STREETWISE);
-        traitManager.addTrait(Skills.SUBTERFUGE);
-
-        // Advantages
-        traitManager.addTrait(DefenceAdvantage.TYPE);
-        traitManager.addTrait(HealthAdvantage.TYPE);
-        traitManager.addTrait(InitiativeAdvantage.TYPE);
-        traitManager.addTrait(IntegrityAdvantage.TYPE);
-        traitManager.addTrait(SizeAdvantage.TYPE);
-        traitManager.addTrait(SpeedAdvantage.TYPE);
-        traitManager.addTrait(WillpowerAdvantage.TYPE);
-        traitManager.addTrait(WealthAdvantage.TYPE);
+        for (record in TRAITS)
+        {
+            traitManager.addTrait(record);
+        }
     }
 }
