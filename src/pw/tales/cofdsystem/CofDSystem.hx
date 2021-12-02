@@ -26,6 +26,11 @@ class CofDSystem
 
     public function new() {}
 
+    public function updateWithData(data:Dynamic):Void
+    {
+        SystemSerialization.INSTANCE.updateWithData(this, data);
+    }
+
     public static function fromData(data:Dynamic):CofDSystem
     {
         return SystemSerialization.INSTANCE.fromData(data);

@@ -1,6 +1,6 @@
 package pw.tales.cofdsystem.synchronization.api;
 
-import pw.tales.cofdsystem.synchronization.serialization.system.SystemSerialization;
+import haxe.Json;
 
 @:nullSafety(Off)
 @:expose("SystemStorage")
@@ -19,8 +19,7 @@ class SystemStorage
 
     private function handleResponse(system:CofDSystem, serializedData:String):Void
     {
-        var serialization = SystemSerialization.INSTANCE;
-        serialization.update(system, serializedData);
+        system.updateWithData(Json.parse(serializedData));
         this.onSuccess();
     }
 
