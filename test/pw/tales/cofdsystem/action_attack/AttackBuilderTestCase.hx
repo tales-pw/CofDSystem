@@ -26,7 +26,7 @@ class AttackBuilderTestCase extends CofDSystemTestCase
     public function testSimple()
     {
         var action = new AttackBuilder(c1, c2).build();
-        system.act(action);
+        action.execute();
 
         var health:HealthAdvantage = cast c2.getTrait(HealthAdvantage.TYPE);
         assertEquals(4, health.getBashing());
@@ -37,7 +37,7 @@ class AttackBuilderTestCase extends CofDSystemTestCase
     public function testWillpowerActor()
     {
         var action = new AttackBuilder(c1, c2).setSpendWillpower(EnumSide.ACTOR).build();
-        system.act(action);
+        action.execute();
 
         var health:HealthAdvantage = cast c2.getTrait(HealthAdvantage.TYPE);
         assertEquals(5, health.getBashing());
@@ -56,7 +56,7 @@ class AttackBuilderTestCase extends CofDSystemTestCase
     public function testWillpowerTarget()
     {
         var action = new AttackBuilder(c1, c2).setSpendWillpower(EnumSide.TARGET).build();
-        system.act(action);
+        action.execute();
 
         var health:HealthAdvantage = cast c2.getTrait(HealthAdvantage.TYPE);
         assertEquals(2, health.getBashing());
@@ -76,7 +76,7 @@ class AttackBuilderTestCase extends CofDSystemTestCase
     {
         var action = new AttackBuilder(c1, c2).setSpendWillpower(EnumSide.TARGET).setSpendWillpower(EnumSide.ACTOR).build();
 
-        system.act(action);
+        action.execute();
 
         var health:HealthAdvantage = cast c2.getTrait(HealthAdvantage.TYPE);
         assertEquals(5, health.getBashing());
@@ -104,7 +104,7 @@ class AttackBuilderTestCase extends CofDSystemTestCase
     {
         var action:AttackAction = new AttackBuilder(c1, c2).setExplode(EnumSide.ACTOR, actorExplode).setExplode(EnumSide.TARGET, targetExplode).build();
 
-        system.act(action);
+        action.execute();
 
         var result = action.getCompetition().getActorPool().getRequest().getExplode();
         assertEquals(result, actorExplode);

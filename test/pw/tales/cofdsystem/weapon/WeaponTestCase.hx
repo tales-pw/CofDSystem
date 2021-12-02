@@ -73,7 +73,7 @@ class WeaponTestCase extends CofDSystemTestCase
         weaponTrait.setMainHand(weapon.createWeapon(system));
 
         var action = new AttackBuilder(c1, c2).build();
-        system.act(action);
+        action.execute();
 
         var traits = action.getCompetition().getPool(c1).getRequest().getTraits();
         assertEquals(Std.string(pool), Std.string(traits));
@@ -101,7 +101,7 @@ class WeaponTestCase extends CofDSystemTestCase
         heldWeapon.setMainHand(null);
 
         var action = new AttackBuilder(c1, c2).build();
-        system.act(action);
+        action.execute();
 
         var traits = action.getCompetition().getPool(c1).getRequest().getTraits();
         assertEquals(Std.string([Attributes.STRENGTH.getDN(), Skills.BRAWL.getDN()]), Std.string(traits));
@@ -113,12 +113,12 @@ class WeaponTestCase extends CofDSystemTestCase
         heldWeapon.setOffHand(GENERIC_MELEE_WEAPON.createWeapon(system));
 
         var action = new AttackBuilder(c1, c2).build();
-        system.act(action);
+        action.execute();
         var traits = action.getCompetition().getPool(c1).getRequest().getTraits();
         assertEquals(Std.string([Attributes.STRENGTH.getDN(), Skills.BRAWL.getDN()]), Std.string(traits));
 
         var action = new AttackBuilder(c1, c2).setHand(EnumSide.ACTOR, EnumHand.OFFHAND).build();
-        system.act(action);
+        action.execute();
         var traits = action.getCompetition().getPool(c1).getRequest().getTraits();
         assertEquals(Std.string([Attributes.STRENGTH.getDN(), Skills.WEAPONRY.getDN()]), Std.string(traits));
     }

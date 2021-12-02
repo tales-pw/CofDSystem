@@ -34,9 +34,9 @@ class SystemSerialization extends Serialization<CofDSystem, SystemData>
     public override function updateWithData(obj:CofDSystem, data:SystemData):CofDSystem
     {
         var remoteVersion:String = data.version;
-        if (CofDSystem.versionCheck && remoteVersion != CofDSystem.version)
+        if (CofDSystem.VERSION_CHECK && remoteVersion != CofDSystem.VERSION)
         {
-            throw new VersionMissmatchException(CofDSystem.version, remoteVersion);
+            throw new VersionMissmatchException(CofDSystem.VERSION, remoteVersion);
         }
 
         for (handler in HANDLERS)

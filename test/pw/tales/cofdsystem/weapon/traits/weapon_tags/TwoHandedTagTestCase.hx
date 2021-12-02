@@ -21,7 +21,7 @@ class TwoHandedTagTestCase extends WeaponTagTestCase
         this.c1.getTrait(HeldWeapon.TYPE).setOffHand(this.createNoTagWeapon());
 
         var action = new AttackBuilder(c2, c1).build();
-        system.act(action);
+        action.execute();
 
         this.assertBonusNamed(action, c1, StrengthReq.DN, -6);
         this.assertBonusNamed(action, c2, StrengthReq.DN, null);

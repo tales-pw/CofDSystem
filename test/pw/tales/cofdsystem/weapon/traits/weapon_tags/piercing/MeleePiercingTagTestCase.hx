@@ -21,7 +21,7 @@ class MeleePiercingTagTestCase extends PiercingTagTestCase
         this.setupGOArmor(c2, 3, 0);
 
         var action = new AttackBuilder(c1, c2).setModifier(EnumSide.ACTOR, 5).build();
-        system.act(action);
+        action.execute();
 
         // Damage is 5L, effective armor is 1/0
         assertArrayEquals([0, 4, 0], action.getDamage().getTuple());
@@ -32,7 +32,7 @@ class MeleePiercingTagTestCase extends PiercingTagTestCase
         this.setupGOArmor(c2, 0, 3);
 
         var action = new AttackBuilder(c1, c2).setModifier(EnumSide.ACTOR, 5).build();
-        system.act(action);
+        action.execute();
 
         // Damage is 5L, effective armor is 0/1
         assertArrayEquals([0, 5, 0], action.getDamage().getTuple());
@@ -43,7 +43,7 @@ class MeleePiercingTagTestCase extends PiercingTagTestCase
         this.setupGOArmor(c2, 2, 2);
 
         var action = new AttackBuilder(c1, c2).setModifier(EnumSide.ACTOR, 5).build();
-        system.act(action);
+        action.execute();
 
         // Damage is 5L, effective armor is 2/0
         assertArrayEquals([0, 5, 0], action.getDamage().getTuple());

@@ -25,7 +25,7 @@ class ConcealedTagTestCase extends WeaponTagTestCase
             this.setShieldSize(size);
 
             var action = new AttackBuilder(c2, c1).build();
-            system.act(action);
+            action.execute();
 
             this.assertBonus(action, c1, size);
             this.assertBonus(action, c2, null);
@@ -37,7 +37,7 @@ class ConcealedTagTestCase extends WeaponTagTestCase
         this.setShieldSize(3);
 
         var action = new AttackBuilder(c1, c2).build();
-        system.act(action);
+        action.execute();
 
         this.assertBonus(action, c1, null);
         this.assertBonus(action, c2, null);

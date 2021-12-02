@@ -32,7 +32,7 @@ class ArmorTestCase extends CofDSystemTestCase
     public function testSimple()
     {
         var action = new AttackBuilder(c1, c2).build();
-        system.act(action);
+        action.execute();
 
         var health:HealthAdvantage = cast(c2.getTrait(HealthAdvantage.TYPE));
 

@@ -20,7 +20,7 @@ class ExplodeTagTestCase extends WeaponTagTestCase
     public function testApplyExplodeForAttacker()
     {
         var action = new AttackBuilder(c1, c2).build();
-        system.act(action);
+        action.execute();
 
         assertEquals(this.getExpectedExplode(), this.getGOExplode(action, c1));
         assertEquals(EnumExplode.DEFAULT, this.getGOExplode(action, c2));
@@ -29,7 +29,7 @@ class ExplodeTagTestCase extends WeaponTagTestCase
     public function testDontApplyExplodeForTarget()
     {
         var action = new AttackBuilder(c2, c1).setResistType(EnumResistType.DODGE).build();
-        system.act(action);
+        action.execute();
 
         assertEquals(EnumExplode.DEFAULT, this.getGOExplode(action, c1));
         assertEquals(EnumExplode.DEFAULT, this.getGOExplode(action, c2));
