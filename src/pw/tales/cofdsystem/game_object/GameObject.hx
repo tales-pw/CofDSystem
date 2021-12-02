@@ -68,35 +68,38 @@ class GameObject implements IRecord
         return this.state;
     }
 
-    public function setState(state:GameObjectState): Void
+    public function setState(state:GameObjectState):Void
     {
         this.state = state;
     }
 
-    public function deactivate(): Void
+    public function deactivate():Void
     {
         this.state = GameObjectState.INACTIVE;
         this.getTraitManager().deactivate();
         this.events.disable();
     }
 
-    public function toString(): String
+    public function toString():String
     {
         var className = Utility.getClassName(Type.getClass(this));
         return '${className}[${this.getDN()}]';
     }
 
-    public function toData(): Dynamic {
+    public function toData():Dynamic
+    {
         var serializer = new GameObjectSerialization(this.system);
         return serializer.toData(this);
     }
 
-    public function updateWithData(data: Dynamic): Void {
+    public function updateWithData(data:Dynamic):Void
+    {
         var serializer = new GameObjectSerialization(this.system);
         serializer.updateWithData(this, data);
     }
 
-    public static function fromData(system: CofDSystem, data: Dynamic): GameObject {
+    public static function fromData(system:CofDSystem, data:Dynamic):GameObject
+    {
         var serializer = new GameObjectSerialization(system);
         return serializer.fromData(data);
     }

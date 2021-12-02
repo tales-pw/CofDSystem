@@ -26,7 +26,8 @@ class CofDSystem
 
     public function new() {}
 
-    public static function fromData(data: Dynamic): CofDSystem {
+    public static function fromData(data:Dynamic):CofDSystem
+    {
         return SystemSerialization.INSTANCE.fromData(data);
     }
 }
