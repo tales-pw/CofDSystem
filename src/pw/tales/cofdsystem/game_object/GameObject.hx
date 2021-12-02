@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.game_object;
 
+import pw.tales.cofdsystem.synchronization.serialization.game_object.GameObjectSerialization;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.game_object.traits.Trait;
 import pw.tales.cofdsystem.game_object.events.IGameObjectEvent;
@@ -67,21 +68,36 @@ class GameObject implements IRecord
         return this.state;
     }
 
-    public function setState(state:GameObjectState)
+    public function setState(state:GameObjectState): Void
     {
         this.state = state;
     }
 
-    public function deactivate()
+    public function deactivate(): Void
     {
         this.state = GameObjectState.INACTIVE;
         this.getTraitManager().deactivate();
         this.events.disable();
     }
 
-    public function toString()
+    public function toString(): String
     {
         var className = Utility.getClassName(Type.getClass(this));
         return '${className}[${this.getDN()}]';
+    }
+
+    public function toData(): Dynamic {
+        var serializer = new GameObjectSerialization(this.system);
+        return serializer.toData(this);
+    }
+
+    public function updateWithData(data: Dynamic): Void {
+        var serializer = new GameObjectSerialization(this.system);
+        serializer.updateWithData(this, data);
+    }
+
+    public static function fromData(system: CofDSystem, data: Dynamic): GameObject {
+        var serializer = new GameObjectSerialization(system);
+        return serializer.fromData(data);
     }
 }

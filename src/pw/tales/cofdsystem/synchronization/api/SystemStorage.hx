@@ -1,4 +1,4 @@
-package pw.tales.cofdsystem.synchronization.rest;
+package pw.tales.cofdsystem.synchronization.api;
 
 import pw.tales.cofdsystem.synchronization.serialization.system.SystemSerialization;
 
