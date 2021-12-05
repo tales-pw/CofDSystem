@@ -17,6 +17,11 @@ class SystemStorage
 
     private dynamic function onSuccess():Void {}
 
+    public dynamic function prepareRequest(url:String):haxe.Http 
+    {
+        return new haxe.Http(url);
+    }
+
     private function handleResponse(system:CofDSystem, serializedData:String):Void
     {
         system.updateWithData(Json.parse(serializedData));
@@ -25,7 +30,7 @@ class SystemStorage
 
     public function update(system:CofDSystem):Void
     {
-        var http = new haxe.Http('${host}/system');
+        var http = this.prepareRequest('${host}/system');
 
         http.onData = function(serializedData:String)
         {

@@ -111,7 +111,7 @@ class GameObjectStorage
         throw "No server or client token set, use factory methods instead of constructor";
     }
 
-    public function prepareRequest(url:String, context:Dynamic = null):haxe.Http
+    public dynamic function prepareRequest(url:String, context:Dynamic = null):haxe.Http
     {
         if (context == null)
             context = {};
