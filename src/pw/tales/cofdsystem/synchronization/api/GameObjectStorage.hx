@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.synchronization.api;
 
+import haxe.http.HttpBase;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.Trait;
 
@@ -111,7 +112,7 @@ class GameObjectStorage
         throw "No server or client token set, use factory methods instead of constructor";
     }
 
-    public dynamic function prepareRequest(url:String, context:Dynamic = null):haxe.Http
+    public dynamic function prepareRequest(url:String, context:Dynamic = null):HttpBase
     {
         if (context == null)
             context = {};

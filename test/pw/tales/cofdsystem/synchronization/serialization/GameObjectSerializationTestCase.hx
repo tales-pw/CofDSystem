@@ -8,15 +8,12 @@ class GameObjectSerializationTestCase extends CofDSystemTestCase
 {
     public function testDeserialize()
     {
-        var system_data = CompileTime.readFile("test/pw/tales/cofdsystem/synchronization/serialization/test_data/system_data_valid.json");
-        var system = SystemSerialization.INSTANCE.deserialize(system_data);
+        var system = SystemSerialization.INSTANCE.deserialize(TestData.SYSTEM_VALID_DATA);
 
         var serializer = new GameObjectSerialization(system);
 
-        var data = CompileTime.readFile("test/pw/tales/cofdsystem/synchronization/serialization/test_data/go_data_valid.json");
-        var gameObject = serializer.deserialize(data);
-
-        var parsedData = Json.parse(data);
+        var gameObject = serializer.deserialize(TestData.GO_VALID_DATA);
+        var parsedData = Json.parse(TestData.GO_VALID_DATA);
 
         this.assertEquals(gameObject.getTraitManager().getTraits().items().length, parsedData.traits.length);
     }

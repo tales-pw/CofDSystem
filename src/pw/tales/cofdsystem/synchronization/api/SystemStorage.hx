@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.synchronization.api;
 
+import haxe.http.HttpBase;
 import haxe.Json;
 
 @:nullSafety(Off)
@@ -17,7 +18,7 @@ class SystemStorage
 
     private dynamic function onSuccess():Void {}
 
-    public dynamic function prepareRequest(url:String):haxe.Http 
+    public dynamic function prepareRequest(url:String):HttpBase
     {
         return new haxe.Http(url);
     }

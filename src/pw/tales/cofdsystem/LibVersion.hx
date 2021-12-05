@@ -5,7 +5,8 @@ import thx.semver.Version;
 class LibVersion
 {
     #if macro
-    private static function getVersionFromEnv(): String {
+    private static function getVersionFromEnv():String
+    {
         return Sys.getEnv("RELEASE_VERSION");
     }
     #end

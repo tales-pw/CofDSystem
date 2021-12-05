@@ -6,8 +6,7 @@ class SystemSerializationTestCase extends CofDSystemTestCase
 {
     public function testDeserialize()
     {
-        var data = CompileTime.readFile("test/pw/tales/cofdsystem/synchronization/serialization/test_data/system_data_valid.json");
-        var system = SystemSerialization.INSTANCE.deserialize(data);
+        var system = SystemSerialization.INSTANCE.deserialize(TestData.SYSTEM_VALID_DATA);
 
         this.assertTrue(new CofDSystem().traits.items().length < system.traits.items().length);
     }
