@@ -26,7 +26,7 @@ class SystemStorageTestCase extends TestCase
         };
     }
 
-    public function testDeserialize()
+    public function testSuccessfulFetch()
     {
         this.initStorage((?post:Null<Bool>) ->
         {
