@@ -13,7 +13,7 @@ class GuardTagTestCase extends WeaponTagTestCase
     public function testAppliedWhenTarget()
     {
         var action = new AttackBuilder(c2, c1).build();
-        system.act(action);
+        action.execute();
 
         this.assertBonus(action, c1, 1);
         this.assertBonus(action, c2, null);
@@ -22,7 +22,7 @@ class GuardTagTestCase extends WeaponTagTestCase
     public function testNotAppliedWhenActor()
     {
         var action = new AttackBuilder(c1, c2).build();
-        system.act(action);
+        action.execute();
 
         this.assertBonus(action, c1, null);
         this.assertBonus(action, c2, null);

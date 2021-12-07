@@ -1,4 +1,4 @@
-package pw.tales.cofdsystem.synchronization.rest.serialization;
+package pw.tales.cofdsystem.synchronization.serialization.system.parts;
 
 import haxe.DynamicAccess;
 import pw.tales.cofdsystem.character.traits.merits.MeritType;
@@ -16,17 +16,17 @@ typedef ApiAbility = {
     requirements:Array<String>
 }
 
-@:expose("APIAbilitySerialization")
-class APIAbilitySerialization implements ISerialization
+@:expose("AbilitySerialization")
+class AbilitySerialization implements IPartSerialization
 {
-    public static final INSTANCE:APIAbilitySerialization = new APIAbilitySerialization();
+    public static final INSTANCE = new AbilitySerialization();
 
     private final requirementsParser:RequirementsParser = new RequirementsParser();
     private final levelsParser:DotsLevelsParser = new DotsLevelsParser();
 
     public function new() {}
 
-    public function handle(system:CofDSystem, data:Dynamic):Void
+    public function update(system:CofDSystem, data:Dynamic):Void
     {
         var abilities:DynamicAccess<ApiAbility> = data.abilities;
 

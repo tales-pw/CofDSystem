@@ -26,7 +26,7 @@ class StrengthReqTestCase extends CofDSystemTestCase
         this.c1.getTrait(Attributes.STRENGTH).setValue(3);
 
         var action = new AttackBuilder(c2, c1).build();
-        system.act(action);
+        action.execute();
 
         this.assertBonusNamed(action, c1, StrengthReq.DN, -3);
         this.assertBonusNamed(action, c2, StrengthReq.DN, null);

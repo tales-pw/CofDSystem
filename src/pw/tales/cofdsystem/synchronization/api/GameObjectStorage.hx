@@ -1,12 +1,12 @@
-package pw.tales.cofdsystem.synchronization.rest;
+package pw.tales.cofdsystem.synchronization.api;
 
+import haxe.http.HttpBase;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.Trait;
-import pw.tales.cofdsystem.synchronization.GameObjectSynchronization;
 
 @:nullSafety(Off)
 @:expose("GameObjectStorage")
-class GameObjectStorage
+class GameObjectStorage extends APIStorage
 {
     // Response types
     public static final GAME_OBJECT:String = "game_object";
@@ -45,12 +45,12 @@ class GameObjectStorage
 
     public dynamic function onError(data:Dynamic, context:Dynamic):Void {}
 
-    public function setClientToken(token:String):Void
+    private function setClientToken(token:String):Void
     {
         this.clientToken = token;
     }
 
-    public function setServerToken(token:String):Void
+    private function setServerToken(token:String):Void
     {
         this.serverToken = token;
     }
@@ -64,8 +64,23 @@ class GameObjectStorage
 
         if (data.type == GAME_OBJECT)
         {
-            var deserializer = GameObjectSynchronization.createDeserializer(system, context.gameObject);
-            this.onGameObject(deserializer.fromData(data.game_object));
+            var goData = data.game_object;
+            var gameObject:GameObject;
+
+            if (context.gameObject)
+            {
+                // We tried to update outdated game object.
+                // Instead of update full update game object
+                // is recieved.
+                gameObject = context.gameObject;
+                gameObject.updateWithData(goData);
+            } else
+            {
+                // Create new game object from recieved data.
+                gameObject = GameObject.fromData(system, goData);
+            }
+
+            this.onGameObject(gameObject);
             return;
         }
 
@@ -80,7 +95,7 @@ class GameObjectStorage
         this.onError(data, context);
     }
 
-    private function addTokenToRequest(request:haxe.Http):Void
+    private function addTokenToRequest(request:HttpBase):Void
     {
         if (this.serverToken != null)
         {
@@ -97,19 +112,19 @@ class GameObjectStorage
         throw "No server or client token set, use factory methods instead of constructor";
     }
 
-    public function prepareRequest(url:String, context:Dynamic = null):haxe.Http
+    private function prepareRequest(url:String, context:Dynamic = null):HttpBase
     {
         if (context == null)
             context = {};
 
-        var request = new haxe.Http(url);
+        var request = this.createHttp(url);
 
         request.addHeader("Content-Type", "application/json");
         this.addTokenToRequest(request);
 
         request.onData = function(data)
         {
-            handleResponse(request.responseData, context);
+            handleResponse(data, context);
         };
 
         request.onError = function(error)
@@ -145,6 +160,7 @@ class GameObjectStorage
     {
         if (update == null)
             update = [];
+
         if (remove == null)
             remove = [];
 

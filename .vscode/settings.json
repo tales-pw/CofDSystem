@@ -1,4 +1,9 @@
 {
+    "haxe.executable": {
+        "env": {
+            "RELEASE_VERSION": "0.0.0-dev"
+        }
+    },
     "haxe.configurations": [
         ["build_scripts/tests.hxml"],
     ],

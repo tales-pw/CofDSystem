@@ -1,6 +1,6 @@
 package pw.tales.cofdsystem;
 
-import pw.tales.cofdsystem.action.IAction;
+import pw.tales.cofdsystem.synchronization.serialization.system.SystemSerialization;
 import pw.tales.cofdsystem.armor.prefabs.ArmorPrefab;
 import pw.tales.cofdsystem.dices.DiceRoller;
 import pw.tales.cofdsystem.game_object.GameObject;
@@ -11,8 +11,8 @@ import pw.tales.cofdsystem.weapon.prefabs.WeaponPrefab;
 @:expose("CofDSystem")
 class CofDSystem
 {
-    public static final version = LibVersion.get();
-    public static final versionCheck = LibVersion.shouldCheck();
+    public static final VERSION = LibVersion.get();
+    public static final VERSION_CHECK = LibVersion.shouldCheck();
 
     public var dices:DiceRoller = new DiceRoller();
 
@@ -26,8 +26,13 @@ class CofDSystem
 
     public function new() {}
 
-    public function act(action:IAction)
+    public function updateWithData(data:Dynamic):Void
     {
-        action.execute();
+        SystemSerialization.INSTANCE.updateWithData(this, data);
+    }
+
+    public static function fromData(data:Dynamic):CofDSystem
+    {
+        return SystemSerialization.INSTANCE.fromData(data);
     }
 }

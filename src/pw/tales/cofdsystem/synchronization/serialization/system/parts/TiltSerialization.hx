@@ -1,9 +1,8 @@
-package pw.tales.cofdsystem.synchronization.rest.serialization;
+package pw.tales.cofdsystem.synchronization.serialization.system.parts;
 
 import pw.tales.cofdsystem.character.traits.tilts.Tilt;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 import haxe.DynamicAccess;
-import pw.tales.cofdsystem.synchronization.rest.ISerialization;
 
 typedef ApiTilt = {
     dn:String,
@@ -12,13 +11,13 @@ typedef ApiTilt = {
 }
 
 @:expose("APITiltSerialization")
-class APITiltSerialization implements ISerialization
+class TiltSerialization implements IPartSerialization
 {
-    public static final INSTANCE:APITiltSerialization = new APITiltSerialization();
+    public static final INSTANCE = new TiltSerialization();
 
     public function new() {}
 
-    public function handle(system:CofDSystem, data:Dynamic):Void
+    public function update(system:CofDSystem, data:Dynamic):Void
     {
         var tilts:DynamicAccess<ApiTilt> = data.tilts;
         for (dn in tilts.keys())

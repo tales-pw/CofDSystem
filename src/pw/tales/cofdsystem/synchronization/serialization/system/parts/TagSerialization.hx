@@ -1,8 +1,7 @@
-package pw.tales.cofdsystem.synchronization.rest.serialization;
+package pw.tales.cofdsystem.synchronization.serialization.system.parts;
 
 import haxe.DynamicAccess;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
-import pw.tales.cofdsystem.synchronization.rest.ISerialization;
 import pw.tales.cofdsystem.weapon.traits.weapon_tags.WeaponTag;
 
 typedef ApiWeaponTag = {
@@ -12,13 +11,13 @@ typedef ApiWeaponTag = {
 }
 
 @:expose("APITagSerialization")
-class APITagSerialization implements ISerialization
+class TagSerialization implements IPartSerialization
 {
-    public static final INSTANCE:APITagSerialization = new APITagSerialization();
+    public static final INSTANCE = new TagSerialization();
 
     public function new() {}
 
-    public function handle(system:CofDSystem, data:Dynamic):Void
+    public function update(system:CofDSystem, data:Dynamic):Void
     {
         var weaponTag:DynamicAccess<ApiWeaponTag> = data.weapon_tags;
         for (dn in weaponTag.keys())

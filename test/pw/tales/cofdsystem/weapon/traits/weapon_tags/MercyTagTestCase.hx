@@ -14,7 +14,7 @@ class MercyTagTestCase extends WeaponTagTestCase
     private function testApplyAttacker()
     {
         var action = new AttackBuilder(c1, c2).setModifier(EnumSide.ACTOR, 1).build();
-        system.act(action);
+        action.execute();
 
         this.assertArrayEquals(action.getDamage().getTuple(), [1, 0, 0]);
     }
@@ -22,7 +22,7 @@ class MercyTagTestCase extends WeaponTagTestCase
     private function testDontApplyDefence()
     {
         var action = new AttackBuilder(c2, c1).setModifier(EnumSide.ACTOR, 1).build();
-        system.act(action);
+        action.execute();
 
         this.assertArrayEquals(action.getDamage().getTuple(), [0, 1, 0]);
     }

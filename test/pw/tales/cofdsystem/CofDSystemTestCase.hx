@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem;
 
+import thx.Set;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.action_attack.AttackAction;
 import pw.tales.cofdsystem.character.prefabs.HumanPrefab;
@@ -46,9 +47,31 @@ class CofDSystemTestCase extends TestCase implements WithBaseTest
         this.assertArrayEquals(traits.map(v -> v.getDN()), request.getTraits());
     }
 
+    public function assertObjectEquals(expected:Dynamic, actual:Dynamic)
+    {
+        this.assertEquals(Std.string(expected), Std.string(actual));
+    }
+
     public function assertArrayEquals(expected:Array<Dynamic>, actual:Array<Dynamic>):Void
     {
-        assertEquals(Std.string(expected), Std.string(actual));
+        this.assertObjectEquals(expected, actual);
+    }
+
+    function assertGOEquals(gameObject1:GameObject, gameObject2:GameObject)
+    {
+        this.assertEquals(gameObject1.getDN(), gameObject2.getDN());
+        this.assertEquals(gameObject1.version, gameObject2.version);
+
+        var dns1 = Set.createString([for (trait in gameObject1.getTraits()) trait.getDN()]);
+        var dns2 = Set.createString([for (trait in gameObject2.getTraits()) trait.getDN()]);
+
+        for (dn in dns1.union(dns2))
+        {
+            var trait1 = gameObject1.getTraitManager().getTraitByDn(dn);
+            var trait2 = gameObject2.getTraitManager().getTraitByDn(dn);
+
+            this.assertObjectEquals(trait1.serialize(), trait2.serialize());
+        }
     }
 
     public function getBaseTest():Class<TestCase>

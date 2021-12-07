@@ -16,7 +16,7 @@ class BrawlTagTestCase extends WeaponTagTestCase
     private function testApplyBonusToAttacker()
     {
         var action = new AttackBuilder(c1, c2).build();
-        system.act(action);
+        action.execute();
 
         this.assertTraits(action, c1, [Attributes.STRENGTH, Skills.BRAWL]);
         this.assertTraits(action, c2, [DefenceAdvantage.TYPE]);
@@ -25,7 +25,7 @@ class BrawlTagTestCase extends WeaponTagTestCase
     private function testDontApplyBonusToDefence()
     {
         var action = new AttackBuilder(c2, c1).build();
-        system.act(action);
+        action.execute();
 
         this.assertTraits(action, c1, [DefenceAdvantage.TYPE]);
         this.assertTraits(action, c2, [Attributes.STRENGTH, Skills.WEAPONRY]);
