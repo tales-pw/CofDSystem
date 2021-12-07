@@ -1,6 +1,6 @@
 package pw.tales.cofdsystem.synchronization.serialization;
 
-import haxe.Json;
+import pw.tales.cofdsystem.character.prefabs.PlayerPrefab;
 import pw.tales.cofdsystem.synchronization.serialization.system.SystemSerialization;
 import pw.tales.cofdsystem.synchronization.serialization.game_object.GameObjectSerialization;
 
@@ -12,9 +12,14 @@ class GameObjectSerializationTestCase extends CofDSystemTestCase
 
         var serializer = new GameObjectSerialization(system);
 
-        var gameObject = serializer.deserialize(TestData.GO_VALID_DATA);
-        var parsedData = Json.parse(TestData.GO_VALID_DATA);
+        var gameObject1 = PlayerPrefab.INSTANCE.createGameObject(system);
 
-        this.assertEquals(gameObject.getTraitManager().getTraits().items().length, parsedData.traits.length);
+        // Deserialize
+        var data = serializer.serialize(gameObject1);
+
+        // Serialize
+        var gameObject2 = serializer.deserialize(data);
+
+        this.assertGOEquals(gameObject1, gameObject2);
     }
 }

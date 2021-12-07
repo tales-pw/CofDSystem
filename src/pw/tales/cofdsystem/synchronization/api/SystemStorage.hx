@@ -1,11 +1,10 @@
 package pw.tales.cofdsystem.synchronization.api;
 
-import haxe.http.HttpBase;
 import haxe.Json;
 
 @:nullSafety(Off)
 @:expose("SystemStorage")
-class SystemStorage
+class SystemStorage extends APIStorage
 {
     public static final ROUTE:String = "system";
 
@@ -18,11 +17,6 @@ class SystemStorage
 
     private dynamic function onSuccess():Void {}
 
-    public dynamic function prepareRequest(url:String):HttpBase
-    {
-        return new haxe.Http(url);
-    }
-
     private function handleResponse(system:CofDSystem, serializedData:String):Void
     {
         system.updateWithData(Json.parse(serializedData));
@@ -31,7 +25,7 @@ class SystemStorage
 
     public function update(system:CofDSystem):Void
     {
-        var http = this.prepareRequest('${host}/system');
+        var http = this.createHttp('${host}/system');
 
         http.onData = function(serializedData:String)
         {

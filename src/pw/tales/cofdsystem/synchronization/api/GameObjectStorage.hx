@@ -6,7 +6,7 @@ import pw.tales.cofdsystem.game_object.traits.Trait;
 
 @:nullSafety(Off)
 @:expose("GameObjectStorage")
-class GameObjectStorage
+class GameObjectStorage extends APIStorage
 {
     // Response types
     public static final GAME_OBJECT:String = "game_object";
@@ -45,12 +45,12 @@ class GameObjectStorage
 
     public dynamic function onError(data:Dynamic, context:Dynamic):Void {}
 
-    public function setClientToken(token:String):Void
+    private function setClientToken(token:String):Void
     {
         this.clientToken = token;
     }
 
-    public function setServerToken(token:String):Void
+    private function setServerToken(token:String):Void
     {
         this.serverToken = token;
     }
@@ -77,7 +77,7 @@ class GameObjectStorage
             } else
             {
                 // Create new game object from recieved data.
-                gameObject = GameObject.fromData(system, data);
+                gameObject = GameObject.fromData(system, goData);
             }
 
             this.onGameObject(gameObject);
@@ -95,7 +95,7 @@ class GameObjectStorage
         this.onError(data, context);
     }
 
-    private function addTokenToRequest(request:haxe.Http):Void
+    private function addTokenToRequest(request:HttpBase):Void
     {
         if (this.serverToken != null)
         {
@@ -112,19 +112,19 @@ class GameObjectStorage
         throw "No server or client token set, use factory methods instead of constructor";
     }
 
-    public dynamic function prepareRequest(url:String, context:Dynamic = null):HttpBase
+    private function prepareRequest(url:String, context:Dynamic = null):HttpBase
     {
         if (context == null)
             context = {};
 
-        var request = new haxe.Http(url);
+        var request = this.createHttp(url);
 
         request.addHeader("Content-Type", "application/json");
         this.addTokenToRequest(request);
 
         request.onData = function(data)
         {
-            handleResponse(request.responseData, context);
+            handleResponse(data, context);
         };
 
         request.onError = function(error)
