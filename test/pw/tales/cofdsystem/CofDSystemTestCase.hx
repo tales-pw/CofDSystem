@@ -47,7 +47,8 @@ class CofDSystemTestCase extends TestCase implements WithBaseTest
         this.assertArrayEquals(traits.map(v -> v.getDN()), request.getTraits());
     }
 
-    public function assertObjectEquals(expected:Dynamic, actual:Dynamic) {
+    public function assertObjectEquals(expected:Dynamic, actual:Dynamic)
+    {
         this.assertEquals(Std.string(expected), Std.string(actual));
     }
 
@@ -56,14 +57,16 @@ class CofDSystemTestCase extends TestCase implements WithBaseTest
         this.assertObjectEquals(expected, actual);
     }
 
-    function assertGOEquals(gameObject1: GameObject, gameObject2: GameObject) {
+    function assertGOEquals(gameObject1:GameObject, gameObject2:GameObject)
+    {
         this.assertEquals(gameObject1.getDN(), gameObject2.getDN());
         this.assertEquals(gameObject1.version, gameObject2.version);
 
-        var dns1 = Set.createString([for (trait in gameObject1.getTraits()) trait.getDN()]); 
-        var dns2 = Set.createString([for (trait in gameObject2.getTraits()) trait.getDN()]); 
+        var dns1 = Set.createString([for (trait in gameObject1.getTraits()) trait.getDN()]);
+        var dns2 = Set.createString([for (trait in gameObject2.getTraits()) trait.getDN()]);
 
-        for (dn in dns1.union(dns2)) {
+        for (dn in dns1.union(dns2))
+        {
             var trait1 = gameObject1.getTraitManager().getTraitByDn(dn);
             var trait2 = gameObject2.getTraitManager().getTraitByDn(dn);
 

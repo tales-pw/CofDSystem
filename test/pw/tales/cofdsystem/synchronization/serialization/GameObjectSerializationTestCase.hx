@@ -6,13 +6,11 @@ import pw.tales.cofdsystem.synchronization.serialization.game_object.GameObjectS
 
 class GameObjectSerializationTestCase extends CofDSystemTestCase
 {
-    public function testDeserialize()
+    public function test()
     {
-        var system = SystemSerialization.INSTANCE.deserialize(TestData.SYSTEM_VALID_DATA);
+        var gameObject1 = PlayerPrefab.INSTANCE.createGameObject(this.system);
 
-        var serializer = new GameObjectSerialization(system);
-
-        var gameObject1 = PlayerPrefab.INSTANCE.createGameObject(system);
+        var serializer = new GameObjectSerialization(this.system);
 
         // Deserialize
         var data = serializer.serialize(gameObject1);
@@ -21,5 +19,17 @@ class GameObjectSerializationTestCase extends CofDSystemTestCase
         var gameObject2 = serializer.deserialize(data);
 
         this.assertGOEquals(gameObject1, gameObject2);
+    }
+
+    public function testRandomRealDeserialize()
+    {
+        var system = SystemSerialization.INSTANCE.deserialize(TestData.SYSTEM_VALID_DATA);
+
+        var serializer = new GameObjectSerialization(system);
+
+        var gameObject = serializer.deserialize(TestData.SYSTEM_VALID_DATA);
+        serializer.serialize(gameObject);
+
+        this.assertTrue(true);
     }
 }

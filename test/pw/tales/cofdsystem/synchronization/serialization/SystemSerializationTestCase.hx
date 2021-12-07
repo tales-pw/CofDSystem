@@ -4,7 +4,7 @@ import pw.tales.cofdsystem.synchronization.serialization.system.SystemSerializat
 
 class SystemSerializationTestCase extends CofDSystemTestCase
 {
-    public function testDeserialize()
+    public function test()
     {
         var system = SystemSerialization.INSTANCE.deserialize(TestData.SYSTEM_VALID_DATA);
 

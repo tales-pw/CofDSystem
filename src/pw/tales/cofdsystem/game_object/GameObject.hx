@@ -53,7 +53,8 @@ class GameObject implements IRecord
         return this.traitManager.getTrait(type, dn);
     }
 
-    public function getTraits(): Array<Trait> {
+    public function getTraits():Array<Trait>
+    {
         return this.getTraitManager().getTraits().items();
     }
 
