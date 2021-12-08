@@ -21,7 +21,9 @@ class Utility
     public inline static function sortedItems<K, V:Int>(map:Map<K, V>):Array<Item<K, V>>
     {
         var array = Utility.items(map);
-        array.sort((a:Item<K, V>, b:Item<K, V>) -> b.value - a.value);
+        array.sort(
+            (a:Item<K, V>, b:Item<K, V>) -> b.value - a.value
+        );
         return array;
     }
 

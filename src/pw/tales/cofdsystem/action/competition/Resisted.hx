@@ -27,8 +27,12 @@ class Resisted extends Competition
     {
         var system = action.getSystem();
 
-        system.events.post(new ActionBuildPoolEvent(action, this.actorPool));
-        system.events.post(new ActionBuildResistEvent(action, this.targetPool));
+        system.events.post(
+            new ActionBuildPoolEvent(action, this.actorPool)
+        );
+        system.events.post(
+            new ActionBuildResistEvent(action, this.targetPool)
+        );
 
         var resist = targetPool.getRequest().getPoolSize();
         this.actorPool.getRequest().addModifier(-resist, "resist");

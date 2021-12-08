@@ -13,13 +13,22 @@ class FleetOfFootTestCase extends CofDSystemTestCase
         var speedValue = speed.getValue();
 
         var fleetOfFoot:FleetOfFootMerit = cast(manager.addTrait(FleetOfFootMerit.TYPE));
-        assertEquals(speedValue + fleetOfFoot.getValue(), speed.getValue());
+        assertEquals(
+            speedValue + fleetOfFoot.getValue(),
+            speed.getValue()
+        );
 
         fleetOfFoot.setValue(2);
-        assertEquals(speedValue + fleetOfFoot.getValue(), speed.getValue());
+        assertEquals(
+            speedValue + fleetOfFoot.getValue(),
+            speed.getValue()
+        );
 
         fleetOfFoot.setValue(3);
-        assertEquals(speedValue + fleetOfFoot.getValue(), speed.getValue());
+        assertEquals(
+            speedValue + fleetOfFoot.getValue(),
+            speed.getValue()
+        );
 
         manager.removeTrait(fleetOfFoot);
         assertEquals(speedValue, speed.getValue());

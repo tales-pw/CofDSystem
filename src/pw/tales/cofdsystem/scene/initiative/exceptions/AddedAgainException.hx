@@ -10,7 +10,9 @@ class AddedAgainException extends InitiativeException
 
     public function new(gameObject:GameObject, initiative:Initiative)
     {
-        super('${gameObject} is already in initiative.');
+        super(
+            '${gameObject} is already in initiative.'
+        );
         this.gameObject = gameObject;
         this.turnOrder = initiative;
     }

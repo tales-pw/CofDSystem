@@ -20,7 +20,10 @@ class Aspiration extends TextTrait
     )
     {
         super(dn, gameObject, type);
-        this.eventBus.addHandler(AspirationsCollectEvent, (e:AspirationsCollectEvent) -> e.collect(this));
+        this.eventBus.addHandler(
+            AspirationsCollectEvent,
+            (e:AspirationsCollectEvent) -> e.collect(this)
+        );
     }
 
     public function setTitle(title:String):Void

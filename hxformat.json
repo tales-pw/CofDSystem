@@ -1,99 +1,125 @@
 {
-  "lineEnds": {
-    "blockCurly": {
-      "leftCurly": "both",
-      "emptyCurly": "noBreak"
+    "lineEnds":{
+       "blockCurly":{
+          "leftCurly":"both",
+          "emptyCurly":"noBreak"
+       }
+    },
+    "indentation":{
+       "character":"    "
+    },
+    "sameLine":{
+       "comprehensionFor":"next"
+    },
+    "wrapping":{
+       "functionSignature":{
+          "defaultWrap":"fillLine",
+          "rules":[
+             {
+                "type":"onePerLine",
+                "conditions":[
+                   {
+                      "cond":"itemCount >= n",
+                      "value":3
+                   },
+                   {
+                      "cond":"anyItemLength >= n",
+                      "value":20
+                   }
+                ]
+             },
+             {
+                "type":"onePerLine",
+                "conditions":[
+                   {
+                      "cond":"exceedsMaxLineLength"
+                   }
+                ]
+             }
+          ]
+       },
+       "callParameter":{
+          "defaultWrap":"fillLine",
+          "rules":[
+             {
+                "type":"onePerLine",
+                "conditions":[
+                   {
+                      "cond":"itemCount >= n",
+                      "value":3
+                   },
+                   {
+                      "cond":"anyItemLength >= n",
+                      "value":20
+                   }
+                ]
+             },
+             {
+                "type":"onePerLine",
+                "conditions":[
+                   {
+                      "cond":"itemCount >= n",
+                      "value":2
+                   },
+                   {
+                      "cond":"anyItemLength >= n",
+                      "value":30
+                   }
+                ]
+             },
+             {
+                "type":"onePerLine",
+                "conditions":[
+                   {
+                      "cond":"itemCount >= n",
+                      "value":1
+                   },
+                   {
+                      "cond":"anyItemLength >= n",
+                      "value":40
+                   }
+                ]
+             },
+             {
+                "type":"onePerLine",
+                "conditions":[
+                   {
+                      "cond":"exceedsMaxLineLength"
+                   }
+                ]
+             }
+          ]
+       },
+       "arrayWrap":{
+          "defaultWrap":"onePerLine",
+          "rules":[
+             {
+                "type":"fillLine",
+                "conditions":[
+                   {
+                      "cond":"anyItemLength <= n",
+                      "value":4
+                   }
+                ]
+             },
+             {
+                "type":"fillLine",
+                "conditions":[
+                   {
+                      "cond":"itemCount <= n",
+                      "value":1
+                   }
+                ]
+             }
+          ]
+       },
+       "objectLiteral":{
+          "defaultWrap":"onePerLine"
+       },
+       "methodChain":{
+          "defaultWrap":"fillLineWithLeadingBreak",
+          "defaultLocation":"beforeLast"
+       },
+       "maxLineLength":140
     }
-  },
-  "indentation": {
-    "character": "    "
-  },
-  "sameLine": {
-    "comprehensionFor": "next"
-  },
-  "wrapping": {
-    "functionSignature": {
-        "defaultWrap": "fillLine",
-        "rules": [
-          {
-            "type": "onePerLine",
-            "conditions": [
-              {
-                "cond": "itemCount >= n",
-                "value": 3
-              },
-              {
-                "cond": "anyItemLength >= n",
-                "value": 20
-              }
-            ]
-          },
-          {
-          "type": "onePerLine",
-          "conditions": [
-              {
-              "cond": "exceedsMaxLineLength"
-              }
-          ]
-          }
-        ]
-      },
-    "callParameter": {
-      "defaultWrap": "fillLine",
-      "rules": [
-        {
-          "type": "onePerLine",
-          "conditions": [
-            {
-              "cond": "itemCount >= n",
-              "value": 3
-            },
-            {
-              "cond": "anyItemLength >= n",
-              "value": 20
-            }
-          ]
-        },
-        {
-        "type": "onePerLine",
-        "conditions": [
-            {
-            "cond": "exceedsMaxLineLength"
-            }
-        ]
-        }
-      ]
-    },
-    "arrayWrap": {
-      "defaultWrap": "onePerLine",
-      "rules": [
-        {
-          "type": "fillLine",
-          "conditions": [
-            {
-              "cond": "anyItemLength <= n",
-              "value": 4
-            }
-          ]
-        },
-        {
-          "type": "fillLine",
-          "conditions": [
-            {
-              "cond": "itemCount <= n",
-              "value": 1
-            }
-          ]
-        }
-      ]
-    },
-    "objectLiteral": {
-      "defaultWrap": "onePerLine"
-    },
-    "methodChain": {
-      "defaultWrap": "fillLineWithLeadingBreak",
-      "defaultLocation": "beforeLast"
-    },
-    "maxLineLength": 140
-  }
-}
+ }

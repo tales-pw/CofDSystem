@@ -67,13 +67,15 @@ class Initiative
 
     public function update():Void
     {
-        this.order.sort(function(a:GameObject, b:GameObject):Int
-        {
-            var initiativeA = this.getInitiative(a);
-            var initiativeB = this.getInitiative(b);
+        this.order.sort(
+            function(a:GameObject, b:GameObject):Int
+            {
+                var initiativeA = this.getInitiative(a);
+                var initiativeB = this.getInitiative(b);
 
-            return initiativeB - initiativeA;
-        });
+                return initiativeB - initiativeA;
+            }
+        );
 
         this.system.events.post(new InitiativeUpdateEvent(this));
     }

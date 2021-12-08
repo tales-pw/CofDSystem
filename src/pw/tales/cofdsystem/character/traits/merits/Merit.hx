@@ -43,8 +43,14 @@ class Merit extends ValueTrait
             this.description = description;
         }
 
-        this.eventBus.addHandler(MeritsCollectEvent, (e:MeritsCollectEvent) -> e.collect(this));
-        this.eventBus.addHandler(GenMeritCollectEvent, (e:GenMeritCollectEvent) -> e.collect(this));
+        this.eventBus.addHandler(
+            MeritsCollectEvent,
+            (e:MeritsCollectEvent) -> e.collect(this)
+        );
+        this.eventBus.addHandler(
+            GenMeritCollectEvent,
+            (e:GenMeritCollectEvent) -> e.collect(this)
+        );
     }
 
     override public function canUpdate(newValue:Int):Bool

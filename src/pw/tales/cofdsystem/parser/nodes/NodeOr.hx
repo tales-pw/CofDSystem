@@ -25,7 +25,10 @@ class NodeOr implements INodeCheck
 
     public function build(gameObject:GameObject):IMathOperation<Bool>
     {
-        return new MathOr(this.node1.build(gameObject), this.node2.build(gameObject));
+        return new MathOr(
+            this.node1.build(gameObject),
+            this.node2.build(gameObject)
+        );
     }
 
     public function toString():String

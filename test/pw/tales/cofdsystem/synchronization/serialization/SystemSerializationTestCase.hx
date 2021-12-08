@@ -8,6 +8,8 @@ class SystemSerializationTestCase extends CofDSystemTestCase
     {
         var system = SystemSerialization.INSTANCE.deserialize(TestData.SYSTEM_VALID_DATA);
 
-        this.assertTrue(new CofDSystem().traits.items().length < system.traits.items().length);
+        this.assertTrue(
+            new CofDSystem().traits.items().length < system.traits.items().length
+        );
     }
 }

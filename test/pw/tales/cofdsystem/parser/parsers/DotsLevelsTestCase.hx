@@ -34,7 +34,10 @@ class DotsLevelsTestCase extends TestCase
         assertArrayEquals([1, 3, 5], result.getLevels());
 
         var result = INSTANCE.parse("1 или 2 или 3 или 5");
-        assertEquals("• или •• или ••• или •••••", result.getHumanReadable());
+        assertEquals(
+            "• или •• или ••• или •••••",
+            result.getHumanReadable()
+        );
         assertArrayEquals([1, 2, 3, 5], result.getLevels());
     }
 }

@@ -8,6 +8,9 @@ class MITraitFetchException extends GameObjectException
 {
     public function new(gameObject:GameObject, type:TraitType<Dynamic>)
     {
-        super(gameObject, 'Attempting to get ${type} but it is mutiinstanced and no dn is provided.');
+        super(
+            gameObject,
+            'Attempting to get ${type} but it is mutiinstanced and no dn is provided.'
+        );
     }
 }

@@ -71,8 +71,12 @@ class CofDSystemTestCase extends TestCase implements WithBaseTest
         this.assertEquals(gameObject1.getDN(), gameObject2.getDN());
         this.assertEquals(gameObject1.version, gameObject2.version);
 
-        var dns1 = Set.createString([for (trait in gameObject1.getTraits()) trait.getDN()]);
-        var dns2 = Set.createString([for (trait in gameObject2.getTraits()) trait.getDN()]);
+        var dns1 = Set.createString(
+            [for (trait in gameObject1.getTraits()) trait.getDN()]
+        );
+        var dns2 = Set.createString(
+            [for (trait in gameObject2.getTraits()) trait.getDN()]
+        );
 
         for (dn in dns1.union(dns2))
         {

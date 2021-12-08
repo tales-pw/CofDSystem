@@ -24,7 +24,9 @@ class GenAdvancement extends Trait
         super(DN, gameObject, TYPE);
         restrictions.push(new GenAttributeAdvancement(gameObject));
         restrictions.push(new GenSkillAdvancement(gameObject));
-        restrictions.push(new GenSpecialityAdvancement(gameObject));
+        restrictions.push(
+            new GenSpecialityAdvancement(gameObject)
+        );
         restrictions.push(new GenMeritAdvancement(gameObject));
         restrictions.push(new GenWealthAdvancement(gameObject));
 

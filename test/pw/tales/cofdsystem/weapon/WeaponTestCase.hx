@@ -55,10 +55,14 @@ class WeaponTestCase extends CofDSystemTestCase
 
         var weaponTrait:HeldWeapon = cast c1.getTrait(HeldWeapon.TYPE);
 
-        weaponTrait.setMainHand(GENERIC_MELEE_WEAPON.createWeapon(system));
+        weaponTrait.setMainHand(
+            GENERIC_MELEE_WEAPON.createWeapon(system)
+        );
         assertEquals(0, this.getInitiativeMod());
 
-        weaponTrait.setOffHand(GENERIC_MELEE_WEAPON.createWeapon(system));
+        weaponTrait.setOffHand(
+            GENERIC_MELEE_WEAPON.createWeapon(system)
+        );
         assertEquals(-1, this.getInitiativeMod());
 
         weaponTrait.setMainHand(null);
@@ -104,7 +108,9 @@ class WeaponTestCase extends CofDSystemTestCase
     public function testMeleeWeaponPoolIsRemovedWhenWeaponRemoved():Void
     {
         var heldWeapon:HeldWeapon = cast(c1.getTrait(HeldWeapon.TYPE));
-        heldWeapon.setMainHand(GENERIC_MELEE_WEAPON.createWeapon(system));
+        heldWeapon.setMainHand(
+            GENERIC_MELEE_WEAPON.createWeapon(system)
+        );
         heldWeapon.setMainHand(null);
 
         var action = new AttackBuilder(c1, c2).build();
@@ -120,7 +126,9 @@ class WeaponTestCase extends CofDSystemTestCase
     public function testWeaponHand():Void
     {
         var heldWeapon:HeldWeapon = cast(c1.getTrait(HeldWeapon.TYPE));
-        heldWeapon.setOffHand(GENERIC_MELEE_WEAPON.createWeapon(system));
+        heldWeapon.setOffHand(
+            GENERIC_MELEE_WEAPON.createWeapon(system)
+        );
 
         var action = new AttackBuilder(c1, c2).build();
         action.execute();

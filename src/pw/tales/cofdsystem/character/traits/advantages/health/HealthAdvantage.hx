@@ -148,9 +148,16 @@ class HealthAdvantage extends AdvantageExpression implements IHealthTrait
     {
         this.applyDamage(damage);
 
-        this.eventBus.post(new GameObjectDamagedEvent(this.gameObject, damage));
+        this.eventBus.post(
+            new GameObjectDamagedEvent(this.gameObject, damage)
+        );
+
         if (isDead())
-            this.eventBus.post(new GameObjectDiedEvent(this.gameObject));
+        {
+            this.eventBus.post(
+                new GameObjectDiedEvent(this.gameObject)
+            );
+        }
 
         this.notifyUpdated();
     }

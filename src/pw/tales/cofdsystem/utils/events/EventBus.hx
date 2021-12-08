@@ -42,10 +42,12 @@ class EventBus implements IEventBus
     public function addHandlerRecord<T:IEvent>(record:EventHandlerRecord<T>):Void
     {
         handlers.push(record);
-        handlers.sort(function(a:EventHandlerRecord<Dynamic>, b:EventHandlerRecord<Dynamic>)
-        {
-            return HandlerPriority.comparator(a.priority, b.priority);
-        });
+        handlers.sort(
+            function(a:EventHandlerRecord<Dynamic>, b:EventHandlerRecord<Dynamic>)
+            {
+                return HandlerPriority.comparator(a.priority, b.priority);
+            }
+        );
     }
 
     public function removeHandlerRecord<T:IEvent>(record:EventHandlerRecord<T>):Void

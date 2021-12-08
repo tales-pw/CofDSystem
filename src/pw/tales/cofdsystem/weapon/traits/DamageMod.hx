@@ -28,6 +28,8 @@ class DamageMod extends WeaponMod
         if (this.isHolderAttack(action))
             return;
 
-        event.setDamageSucceses(event.getDamageSucceses() + this.getValue());
+        event.setDamageSucceses(
+            event.getDamageSucceses() + this.getValue()
+        );
     }
 }

@@ -16,7 +16,10 @@ class MercyTagTestCase extends WeaponTagTestCase
         var action = new AttackBuilder(c1, c2).setModifier(EnumSide.ACTOR, 1).build();
         action.execute();
 
-        this.assertArrayEquals(action.getDamage().getTuple(), [1, 0, 0]);
+        this.assertArrayEquals(
+            action.getDamage().getTuple(),
+            [1, 0, 0]
+        );
     }
 
     private function testDontApplyDefence():Void
@@ -24,6 +27,9 @@ class MercyTagTestCase extends WeaponTagTestCase
         var action = new AttackBuilder(c2, c1).setModifier(EnumSide.ACTOR, 1).build();
         action.execute();
 
-        this.assertArrayEquals(action.getDamage().getTuple(), [0, 1, 0]);
+        this.assertArrayEquals(
+            action.getDamage().getTuple(),
+            [0, 1, 0]
+        );
     }
 }

@@ -46,7 +46,10 @@ class SpecifiedTarget implements IModification
         }
 
         var pool = action.getCompetition().getActorPool();
-        pool.getRequest().addModifier(this.target.getAttackModifer(), DN);
+        pool.getRequest().addModifier(
+            this.target.getAttackModifer(),
+            DN
+        );
     }
 
     public function applyEffect(event:AttackDamageEvent):Void

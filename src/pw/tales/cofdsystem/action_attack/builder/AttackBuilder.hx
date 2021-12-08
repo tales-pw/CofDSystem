@@ -208,7 +208,9 @@ class AttackBuilder
 
         // Add modification for specified attack
         if (specifiedTarget != null)
-            action.addModification(new SpecifiedTarget(specifiedTarget.getTarget()));
+            action.addModification(
+                new SpecifiedTarget(specifiedTarget.getTarget())
+            );
 
         // Add all-out attack modification
         if (actorAllOut)

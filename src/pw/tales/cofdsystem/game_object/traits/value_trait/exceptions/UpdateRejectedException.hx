@@ -7,6 +7,9 @@ class UpdateRejectedException extends TraitException
 {
     public function new(trait:ValueTrait, value:Int)
     {
-        super(trait, 'Attempt to set ${trait} to ${value} is rejected.');
+        super(
+            trait,
+            'Attempt to set ${trait} to ${value} is rejected.'
+        );
     }
 }

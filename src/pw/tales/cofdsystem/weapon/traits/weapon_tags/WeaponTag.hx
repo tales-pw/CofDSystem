@@ -14,6 +14,9 @@ class WeaponTag extends WeaponTrait
     )
     {
         super(dn, gameObject, type);
-        this.eventBus.addHandler(WeaponTagsCollectEvent, (e:WeaponTagsCollectEvent) -> e.collect(this));
+        this.eventBus.addHandler(
+            WeaponTagsCollectEvent,
+            (e:WeaponTagsCollectEvent) -> e.collect(this)
+        );
     }
 }

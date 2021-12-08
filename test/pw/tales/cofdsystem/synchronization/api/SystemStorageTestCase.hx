@@ -20,6 +20,8 @@ class SystemStorageTestCase extends APIStorageTestCase
         this.storage.update(system);
 
         this.assertEquals(httpMock.url, '${this.DOMAIN}/system');
-        this.assertTrue(new CofDSystem().traits.items().length < system.traits.items().length);
+        this.assertTrue(
+            new CofDSystem().traits.items().length < system.traits.items().length
+        );
     }
 }

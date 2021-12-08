@@ -26,6 +26,9 @@ class PBBinary extends PoolBuilder
 
     override public function build(gameObject:GameObject):IMathOperation<Int>
     {
-        return producer(this.operand1.build(gameObject), this.operand2.build(gameObject));
+        return producer(
+            this.operand1.build(gameObject),
+            this.operand2.build(gameObject)
+        );
     }
 }

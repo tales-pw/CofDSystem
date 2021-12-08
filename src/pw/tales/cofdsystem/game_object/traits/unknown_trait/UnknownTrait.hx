@@ -13,7 +13,10 @@ class UnknownTrait extends Trait
     public function new(dn:String, gameObject:GameObject)
     {
         super(dn, gameObject, UnknownTrait.TYPE);
-        this.eventBus.addHandler(UnknownTraitsCollectEvent, (e:UnknownTraitsCollectEvent) -> e.collect(this));
+        this.eventBus.addHandler(
+            UnknownTraitsCollectEvent,
+            (e:UnknownTraitsCollectEvent) -> e.collect(this)
+        );
     }
 
     override public function serialize():Dynamic

@@ -39,7 +39,10 @@ class HealthTestCase extends CofDSystemTestCase
         var action = new BasicAction(pool, EnumTime.INSTANT, this.system);
         action.execute();
 
-        assertEquals(result, pool.getRequest().getAppliedModifiers()[HealthAdvantage.DN]);
+        assertEquals(
+            result,
+            pool.getRequest().getAppliedModifiers()[HealthAdvantage.DN]
+        );
     }
 
     public function testPenalty0HPLeft():Void
@@ -80,7 +83,10 @@ class HealthTestCase extends CofDSystemTestCase
         action.execute();
 
         var roll = opposition.getPool(c1);
-        assertEquals(null, roll.getRequest().getAppliedModifiers()[HealthAdvantage.DN]);
+        assertEquals(
+            null,
+            roll.getRequest().getAppliedModifiers()[HealthAdvantage.DN]
+        );
     }
 
     public function testSimpleDamage():Void
@@ -181,10 +187,13 @@ class HealthTestCase extends CofDSystemTestCase
         assertEquals(health.getValue(), 6);
 
         var hasDied = false;
-        c1.getEventBus().addHandler(GameObjectDiedEvent, function(e:GameObjectDiedEvent)
-        {
-            hasDied = true;
-        });
+        c1.getEventBus().addHandler(
+            GameObjectDiedEvent,
+            function(e:GameObjectDiedEvent)
+            {
+                hasDied = true;
+            }
+        );
 
         // Make sure character doesn't die from any damage
         health.dealDamage(new Damage(1, 0, 0));

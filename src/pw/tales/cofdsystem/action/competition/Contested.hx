@@ -26,8 +26,12 @@ class Contested extends Competition
     {
         var system = action.getSystem();
 
-        system.events.post(new ActionBuildPoolEvent(action, this.actorPool));
-        system.events.post(new ActionBuildPoolEvent(action, this.targetPool));
+        system.events.post(
+            new ActionBuildPoolEvent(action, this.actorPool)
+        );
+        system.events.post(
+            new ActionBuildPoolEvent(action, this.targetPool)
+        );
 
         this.actorPool.rollWithPoolEvents(action);
         this.targetPool.rollWithPoolEvents(action);

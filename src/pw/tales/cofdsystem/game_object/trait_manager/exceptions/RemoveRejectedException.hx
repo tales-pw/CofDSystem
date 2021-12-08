@@ -8,6 +8,9 @@ class RemoveRejectedException extends TraitException
 {
     public function new(trait:Trait)
     {
-        super(trait, 'Attempt to remove ${trait} is rejected.');
+        super(
+            trait,
+            'Attempt to remove ${trait} is rejected.'
+        );
     }
 }

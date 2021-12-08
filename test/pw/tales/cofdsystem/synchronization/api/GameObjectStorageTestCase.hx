@@ -37,7 +37,10 @@ class GameObjectStorageTestCase extends APIStorageTestCase
 
         this.storage.read(this.DN);
 
-        this.assertEquals(httpMock.url, '${this.DOMAIN}/game_objects/${this.DN}');
+        this.assertEquals(
+            httpMock.url,
+            '${this.DOMAIN}/game_objects/${this.DN}'
+        );
         this.assertTrue(onGameObjectCalled);
     }
 }

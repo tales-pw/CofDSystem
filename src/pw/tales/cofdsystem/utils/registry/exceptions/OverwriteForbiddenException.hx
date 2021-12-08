@@ -11,7 +11,9 @@ class OverwriteForbiddenException extends CofDSystemException
 
     public function new(dn:String, record:IRecord, newRecord:IRecord)
     {
-        super('Attempted to overwrite ${record} with ${newRecord}, which is forbidden.');
+        super(
+            'Attempted to overwrite ${record} with ${newRecord}, which is forbidden.'
+        );
         this.dn = dn;
         this.record = record;
         this.newRecord = newRecord;

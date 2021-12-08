@@ -33,7 +33,9 @@ class RollRequestTrait extends ABSRollRequest
 
     private function buildPool():Int
     {
-        var values = traits.map((trait) -> gameObject.getTraitManager().getValue(trait));
+        var values = traits.map(
+            (trait) -> gameObject.getTraitManager().getValue(trait)
+        );
         return Lambda.fold(values, (a, b) -> a + b, 0);
     }
 

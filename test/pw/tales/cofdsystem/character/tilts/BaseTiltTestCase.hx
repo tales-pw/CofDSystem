@@ -22,13 +22,17 @@ class BaseTiltTestCase extends CofDSystemTestCase
         var tilt = c1.getTraitManager().addTrait(tiltType);
 
         // Exists before scene end
-        assertTrue(c1.getTraitManager().getTrait(tiltType, tilt.getDN()) != null);
+        assertTrue(
+            c1.getTraitManager().getTrait(tiltType, tilt.getDN()) != null
+        );
 
         // Scene end
         scene.end();
 
         // Disappears after scene end
-        assertTrue(c1.getTraitManager().getTrait(tiltType, tilt.getDN()) == null);
+        assertTrue(
+            c1.getTraitManager().getTrait(tiltType, tilt.getDN()) == null
+        );
     }
 
     public override function getBaseTest():Class<TestCase>

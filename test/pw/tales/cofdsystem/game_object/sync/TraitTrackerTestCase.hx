@@ -17,8 +17,14 @@ class TraitTrackerTestCase extends TestCase
         var tracker = new TraitTracker(c1);
 
         var strength:Attribute = cast(manager.addTrait(Attributes.STRENGTH));
-        assertEquals(Std.string([strength]), Std.string(tracker.getUpdate()));
-        assertEquals(Std.string([]), Std.string(tracker.getRemove()));
+        assertEquals(
+            Std.string([strength]),
+            Std.string(tracker.getUpdate())
+        );
+        assertEquals(
+            Std.string([]),
+            Std.string(tracker.getRemove())
+        );
     }
 
     public function testUpdateTrait():Void
@@ -32,13 +38,25 @@ class TraitTrackerTestCase extends TestCase
         var strength:Attribute = cast(manager.addTrait(Attributes.STRENGTH));
         tracker.clear();
 
-        assertEquals(Std.string([]), Std.string(tracker.getUpdate()));
-        assertEquals(Std.string([]), Std.string(tracker.getRemove()));
+        assertEquals(
+            Std.string([]),
+            Std.string(tracker.getUpdate())
+        );
+        assertEquals(
+            Std.string([]),
+            Std.string(tracker.getRemove())
+        );
 
         strength.setValue(5);
 
-        assertEquals(Std.string([strength]), Std.string(tracker.getUpdate()));
-        assertEquals(Std.string([]), Std.string(tracker.getRemove()));
+        assertEquals(
+            Std.string([strength]),
+            Std.string(tracker.getUpdate())
+        );
+        assertEquals(
+            Std.string([]),
+            Std.string(tracker.getRemove())
+        );
     }
 
     public function testRemoveNewTrait():Void
@@ -52,8 +70,14 @@ class TraitTrackerTestCase extends TestCase
         var strength:Attribute = cast(manager.addTrait(Attributes.STRENGTH));
         manager.removeTrait(strength);
 
-        assertEquals(Std.string([]), Std.string(tracker.getUpdate()));
-        assertEquals(Std.string([]), Std.string(tracker.getRemove()));
+        assertEquals(
+            Std.string([]),
+            Std.string(tracker.getUpdate())
+        );
+        assertEquals(
+            Std.string([]),
+            Std.string(tracker.getRemove())
+        );
     }
 
     public function testRemoveOldTrait():Void
@@ -68,7 +92,13 @@ class TraitTrackerTestCase extends TestCase
         tracker.clear();
         manager.removeTrait(strength);
 
-        assertEquals(Std.string([]), Std.string(tracker.getUpdate()));
-        assertEquals(Std.string([strength]), Std.string(tracker.getRemove()));
+        assertEquals(
+            Std.string([]),
+            Std.string(tracker.getUpdate())
+        );
+        assertEquals(
+            Std.string([strength]),
+            Std.string(tracker.getRemove())
+        );
     }
 }

@@ -60,7 +60,7 @@ class DiceRoller
             return diceResults.filter(function(v) return v < 7).length;
         }
 
-        return diceResults.filter(function(v) return v >= permutation.getExplode()).length;
+        return diceResults.filter((v) -> v >= permutation.getExplode()).length;
     }
 
     public function defineResult(successes:Int, threshold:Int):EnumResult

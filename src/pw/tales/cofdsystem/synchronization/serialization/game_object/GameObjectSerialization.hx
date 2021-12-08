@@ -43,7 +43,9 @@ class GameObjectSerialization extends Serialization<GameObject, GameObjectData>
         var oldTraits = gameObject.getTraitManager().getTraits().items();
         var newDNs = [for (trait in data.traits) trait.dn];
 
-        return oldTraits.filter((v:Trait) -> !newDNs.contains(v.getDN()));
+        return oldTraits.filter(
+            (v:Trait) -> !newDNs.contains(v.getDN())
+        );
     }
 
     public override function createNewObj(data:GameObjectData):GameObject
@@ -74,7 +76,9 @@ class GameObjectSerialization extends Serialization<GameObject, GameObjectData>
             if (type == null)
             {
                 type = cast(UnknownTrait.TYPE);
-                logger.warning('Unable to identify trait type for data: ${Json.stringify(trait_data)} fallback to ${type}');
+                logger.warning(
+                    'Unable to identify trait type for data: ${Json.stringify(trait_data)} fallback to ${type}'
+                );
             }
 
             var trait:Trait = this.ensureTrait(manager, type, trait_data.dn);
@@ -83,7 +87,9 @@ class GameObjectSerialization extends Serialization<GameObject, GameObjectData>
                 trait.deserialize(trait_data);
             } catch (e:DeserializationException)
             {
-                logger.warning('Unable to create ${trait.getType()} from data ${Json.stringify(trait_data)} because: ${e.message}.');
+                logger.warning(
+                    'Unable to create ${trait.getType()} from data ${Json.stringify(trait_data)} because: ${e.message}.'
+                );
                 manager.removeTrait(trait);
                 trait = manager.addTrait(UnknownTrait.TYPE);
                 trait.deserialize(trait_data);

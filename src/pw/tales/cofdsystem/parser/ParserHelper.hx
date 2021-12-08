@@ -62,7 +62,10 @@ class ParserHelper extends Parser
             var end = ParserHelper.find(parser, stream, i);
 
             if (end.status)
-                return ParseUtil.makeSuccess(end.index, stream.substring(i, end.index));
+                return ParseUtil.makeSuccess(
+                    end.index,
+                    stream.substring(i, end.index)
+                );
 
             return ParseUtil.makeFailure(end.furthest, Std.string(parser));
         };
