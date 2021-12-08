@@ -1,6 +1,5 @@
 package pw.tales.cofdsystem.character.traits.merits.ambidextrous;
 
-import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.action.events.OffhandModiferEvent;
 import pw.tales.cofdsystem.character.traits.merits.Merit;
 import pw.tales.cofdsystem.game_object.GameObject;

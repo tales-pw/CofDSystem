@@ -24,12 +24,12 @@ class ExpAdvancement extends Trait
         this.eventBus.addHandler(ValueTraitUpdateEvent, this.canBeUpdated);
     }
 
-    public function canBeAdded(event:TraitAddEvent)
+    public function canBeAdded(event:TraitAddEvent):Void
     {
         if (this.gameObject.getState() != GameObjectState.ACTIVE)
             return;
 
-        var advanceableType:Null<IAdvanceableType> = Utility.downcast(event.getTraitType(), IAdvanceableType);
+        var advanceableType = Utility.downcast(event.getTraitType(), IAdvanceableType);
         if (advanceableType == null)
             return event.setCancelled(true);
 
@@ -42,13 +42,14 @@ class ExpAdvancement extends Trait
         var experience:Null<Experience> = this.gameObject.getTrait(Experience.TYPE);
         if (experience == null)
             return event.setCancelled(true);
+
         if (!experience.isEnough(cost))
             return event.setCancelled(true);
 
         experience.spend(cost);
     }
 
-    public function canBeUpdated(event:ValueTraitUpdateEvent)
+    public function canBeUpdated(event:ValueTraitUpdateEvent):Void
     {
         if (this.gameObject.getState() != GameObjectState.ACTIVE)
             return;
@@ -70,16 +71,18 @@ class ExpAdvancement extends Trait
         var experience:Null<Experience> = this.gameObject.getTrait(Experience.TYPE);
         if (experience == null)
             return event.setCancelled(true);
+
         if (!experience.isEnough(cost))
             return event.setCancelled(true);
 
         experience.spend(cost);
     }
 
-    public function canBeRemoved(event:TraitRemoveEvent)
+    public function canBeRemoved(event:TraitRemoveEvent):Void
     {
         if (this.gameObject.getState() != GameObjectState.ACTIVE)
             return;
+
         event.setCancelled(true);
     }
 }

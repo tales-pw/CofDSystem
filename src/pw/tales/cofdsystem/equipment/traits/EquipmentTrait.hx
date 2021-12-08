@@ -1,8 +1,6 @@
 package pw.tales.cofdsystem.equipment.traits;
 
 import pw.tales.cofdsystem.common.EnumHand;
-import pw.tales.cofdsystem.equipment.traits.Equippable;
-import pw.tales.cofdsystem.equipment.traits.HoldingHand;
 import pw.tales.cofdsystem.game_object.events.IGameObjectEvent;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.Trait;

@@ -2,7 +2,6 @@ package pw.tales.cofdsystem.weapon.traits.weapon_tags;
 
 import pw.tales.cofdsystem.game_object.traits.advantages.SizeAdvantage;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
-import pw.tales.cofdsystem.weapon.traits.weapon_tags.ConcealedTag;
 import pw.tales.cofdsystem.action_attack.builder.AttackBuilder;
 
 class ConcealedTagTestCase extends WeaponTagTestCase

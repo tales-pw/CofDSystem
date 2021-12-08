@@ -256,13 +256,6 @@
       }
     },
     {
-      "type": "ReturnCount",
-      "props": {
-        "max": 4,
-        "ignoreFormat": "^$"
-      }
-    },
-    {
       "type": "RightCurly",
       "props": {
         "tokens": [
@@ -373,6 +366,7 @@
     {
       "type": "UnusedImport",
       "props": {
+        "severity": "ERROR",
         "ignoreModules": [],
         "moduleTypeMap": {}
       }

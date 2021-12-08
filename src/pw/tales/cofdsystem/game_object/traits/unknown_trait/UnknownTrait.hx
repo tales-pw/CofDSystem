@@ -1,7 +1,6 @@
 package pw.tales.cofdsystem.game_object.traits.unknown_trait;
 
 import pw.tales.cofdsystem.game_object.traits.unknown_trait.events.UnknownTraitsCollectEvent;
-import String;
 
 @:expose("UnknownTrait")
 class UnknownTrait extends Trait

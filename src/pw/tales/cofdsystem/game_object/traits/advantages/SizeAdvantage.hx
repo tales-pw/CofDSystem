@@ -1,7 +1,6 @@
 package pw.tales.cofdsystem.game_object.traits.advantages;
 
 import pw.tales.cofdsystem.game_object.GameObject;
-import pw.tales.cofdsystem.game_object.traits.advantages.AdvantageValue;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 
 @RegisterTraitTypes

@@ -7,7 +7,6 @@ import pw.tales.cofdsystem.game_object.traits.advantages.AdvantageExpression;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.scene.initiative.events.InitiativeModifiersEvent;
 import pw.tales.cofdsystem.utils.events.HandlerPriority;
-import pw.tales.cofdsystem.weapon.traits.InitiativeMod;
 
 @RegisterTraitTypes
 @:expose("InitiativeAdvantage")

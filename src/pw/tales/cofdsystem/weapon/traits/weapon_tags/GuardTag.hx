@@ -1,7 +1,6 @@
 package pw.tales.cofdsystem.weapon.traits.weapon_tags;
 
 import pw.tales.cofdsystem.action.events.pool.ActionPoolEvent;
-import pw.tales.cofdsystem.action_attack.AttackAction;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 

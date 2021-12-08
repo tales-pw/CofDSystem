@@ -1,6 +1,5 @@
 package pw.tales.cofdsystem.parser.parsers;
 
-import Array;
 import parsihax.ParseObject;
 import parsihax.ParseResult;
 import pw.tales.cofdsystem.parser.nodes.INodeLevels;

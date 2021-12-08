@@ -1,6 +1,5 @@
 package pw.tales.cofdsystem.character.advancement.generation;
 
-import pw.tales.cofdsystem.character.advancement.generation.GenAdvancementItem;
 import pw.tales.cofdsystem.character.advancement.generation.trait_advancements.GenAttributeAdvancement;
 import pw.tales.cofdsystem.character.advancement.generation.trait_advancements.GenMeritAdvancement;
 import pw.tales.cofdsystem.character.advancement.generation.trait_advancements.GenSkillAdvancement;

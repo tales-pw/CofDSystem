@@ -1,6 +1,5 @@
 package pw.tales.cofdsystem.damage;
 
-import pw.tales.cofdsystem.damage.Damage;
 import haxe.unit.TestCase;
 
 class DamageTestCase extends TestCase

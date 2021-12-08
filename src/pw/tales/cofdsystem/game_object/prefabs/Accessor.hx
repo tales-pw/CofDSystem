@@ -2,8 +2,6 @@ package pw.tales.cofdsystem.game_object.prefabs;
 
 import pw.tales.cofdsystem.utils.Utility;
 import pw.tales.cofdsystem.game_object.prefabs.exceptions.NoTraitAccessorException;
-import pw.tales.cofdsystem.game_object.trait_manager.TraitManager;
-import pw.tales.cofdsystem.game_object.traits.text.TextTrait;
 import pw.tales.cofdsystem.game_object.traits.text.TextTraitType;
 import pw.tales.cofdsystem.game_object.traits.Trait;
 import pw.tales.cofdsystem.game_object.traits.TraitType;

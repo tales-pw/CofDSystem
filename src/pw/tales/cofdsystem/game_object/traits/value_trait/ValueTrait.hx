@@ -3,7 +3,6 @@ package pw.tales.cofdsystem.game_object.traits.value_trait;
 import pw.tales.cofdsystem.character.advancement.experience.IAdvanceableTrait;
 import pw.tales.cofdsystem.game_object.traits.value_trait.exceptions.UpdateRejectedException;
 import pw.tales.cofdsystem.game_object.traits.value_trait.events.ValueTraitUpdateEvent;
-import pw.tales.cofdsystem.game_object.traits.value_trait.ValueTraitType;
 
 @:expose("ValueTrait")
 class ValueTrait extends Trait implements IAdvanceableTrait

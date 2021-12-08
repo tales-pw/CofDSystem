@@ -2,7 +2,6 @@ package pw.tales.cofdsystem.scene;
 
 import pw.tales.cofdsystem.character.traits.attribute.Attributes;
 import pw.tales.cofdsystem.mocks.DiceRollerMock;
-import Std;
 
 class InitiativeTestCase extends CofDSystemTestCase
 {

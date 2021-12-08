@@ -1,6 +1,5 @@
 package pw.tales.cofdsystem.equipment.traits;
 
-import pw.tales.cofdsystem.equipment.traits.EquipmentTrait;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 

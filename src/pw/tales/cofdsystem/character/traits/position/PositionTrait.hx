@@ -1,6 +1,5 @@
 package pw.tales.cofdsystem.character.traits.position;
 
-import pw.tales.cofdsystem.character.traits.position.PositionProvider;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.Trait;
 
