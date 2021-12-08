@@ -22,7 +22,7 @@ class WeaponTagTestCase extends CofDSystemTestCase
     @:nullSafety(Off)
     private var no_tag_weapon:Weapon;
 
-    override public function setup()
+    override public function setup():Void
     {
         super.setup();
 

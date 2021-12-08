@@ -35,7 +35,7 @@ class TraitTracker
         return this.gameObject;
     }
 
-    private function trackChange(event:TraitPostChangeEvent)
+    private function trackChange(event:TraitPostChangeEvent):Void
     {
         final trait:Trait = event.getTrait();
         final gameObject = trait.getGameObject();
@@ -55,7 +55,7 @@ class TraitTracker
         gameObject.getSystem().events.post(new TrackerTrackEvent(this));
     }
 
-    private function trackRemove(event:TraitPostRemoveEvent)
+    private function trackRemove(event:TraitPostRemoveEvent):Void
     {
         final trait:Trait = event.getTrait();
         final gameObject = trait.getGameObject();
@@ -80,12 +80,12 @@ class TraitTracker
         return remove.items();
     }
 
-    public function hasChanges()
+    public function hasChanges():Bool
     {
         return this.getUpdate().length > 0 || this.getRemove().length > 0;
     }
 
-    public function clear()
+    public function clear():Void
     {
         for (trait in update.items())
             trait.acceptChanges();

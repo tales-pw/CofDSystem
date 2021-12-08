@@ -16,7 +16,7 @@ class MeleePiercingTagTestCase extends PiercingTagTestCase
         return weapon;
     }
 
-    public function testApplyToGeneral()
+    public function testApplyToGeneral():Void
     {
         this.setupGOArmor(c2, 3, 0);
 
@@ -27,7 +27,7 @@ class MeleePiercingTagTestCase extends PiercingTagTestCase
         assertArrayEquals([0, 4, 0], action.getDamage().getTuple());
     }
 
-    public function testApplyToBallistic()
+    public function testApplyToBallistic():Void
     {
         this.setupGOArmor(c2, 0, 3);
 
@@ -38,7 +38,7 @@ class MeleePiercingTagTestCase extends PiercingTagTestCase
         assertArrayEquals([0, 5, 0], action.getDamage().getTuple());
     }
 
-    public function testApplyToBoth()
+    public function testApplyToBoth():Void
     {
         this.setupGOArmor(c2, 2, 2);
 

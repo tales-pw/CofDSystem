@@ -4,10 +4,9 @@ import pw.tales.cofdsystem.character.traits.advantages.willpower.WillpowerAdvant
 
 class WillpowerAdvantageTestCase extends CofDSystemTestCase
 {
-    public function testNoWillpower()
+    public function testNoWillpower():Void
     {
-        var manager = c1.getTraitManager();
-        var willpower:WillpowerAdvantage = cast c2.getTrait(WillpowerAdvantage.TYPE);
+        var willpower = c2.getTrait(WillpowerAdvantage.TYPE);
 
         var exceptionHappened = false;
         try

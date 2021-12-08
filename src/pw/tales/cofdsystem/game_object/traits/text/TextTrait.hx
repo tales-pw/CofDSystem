@@ -11,7 +11,7 @@ class TextTrait extends Trait
         return this.value;
     }
 
-    public function setText(value:String)
+    public function setText(value:String):Void
     {
         this.value = value;
         this.notifyUpdated();

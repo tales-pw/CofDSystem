@@ -28,7 +28,7 @@ class Equipment extends Accessor
         return this.getTrait(Equippable.TYPE);
     }
 
-    private function setHolder(gameObject:GameObject)
+    private function setHolder(gameObject:GameObject):Void
     {
         try
         {
@@ -36,7 +36,7 @@ class Equipment extends Accessor
         } catch (NoTraitAccessorException) {}
     }
 
-    private function unsetHolder()
+    private function unsetHolder():Void
     {
         try
         {

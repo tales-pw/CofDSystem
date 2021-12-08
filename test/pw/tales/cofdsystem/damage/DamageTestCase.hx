@@ -4,14 +4,14 @@ import haxe.unit.TestCase;
 
 class DamageTestCase extends TestCase
 {
-    public function assertDamage(expecitedB:Int, expectedL:Int, expectedA:Int, damage:Damage)
+    public function assertDamage(expecitedB:Int, expectedL:Int, expectedA:Int, damage:Damage):Void
     {
         assertEquals(expecitedB, damage.getBashing());
         assertEquals(expectedL, damage.getLethal());
         assertEquals(expectedA, damage.getAggravated());
     }
 
-    public function testBallistic()
+    public function testBallistic():Void
     {
         // Ignores bashing
         var damage = new Damage(3, 0, 0);
@@ -34,7 +34,7 @@ class DamageTestCase extends TestCase
         assertDamage(3, 2, 0, damage);
     }
 
-    public function testGeneral()
+    public function testGeneral():Void
     {
         // Esnure absorb priorities
         var damage = new Damage(2, 2, 2);
@@ -55,7 +55,7 @@ class DamageTestCase extends TestCase
         assertDamage(0, 0, 0, damage);
     }
 
-    public function testRulebookExample()
+    public function testRulebookExample():Void
     {
         var damage = new Damage(0, 3, 0);
         damage.applyBallisticArmor(3);

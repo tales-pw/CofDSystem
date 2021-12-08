@@ -5,7 +5,7 @@ import pw.tales.cofdsystem.character.traits.merits.fleet_of_foot.FleetOfFootMeri
 
 class FleetOfFootTestCase extends CofDSystemTestCase
 {
-    public function testFleetOfFoot()
+    public function testFleetOfFoot():Void
     {
         var manager = c1.getTraitManager();
 

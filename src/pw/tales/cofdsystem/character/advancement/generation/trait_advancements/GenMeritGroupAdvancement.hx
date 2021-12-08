@@ -17,14 +17,14 @@ class GenMeritGroupAdvancement<T:Trait, TY:TraitType<T>> extends GenAdvancementI
         super(traitClazz, traitTypeClazz, gameObject);
     }
 
-    private function collectMeritForGeneration(gameObject:GameObject)
+    private function collectMeritForGeneration(gameObject:GameObject):Array<Trait>
     {
         var event = new GenMeritCollectEvent(gameObject);
         gameObject.getEventBus().post(event);
         return event.getCollected();
     }
 
-    private function calcualteMeritTotal()
+    private function calcualteMeritTotal():Int
     {
         var merits = this.collectMeritForGeneration(gameObject);
 

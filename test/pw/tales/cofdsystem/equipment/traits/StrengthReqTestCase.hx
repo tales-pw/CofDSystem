@@ -19,9 +19,8 @@ class StrengthReqTestCase extends CofDSystemTestCase
         return prefab.createWeapon(this.system);
     }
 
-    public function testApply()
+    public function testApply():Void
     {
-        var weapon = this.createWeapon();
         this.c1.getTrait(HeldWeapon.TYPE).setMainHand(this.createWeapon());
         this.c1.getTrait(Attributes.STRENGTH).setValue(3);
 

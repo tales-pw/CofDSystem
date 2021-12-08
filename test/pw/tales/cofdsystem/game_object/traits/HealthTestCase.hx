@@ -27,7 +27,7 @@ class HealthTestCase extends CofDSystemTestCase
         return health;
     }
 
-    private function methodTestHealthPenalty(diff:Int, result:Null<Int>)
+    private function methodTestHealthPenalty(diff:Int, result:Null<Int>):Void
     {
         var manager = c1.getTraitManager();
         manager.getTrait(Attributes.STAMINA).setValue(1);
@@ -42,32 +42,32 @@ class HealthTestCase extends CofDSystemTestCase
         assertEquals(result, pool.getRequest().getAppliedModifiers()[HealthAdvantage.DN]);
     }
 
-    public function testPenalty0HPLeft()
+    public function testPenalty0HPLeft():Void
     {
         this.methodTestHealthPenalty(0, -3);
     }
 
-    public function testPenalty1HPLeft()
+    public function testPenalty1HPLeft():Void
     {
         this.methodTestHealthPenalty(1, -3);
     }
 
-    public function testPenalty2HPLeft()
+    public function testPenalty2HPLeft():Void
     {
         this.methodTestHealthPenalty(2, -2);
     }
 
-    public function testPenalty3HPLeft()
+    public function testPenalty3HPLeft():Void
     {
         this.methodTestHealthPenalty(3, -1);
     }
 
-    public function testPenalty4HPLeft()
+    public function testPenalty4HPLeft():Void
     {
         this.methodTestHealthPenalty(4, null);
     }
 
-    public function testHealthRollPenaltyForResistedAction()
+    public function testHealthRollPenaltyForResistedAction():Void
     {
         var maxHealth = c2.getTrait(HealthAdvantage.TYPE).getValue();
         HealthTraitHelper.get(c2).dealDamage(new Damage(maxHealth, 0, 0));
@@ -83,7 +83,7 @@ class HealthTestCase extends CofDSystemTestCase
         assertEquals(null, roll.getRequest().getAppliedModifiers()[HealthAdvantage.DN]);
     }
 
-    public function testSimpleDamage()
+    public function testSimpleDamage():Void
     {
         c1.getTrait(Attributes.STAMINA).setValue(2);
         var health:HealthAdvantage = cast(c1.getTrait(HealthAdvantage.TYPE));
@@ -115,7 +115,7 @@ class HealthTestCase extends CofDSystemTestCase
         assertEquals(1, health.getAggravated());
     }
 
-    public function testUpgradingBashingWithBashing()
+    public function testUpgradingBashingWithBashing():Void
     {
         var health:HealthAdvantage = this.prepareHealthAdvantage(6, 0, 0);
 
@@ -125,7 +125,7 @@ class HealthTestCase extends CofDSystemTestCase
         assertEquals(0, health.getAggravated());
     }
 
-    public function testUpgradingBashingWithLethal()
+    public function testUpgradingBashingWithLethal():Void
     {
         var health:HealthAdvantage = this.prepareHealthAdvantage(6, 0, 0);
 
@@ -135,7 +135,7 @@ class HealthTestCase extends CofDSystemTestCase
         assertEquals(0, health.getAggravated());
     }
 
-    public function testUpgradingBashingWithAggravated()
+    public function testUpgradingBashingWithAggravated():Void
     {
         var health:HealthAdvantage = this.prepareHealthAdvantage(6, 0, 0);
 
@@ -145,7 +145,7 @@ class HealthTestCase extends CofDSystemTestCase
         assertEquals(1, health.getAggravated());
     }
 
-    public function testUpgradingLethalWithBashing()
+    public function testUpgradingLethalWithBashing():Void
     {
         var health:HealthAdvantage = this.prepareHealthAdvantage(0, 6, 0);
 
@@ -155,7 +155,7 @@ class HealthTestCase extends CofDSystemTestCase
         assertEquals(1, health.getAggravated());
     }
 
-    public function testUpgradingLethalWithLethal()
+    public function testUpgradingLethalWithLethal():Void
     {
         var health:HealthAdvantage = this.prepareHealthAdvantage(0, 6, 0);
 
@@ -165,7 +165,7 @@ class HealthTestCase extends CofDSystemTestCase
         assertEquals(1, health.getAggravated());
     }
 
-    public function testUpgradingLethalWithAggravated()
+    public function testUpgradingLethalWithAggravated():Void
     {
         var health:HealthAdvantage = this.prepareHealthAdvantage(0, 6, 0);
 
@@ -175,7 +175,7 @@ class HealthTestCase extends CofDSystemTestCase
         assertEquals(1, health.getAggravated());
     }
 
-    public function testDeath()
+    public function testDeath():Void
     {
         var health:HealthAdvantage = cast(c1.getTrait(HealthAdvantage.TYPE));
         assertEquals(health.getValue(), 6);

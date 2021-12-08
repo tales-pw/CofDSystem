@@ -5,7 +5,7 @@ import pw.tales.cofdsystem.action_attack.events.HeartPiercedEvent;
 @:expose("Heart")
 class Heart implements ITarget
 {
-    public static final instance = new Heart();
+    public static final INSTANCE = new Heart();
 
     public function new() {}
 

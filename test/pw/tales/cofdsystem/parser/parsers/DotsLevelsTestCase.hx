@@ -4,14 +4,14 @@ import haxe.unit.TestCase;
 
 class DotsLevelsTestCase extends TestCase
 {
-    public static var parser = new DotsLevelsParser();
+    public static final parser = new DotsLevelsParser();
 
-    public function assertArrayEquals(a:Array<Int>, b:Array<Int>)
+    public function assertArrayEquals(a:Array<Int>, b:Array<Int>):Void
     {
         assertEquals(a.toString(), b.toString());
     }
 
-    public function testParser()
+    public function testParser():Void
     {
         var result = parser.parse("3");
         assertEquals("•••", result.getHumanReadable());

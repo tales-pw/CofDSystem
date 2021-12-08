@@ -24,7 +24,7 @@ class ValueTrait extends Trait implements IAdvanceableTrait
         return this.value;
     }
 
-    public function canUpdate(newValue:Int)
+    public function canUpdate(newValue:Int):Bool
     {
         var event = new ValueTraitUpdateEvent(this, newValue);
         this.system.events.post(event);
@@ -39,7 +39,7 @@ class ValueTrait extends Trait implements IAdvanceableTrait
         return (newValue - this.getValue()) * dotCost;
     }
 
-    public function setValue(value:Int)
+    public function setValue(value:Int):Void
     {
         if (!this.canUpdate(value))
             throw new UpdateRejectedException(this, value);

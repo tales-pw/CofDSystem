@@ -30,7 +30,7 @@ class NodeDotsRange implements INodeLevels
         return 'NodeDotsRange[${this.start},${this.end}}]';
     }
 
-    public static function create(start:Int, end:Int)
+    public static function create(start:Int, end:Int):NodeDotsRange
     {
         return new NodeDotsRange(new NodeDots(start), new NodeDots(end));
     }

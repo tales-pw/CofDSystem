@@ -28,7 +28,7 @@ class SubEventBus implements IEventBus
         return new SubEventBus(this);
     }
 
-    public function post<T:IEvent>(event:T)
+    public function post<T:IEvent>(event:T):Void
     {
         this.checkEnabled();
 
@@ -50,7 +50,7 @@ class SubEventBus implements IEventBus
         return record;
     }
 
-    public function addHandlerRecord<T:IEvent>(record:EventHandlerRecord<T>)
+    public function addHandlerRecord<T:IEvent>(record:EventHandlerRecord<T>):Void
     {
         this.checkEnabled();
 
@@ -58,7 +58,7 @@ class SubEventBus implements IEventBus
         this.handlers.push(record);
     }
 
-    public function removeHandlerRecord<T:IEvent>(record:EventHandlerRecord<T>)
+    public function removeHandlerRecord<T:IEvent>(record:EventHandlerRecord<T>):Void
     {
         this.checkEnabled();
 
@@ -66,21 +66,21 @@ class SubEventBus implements IEventBus
         this.handlers.remove(record);
     }
 
-    public function enable()
+    public function enable():Void
     {
         this.enabled = true;
         for (record in handlers)
             this.parent.addHandlerRecord(record);
     }
 
-    public function disable()
+    public function disable():Void
     {
         this.enabled = false;
         for (record in handlers)
             this.parent.removeHandlerRecord(record);
     }
 
-    private function checkEnabled()
+    private function checkEnabled():Void
     {
         if (!this.enabled)
             throw "Attempt to use disabled sub bus.";

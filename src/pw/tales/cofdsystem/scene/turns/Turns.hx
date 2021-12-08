@@ -21,27 +21,27 @@ class Turns
         this.initiative = initiative;
     }
 
-    public function add(gameObject:GameObject)
+    public function add(gameObject:GameObject):Void
     {
         this.turns.push(gameObject);
     }
 
-    public function remove(gameObject:GameObject)
+    public function remove(gameObject:GameObject):Void
     {
         this.turns.remove(gameObject);
     }
 
-    public function nextRound()
+    public function nextRound():Void
     {
         this.turns = this.initiative.getOrder().copy();
     }
 
-    public function start()
+    public function start():Void
     {
         this.nextTurn();
     }
 
-    public function nextTurn()
+    public function nextTurn():Void
     {
         system.events.post(TurnEvent.END(this, this.getTurn()));
 

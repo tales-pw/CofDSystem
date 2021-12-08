@@ -7,7 +7,7 @@ class GetHealthTraitEvent extends GameObjectEvent
 {
     private var trait:Null<IHealthTrait> = null;
 
-    public function setHealthTrait(trait:IHealthTrait)
+    public function setHealthTrait(trait:IHealthTrait):Void
     {
         this.trait = trait;
     }

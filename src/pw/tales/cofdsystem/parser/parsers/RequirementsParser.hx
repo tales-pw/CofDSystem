@@ -74,7 +74,7 @@ class RequirementsParser extends Parser
     });
 
     private static final ARRAY3:Array<ParseObject<Dynamic>> = [STATEMENT, OR_LITERAL, FULL_PARSER];
-    public static var OR:ParseObject<NodeOr> = ARRAY3.seq().map(function(values)
+    public static final OR:ParseObject<NodeOr> = ARRAY3.seq().map(function(values)
     {
         var castedResult = cast(values, Array<Dynamic>);
         var node1 = cast(castedResult[0], INodeCheck);

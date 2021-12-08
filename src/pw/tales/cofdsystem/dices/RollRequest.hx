@@ -22,12 +22,12 @@ class RollRequest implements IRollRequest
         return [];
     }
 
-    public function addModifier(value:Int, modDn:Null<String> = null, gameObject:Null<GameObject> = null)
+    public function addModifier(value:Int, modDn:Null<String> = null, gameObject:Null<GameObject> = null):Void
     {
         // TODO: Implement
     }
 
-    public function setThreshold(threshold:Int)
+    public function setThreshold(threshold:Int):Void
     {
         this.threshold = threshold;
     }
@@ -37,7 +37,7 @@ class RollRequest implements IRollRequest
         return this.threshold;
     }
 
-    public function setExplode(permutation:EnumExplode)
+    public function setExplode(permutation:EnumExplode):Void
     {
         this.explode = permutation;
     }

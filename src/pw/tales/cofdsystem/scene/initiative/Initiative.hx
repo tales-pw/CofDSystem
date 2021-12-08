@@ -41,7 +41,7 @@ class Initiative
         return rollResult + event.getModifier();
     }
 
-    public function add(gameObject:GameObject)
+    public function add(gameObject:GameObject):Void
     {
         if (this.order.indexOf(gameObject) != -1)
         {
@@ -57,7 +57,7 @@ class Initiative
         this.update();
     }
 
-    public function remove(gameObject:GameObject)
+    public function remove(gameObject:GameObject):Void
     {
         this.order.remove(gameObject);
         this.rollResults.remove(gameObject);
@@ -65,7 +65,7 @@ class Initiative
         this.update();
     }
 
-    public function update()
+    public function update():Void
     {
         this.order.sort(function(a:GameObject, b:GameObject):Int
         {

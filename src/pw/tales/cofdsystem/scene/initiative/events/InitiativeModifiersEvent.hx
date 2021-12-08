@@ -21,7 +21,7 @@ class InitiativeModifiersEvent extends InitiativeEvent implements IGameObjectEve
         return this.gameObject;
     }
 
-    public function apply(modifier:Int)
+    public function apply(modifier:Int):Void
     {
         finalModifier = finalModifier + modifier;
     }

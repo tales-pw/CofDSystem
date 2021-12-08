@@ -11,13 +11,13 @@ class ConcealedTagTestCase extends WeaponTagTestCase
         return ConcealedTag.TYPE;
     }
 
-    private function setShieldSize(size:Int)
+    private function setShieldSize(size:Int):Void
     {
         var gameObject = this.weapon.getGameObject();
         gameObject.getTrait(SizeAdvantage.TYPE).setValue(size);
     }
 
-    public function testConcealedAppliedWhenTargetWithShield()
+    public function testConcealedAppliedWhenTargetWithShield():Void
     {
         for (size in 1...5)
         {
@@ -31,7 +31,7 @@ class ConcealedTagTestCase extends WeaponTagTestCase
         }
     }
 
-    public function testConcealedNotAppliedWhenActorWithShield()
+    public function testConcealedNotAppliedWhenActorWithShield():Void
     {
         this.setShieldSize(3);
 

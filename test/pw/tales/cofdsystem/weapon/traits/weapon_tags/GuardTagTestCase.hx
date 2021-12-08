@@ -10,7 +10,7 @@ class GuardTagTestCase extends WeaponTagTestCase
         return GuardTag.TYPE;
     }
 
-    public function testAppliedWhenTarget()
+    public function testAppliedWhenTarget():Void
     {
         var action = new AttackBuilder(c2, c1).build();
         action.execute();
@@ -19,7 +19,7 @@ class GuardTagTestCase extends WeaponTagTestCase
         this.assertBonus(action, c2, null);
     }
 
-    public function testNotAppliedWhenActor()
+    public function testNotAppliedWhenActor():Void
     {
         var action = new AttackBuilder(c1, c2).build();
         action.execute();

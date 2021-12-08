@@ -38,7 +38,7 @@ class Registry<T:IRecord>
         return this.registry.get(dn);
     }
 
-    private function saveRecord(record:T)
+    private function saveRecord(record:T):Void
     {
         var dn = this.getDN(record);
 
@@ -56,7 +56,7 @@ class Registry<T:IRecord>
         return this;
     }
 
-    public function unregister(record:T)
+    public function unregister(record:T):Void
     {
         var dn = this.getDN(record);
         this.registry.remove(dn);
@@ -67,7 +67,7 @@ class Registry<T:IRecord>
         return [for (value in this.registry) value];
     }
 
-    public function clear()
+    public function clear():Void
     {
         this.registry.clear();
     }

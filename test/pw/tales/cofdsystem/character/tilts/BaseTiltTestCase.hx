@@ -12,7 +12,7 @@ class BaseTiltTestCase extends CofDSystemTestCase
         throw new NotImplemented();
     }
 
-    public function testTiltsDeletedOnSceneEnd()
+    public function testTiltsDeletedOnSceneEnd():Void
     {
         var scene = Scene.create(this.system);
         scene.add(c1);

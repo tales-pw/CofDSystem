@@ -17,7 +17,7 @@ class ArmorTestCase extends CofDSystemTestCase
         ballistic: 2
     };
 
-    override public function setup()
+    override public function setup():Void
     {
         super.setup();
         c1.getTrait(Attributes.STRENGTH).setValue(3);
@@ -29,7 +29,7 @@ class ArmorTestCase extends CofDSystemTestCase
         c2.getTrait(WornArmor.TYPE).setArmor(ARMOR.createArmor(system));
     }
 
-    public function testSimple()
+    public function testSimple():Void
     {
         var action = new AttackBuilder(c1, c2).build();
         action.execute();

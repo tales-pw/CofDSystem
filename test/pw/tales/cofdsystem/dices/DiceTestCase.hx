@@ -5,7 +5,7 @@ import haxe.unit.TestCase;
 
 class DiceTestCase extends TestCase
 {
-    public function testDiceRolls()
+    public function testDiceRolls():Void
     {
         var roller = new DiceRoller();
         var request = new RollRequest(new MathValue<Int>(10));

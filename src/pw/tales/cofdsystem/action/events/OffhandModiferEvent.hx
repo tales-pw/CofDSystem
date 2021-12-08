@@ -12,7 +12,7 @@ class OffhandModiferEvent extends GameObjectEvent
         return this.modifer;
     }
 
-    public function setModifer(modifer:Int)
+    public function setModifer(modifer:Int):Void
     {
         this.modifer = modifer;
     }

@@ -36,7 +36,7 @@ class WillpowerAdvantage extends AdvantageExpression
         return this.getValue();
     }
 
-    public function burnWillpower()
+    public function burnWillpower():Void
     {
         var newPoints = this.getPoints() - 1;
 

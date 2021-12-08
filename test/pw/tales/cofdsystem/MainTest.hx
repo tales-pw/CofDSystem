@@ -18,7 +18,7 @@ class MainTest
         return testSkip.getBaseTest() == Type.getClass(test);
     }
 
-    static public function main()
+    static public function main():Void
     {
         var r = new TestRunner();
 

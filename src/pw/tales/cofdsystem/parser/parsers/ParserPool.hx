@@ -1,7 +1,6 @@
 package pw.tales.cofdsystem.parser.parsers;
 
 import parsihax.ParseObject;
-import parsihax.Parser;
 import parsihax.ParseResult;
 import pw.tales.cofdsystem.parser.exception.ParsingException;
 import pw.tales.cofdsystem.parser.nodes.INodePoolBuilder;

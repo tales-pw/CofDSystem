@@ -35,7 +35,7 @@ class EventBus implements IEventBus
         return record;
     }
 
-    public function addHandlerRecord<T:IEvent>(record:EventHandlerRecord<T>)
+    public function addHandlerRecord<T:IEvent>(record:EventHandlerRecord<T>):Void
     {
         handlers.push(record);
         handlers.sort(function(a:EventHandlerRecord<Dynamic>, b:EventHandlerRecord<Dynamic>)
@@ -44,7 +44,7 @@ class EventBus implements IEventBus
         });
     }
 
-    public function removeHandlerRecord<T:IEvent>(record:EventHandlerRecord<T>)
+    public function removeHandlerRecord<T:IEvent>(record:EventHandlerRecord<T>):Void
     {
         this.handlers.remove(record);
     }

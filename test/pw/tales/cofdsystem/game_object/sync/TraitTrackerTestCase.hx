@@ -8,7 +8,7 @@ import haxe.unit.TestCase;
 @:nullSafety(Off)
 class TraitTrackerTestCase extends TestCase
 {
-    public function testAddTrait()
+    public function testAddTrait():Void
     {
         var system = new CofDSystem();
         var c1 = new CharacterMock(system);
@@ -21,7 +21,7 @@ class TraitTrackerTestCase extends TestCase
         assertEquals(Std.string([]), Std.string(tracker.getRemove()));
     }
 
-    public function testUpdateTrait()
+    public function testUpdateTrait():Void
     {
         var system = new CofDSystem();
         var c1 = new CharacterMock(system);
@@ -41,7 +41,7 @@ class TraitTrackerTestCase extends TestCase
         assertEquals(Std.string([]), Std.string(tracker.getRemove()));
     }
 
-    public function testRemoveNewTrait()
+    public function testRemoveNewTrait():Void
     {
         var system = new CofDSystem();
         var c1 = new CharacterMock(system);
@@ -56,7 +56,7 @@ class TraitTrackerTestCase extends TestCase
         assertEquals(Std.string([]), Std.string(tracker.getRemove()));
     }
 
-    public function testRemoveOldTrait()
+    public function testRemoveOldTrait():Void
     {
         var system = new CofDSystem();
         var c1 = new CharacterMock(system);

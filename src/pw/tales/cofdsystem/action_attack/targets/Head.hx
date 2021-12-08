@@ -6,7 +6,7 @@ import pw.tales.cofdsystem.character.traits.tilts.StunnedTilt;
 @:expose("Head")
 class Head implements ITarget
 {
-    public static final instance = new Head();
+    public static final INSTANCE = new Head();
 
     public function new() {}
 

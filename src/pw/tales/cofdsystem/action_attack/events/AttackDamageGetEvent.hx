@@ -8,7 +8,7 @@ import pw.tales.cofdsystem.damage.Damage;
 @:expose("AttackDamageGetEvent")
 class AttackDamageGetEvent extends AttackDamageEvent
 {
-    public function setDamage(damage:Damage)
+    public function setDamage(damage:Damage):Void
     {
         this.damage = damage;
     }

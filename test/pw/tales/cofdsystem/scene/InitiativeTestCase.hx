@@ -5,13 +5,13 @@ import pw.tales.cofdsystem.mocks.DiceRollerMock;
 
 class InitiativeTestCase extends CofDSystemTestCase
 {
-    override public function setup()
+    override public function setup():Void
     {
         super.setup();
         system.dices = new DiceRollerMock([5, 8, 6]);
     }
 
-    public function testInitiative()
+    public function testInitiative():Void
     {
         var scene = Scene.create(system);
         var initiative = scene.getInitiative();

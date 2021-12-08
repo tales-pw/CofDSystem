@@ -15,12 +15,12 @@ class EnumSpecifiedTarget extends EnumNamed
 {
     public static final VALUES = new StringMap<EnumSpecifiedTarget>();
 
-    public static final ARM = new EnumSpecifiedTarget(Arm.instance);
-    public static final LEG = new EnumSpecifiedTarget(Leg.instance);
-    public static final HEAD = new EnumSpecifiedTarget(Head.instance);
-    public static final HEART = new EnumSpecifiedTarget(Heart.instance);
-    public static final HAND = new EnumSpecifiedTarget(Hand.instance);
-    public static final EYE = new EnumSpecifiedTarget(Eye.instance);
+    public static final ARM = new EnumSpecifiedTarget(Arm.INSTANCE);
+    public static final LEG = new EnumSpecifiedTarget(Leg.INSTANCE);
+    public static final HEAD = new EnumSpecifiedTarget(Head.INSTANCE);
+    public static final HEART = new EnumSpecifiedTarget(Heart.INSTANCE);
+    public static final HAND = new EnumSpecifiedTarget(Hand.INSTANCE);
+    public static final EYE = new EnumSpecifiedTarget(Eye.INSTANCE);
 
     private final target:ITarget;
 

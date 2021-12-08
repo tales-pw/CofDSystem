@@ -14,18 +14,16 @@ class GameObjectStorageTestCase extends APIStorageTestCase
     @:nullSafety(Off)
     private var storage:GameObjectStorage = null;
 
-    public override function setup()
+    public override function setup():Void
     {
         super.setup();
-        this.system = new CofDSystem();
+        this.system = SystemSerialization.INSTANCE.deserialize(TestData.SYSTEM_VALID_DATA);
         this.storage = GameObjectStorage.createForClient(this.DOMAIN, this.system, this.TOKEN);
         this.storage.createHttp = this.mockCreateHttp();
     }
 
-    public function testSuccessfulFetch()
+    public function testSuccessfulFetch():Void
     {
-        var system = SystemSerialization.INSTANCE.deserialize(TestData.SYSTEM_VALID_DATA);
-
         this.httpMock.setData(Json.stringify({
             type: "game_object",
             game_object: Json.parse(TestData.GO_VALID_DATA)

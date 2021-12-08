@@ -6,7 +6,7 @@ import pw.tales.cofdsystem.utils.EnumNamed;
 @:expose("EnumSide")
 class EnumSide extends EnumNamed
 {
-    public static var VALUES = new StringMap<EnumSide>();
+    public static final VALUES = new StringMap<EnumSide>();
 
     public static final ACTOR = new EnumSide("actor");
     public static final TARGET = new EnumSide("target");

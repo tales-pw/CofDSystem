@@ -7,7 +7,7 @@ class DiceRollerMock extends DiceRoller
     public var result:Null<Int>;
     public var results:Array<Int>;
 
-    public function new(results:Array<Int>, ?result:Null<Int>)
+    public function new(results:Array<Int>, result:Null<Int> = null)
     {
         super();
         this.result = result;

@@ -25,7 +25,7 @@ class Utility
         return array;
     }
 
-    public inline static function replace<T>(array:Array<T>, value:T, replaceWith:T)
+    public inline static function replace<T>(array:Array<T>, value:T, replaceWith:T):Array<T>
     {
         return [for (arrayValue in array) if (arrayValue == value) replaceWith else arrayValue];
     }

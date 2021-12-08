@@ -21,7 +21,7 @@ class Merit extends ValueTrait
     @Serialize("description")
     private var description:String = "";
 
-    public function new(dn:String, gameObject:GameObject, type:MeritType, ?customName:String, ?description:String)
+    public function new(dn:String, gameObject:GameObject, type:MeritType, customName:String = null, description:String = null)
     {
         super(dn, gameObject, type, type.getLowestValue());
         this.meritType = type;
@@ -36,7 +36,7 @@ class Merit extends ValueTrait
         this.eventBus.addHandler(GenMeritCollectEvent, (e:GenMeritCollectEvent) -> e.collect(this));
     }
 
-    override public function canUpdate(newValue:Int)
+    override public function canUpdate(newValue:Int):Bool
     {
         var levels = meritType.getLevels();
 
@@ -53,7 +53,7 @@ class Merit extends ValueTrait
         return this.value;
     }
 
-    public function setCustomName(customName:Null<String>)
+    public function setCustomName(customName:Null<String>):Void
     {
         this.customName = customName;
         this.notifyUpdated();
@@ -64,13 +64,13 @@ class Merit extends ValueTrait
         return this.customName;
     }
 
-    public function setDescription(description:String)
+    public function setDescription(description:String):Void
     {
         this.description = description;
         this.notifyUpdated();
     }
 
-    public function getDescription()
+    public function getDescription():String
     {
         return this.description;
     }

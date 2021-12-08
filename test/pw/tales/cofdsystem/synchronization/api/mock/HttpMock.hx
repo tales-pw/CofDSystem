@@ -2,7 +2,7 @@ package pw.tales.cofdsystem.synchronization.api.mock;
 
 class HttpMock extends haxe.http.HttpBase
 {
-    var data:Null<Dynamic>;
+    private var data:Null<Dynamic>;
 
     public function new(url:String, data:Null<Dynamic> = null)
     {
@@ -10,12 +10,12 @@ class HttpMock extends haxe.http.HttpBase
         this.data = data;
     }
 
-    public function setData(data:Null<Dynamic>)
+    public function setData(data:Null<Dynamic>):Void
     {
         this.data = data;
     }
 
-    public override function request(?post:Bool):Void
+    public override function request(post:Bool = null):Void
     {
         if (this.data == null)
         {

@@ -150,7 +150,7 @@ class Trait implements IRecord
 
         @param  data  Data, probably created by serialize method.
     **/
-    public function deserialize(data:Dynamic)
+    public function deserialize(data:Dynamic):Void
     {
         AnnotationSerialization.deserialize(this, data);
         this.acceptChanges();
