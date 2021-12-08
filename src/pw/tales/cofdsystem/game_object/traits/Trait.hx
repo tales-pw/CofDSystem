@@ -141,12 +141,11 @@ class Trait implements IRecord
                       containing primitives and strings).
     **/
     public function serialize():Dynamic
-        throw
-            {
-                var data:DynamicAccess<Dynamic> = AnnotationSerialization.serialize(this);
-                data.set("type", this.getType().getDN());
-                return data;
-            }
+    {
+        var data:DynamicAccess<Dynamic> = AnnotationSerialization.serialize(this);
+        data.set("type", this.getType().getDN());
+        return data;
+    }
 
     /**
         Fetch object data from given anonymous structure.
