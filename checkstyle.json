@@ -172,7 +172,7 @@
     {
       "type": "LineLength",
       "props": {
-        "severity": "WARNING",
+        "severity": "ERROR",
         "max": 140,
         "ignorePattern": "^$"
       }

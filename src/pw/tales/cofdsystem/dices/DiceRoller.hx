@@ -86,7 +86,12 @@ class DiceRoller
 
         var successes = results.filter(function(v) return v >= 8).length;
 
-        return new RollResponse(this.defineResult(successes, poolRequest.getThreshold()), successes, poolRequest.getPoolSize(), results);
+        return new RollResponse(
+            this.defineResult(successes, poolRequest.getThreshold()),
+            successes,
+            poolRequest.getPoolSize(),
+            results
+        );
     }
 
     public function roll(request:IRollRequest):RollResponse

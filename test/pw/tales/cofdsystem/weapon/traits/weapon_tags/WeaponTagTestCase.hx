@@ -47,7 +47,12 @@ class WeaponTagTestCase extends CofDSystemTestCase
 
     private function assertBonus(action:AttackAction, gameObject:GameObject, value:Null<Int>):Void
     {
-        this.assertBonusNamed(action, gameObject, this.getTagType().getDN(), value);
+        this.assertBonusNamed(
+            action,
+            gameObject,
+            this.getTagType().getDN(),
+            value
+        );
     }
 
     private function createPrefab():WeaponPrefab

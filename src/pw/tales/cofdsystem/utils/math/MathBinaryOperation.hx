@@ -14,7 +14,10 @@ class MathBinaryOperation<T:Dynamic> implements IMathOperation<T>
 
     public function getOperands():Array<IMathOperation<Dynamic>>
     {
-        return [this.operand1, this.operand2];
+        return [
+            this.operand1,
+            this.operand2
+        ];
     }
 
     public function calculate():T

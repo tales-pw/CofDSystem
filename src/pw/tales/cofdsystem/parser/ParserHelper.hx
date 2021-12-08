@@ -23,10 +23,18 @@ class ParserHelper extends Parser
         {
             var endResult:ParseResult<Dynamic> = parser.apply(stream, v);
             if (endResult.status)
-                return {status: true, index: v, furthest: null};
+                return {
+                    status: true,
+                    index: v,
+                    furthest: null
+                };
         }
 
-        return {status: false, index: null, furthest: furthest};
+        return {
+            status: false,
+            index: null,
+            furthest: furthest
+        };
     }
 
     public static function inBondaries<A>(parser:ParseObject<A>, endTerm:ParseObject<Dynamic>):ParseObject<A>

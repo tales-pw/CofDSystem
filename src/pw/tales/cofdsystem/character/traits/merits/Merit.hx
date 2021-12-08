@@ -23,7 +23,12 @@ class Merit extends ValueTrait
 
     public function new(dn:String, gameObject:GameObject, type:MeritType, customName:String = null, description:String = null)
     {
-        super(dn, gameObject, type, type.getLowestValue());
+        super(
+            dn,
+            gameObject,
+            type,
+            type.getLowestValue()
+        );
         this.meritType = type;
         this.customName = customName;
 

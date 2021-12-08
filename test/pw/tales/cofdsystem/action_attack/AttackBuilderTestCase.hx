@@ -102,7 +102,10 @@ class AttackBuilderTestCase extends CofDSystemTestCase
 
     private function methodTestExplode(actorExplode:EnumExplode, targetExplode:EnumExplode):Void
     {
-        var action:AttackAction = new AttackBuilder(c1, c2).setExplode(EnumSide.ACTOR, actorExplode).setExplode(EnumSide.TARGET, targetExplode).build();
+        var action:AttackAction = new AttackBuilder(
+            c1,
+            c2
+        ).setExplode(EnumSide.ACTOR, actorExplode).setExplode(EnumSide.TARGET, targetExplode).build();
 
         action.execute();
 

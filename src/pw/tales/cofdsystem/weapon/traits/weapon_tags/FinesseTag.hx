@@ -24,7 +24,11 @@ class FinesseTag extends WeaponTag
     public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
     {
         super(dn, gameObject, type);
-        this.holderEventBus.addHandler(ActionBuildPoolEvent, this.replaceStrWithDex, PRIORITY);
+        this.holderEventBus.addHandler(
+            ActionBuildPoolEvent,
+            this.replaceStrWithDex,
+            PRIORITY
+        );
     }
 
     public function replaceStrWithDex(event:ActionBuildPoolEvent):Void
@@ -41,7 +45,11 @@ class FinesseTag extends WeaponTag
             return;
 
         var oldTraits = pool.getRequest().getTraits();
-        var newTraits = Utility.replace(oldTraits, Attributes.STRENGTH.getDN(), Attributes.DEXTERITY.getDN());
+        var newTraits = Utility.replace(
+            oldTraits,
+            Attributes.STRENGTH.getDN(),
+            Attributes.DEXTERITY.getDN()
+        );
 
         pool.getRequest().setTraits(newTraits);
     }

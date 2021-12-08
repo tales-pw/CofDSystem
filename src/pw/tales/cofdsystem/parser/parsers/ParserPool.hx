@@ -16,14 +16,22 @@ class ParserPool
 {
     public static final FULL_PARSER:ParseObject<INodePoolBuilder> = (function()
     {
-        var a:Array<ParseObject<Dynamic>> = [PLUS, MINUS, TRAIT];
+        var a:Array<ParseObject<Dynamic>> = [
+            PLUS,
+            MINUS,
+            TRAIT
+        ];
         return a.alt();
     }).lazy();
 
     private static final PLUS_LITERAL = "+".string().as("plus");
     private static final MINUS_LITERAL = "-".string().as("minus");
 
-    private static final TRAIT = ParserHelper.takeWhileNo([PLUS_LITERAL, MINUS_LITERAL, Parser.eof()].alt()).map(function(value)
+    private static final TRAIT = ParserHelper.takeWhileNo([
+        PLUS_LITERAL,
+        MINUS_LITERAL,
+        Parser.eof()
+    ].alt()).map(function(value)
     {
         return new NodeTrait(value);
     });
@@ -36,13 +44,19 @@ class ParserPool
         return new NodeNumber(parsedInt);
     }).as("number");
 
-    private static final ARRAY2:Array<ParseObject<Dynamic>> = [TRAIT.skip(PLUS_LITERAL), FULL_PARSER];
+    private static final ARRAY2:Array<ParseObject<Dynamic>> = [
+        TRAIT.skip(PLUS_LITERAL),
+        FULL_PARSER
+    ];
     public static final PLUS:ParseObject<Dynamic> = ARRAY2.seq().map(function(values)
     {
         return new NodePoolSum(values[0], values[1]);
     });
 
-    private static final ARRAY3:Array<ParseObject<Dynamic>> = [TRAIT.skip(MINUS_LITERAL), FULL_PARSER];
+    private static final ARRAY3:Array<ParseObject<Dynamic>> = [
+        TRAIT.skip(MINUS_LITERAL),
+        FULL_PARSER
+    ];
     public static final MINUS:ParseObject<Dynamic> = ARRAY3.seq().map(function(values)
     {
         return new NodePoolSum(values[0], new NodeInversion(values[1]));

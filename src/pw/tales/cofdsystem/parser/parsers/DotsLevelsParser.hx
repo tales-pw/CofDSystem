@@ -22,7 +22,11 @@ class DotsLevelsParser
 
     public static final FULL_PARSER:ParseObject<INodeLevels> = (function()
     {
-        var a:Array<ParseObject<Dynamic>> = [DOTS_RANGES, DOTS_OR, DOTS];
+        var a:Array<ParseObject<Dynamic>> = [
+            DOTS_RANGES,
+            DOTS_OR,
+            DOTS
+        ];
         return a.alt();
     }).lazy();
 
@@ -34,13 +38,21 @@ class DotsLevelsParser
         return new NodeDots(value);
     });
 
-    private static final ARRAY1:Array<ParseObject<Dynamic>> = [FROM_LITER, DOTS, TO_LITERAL, DOTS];
+    private static final ARRAY1:Array<ParseObject<Dynamic>> = [
+        FROM_LITER,
+        DOTS,
+        TO_LITERAL,
+        DOTS
+    ];
     public static final DOTS_RANGES:ParseObject<NodeDotsRange> = ARRAY1.seq().map(function(values)
     {
         return new NodeDotsRange(values[1], values[3]);
     });
 
-    private static final ARRAY2:Array<ParseObject<Dynamic>> = [DOTS.skip(OR_LITERAL), FULL_PARSER];
+    private static final ARRAY2:Array<ParseObject<Dynamic>> = [
+        DOTS.skip(OR_LITERAL),
+        FULL_PARSER
+    ];
     public static final DOTS_OR:ParseObject<NodeDotsOr> = ARRAY2.seq().map(function(values)
     {
         return new NodeDotsOr(values[0], values[1]);

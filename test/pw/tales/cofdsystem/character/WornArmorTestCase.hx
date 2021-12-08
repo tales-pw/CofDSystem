@@ -6,7 +6,9 @@ import thx.Uuid;
 
 class WornArmorTestCase extends CofDSystemTestCase
 {
-    public final ARMOR:ArmorPrefab = {dn: Uuid.create()};
+    public final ARMOR:ArmorPrefab = {
+        dn: Uuid.create()
+    };
 
     public function testSetArmor():Void
     {

@@ -45,7 +45,10 @@ class RequirementsTestCase extends TestCase
     public function testParserRespectWhatSymoblsUserUse():Void
     {
         var result = INSTANCE.parse("Внимательность 2 и Внимательность 2, Внимательность 2 и Внимательность 2");
-        assertEquals("[[Внимательность]] •• и [[Внимательность]] ••, [[Внимательность]] •• и [[Внимательность]] ••", result.getHumanReadable());
+        assertEquals(
+            "[[Внимательность]] •• и [[Внимательность]] ••, [[Внимательность]] •• и [[Внимательность]] ••",
+            result.getHumanReadable()
+        );
     }
 
     public function testCustomString():Void

@@ -20,7 +20,11 @@ class InitiativeAdvantage extends AdvantageExpression
     public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
     {
         super(dn, gameObject, type, EXPR);
-        this.eventBus.addHandler(InitiativeModifiersEvent, this.applyInitiativeMod, HandlerPriority.NORMAL);
+        this.eventBus.addHandler(
+            InitiativeModifiersEvent,
+            this.applyInitiativeMod,
+            HandlerPriority.NORMAL
+        );
     }
 
     private function applyInitiativeMod(event:InitiativeModifiersEvent):Void

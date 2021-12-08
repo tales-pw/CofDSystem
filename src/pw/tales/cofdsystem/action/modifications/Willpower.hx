@@ -19,8 +19,16 @@ class Willpower implements IModification
     public function init(action:IAction):Void
     {
         var eventBus = action.getEventBus();
-        eventBus.addHandler(ActionBuildPoolEvent, this.applyRollBonus, HandlerPriority.NORMAL);
-        eventBus.addHandler(ActionBuildResistEvent, this.applyResistBonus, HandlerPriority.NORMAL);
+        eventBus.addHandler(
+            ActionBuildPoolEvent,
+            this.applyRollBonus,
+            HandlerPriority.NORMAL
+        );
+        eventBus.addHandler(
+            ActionBuildResistEvent,
+            this.applyResistBonus,
+            HandlerPriority.NORMAL
+        );
     }
 
     private function applyRollBonus(event:ActionBuildPoolEvent):Void

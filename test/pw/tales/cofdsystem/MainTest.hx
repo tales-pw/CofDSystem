@@ -22,7 +22,11 @@ class MainTest
     {
         var r = new TestRunner();
 
-        var testClasses = CompileTime.getAllClasses("pw.tales.cofdsystem", true, TestCase);
+        var testClasses = CompileTime.getAllClasses(
+            "pw.tales.cofdsystem",
+            true,
+            TestCase
+        );
 
         for (clazz in testClasses)
         {

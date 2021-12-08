@@ -7,5 +7,67 @@
   },
   "indentation": {
     "character": "    "
+  },
+  "sameLine": {
+    "comprehensionFor": "next"
+  },
+  "wrapping": {
+    "callParameter": {
+      "defaultWrap": "fillLine",
+      "rules": [
+        {
+          "type": "onePerLine",
+          "conditions": [
+            {
+              "cond": "itemCount >= n",
+              "value": 3
+            },
+            {
+              "cond": "anyItemLength >= n",
+              "value": 20
+            }
+          ]
+        },
+        {
+        "type": "onePerLine",
+        "conditions": [
+            {
+            "cond": "exceedsMaxLineLength"
+            }
+        ]
+        }
+      ]
+    },
+    "arrayWrap": {
+      "defaultWrap": "onePerLine",
+      "rules": [
+        {
+          "type": "fillLine",
+          "conditions": [
+            {
+              "cond": "anyItemLength <= n",
+              "value": 4
+            }
+          ]
+        },
+        {
+          "type": "fillLine",
+          "conditions": [
+            {
+              "cond": "itemCount <= n",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    "objectLiteral": {
+      "defaultWrap": "onePerLine"
+    },
+    "methodChain": {
+      "defaultWrap": "fillLineWithLeadingBreak",
+      "defaultLocation": "beforeLast"
+    },
+    "maxLineLength": 140
   }
 }

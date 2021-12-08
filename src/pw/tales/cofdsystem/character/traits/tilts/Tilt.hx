@@ -13,7 +13,11 @@ class Tilt extends Trait
     public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
     {
         super(dn, gameObject, type);
-        this.eventBus.addHandler(SceneEndEvent, this.onSceneEnd, HandlerPriority.NORMAL);
+        this.eventBus.addHandler(
+            SceneEndEvent,
+            this.onSceneEnd,
+            HandlerPriority.NORMAL
+        );
         this.eventBus.addHandler(TiltsCollectEvent, this.collect);
     }
 

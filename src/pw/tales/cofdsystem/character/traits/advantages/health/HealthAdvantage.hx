@@ -35,8 +35,16 @@ class HealthAdvantage extends AdvantageExpression implements IHealthTrait
     public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
     {
         super(dn, gameObject, type, EXPR);
-        this.eventBus.addHandler(ActionBuildPoolEvent, this.applyHealthPenalty, HandlerPriority.NORMAL);
-        this.eventBus.addHandler(GetHealthTraitEvent, this.setHealthTrait, HandlerPriority.NORMAL);
+        this.eventBus.addHandler(
+            ActionBuildPoolEvent,
+            this.applyHealthPenalty,
+            HandlerPriority.NORMAL
+        );
+        this.eventBus.addHandler(
+            GetHealthTraitEvent,
+            this.setHealthTrait,
+            HandlerPriority.NORMAL
+        );
     }
 
     public function getBashing():Int

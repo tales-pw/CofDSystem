@@ -144,7 +144,9 @@ class GameObjectStorage extends APIStorage
 
         var data:Dynamic = {};
         if (traitTypes != null)
-            data = {"traitTypes": traitTypes};
+            data = {
+                "traitTypes": traitTypes
+            };
 
         http.setPostData(haxe.Json.stringify(data));
         http.request(true);
@@ -152,7 +154,9 @@ class GameObjectStorage extends APIStorage
 
     public function read(dn:String):Void
     {
-        var http = prepareRequest('${host}/game_objects/${dn}', {"dn": dn});
+        var http = prepareRequest('${host}/game_objects/${dn}', {
+            "dn": dn
+        });
         http.request();
     }
 

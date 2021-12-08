@@ -6,7 +6,9 @@ import pw.tales.cofdsystem.game_object.GameObject;
 @:structInit @:expose("PlayerPrefab")
 class PlayerPrefab extends HumanPrefab
 {
-    public static final INSTANCE:PlayerPrefab = {dn: "player"};
+    public static final INSTANCE:PlayerPrefab = {
+        dn: "player"
+    };
 
     private override function setUpGameObject(gameObject:GameObject):Void
     {

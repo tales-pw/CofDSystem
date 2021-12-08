@@ -14,7 +14,10 @@ class MathMore implements IMathOperation<Bool>
 
     public function getOperands():Array<IMathOperation<Dynamic>>
     {
-        return [this.operand1, this.operand2];
+        return [
+            this.operand1,
+            this.operand2
+        ];
     }
 
     public function calculate():Bool

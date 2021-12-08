@@ -25,9 +25,21 @@ class TraitTracker
         this.gameObject = gameObject;
         this.events = gameObject.getEventBus().createSubBus();
 
-        this.events.addHandler(TraitPostAttachEvent, trackChange, HandlerPriority.NORMAL);
-        this.events.addHandler(TraitPostUpdateEvent, trackChange, HandlerPriority.NORMAL);
-        this.events.addHandler(TraitPostRemoveEvent, trackRemove, HandlerPriority.NORMAL);
+        this.events.addHandler(
+            TraitPostAttachEvent,
+            trackChange,
+            HandlerPriority.NORMAL
+        );
+        this.events.addHandler(
+            TraitPostUpdateEvent,
+            trackChange,
+            HandlerPriority.NORMAL
+        );
+        this.events.addHandler(
+            TraitPostRemoveEvent,
+            trackRemove,
+            HandlerPriority.NORMAL
+        );
     }
 
     public function getGameObject():GameObject

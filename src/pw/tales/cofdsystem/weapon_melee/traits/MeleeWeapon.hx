@@ -18,7 +18,11 @@ class MeleeWeapon extends WeaponTrait
     public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
     {
         super(dn, gameObject, type);
-        this.holderEventBus.addHandler(ActionBuildPoolEvent, this.changeTraits, WeaponTrait.PRIORITY);
+        this.holderEventBus.addHandler(
+            ActionBuildPoolEvent,
+            this.changeTraits,
+            WeaponTrait.PRIORITY
+        );
     }
 
     public function changeTraits(event:ActionPoolEvent):Void
@@ -34,6 +38,9 @@ class MeleeWeapon extends WeaponTrait
         if (!this.isHolderAttack(action))
             return;
 
-        event.getActionPool().getRequest().setTraits([Attributes.STRENGTH.getDN(), Skills.WEAPONRY.getDN()]);
+        event.getActionPool().getRequest().setTraits([
+            Attributes.STRENGTH.getDN(),
+            Skills.WEAPONRY.getDN()
+        ]);
     }
 }
