@@ -17,7 +17,7 @@ class DiceRollerMock extends DiceRoller
     override public function d10():Int
     {
         var nextRoll:Null<Int> = results.shift();
-    
+
         if (nextRoll != null)
             return nextRoll;
 

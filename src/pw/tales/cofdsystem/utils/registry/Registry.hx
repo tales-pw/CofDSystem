@@ -26,8 +26,10 @@ class Registry<T:IRecord>
     private function getDN(record:T):String
     {
         var dn = record.getDN();
+
         if (this.normalize)
             dn = normalizeDn(dn);
+
         return dn;
     }
 
@@ -35,6 +37,7 @@ class Registry<T:IRecord>
     {
         if (this.normalize)
             dn = normalizeDn(dn);
+
         return this.registry.get(dn);
     }
 

@@ -17,8 +17,10 @@ class AnnotationSerialization
 
     public static function apply(base:DynamicAccess<Dynamic>, ext:DynamicAccess<Dynamic>):DynamicAccess<Dynamic>
     {
-        for (f in ext.keys())
+        for (f in ext.keys()){
             base.set(f, ext.get(f));
+        }
+    
         return base;
     }
 
@@ -26,6 +28,7 @@ class AnnotationSerialization
     {
         var clazz = Type.getClass(o);
         var metadata:DynamicAccess<Dynamic> = {};
+
         while (clazz != null)
         {
             metadata = apply(metadata, Meta.getFields(clazz));
@@ -42,8 +45,11 @@ class AnnotationSerialization
     {
         var serializeKey = field;
         var args:Array<Dynamic> = cast(annotations.get(SERIALIZE_ANNOTATION));
-        if (args.length > 0)
+        
+        if (args.length > 0) {
             serializeKey = args[0];
+        }
+
         return serializeKey;
     }
 
