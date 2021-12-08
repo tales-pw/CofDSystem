@@ -12,7 +12,7 @@
     {
       "type": "AvoidStarImport",
       "props": {
-          "severity": "WARNING"
+          "severity": "IGNORE"
       }
     },
     {
