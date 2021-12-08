@@ -12,7 +12,11 @@ class GenMeritGroupAdvancement<T:Trait, TY:TraitType<T>> extends GenAdvancementI
 {
     public static final MERIT_GENERATION_LIMIT = 10;
 
-    public function new(traitClazz:Class<T>, traitTypeClazz:Class<TY>, gameObject:GameObject)
+    public function new(
+        traitClazz:Class<T>,
+        traitTypeClazz:Class<TY>,
+        gameObject:GameObject
+    )
     {
         super(traitClazz, traitTypeClazz, gameObject);
     }

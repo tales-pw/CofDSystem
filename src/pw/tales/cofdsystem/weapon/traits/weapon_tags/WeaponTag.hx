@@ -7,7 +7,11 @@ import pw.tales.cofdsystem.weapon.traits.weapon_tags.events.WeaponTagsCollectEve
 @:expose("WeaponTag")
 class WeaponTag extends WeaponTrait
 {
-    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:TraitType<Dynamic>
+    )
     {
         super(dn, gameObject, type);
         this.eventBus.addHandler(WeaponTagsCollectEvent, (e:WeaponTagsCollectEvent) -> e.collect(this));

@@ -25,7 +25,11 @@ class EventBus implements IEventBus
         }
     }
 
-    public function addHandler<T:IEvent>(type:Class<T>, handler:(T) -> Void, priority:Int = null):EventHandlerRecord<T>
+    public function addHandler<T:IEvent>(
+        type:Class<T>,
+        handler:(T) -> Void,
+        priority:Int = null
+    ):EventHandlerRecord<T>
     {
         if (priority == null)
             priority = HandlerPriority.NORMAL;

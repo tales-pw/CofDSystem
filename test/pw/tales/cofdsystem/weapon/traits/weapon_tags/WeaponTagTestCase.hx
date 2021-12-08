@@ -45,7 +45,11 @@ class WeaponTagTestCase extends CofDSystemTestCase
         return weapon;
     }
 
-    private function assertBonus(action:AttackAction, gameObject:GameObject, value:Null<Int>):Void
+    private function assertBonus(
+        action:AttackAction,
+        gameObject:GameObject,
+        value:Null<Int>
+    ):Void
     {
         this.assertBonusNamed(
             action,

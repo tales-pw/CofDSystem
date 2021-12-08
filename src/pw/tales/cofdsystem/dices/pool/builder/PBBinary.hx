@@ -12,7 +12,11 @@ class PBBinary extends PoolBuilder
     private final operand1:IPoolBuilder;
     private final operand2:IPoolBuilder;
 
-    public function new(producer:BinaryProducer, operand1:IPoolBuilder, operand2:IPoolBuilder)
+    public function new(
+        producer:BinaryProducer,
+        operand1:IPoolBuilder,
+        operand2:IPoolBuilder
+    )
     {
         super();
         this.producer = producer;

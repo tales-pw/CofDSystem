@@ -21,7 +21,11 @@ class BrawlTag extends WeaponTag
 
     public static final PRIORITY = HandlerPriority.lower([WeaponTrait.PRIORITY]);
 
-    public function new(dn:String, gameObject:GameObject, type:TraitType<BrawlTag>)
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:TraitType<BrawlTag>
+    )
     {
         super(dn, gameObject, type);
         this.holderEventBus.addHandler(

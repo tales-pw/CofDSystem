@@ -18,7 +18,11 @@ class RangedWeapon extends WeaponTrait
     public static final DN = "ranged_weapon";
     public static final TYPE = TraitType.createType(DN, RangedWeapon.new);
 
-    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:TraitType<Dynamic>
+    )
     {
         super(dn, gameObject, type);
         this.holderEventBus.addHandler(

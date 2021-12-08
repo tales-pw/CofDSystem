@@ -12,6 +12,32 @@
     "comprehensionFor": "next"
   },
   "wrapping": {
+    "functionSignature": {
+        "defaultWrap": "fillLine",
+        "rules": [
+          {
+            "type": "onePerLine",
+            "conditions": [
+              {
+                "cond": "itemCount >= n",
+                "value": 3
+              },
+              {
+                "cond": "anyItemLength >= n",
+                "value": 20
+              }
+            ]
+          },
+          {
+          "type": "onePerLine",
+          "conditions": [
+              {
+              "cond": "exceedsMaxLineLength"
+              }
+          ]
+          }
+        ]
+      },
     "callParameter": {
       "defaultWrap": "fillLine",
       "rules": [

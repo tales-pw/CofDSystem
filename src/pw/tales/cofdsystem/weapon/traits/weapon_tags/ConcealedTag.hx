@@ -17,7 +17,11 @@ class ConcealedTag extends WeaponTag
     public static final DN = "concealed_(weapon_tag)";
     public static final TYPE = cast TraitType.createType(DN, ConcealedTag.new);
 
-    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:TraitType<Dynamic>
+    )
     {
         super(dn, gameObject, type);
         this.holderEventBus.addHandler(ActionPoolEvent, this.applyBonus);

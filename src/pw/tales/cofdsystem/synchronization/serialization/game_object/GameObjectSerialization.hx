@@ -26,7 +26,11 @@ class GameObjectSerialization extends Serialization<GameObject, GameObjectData>
         this.system = system;
     }
 
-    private function ensureTrait(manager:TraitManager, type:TraitType<Dynamic>, dn:String):Trait
+    private function ensureTrait(
+        manager:TraitManager,
+        type:TraitType<Dynamic>,
+        dn:String
+    ):Trait
     {
         var trait:Null<Trait> = manager.getTrait(type, dn);
         if (trait != null)

@@ -11,7 +11,11 @@ class AttributeType extends ValueTraitType<Attribute>
     private final purpose:AttributePurpose;
     private final group:AttributeGroup;
 
-    public function new(dn:String, purpose:AttributePurpose, group:AttributeGroup)
+    public function new(
+        dn:String,
+        purpose:AttributePurpose,
+        group:AttributeGroup
+    )
     {
         super(dn);
         this.purpose = purpose;

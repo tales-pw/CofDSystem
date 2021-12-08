@@ -19,7 +19,11 @@ class ReachTag extends WeaponTag
     public static final DN = "reach_(weapon_tag)";
     public static final TYPE = cast TraitType.createType(DN, ReachTag.new);
 
-    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:TraitType<Dynamic>
+    )
     {
         super(dn, gameObject, type);
         this.holderEventBus.addHandler(ActionPoolEvent, this.applyBonuses);

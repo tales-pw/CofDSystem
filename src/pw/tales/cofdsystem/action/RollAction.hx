@@ -7,7 +7,11 @@ class RollAction extends Action
 {
     private final actionRoll:IActionRoll;
 
-    private function new(actionRoll:IActionRoll, time:EnumTime, system:CofDSystem)
+    private function new(
+        actionRoll:IActionRoll,
+        time:EnumTime,
+        system:CofDSystem
+    )
     {
         super(time, system);
         this.actionRoll = actionRoll;

@@ -17,7 +17,11 @@ class InitiativeAdvantage extends AdvantageExpression
 
     private static final EXPR = new PBTrait(DEXTERITY.getDN()).plus(new PBTrait(COMPOSURE.getDN()));
 
-    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:TraitType<Dynamic>
+    )
     {
         super(dn, gameObject, type, EXPR);
         this.eventBus.addHandler(

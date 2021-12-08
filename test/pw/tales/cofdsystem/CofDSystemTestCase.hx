@@ -32,7 +32,12 @@ class CofDSystemTestCase extends TestCase implements WithBaseTest
         this.c3 = HumanPrefab.INSTANCE.createGameObject(system);
     }
 
-    private function assertBonusNamed(action:AttackAction, gameObject:GameObject, name:String, value:Null<Int>):Void
+    private function assertBonusNamed(
+        action:AttackAction,
+        gameObject:GameObject,
+        name:String,
+        value:Null<Int>
+    ):Void
     {
         var pool = action.getCompetition().getPool(gameObject);
         var request = pool.getRequest();
@@ -40,7 +45,11 @@ class CofDSystemTestCase extends TestCase implements WithBaseTest
         assertEquals(value, modifiers[name]);
     }
 
-    private function assertTraits(action:AttackAction, gameObject:GameObject, traits:Array<TraitType<Dynamic>>):Void
+    private function assertTraits(
+        action:AttackAction,
+        gameObject:GameObject,
+        traits:Array<TraitType<Dynamic>>
+    ):Void
     {
         var pool = action.getCompetition().getPool(gameObject);
         var request = pool.getRequest();

@@ -15,7 +15,11 @@ typedef SearchResult = {
 @:expose("ParserHelper")
 class ParserHelper extends Parser
 {
-    private static function find(parser:ParseObject<Dynamic>, stream:String, i:Int):SearchResult
+    private static function find(
+        parser:ParseObject<Dynamic>,
+        stream:String,
+        i:Int
+    ):SearchResult
     {
         var furthest:Int = i;
 

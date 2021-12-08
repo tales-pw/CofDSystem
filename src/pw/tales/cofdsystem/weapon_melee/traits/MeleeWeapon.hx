@@ -15,7 +15,11 @@ class MeleeWeapon extends WeaponTrait
     public static final DN = "melee_weapon";
     public static final TYPE = cast TraitType.createType(DN, MeleeWeapon.new);
 
-    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:TraitType<Dynamic>
+    )
     {
         super(dn, gameObject, type);
         this.holderEventBus.addHandler(

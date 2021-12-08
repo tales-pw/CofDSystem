@@ -32,7 +32,11 @@ class HealthAdvantage extends AdvantageExpression implements IHealthTrait
     @Serialize("aggravated")
     private var aggravated:Int = 0;
 
-    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:TraitType<Dynamic>
+    )
     {
         super(dn, gameObject, type, EXPR);
         this.eventBus.addHandler(

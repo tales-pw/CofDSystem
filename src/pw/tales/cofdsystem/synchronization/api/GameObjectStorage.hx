@@ -160,7 +160,11 @@ class GameObjectStorage extends APIStorage
         http.request();
     }
 
-    public function update(gameObject:GameObject, update:Array<Trait> = null, remove:Array<String> = null):Void
+    public function update(
+        gameObject:GameObject,
+        update:Array<Trait> = null,
+        remove:Array<String> = null
+    ):Void
     {
         if (update == null)
             update = [];

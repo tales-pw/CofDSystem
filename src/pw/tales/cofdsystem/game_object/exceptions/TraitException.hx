@@ -7,7 +7,11 @@ class TraitException extends GameObjectException
 {
     private final trait:Trait;
 
-    public function new(trait:Trait, msg:String, previous:haxe.Exception = null)
+    public function new(
+        trait:Trait,
+        msg:String,
+        previous:haxe.Exception = null
+    )
     {
         super(
             trait.getGameObject(),

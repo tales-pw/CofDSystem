@@ -21,7 +21,11 @@ class FinesseTag extends WeaponTag
 
     public static final PRIORITY = HandlerPriority.lower([WeaponTrait.PRIORITY]);
 
-    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:TraitType<Dynamic>
+    )
     {
         super(dn, gameObject, type);
         this.holderEventBus.addHandler(

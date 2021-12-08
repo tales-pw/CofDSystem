@@ -42,7 +42,11 @@ class DiceRoller
         return results;
     }
 
-    private function getRepeats(diceResults:Array<Int>, permutation:EnumExplode, stage:Int):Int
+    private function getRepeats(
+        diceResults:Array<Int>,
+        permutation:EnumExplode,
+        stage:Int
+    ):Int
     {
         if (permutation == EnumExplode.NONE)
         {

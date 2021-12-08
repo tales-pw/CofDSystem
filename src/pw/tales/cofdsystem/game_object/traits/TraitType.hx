@@ -6,7 +6,11 @@ import pw.tales.cofdsystem.utils.registry.IRecord;
 import pw.tales.cofdsystem.utils.Utility;
 import thx.Uuid;
 
-typedef TraitFactoryMethod<Y:Trait> = (dn:String, gameObject:GameObject, t:TraitType<Y>) -> Y;
+typedef TraitFactoryMethod<Y:Trait> = (
+    dn:String,
+    gameObject:GameObject,
+    t:TraitType<Y>
+) -> Y;
 
 /**
     This class represents trait. While Trait

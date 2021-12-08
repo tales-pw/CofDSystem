@@ -17,7 +17,11 @@ class DefenceAdvantage extends AdvantageExpression
 
     private static final EXPR = new PBMin(new PBTrait(DEXTERITY.getDN()), new PBTrait(WITS.getDN())).plus(new PBTrait(ATHLETICS.getDN()));
 
-    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:TraitType<Dynamic>
+    )
     {
         super(dn, gameObject, type, EXPR);
     }

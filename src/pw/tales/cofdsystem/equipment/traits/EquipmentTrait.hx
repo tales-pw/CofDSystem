@@ -13,7 +13,11 @@ class EquipmentTrait extends Trait
 {
     private final holderEventBus:SubEventBus;
 
-    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:TraitType<Dynamic>
+    )
     {
         super(dn, gameObject, type);
         this.holderEventBus = new SubEventBus(this.system.events, this.filterHolderEvent);

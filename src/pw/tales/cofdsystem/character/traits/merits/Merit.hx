@@ -21,7 +21,13 @@ class Merit extends ValueTrait
     @Serialize("description")
     private var description:String = "";
 
-    public function new(dn:String, gameObject:GameObject, type:MeritType, customName:String = null, description:String = null)
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:MeritType,
+        customName:String = null,
+        description:String = null
+    )
     {
         super(
             dn,

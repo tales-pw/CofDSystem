@@ -19,7 +19,11 @@ class Speciality extends Trait
     @Serialize("skill")
     private var skillDn:String = "";
 
-    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:TraitType<Dynamic>
+    )
     {
         super(dn, gameObject, type);
         this.eventBus.addHandler(SpecialitiesCollectEvent, this.collect);

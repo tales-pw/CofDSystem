@@ -9,7 +9,11 @@ class EquipmentMod extends EquipmentTrait
     @Serialize("value")
     private var value:Int = 0;
 
-    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:TraitType<Dynamic>
+    )
     {
         super(dn, gameObject, type);
     }

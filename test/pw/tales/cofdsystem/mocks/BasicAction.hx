@@ -6,7 +6,11 @@ import pw.tales.cofdsystem.action.EnumTime;
 
 class BasicAction extends RollAction
 {
-    public function new(actionRoll:IActionRoll, time:EnumTime, system:CofDSystem)
+    public function new(
+        actionRoll:IActionRoll,
+        time:EnumTime,
+        system:CofDSystem
+    )
     {
         super(actionRoll, time, system);
     }

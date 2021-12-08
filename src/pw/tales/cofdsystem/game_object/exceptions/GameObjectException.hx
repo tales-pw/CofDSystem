@@ -7,7 +7,11 @@ class GameObjectException extends CofDSystemException
 {
     private final gameObject:GameObject;
 
-    public function new(gameObject:GameObject, msg:String, previous:haxe.Exception = null)
+    public function new(
+        gameObject:GameObject,
+        msg:String,
+        previous:haxe.Exception = null
+    )
     {
         super(msg, previous);
         this.gameObject = gameObject;

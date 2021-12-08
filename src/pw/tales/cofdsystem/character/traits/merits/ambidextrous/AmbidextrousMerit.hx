@@ -11,7 +11,12 @@ class AmbidextrousMerit extends Merit
 {
     public static final TYPE:AmbidextrousMeritType = new AmbidextrousMeritType("Ambidextrous");
 
-    public function new(dn:String, gameObject:GameObject, type:MeritType, customName:Null<String> = null)
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:MeritType,
+        customName:Null<String> = null
+    )
     {
         super(dn, gameObject, type, customName);
         this.eventBus.addHandler(

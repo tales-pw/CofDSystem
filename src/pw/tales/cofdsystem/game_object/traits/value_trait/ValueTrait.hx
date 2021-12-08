@@ -12,7 +12,12 @@ class ValueTrait extends Trait implements IAdvanceableTrait
 
     private var valueType:ValueTraitType<Dynamic>;
 
-    public function new(dn:String, gameObject:GameObject, type:ValueTraitType<Dynamic>, defaultValue:Int)
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:ValueTraitType<Dynamic>,
+        defaultValue:Int
+    )
     {
         super(dn, gameObject, type);
         this.value = defaultValue;

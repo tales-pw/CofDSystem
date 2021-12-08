@@ -22,7 +22,11 @@ class RollRequest implements IRollRequest
         return [];
     }
 
-    public function addModifier(value:Int, modDn:Null<String> = null, gameObject:Null<GameObject> = null):Void
+    public function addModifier(
+        value:Int,
+        modDn:Null<String> = null,
+        gameObject:Null<GameObject> = null
+    ):Void
     {
         // TODO: Implement
     }

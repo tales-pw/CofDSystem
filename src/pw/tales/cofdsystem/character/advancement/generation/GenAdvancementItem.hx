@@ -15,7 +15,11 @@ class GenAdvancementItem<T:Trait, TY:TraitType<T>>
     private final traitClazz:Class<T>;
     private final traitTypeClazz:Class<TY>;
 
-    public function new(traitClazz:Class<T>, traitTypeClazz:Class<TY>, gameObject:GameObject)
+    public function new(
+        traitClazz:Class<T>,
+        traitTypeClazz:Class<TY>,
+        gameObject:GameObject
+    )
     {
         this.gameObject = gameObject;
         this.traitClazz = traitClazz;

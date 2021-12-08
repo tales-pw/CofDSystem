@@ -14,7 +14,11 @@ class StrengthReq extends EquipmentMod
     public static final DN = "Свойство:Strength_Requirements";
     public static final TYPE = TraitType.createType(DN, StrengthReq.new);
 
-    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:TraitType<Dynamic>
+    )
     {
         super(dn, gameObject, type);
         this.holderEventBus.addHandler(ActionPoolEvent, this.applyMod);

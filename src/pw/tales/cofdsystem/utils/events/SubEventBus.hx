@@ -35,7 +35,11 @@ class SubEventBus implements IEventBus
         this.parent.post(event);
     }
 
-    public function addHandler<T:IEvent>(type:Class<T>, handler:(T) -> Void, priority:Int = null):EventHandlerRecord<T>
+    public function addHandler<T:IEvent>(
+        type:Class<T>,
+        handler:(T) -> Void,
+        priority:Int = null
+    ):EventHandlerRecord<T>
     {
         this.checkEnabled();
 

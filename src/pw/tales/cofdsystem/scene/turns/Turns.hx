@@ -14,7 +14,11 @@ class Turns
 
     private var turns:Array<GameObject> = [];
 
-    public function new(system:CofDSystem, scene:Scene, initiative:Initiative)
+    public function new(
+        system:CofDSystem,
+        scene:Scene,
+        initiative:Initiative
+    )
     {
         this.scene = scene;
         this.system = system;

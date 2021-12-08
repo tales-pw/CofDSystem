@@ -12,7 +12,11 @@ import pw.tales.cofdsystem.utils.events.IEvent;
 @:expose("Skill")
 class Skill extends ValueTrait
 {
-    public function new(dn:String, gameObject:GameObject, type:SkillType)
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:SkillType
+    )
     {
         super(dn, gameObject, type, 0);
 

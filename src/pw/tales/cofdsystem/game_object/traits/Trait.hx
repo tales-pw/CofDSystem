@@ -35,7 +35,11 @@ class Trait implements IRecord
     @Serialize("dn")
     private final dn:String;
 
-    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:TraitType<Dynamic>
+    )
     {
         this.dn = dn;
         this.type = type;
