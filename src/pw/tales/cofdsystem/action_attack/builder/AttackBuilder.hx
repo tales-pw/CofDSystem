@@ -41,10 +41,10 @@ class AttackBuilder
         this.system = actor.getSystem();
 
         this.competitionBuilder = CompetitionBuilder.create(actor, target);
-        this.competitionBuilder.setTraits(EnumSide.ACTOR, [
-            Attributes.STRENGTH.getDN(),
-            Skills.BRAWL.getDN()
-        ]);
+        this.competitionBuilder.setTraits(
+            EnumSide.ACTOR,
+            [Attributes.STRENGTH.getDN(), Skills.BRAWL.getDN()]
+        );
 
         updateCompetitionResistType(this.competitionBuilder, this.targetResistType);
 
@@ -243,10 +243,10 @@ class AttackBuilder
                 builder.setTraits(EnumSide.TARGET, []);
             case EnumResistType.DODGE:
                 builder.setOppositionType(EnumCompetition.CONTESTED);
-                builder.setTraits(EnumSide.TARGET, [
-                    DefenceAdvantage.DN,
-                    DefenceAdvantage.DN
-                ]);
+                builder.setTraits(
+                    EnumSide.TARGET,
+                    [DefenceAdvantage.DN, DefenceAdvantage.DN]
+                );
         }
     }
 }

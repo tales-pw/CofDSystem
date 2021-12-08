@@ -20,10 +20,7 @@ using parsihax.Parser;
 @:expose("RequirementsParser")
 class RequirementsParser extends Parser
 {
-    private static final AND_LITERAL = [
-        " и ".string(),
-        ", ".string()
-    ].alt().as("separator");
+    private static final AND_LITERAL = [" и ".string(), ", ".string()].alt().as("separator");
     private static final OR_LITERAL = " или ".string().as("separator");
 
     private static final LB_GROUP = "(".string();
@@ -32,11 +29,7 @@ class RequirementsParser extends Parser
     private static final LB_STRING = "{".string();
     private static final RB_STRING = "}".string();
 
-    public static final STATEMENT_END:ParseObject<Dynamic> = [
-        OR_LITERAL,
-        AND_LITERAL,
-        Parser.eof()
-    ].alt();
+    public static final STATEMENT_END:ParseObject<Dynamic> = [OR_LITERAL, AND_LITERAL, Parser.eof()].alt();
 
     public static final FULL_PARSER:ParseObject<INodeCheck> = (function()
     {
@@ -52,10 +45,7 @@ class RequirementsParser extends Parser
 
     public static final STATEMENT:ParseObject<INodeCheck> = (function()
     {
-        var a:Array<ParseObject<Dynamic>> = [
-            TRAIT_STATEMENT,
-            STRING_STATEMENT
-        ];
+        var a:Array<ParseObject<Dynamic>> = [TRAIT_STATEMENT, STRING_STATEMENT];
         return ParserHelper.inBondaries(a.alt(), STATEMENT_END);
     }).lazy();
 
@@ -81,11 +71,7 @@ class RequirementsParser extends Parser
         return new NodeString(value);
     }).as("string");
 
-    private static final ARRAY2:Array<ParseObject<Dynamic>> = [
-        STATEMENT,
-        AND_LITERAL,
-        FULL_PARSER
-    ];
+    private static final ARRAY2:Array<ParseObject<Dynamic>> = [STATEMENT, AND_LITERAL, FULL_PARSER];
     public static final AND:ParseObject<NodeAnd> = ARRAY2.seq().map(function(values)
     {
         var castedResult = cast(values, Array<Dynamic>);
@@ -95,11 +81,7 @@ class RequirementsParser extends Parser
         return new NodeAnd(node1, node2, separator);
     });
 
-    private static final ARRAY3:Array<ParseObject<Dynamic>> = [
-        STATEMENT,
-        OR_LITERAL,
-        FULL_PARSER
-    ];
+    private static final ARRAY3:Array<ParseObject<Dynamic>> = [STATEMENT, OR_LITERAL, FULL_PARSER];
     public static final OR:ParseObject<NodeOr> = ARRAY3.seq().map(function(values)
     {
         var castedResult = cast(values, Array<Dynamic>);
@@ -109,11 +91,7 @@ class RequirementsParser extends Parser
         return new NodeOr(node1, node2, separator);
     });
 
-    private static final ARRAY4:Array<ParseObject<Dynamic>> = [
-        LB_GROUP,
-        FULL_PARSER,
-        RB_GROUP
-    ];
+    private static final ARRAY4:Array<ParseObject<Dynamic>> = [LB_GROUP, FULL_PARSER, RB_GROUP];
     public static final GROUP:ParseObject<NodeGroup> = ARRAY4.seq().map(function(values)
     {
         return new NodeGroup(values[1]);

@@ -31,11 +31,7 @@ class Damage
 
     public function getTuple():Array<Int>
     {
-        return [
-            this.bashing,
-            this.lethal,
-            this.aggravated
-        ];
+        return [this.bashing, this.lethal, this.aggravated];
     }
 
     public function enusreBashing():Void

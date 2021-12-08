@@ -117,28 +117,57 @@
           ]
        },
        "arrayWrap":{
-          "defaultWrap":"onePerLine",
-          "rules":[
-             {
-                "type":"fillLine",
+            "defaultWrap":"fillLine",
+            "rules":[
+            {
+                "type":"onePerLine",
                 "conditions":[
-                   {
-                      "cond":"anyItemLength <= n",
-                      "value":4
-                   }
+                    {
+                        "cond":"exceedsMaxLineLength"
+                    }
                 ]
-             },
-             {
-                "type":"fillLine",
+            },
+            {
+                "type":"onePerLine",
                 "conditions":[
-                   {
-                      "cond":"itemCount <= n",
-                      "value":1
-                   }
+                    {
+                        "cond":"itemCount >= n",
+                        "value":3
+                    },
+                    {
+                        "cond":"anyItemLength >= n",
+                        "value":20
+                    }
                 ]
-             }
-          ]
-       },
+            },
+            {
+                "type":"onePerLine",
+                "conditions":[
+                    {
+                        "cond":"itemCount >= n",
+                        "value":2
+                    },
+                    {
+                        "cond":"anyItemLength >= n",
+                        "value":30
+                    }
+                ]
+            },
+            {
+                "type":"onePerLine",
+                "conditions":[
+                    {
+                        "cond":"itemCount >= n",
+                        "value":1
+                    },
+                    {
+                        "cond":"anyItemLength >= n",
+                        "value":40
+                    }
+                ]
+            }
+            ]
+        },
        "objectLiteral":{
           "defaultWrap":"onePerLine"
        },

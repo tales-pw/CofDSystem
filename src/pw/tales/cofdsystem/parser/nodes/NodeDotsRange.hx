@@ -22,7 +22,9 @@ class NodeDotsRange implements INodeLevels
 
     public function getLevels():Array<Int>
     {
-        return [for (i in start.getValue()...end.getValue() + 1) i];
+        return [
+            for (i in start.getValue()...end.getValue() + 1) i
+        ];
     }
 
     public function toString():String

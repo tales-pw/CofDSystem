@@ -18,10 +18,11 @@ class FinesseeTagTestCase extends WeaponTagTestCase
         var action = new AttackBuilder(c1, c2).build();
         action.execute();
 
-        this.assertTraits(action, c1, [
-            Attributes.DEXTERITY,
-            Skills.WEAPONRY
-        ]);
+        this.assertTraits(
+            action,
+            c1,
+            [Attributes.DEXTERITY, Skills.WEAPONRY]
+        );
         this.assertTraits(
             action,
             c2,
@@ -39,9 +40,10 @@ class FinesseeTagTestCase extends WeaponTagTestCase
             c1,
             [DefenceAdvantage.TYPE]
         );
-        this.assertTraits(action, c2, [
-            Attributes.STRENGTH,
-            Skills.WEAPONRY
-        ]);
+        this.assertTraits(
+            action,
+            c2,
+            [Attributes.STRENGTH, Skills.WEAPONRY]
+        );
     }
 }

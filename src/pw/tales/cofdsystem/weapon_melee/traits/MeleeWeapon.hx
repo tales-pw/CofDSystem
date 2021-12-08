@@ -42,9 +42,8 @@ class MeleeWeapon extends WeaponTrait
         if (!this.isHolderAttack(action))
             return;
 
-        event.getActionPool().getRequest().setTraits([
-            Attributes.STRENGTH.getDN(),
-            Skills.WEAPONRY.getDN()
-        ]);
+        event.getActionPool().getRequest().setTraits(
+            [Attributes.STRENGTH.getDN(), Skills.WEAPONRY.getDN()]
+        );
     }
 }

@@ -88,10 +88,10 @@ class WeaponTestCase extends CofDSystemTestCase
 
     public function testMeleeWeaponPool():Void
     {
-        this.methodTestWeaponPool(GENERIC_MELEE_WEAPON, [
-            Attributes.STRENGTH.getDN(),
-            Skills.WEAPONRY.getDN()
-        ]);
+        this.methodTestWeaponPool(
+            GENERIC_MELEE_WEAPON,
+            [Attributes.STRENGTH.getDN(), Skills.WEAPONRY.getDN()]
+        );
     }
 
     public function testRangedWeaponPool():Void
@@ -117,10 +117,12 @@ class WeaponTestCase extends CofDSystemTestCase
         action.execute();
 
         var traits = action.getCompetition().getPool(c1).getRequest().getTraits();
-        assertEquals(Std.string([
-            Attributes.STRENGTH.getDN(),
-            Skills.BRAWL.getDN()
-        ]), Std.string(traits));
+        assertEquals(
+            Std.string(
+                [Attributes.STRENGTH.getDN(), Skills.BRAWL.getDN()]
+            ),
+            Std.string(traits)
+        );
     }
 
     public function testWeaponHand():Void
@@ -133,17 +135,21 @@ class WeaponTestCase extends CofDSystemTestCase
         var action = new AttackBuilder(c1, c2).build();
         action.execute();
         var traits = action.getCompetition().getPool(c1).getRequest().getTraits();
-        assertEquals(Std.string([
-            Attributes.STRENGTH.getDN(),
-            Skills.BRAWL.getDN()
-        ]), Std.string(traits));
+        assertEquals(
+            Std.string(
+                [Attributes.STRENGTH.getDN(), Skills.BRAWL.getDN()]
+            ),
+            Std.string(traits)
+        );
 
         var action = new AttackBuilder(c1, c2).setHand(EnumSide.ACTOR, EnumHand.OFFHAND).build();
         action.execute();
         var traits = action.getCompetition().getPool(c1).getRequest().getTraits();
-        assertEquals(Std.string([
-            Attributes.STRENGTH.getDN(),
-            Skills.WEAPONRY.getDN()
-        ]), Std.string(traits));
+        assertEquals(
+            Std.string(
+                [Attributes.STRENGTH.getDN(), Skills.WEAPONRY.getDN()]
+            ),
+            Std.string(traits)
+        );
     }
 }

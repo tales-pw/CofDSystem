@@ -9,10 +9,7 @@ class RollRequestTrait extends ABSRollRequest
     private var traits:Array<String>;
 
     private var modifiers:Map<String, Array<Int>> = new Map();
-    private var ignoreLimit:Array<String> = [
-        "resist",
-        "difficulty"
-    ];
+    private var ignoreLimit:Array<String> = ["resist", "difficulty"];
 
     public function new(gameObject:GameObject, traits:Array<String>)
     {
