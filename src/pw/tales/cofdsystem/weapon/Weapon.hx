@@ -5,7 +5,6 @@ import pw.tales.cofdsystem.equipment.Equipment;
 import pw.tales.cofdsystem.equipment.traits.HoldingHand;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
-import pw.tales.cofdsystem.utils.events.HandlerPriority;
 import pw.tales.cofdsystem.weapon.traits.DamageMod;
 import pw.tales.cofdsystem.weapon.traits.InitiativeMod;
 import pw.tales.cofdsystem.weapon.traits.weapon_tags.WeaponTags;

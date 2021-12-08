@@ -1,7 +1,6 @@
 package pw.tales.cofdsystem.builder.exceptions;
 
 import haxe.Exception;
-import haxe.Exception;
 
 @:expose("UnknownSideException")
 class UnknownSideException extends Exception

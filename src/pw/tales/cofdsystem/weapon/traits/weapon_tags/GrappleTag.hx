@@ -1,6 +1,5 @@
 package pw.tales.cofdsystem.weapon.traits.weapon_tags;
 
-import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 
 /**

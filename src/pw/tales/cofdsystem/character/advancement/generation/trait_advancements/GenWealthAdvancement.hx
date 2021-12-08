@@ -11,7 +11,11 @@ class GenWealthAdvancement extends GenMeritGroupAdvancement<WealthAdvantage, Wea
 {
     public function new(gameObject:GameObject)
     {
-        super(WealthAdvantage, WealthAdvantageType, gameObject);
+        super(
+            WealthAdvantage,
+            WealthAdvantageType,
+            gameObject
+        );
     }
 
     public override function canTraitBeAdded(wealthAdvantageType:WealthAdvantageType):Bool

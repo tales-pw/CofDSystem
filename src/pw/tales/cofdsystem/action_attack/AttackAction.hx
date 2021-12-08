@@ -132,7 +132,9 @@ class AttackAction extends RollAction
             HealthTraitHelper.get(target).dealDamage(this.damage);
 
             // Post final damage event
-            system.events.post(new AttackDamageDealtEvent(this.damage, this));
+            system.events.post(
+                new AttackDamageDealtEvent(this.damage, this)
+            );
         } else
         {
             system.events.post(new AttackMissEvent(this));

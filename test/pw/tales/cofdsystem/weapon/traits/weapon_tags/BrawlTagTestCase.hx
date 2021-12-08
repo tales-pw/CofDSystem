@@ -13,21 +13,37 @@ class BrawlTagTestCase extends WeaponTagTestCase
         return BrawlTag.TYPE;
     }
 
-    private function testApplyBonusToAttacker()
+    private function testApplyBonusToAttacker():Void
     {
         var action = new AttackBuilder(c1, c2).build();
         action.execute();
 
-        this.assertTraits(action, c1, [Attributes.STRENGTH, Skills.BRAWL]);
-        this.assertTraits(action, c2, [DefenceAdvantage.TYPE]);
+        this.assertTraits(
+            action,
+            c1,
+            [Attributes.STRENGTH, Skills.BRAWL]
+        );
+        this.assertTraits(
+            action,
+            c2,
+            [DefenceAdvantage.TYPE]
+        );
     }
 
-    private function testDontApplyBonusToDefence()
+    private function testDontApplyBonusToDefence():Void
     {
         var action = new AttackBuilder(c2, c1).build();
         action.execute();
 
-        this.assertTraits(action, c1, [DefenceAdvantage.TYPE]);
-        this.assertTraits(action, c2, [Attributes.STRENGTH, Skills.WEAPONRY]);
+        this.assertTraits(
+            action,
+            c1,
+            [DefenceAdvantage.TYPE]
+        );
+        this.assertTraits(
+            action,
+            c2,
+            [Attributes.STRENGTH, Skills.WEAPONRY]
+        );
     }
 }

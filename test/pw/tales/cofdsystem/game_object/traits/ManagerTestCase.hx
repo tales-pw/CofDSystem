@@ -7,7 +7,7 @@ import haxe.unit.TestCase;
 @:nullSafety(Off)
 class ManagerTestCase extends TestCase
 {
-    public function testAddAndRemoveTrait()
+    public function testAddAndRemoveTrait():Void
     {
         // TODO: better tests for TraitManager.
         var system = new CofDSystem();

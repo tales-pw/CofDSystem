@@ -13,7 +13,12 @@ class GenGroupAdvancement<T:ValueTrait, TY:ValueTraitType<T>> extends GenAdvance
 {
     private final freebuys:Array<Int>;
 
-    public function new(traitClazz:Class<T>, traitTypeClazz:Class<TY>, gameObject:GameObject, freebuys:Array<Int>)
+    public function new(
+        traitClazz:Class<T>,
+        traitTypeClazz:Class<TY>,
+        gameObject:GameObject,
+        freebuys:Array<Int>
+    )
     {
         super(traitClazz, traitTypeClazz, gameObject);
         this.freebuys = freebuys;

@@ -1,6 +1,5 @@
 package pw.tales.cofdsystem.character.advancement.generation;
 
-import pw.tales.cofdsystem.character.advancement.generation.GenAdvancementItem;
 import pw.tales.cofdsystem.character.advancement.generation.trait_advancements.GenAttributeAdvancement;
 import pw.tales.cofdsystem.character.advancement.generation.trait_advancements.GenMeritAdvancement;
 import pw.tales.cofdsystem.character.advancement.generation.trait_advancements.GenSkillAdvancement;
@@ -25,7 +24,9 @@ class GenAdvancement extends Trait
         super(DN, gameObject, TYPE);
         restrictions.push(new GenAttributeAdvancement(gameObject));
         restrictions.push(new GenSkillAdvancement(gameObject));
-        restrictions.push(new GenSpecialityAdvancement(gameObject));
+        restrictions.push(
+            new GenSpecialityAdvancement(gameObject)
+        );
         restrictions.push(new GenMeritAdvancement(gameObject));
         restrictions.push(new GenWealthAdvancement(gameObject));
 

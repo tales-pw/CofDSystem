@@ -9,7 +9,11 @@ import pw.tales.cofdsystem.game_object.GameObject;
 @:expose("ExplodeTag")
 class ExplodeTag extends WeaponTag
 {
-    private function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
+    private function new(
+        dn:String,
+        gameObject:GameObject,
+        type:TraitType<Dynamic>
+    )
     {
         super(dn, gameObject, type);
         this.holderEventBus.addHandler(ActionBuildPoolEvent, this.applyExplode);

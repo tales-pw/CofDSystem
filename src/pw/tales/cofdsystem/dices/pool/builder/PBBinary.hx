@@ -12,7 +12,11 @@ class PBBinary extends PoolBuilder
     private final operand1:IPoolBuilder;
     private final operand2:IPoolBuilder;
 
-    public function new(producer:BinaryProducer, operand1:IPoolBuilder, operand2:IPoolBuilder)
+    public function new(
+        producer:BinaryProducer,
+        operand1:IPoolBuilder,
+        operand2:IPoolBuilder
+    )
     {
         super();
         this.producer = producer;
@@ -22,6 +26,9 @@ class PBBinary extends PoolBuilder
 
     override public function build(gameObject:GameObject):IMathOperation<Int>
     {
-        return producer(this.operand1.build(gameObject), this.operand2.build(gameObject));
+        return producer(
+            this.operand1.build(gameObject),
+            this.operand2.build(gameObject)
+        );
     }
 }

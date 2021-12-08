@@ -22,8 +22,16 @@ class Offhand implements IModification
     public function init(action:IAction):Void
     {
         var eventBus = action.getEventBus();
-        eventBus.addHandler(ActionBuildPoolEvent, this.applyRollModifier, HandlerPriority.NORMAL);
-        eventBus.addHandler(ActionGetHandEvent, this.onHandEvent, HandlerPriority.NORMAL);
+        eventBus.addHandler(
+            ActionBuildPoolEvent,
+            this.applyRollModifier,
+            HandlerPriority.NORMAL
+        );
+        eventBus.addHandler(
+            ActionGetHandEvent,
+            this.onHandEvent,
+            HandlerPriority.NORMAL
+        );
     }
 
     private function onHandEvent(event:ActionGetHandEvent):Void

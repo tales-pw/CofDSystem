@@ -16,7 +16,11 @@ class AccurateTag extends WeaponTag
     public static final DN = "accurate_(weapon_tag)";
     public static final TYPE = cast TraitType.createType(DN, AccurateTag.new);
 
-    public function new(dn:String, gameObject:GameObject, type:TraitType<AccurateTag>)
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:TraitType<AccurateTag>
+    )
     {
         super(dn, gameObject, type);
         this.holderEventBus.addHandler(ActionBuildPoolEvent, this.applyBonus);

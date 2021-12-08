@@ -6,7 +6,7 @@ import pw.tales.cofdsystem.utils.EnumNamed;
 @:expose("EnumResistType")
 class EnumResistType extends EnumNamed
 {
-    public static var VALUES = new StringMap<EnumResistType>();
+    public static final VALUES = new StringMap<EnumResistType>();
 
     public static final DEFAULT = new EnumResistType("default");
     public static final DODGE = new EnumResistType("dodge");

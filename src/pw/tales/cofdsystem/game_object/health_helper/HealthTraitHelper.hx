@@ -1,7 +1,5 @@
 package pw.tales.cofdsystem.game_object.health_helper;
 
-import pw.tales.cofdsystem.game_object.health_helper.GetHealthTraitEvent;
-
 @:expose("HealthTraitHelper")
 class HealthTraitHelper
 {

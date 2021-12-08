@@ -23,7 +23,7 @@ class MeritType extends ValueTraitType<Merit>
         return this.requirements;
     }
 
-    public function addRequirements(requirements:INodeCheck)
+    public function addRequirements(requirements:INodeCheck):Void
     {
         if (this.requirements == null)
         {
@@ -34,7 +34,7 @@ class MeritType extends ValueTraitType<Merit>
         }
     }
 
-    public function setRequirements(requirement:INodeCheck)
+    public function setRequirements(requirement:INodeCheck):Void
     {
         this.requirements = requirement;
     }
@@ -44,7 +44,7 @@ class MeritType extends ValueTraitType<Merit>
         return this.levels;
     }
 
-    public function setLevels(levels:INodeLevels)
+    public function setLevels(levels:INodeLevels):Void
     {
         this.levels = levels;
     }
@@ -54,7 +54,7 @@ class MeritType extends ValueTraitType<Merit>
         return true;
     }
 
-    public override function getLowestValue()
+    public override function getLowestValue():Int
     {
         return this.levels.getLevels()[0];
     }

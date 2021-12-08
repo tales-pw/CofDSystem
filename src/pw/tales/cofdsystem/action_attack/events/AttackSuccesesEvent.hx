@@ -16,7 +16,7 @@ class AttackSuccesesEvent extends AttackEvent
         return this.succeses;
     }
 
-    public function setDamageSucceses(succeses:Int)
+    public function setDamageSucceses(succeses:Int):Void
     {
         this.succeses = succeses;
     }

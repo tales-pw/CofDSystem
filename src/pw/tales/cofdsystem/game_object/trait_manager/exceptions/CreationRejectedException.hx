@@ -9,6 +9,9 @@ class CreationRejectedException extends GameObjectException
 {
     public function new(gameObject:GameObject, type:TraitType<Dynamic>)
     {
-        super(gameObject, 'Attempt to create ${type} for ${gameObject} is rejected.');
+        super(
+            gameObject,
+            'Attempt to create ${type} for ${gameObject} is rejected.'
+        );
     }
 }

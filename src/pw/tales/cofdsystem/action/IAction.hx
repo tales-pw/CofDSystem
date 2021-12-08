@@ -1,6 +1,5 @@
 package pw.tales.cofdsystem.action;
 
-import pw.tales.cofdsystem.action.pool.ActionPool;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.utils.events.IEventBus;
 

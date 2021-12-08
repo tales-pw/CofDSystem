@@ -14,7 +14,7 @@ class APIStorageTestCase extends TestCase implements WithBaseTest
     @:nullSafety(Off)
     private var httpMock:HttpMock = null;
 
-    public override function setup()
+    public override function setup():Void
     {
         super.setup();
         this.httpMock = new HttpMock("");

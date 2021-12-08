@@ -42,7 +42,11 @@ class DiceRoller
         return results;
     }
 
-    private function getRepeats(diceResults:Array<Int>, permutation:EnumExplode, stage:Int):Int
+    private function getRepeats(
+        diceResults:Array<Int>,
+        permutation:EnumExplode,
+        stage:Int
+    ):Int
     {
         if (permutation == EnumExplode.NONE)
         {
@@ -56,7 +60,7 @@ class DiceRoller
             return diceResults.filter(function(v) return v < 7).length;
         }
 
-        return diceResults.filter(function(v) return v >= permutation.getExplode()).length;
+        return diceResults.filter((v) -> v >= permutation.getExplode()).length;
     }
 
     public function defineResult(successes:Int, threshold:Int):EnumResult
@@ -86,7 +90,12 @@ class DiceRoller
 
         var successes = results.filter(function(v) return v >= 8).length;
 
-        return new RollResponse(this.defineResult(successes, poolRequest.getThreshold()), successes, poolRequest.getPoolSize(), results);
+        return new RollResponse(
+            this.defineResult(successes, poolRequest.getThreshold()),
+            successes,
+            poolRequest.getPoolSize(),
+            results
+        );
     }
 
     public function roll(request:IRollRequest):RollResponse

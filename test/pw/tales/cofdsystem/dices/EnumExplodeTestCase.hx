@@ -4,7 +4,7 @@ import haxe.unit.TestCase;
 
 class EnumExplodeTestCase extends TestCase
 {
-    public function testNext()
+    public function testNext():Void
     {
         var explode = EnumExplode.DEFAULT.next();
         assertEquals(explode, EnumExplode.NINE_AGAIN);

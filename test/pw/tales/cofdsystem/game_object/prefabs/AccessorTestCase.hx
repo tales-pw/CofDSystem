@@ -12,7 +12,7 @@ class TestAccessor extends Accessor
 
 class AccessorTestCase extends CofDSystemTestCase
 {
-    public function testEqualsEqual()
+    public function testEqualsEqual():Void
     {
         var accessor1 = new TestAccessor(this.c1);
         var accessor2 = new TestAccessor(this.c1);
@@ -21,7 +21,7 @@ class AccessorTestCase extends CofDSystemTestCase
         assertTrue(accessor1.equals(accessor2));
     }
 
-    public function testEqualsNotEqual()
+    public function testEqualsNotEqual():Void
     {
         var accessor1 = new TestAccessor(this.c1);
         var accessor2 = new TestAccessor(this.c2);
@@ -30,7 +30,7 @@ class AccessorTestCase extends CofDSystemTestCase
         assertFalse(accessor1.equals(null));
     }
 
-    public function testEqualsDifferentClass()
+    public function testEqualsDifferentClass():Void
     {
         var accessor1 = new TestAccessor(this.c1);
         var accessor2 = new Weapon(this.c2);

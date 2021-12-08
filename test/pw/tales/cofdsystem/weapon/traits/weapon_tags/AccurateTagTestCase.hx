@@ -10,7 +10,7 @@ class AccurateTagTestCase extends WeaponTagTestCase
         return AccurateTag.TYPE;
     }
 
-    private function testApplyBonusToAttacker()
+    private function testApplyBonusToAttacker():Void
     {
         var action = new AttackBuilder(c1, c2).build();
         action.execute();
@@ -19,7 +19,7 @@ class AccurateTagTestCase extends WeaponTagTestCase
         this.assertBonus(action, c2, null);
     }
 
-    private function testDontApplyBonusToDefence()
+    private function testDontApplyBonusToDefence():Void
     {
         var action = new AttackBuilder(c2, c1).build();
         action.execute();

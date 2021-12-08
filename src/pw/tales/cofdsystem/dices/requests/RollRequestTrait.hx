@@ -23,23 +23,25 @@ class RollRequestTrait extends ABSRollRequest
         return this.traits;
     }
 
-    public function setTraits(traits:Array<String>)
+    public function setTraits(traits:Array<String>):Void
     {
         this.traits = traits;
     }
 
     private function buildPool():Int
     {
-        var values = traits.map((trait) -> gameObject.getTraitManager().getValue(trait));
+        var values = traits.map(
+            (trait) -> gameObject.getTraitManager().getValue(trait)
+        );
         return Lambda.fold(values, (a, b) -> a + b, 0);
     }
 
-    public function addIgnoreLimit(source:String)
+    public function addIgnoreLimit(source:String):Void
     {
         this.ignoreLimit.push(source);
     }
 
-    public function addModifier(value:Int, source:String)
+    public function addModifier(value:Int, source:String):Void
     {
         if (value == 0)
             return;

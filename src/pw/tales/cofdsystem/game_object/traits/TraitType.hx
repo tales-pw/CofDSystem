@@ -6,7 +6,11 @@ import pw.tales.cofdsystem.utils.registry.IRecord;
 import pw.tales.cofdsystem.utils.Utility;
 import thx.Uuid;
 
-typedef TraitFactoryMethod<Y:Trait> = (dn:String, gameObject:GameObject, t:TraitType<Y>) -> Y;
+typedef TraitFactoryMethod<Y:Trait> = (
+    dn:String,
+    gameObject:GameObject,
+    t:TraitType<Y>
+) -> Y;
 
 /**
     This class represents trait. While Trait
@@ -102,7 +106,10 @@ class TraitType<T:Trait> implements IRecord
         return '${className}[${this.getDN()}]';
     }
 
-    public static function createType<T:Trait>(dn:String, factoryMethod:TraitFactoryMethod<T>):TraitType<T>
+    public static function createType<T:Trait>(
+        dn:String,
+        factoryMethod:TraitFactoryMethod<T>
+    ):TraitType<T>
     {
         var newType = new TraitType(dn);
         newType.factoryMethod = factoryMethod;

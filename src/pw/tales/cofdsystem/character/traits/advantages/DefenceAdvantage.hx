@@ -15,9 +15,16 @@ class DefenceAdvantage extends AdvantageExpression
     public static final DN = "Защита";
     public static final TYPE = TraitType.createType(DN, DefenceAdvantage.new);
 
-    private static final EXPR = new PBMin(new PBTrait(DEXTERITY.getDN()), new PBTrait(WITS.getDN())).plus(new PBTrait(ATHLETICS.getDN()));
+    private static final EXPR = new PBMin(
+        new PBTrait(DEXTERITY.getDN()),
+        new PBTrait(WITS.getDN())
+    ).plus(new PBTrait(ATHLETICS.getDN()));
 
-    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:TraitType<Dynamic>
+    )
     {
         super(dn, gameObject, type, EXPR);
     }

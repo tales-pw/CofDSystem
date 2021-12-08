@@ -10,7 +10,9 @@ class VersionMissmatchException extends CofDSystemException
 
     public function new(currentVersion:String, remoteVersion:String)
     {
-        super('Version missmatch: ${remoteVersion} (remote) != ${currentVersion} (our)');
+        super(
+            'Version missmatch: ${remoteVersion} (remote) != ${currentVersion} (our)'
+        );
         this.currentVersion = currentVersion;
         this.remoteVersion = remoteVersion;
     }

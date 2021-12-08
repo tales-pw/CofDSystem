@@ -16,7 +16,7 @@ class RollResponse
         this.results = results;
     }
 
-    public function setResult(result:EnumResult)
+    public function setResult(result:EnumResult):Void
     {
         this.result = result;
     }
@@ -26,7 +26,7 @@ class RollResponse
         return this.result;
     }
 
-    public function setSuccesses(successes:Int)
+    public function setSuccesses(successes:Int):Void
     {
         this.successes = successes;
     }
@@ -46,7 +46,7 @@ class RollResponse
         return this.results;
     }
 
-    public function toString()
+    public function toString():String
     {
         return Std.string({
             "result": this.result,

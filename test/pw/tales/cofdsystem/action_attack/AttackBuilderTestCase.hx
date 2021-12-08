@@ -11,7 +11,7 @@ import pw.tales.cofdsystem.common.EnumSide;
 @:nullSafety(Off)
 class AttackBuilderTestCase extends CofDSystemTestCase
 {
-    override public function setup()
+    override public function setup():Void
     {
         super.setup();
 
@@ -23,7 +23,7 @@ class AttackBuilderTestCase extends CofDSystemTestCase
         c2.getTrait(Skills.ATHLETICS).setValue(0);
     }
 
-    public function testSimple()
+    public function testSimple():Void
     {
         var action = new AttackBuilder(c1, c2).build();
         action.execute();
@@ -34,7 +34,7 @@ class AttackBuilderTestCase extends CofDSystemTestCase
         assertEquals(0, health.getAggravated());
     }
 
-    public function testWillpowerActor()
+    public function testWillpowerActor():Void
     {
         var action = new AttackBuilder(c1, c2).setSpendWillpower(EnumSide.ACTOR).build();
         action.execute();
@@ -53,7 +53,7 @@ class AttackBuilderTestCase extends CofDSystemTestCase
         assertEquals(2, willpower.getValue());
     }
 
-    public function testWillpowerTarget()
+    public function testWillpowerTarget():Void
     {
         var action = new AttackBuilder(c1, c2).setSpendWillpower(EnumSide.TARGET).build();
         action.execute();
@@ -72,7 +72,7 @@ class AttackBuilderTestCase extends CofDSystemTestCase
         assertEquals(2, willpower.getValue());
     }
 
-    public function testWillpowerBoth()
+    public function testWillpowerBoth():Void
     {
         var action = new AttackBuilder(c1, c2).setSpendWillpower(EnumSide.TARGET).setSpendWillpower(EnumSide.ACTOR).build();
 
@@ -92,7 +92,7 @@ class AttackBuilderTestCase extends CofDSystemTestCase
         assertEquals(2, willpower.getValue());
     }
 
-    public function testIsRelated()
+    public function testIsRelated():Void
     {
         var build = new AttackBuilder(c1, c2);
         assertTrue(build.isRelated(c1));
@@ -102,7 +102,10 @@ class AttackBuilderTestCase extends CofDSystemTestCase
 
     private function methodTestExplode(actorExplode:EnumExplode, targetExplode:EnumExplode):Void
     {
-        var action:AttackAction = new AttackBuilder(c1, c2).setExplode(EnumSide.ACTOR, actorExplode).setExplode(EnumSide.TARGET, targetExplode).build();
+        var action:AttackAction = new AttackBuilder(
+            c1,
+            c2
+        ).setExplode(EnumSide.ACTOR, actorExplode).setExplode(EnumSide.TARGET, targetExplode).build();
 
         action.execute();
 
@@ -113,17 +116,17 @@ class AttackBuilderTestCase extends CofDSystemTestCase
         assertEquals(result, targetExplode);
     }
 
-    public function testExplodeActor()
+    public function testExplodeActor():Void
     {
         this.methodTestExplode(EnumExplode.DEFAULT, EnumExplode.ROTE_ACTION);
     }
 
-    public function testExplodeTarget()
+    public function testExplodeTarget():Void
     {
         this.methodTestExplode(EnumExplode.ROTE_ACTION, EnumExplode.DEFAULT);
     }
 
-    public function testExplodeBoth()
+    public function testExplodeBoth():Void
     {
         this.methodTestExplode(EnumExplode.ROTE_ACTION, EnumExplode.ROTE_ACTION);
     }

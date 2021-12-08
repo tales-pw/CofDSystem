@@ -18,10 +18,18 @@ class RangedWeapon extends WeaponTrait
     public static final DN = "ranged_weapon";
     public static final TYPE = TraitType.createType(DN, RangedWeapon.new);
 
-    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:TraitType<Dynamic>
+    )
     {
         super(dn, gameObject, type);
-        this.holderEventBus.addHandler(ActionBuildPoolEvent, this.changeTraits, WeaponTrait.PRIORITY);
+        this.holderEventBus.addHandler(
+            ActionBuildPoolEvent,
+            this.changeTraits,
+            WeaponTrait.PRIORITY
+        );
     }
 
     private function canApplyDefence(gameObject:GameObject):Bool
@@ -47,7 +55,10 @@ class RangedWeapon extends WeaponTrait
         var attack = cast Utility.downcast(action, AttackAction);
         var competition = attack.getCompetition();
 
-        competition.getActorPool().getRequest().setTraits([Attributes.DEXTERITY.getDN(), Skills.SHOOTING.getDN()]);
+        competition.getActorPool().getRequest().setTraits([
+            Attributes.DEXTERITY.getDN(),
+            Skills.SHOOTING.getDN()
+        ]);
 
         var targetPool = competition.getTargetPool();
         if (!canApplyDefence(targetPool.getGameObject()))

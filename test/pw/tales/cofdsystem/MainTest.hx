@@ -18,11 +18,15 @@ class MainTest
         return testSkip.getBaseTest() == Type.getClass(test);
     }
 
-    static public function main()
+    static public function main():Void
     {
         var r = new TestRunner();
 
-        var testClasses = CompileTime.getAllClasses("pw.tales.cofdsystem", true, TestCase);
+        var testClasses = CompileTime.getAllClasses(
+            "pw.tales.cofdsystem",
+            true,
+            TestCase
+        );
 
         for (clazz in testClasses)
         {

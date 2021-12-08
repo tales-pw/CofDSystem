@@ -9,7 +9,11 @@ class AttackArmorGetEvent extends AttackEvent
     private var general:Int;
     private var ballistic:Int;
 
-    public function new(action:AttackAction, general:Int, ballistic:Int)
+    public function new(
+        action:AttackAction,
+        general:Int,
+        ballistic:Int
+    )
     {
         super(action);
         this.general = general;
@@ -26,12 +30,12 @@ class AttackArmorGetEvent extends AttackEvent
         return this.ballistic;
     }
 
-    public function setGeneral(general:Int)
+    public function setGeneral(general:Int):Void
     {
         this.general = general;
     }
 
-    public function setBallistic(ballistic:Int)
+    public function setBallistic(ballistic:Int):Void
     {
         this.ballistic = ballistic;
     }

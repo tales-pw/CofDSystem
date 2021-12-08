@@ -25,7 +25,11 @@ class EventBus implements IEventBus
         }
     }
 
-    public function addHandler<T:IEvent>(type:Class<T>, handler:(T) -> Void, priority:Int = null):EventHandlerRecord<T>
+    public function addHandler<T:IEvent>(
+        type:Class<T>,
+        handler:(T) -> Void,
+        priority:Int = null
+    ):EventHandlerRecord<T>
     {
         if (priority == null)
             priority = HandlerPriority.NORMAL;
@@ -35,16 +39,18 @@ class EventBus implements IEventBus
         return record;
     }
 
-    public function addHandlerRecord<T:IEvent>(record:EventHandlerRecord<T>)
+    public function addHandlerRecord<T:IEvent>(record:EventHandlerRecord<T>):Void
     {
         handlers.push(record);
-        handlers.sort(function(a:EventHandlerRecord<Dynamic>, b:EventHandlerRecord<Dynamic>)
-        {
-            return HandlerPriority.comparator(a.priority, b.priority);
-        });
+        handlers.sort(
+            function(a:EventHandlerRecord<Dynamic>, b:EventHandlerRecord<Dynamic>)
+            {
+                return HandlerPriority.comparator(a.priority, b.priority);
+            }
+        );
     }
 
-    public function removeHandlerRecord<T:IEvent>(record:EventHandlerRecord<T>)
+    public function removeHandlerRecord<T:IEvent>(record:EventHandlerRecord<T>):Void
     {
         this.handlers.remove(record);
     }

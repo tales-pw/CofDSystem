@@ -22,7 +22,7 @@ class WeaponTagTestCase extends CofDSystemTestCase
     @:nullSafety(Off)
     private var no_tag_weapon:Weapon;
 
-    override public function setup()
+    override public function setup():Void
     {
         super.setup();
 
@@ -45,9 +45,18 @@ class WeaponTagTestCase extends CofDSystemTestCase
         return weapon;
     }
 
-    private function assertBonus(action:AttackAction, gameObject:GameObject, value:Null<Int>):Void
+    private function assertBonus(
+        action:AttackAction,
+        gameObject:GameObject,
+        value:Null<Int>
+    ):Void
     {
-        this.assertBonusNamed(action, gameObject, this.getTagType().getDN(), value);
+        this.assertBonusNamed(
+            action,
+            gameObject,
+            this.getTagType().getDN(),
+            value
+        );
     }
 
     private function createPrefab():WeaponPrefab

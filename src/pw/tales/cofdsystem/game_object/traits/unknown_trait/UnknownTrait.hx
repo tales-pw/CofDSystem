@@ -1,7 +1,6 @@
 package pw.tales.cofdsystem.game_object.traits.unknown_trait;
 
 import pw.tales.cofdsystem.game_object.traits.unknown_trait.events.UnknownTraitsCollectEvent;
-import String;
 
 @:expose("UnknownTrait")
 class UnknownTrait extends Trait
@@ -14,7 +13,10 @@ class UnknownTrait extends Trait
     public function new(dn:String, gameObject:GameObject)
     {
         super(dn, gameObject, UnknownTrait.TYPE);
-        this.eventBus.addHandler(UnknownTraitsCollectEvent, (e:UnknownTraitsCollectEvent) -> e.collect(this));
+        this.eventBus.addHandler(
+            UnknownTraitsCollectEvent,
+            (e:UnknownTraitsCollectEvent) -> e.collect(this)
+        );
     }
 
     override public function serialize():Dynamic

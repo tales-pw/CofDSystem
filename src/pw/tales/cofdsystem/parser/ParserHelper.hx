@@ -15,7 +15,11 @@ typedef SearchResult = {
 @:expose("ParserHelper")
 class ParserHelper extends Parser
 {
-    private static function find(parser:ParseObject<Dynamic>, stream:String, i:Int):SearchResult
+    private static function find(
+        parser:ParseObject<Dynamic>,
+        stream:String,
+        i:Int
+    ):SearchResult
     {
         var furthest:Int = i;
 
@@ -23,10 +27,18 @@ class ParserHelper extends Parser
         {
             var endResult:ParseResult<Dynamic> = parser.apply(stream, v);
             if (endResult.status)
-                return {status: true, index: v, furthest: null};
+                return {
+                    status: true,
+                    index: v,
+                    furthest: null
+                };
         }
 
-        return {status: false, index: null, furthest: furthest};
+        return {
+            status: false,
+            index: null,
+            furthest: furthest
+        };
     }
 
     public static function inBondaries<A>(parser:ParseObject<A>, endTerm:ParseObject<Dynamic>):ParseObject<A>
@@ -50,7 +62,10 @@ class ParserHelper extends Parser
             var end = ParserHelper.find(parser, stream, i);
 
             if (end.status)
-                return ParseUtil.makeSuccess(end.index, stream.substring(i, end.index));
+                return ParseUtil.makeSuccess(
+                    end.index,
+                    stream.substring(i, end.index)
+                );
 
             return ParseUtil.makeFailure(end.furthest, Std.string(parser));
         };

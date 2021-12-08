@@ -5,7 +5,7 @@ import pw.tales.cofdsystem.character.traits.tilts.ArmWrackTilt;
 @:expose("Hand")
 class Hand implements ITarget
 {
-    public static final instance = new Hand();
+    public static final INSTANCE = new Hand();
 
     public function new() {}
 

@@ -16,7 +16,11 @@ class SpeedAdvantage extends AdvantageExpression
 
     private static final EXPR = new PBTrait(STRENGTH.getDN()).plus(new PBTrait(DEXTERITY.getDN())).plus(new PBValue(5));
 
-    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:TraitType<Dynamic>
+    )
     {
         super(dn, gameObject, type, EXPR);
     }

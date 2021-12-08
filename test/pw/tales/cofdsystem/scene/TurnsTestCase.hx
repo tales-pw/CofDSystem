@@ -6,7 +6,7 @@ import haxe.unit.TestCase;
 
 class TurnsTestCase extends TestCase
 {
-    public function testInitiative()
+    public function testInitiative():Void
     {
         var system = new CofDSystem();
         system.dices = new DiceRollerMock([4, 8, 6]);

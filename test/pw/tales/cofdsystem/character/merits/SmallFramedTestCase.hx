@@ -5,7 +5,7 @@ import pw.tales.cofdsystem.character.traits.merits.giant.GiantMerit;
 
 class SmallFramedTestCase extends CofDSystemTestCase
 {
-    public function testSmallFramed()
+    public function testSmallFramed():Void
     {
         var manager = c1.getTraitManager();
 

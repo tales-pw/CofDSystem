@@ -17,7 +17,11 @@ class TwoHandedTag extends WeaponTag
     public static final DN = "two-handed_(weapon_tag)";
     public static final TYPE = cast TraitType.createType(DN, TwoHandedTag.new);
 
-    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:TraitType<Dynamic>
+    )
     {
         super(dn, gameObject, type);
         this.eventBus.addHandler(StrengthReqEvent, this.increaseStrengthReq);

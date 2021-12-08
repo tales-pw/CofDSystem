@@ -24,8 +24,16 @@ class SpecifiedTarget implements IModification
     public function init(action:IAction):Void
     {
         var eventBus = action.getEventBus();
-        eventBus.addHandler(ActionBuildPoolEvent, this.applyPenalty, HandlerPriority.NORMAL);
-        eventBus.addHandler(AttackDamageDealtEvent, this.applyEffect, HandlerPriority.NORMAL);
+        eventBus.addHandler(
+            ActionBuildPoolEvent,
+            this.applyPenalty,
+            HandlerPriority.NORMAL
+        );
+        eventBus.addHandler(
+            AttackDamageDealtEvent,
+            this.applyEffect,
+            HandlerPriority.NORMAL
+        );
     }
 
     public function applyPenalty(event:ActionBuildPoolEvent):Void
@@ -38,7 +46,10 @@ class SpecifiedTarget implements IModification
         }
 
         var pool = action.getCompetition().getActorPool();
-        pool.getRequest().addModifier(this.target.getAttackModifer(), DN);
+        pool.getRequest().addModifier(
+            this.target.getAttackModifer(),
+            DN
+        );
     }
 
     public function applyEffect(event:AttackDamageEvent):Void

@@ -35,7 +35,11 @@ class Trait implements IRecord
     @Serialize("dn")
     private final dn:String;
 
-    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:TraitType<Dynamic>
+    )
     {
         this.dn = dn;
         this.type = type;
@@ -137,12 +141,11 @@ class Trait implements IRecord
                       containing primitives and strings).
     **/
     public function serialize():Dynamic
-        throw
-            {
-                var data:DynamicAccess<Dynamic> = AnnotationSerialization.serialize(this);
-                data.set("type", this.getType().getDN());
-                return data;
-            }
+    {
+        var data:DynamicAccess<Dynamic> = AnnotationSerialization.serialize(this);
+        data.set("type", this.getType().getDN());
+        return data;
+    }
 
     /**
         Fetch object data from given anonymous structure.
@@ -150,7 +153,7 @@ class Trait implements IRecord
 
         @param  data  Data, probably created by serialize method.
     **/
-    public function deserialize(data:Dynamic)
+    public function deserialize(data:Dynamic):Void
     {
         AnnotationSerialization.deserialize(this, data);
         this.acceptChanges();

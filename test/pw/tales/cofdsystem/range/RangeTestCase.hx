@@ -5,12 +5,12 @@ import haxe.unit.TestCase;
 
 class RangeTestCase extends TestCase
 {
-    public function assertRangeEquals(range:EnumRange, meters:Int)
+    public function assertRangeEquals(range:EnumRange, meters:Int):Void
     {
         assertEquals(range, EnumRange.measure(meters));
     }
 
-    public function testActions()
+    public function testActions():Void
     {
         assertRangeEquals(EnumRange.CLOSE, 1);
         assertRangeEquals(EnumRange.SHORT, 25);

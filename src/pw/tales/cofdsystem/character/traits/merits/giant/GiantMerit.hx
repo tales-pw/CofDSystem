@@ -12,10 +12,19 @@ class GiantMerit extends Merit
 {
     public static final TYPE:GiantMeritType = new GiantMeritType("Giant");
 
-    public function new(dn:String, gameObject:GameObject, type:MeritType, customName:Null<String> = null)
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:MeritType,
+        customName:Null<String> = null
+    )
     {
         super(dn, gameObject, type, customName);
-        this.eventBus.addHandler(AdvantageModEvent, this.onAdvantageModEvent, HandlerPriority.NORMAL);
+        this.eventBus.addHandler(
+            AdvantageModEvent,
+            this.onAdvantageModEvent,
+            HandlerPriority.NORMAL
+        );
     }
 
     private function onAdvantageModEvent(event:AdvantageModEvent):Void

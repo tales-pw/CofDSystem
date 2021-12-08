@@ -5,7 +5,7 @@ import pw.tales.cofdsystem.exceptions.CofDSystemException;
 @:expose("PoolNotRolledException")
 class PoolNotRolledException extends CofDSystemException
 {
-    var pool:ActionPool;
+    private var pool:ActionPool;
 
     public function new(pool:ActionPool)
     {

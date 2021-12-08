@@ -2,17 +2,16 @@ package pw.tales.cofdsystem.scene;
 
 import pw.tales.cofdsystem.character.traits.attribute.Attributes;
 import pw.tales.cofdsystem.mocks.DiceRollerMock;
-import Std;
 
 class InitiativeTestCase extends CofDSystemTestCase
 {
-    override public function setup()
+    override public function setup():Void
     {
         super.setup();
         system.dices = new DiceRollerMock([5, 8, 6]);
     }
 
-    public function testInitiative()
+    public function testInitiative():Void
     {
         var scene = Scene.create(system);
         var initiative = scene.getInitiative();

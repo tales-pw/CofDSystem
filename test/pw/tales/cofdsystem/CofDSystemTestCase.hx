@@ -22,7 +22,7 @@ class CofDSystemTestCase extends TestCase implements WithBaseTest
     @:nullSafety(Off)
     private var c3:GameObject;
 
-    override public function setup()
+    override public function setup():Void
     {
         this.system = new CofDSystem();
         system.dices = new DiceRollerMock([], 8);
@@ -32,7 +32,12 @@ class CofDSystemTestCase extends TestCase implements WithBaseTest
         this.c3 = HumanPrefab.INSTANCE.createGameObject(system);
     }
 
-    private function assertBonusNamed(action:AttackAction, gameObject:GameObject, name:String, value:Null<Int>)
+    private function assertBonusNamed(
+        action:AttackAction,
+        gameObject:GameObject,
+        name:String,
+        value:Null<Int>
+    ):Void
     {
         var pool = action.getCompetition().getPool(gameObject);
         var request = pool.getRequest();
@@ -40,14 +45,18 @@ class CofDSystemTestCase extends TestCase implements WithBaseTest
         assertEquals(value, modifiers[name]);
     }
 
-    private function assertTraits(action:AttackAction, gameObject:GameObject, traits:Array<TraitType<Dynamic>>)
+    private function assertTraits(
+        action:AttackAction,
+        gameObject:GameObject,
+        traits:Array<TraitType<Dynamic>>
+    ):Void
     {
         var pool = action.getCompetition().getPool(gameObject);
         var request = pool.getRequest();
         this.assertArrayEquals(traits.map(v -> v.getDN()), request.getTraits());
     }
 
-    public function assertObjectEquals(expected:Dynamic, actual:Dynamic)
+    public function assertObjectEquals(expected:Dynamic, actual:Dynamic):Void
     {
         this.assertEquals(Std.string(expected), Std.string(actual));
     }
@@ -57,13 +66,17 @@ class CofDSystemTestCase extends TestCase implements WithBaseTest
         this.assertObjectEquals(expected, actual);
     }
 
-    function assertGOEquals(gameObject1:GameObject, gameObject2:GameObject)
+    public function assertGOEquals(gameObject1:GameObject, gameObject2:GameObject):Void
     {
         this.assertEquals(gameObject1.getDN(), gameObject2.getDN());
         this.assertEquals(gameObject1.version, gameObject2.version);
 
-        var dns1 = Set.createString([for (trait in gameObject1.getTraits()) trait.getDN()]);
-        var dns2 = Set.createString([for (trait in gameObject2.getTraits()) trait.getDN()]);
+        var dns1 = Set.createString([
+            for (trait in gameObject1.getTraits()) trait.getDN()
+        ]);
+        var dns2 = Set.createString([
+            for (trait in gameObject2.getTraits()) trait.getDN()
+        ]);
 
         for (dn in dns1.union(dns2))
         {

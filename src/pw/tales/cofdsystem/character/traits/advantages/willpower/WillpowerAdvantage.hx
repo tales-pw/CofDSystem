@@ -19,7 +19,11 @@ class WillpowerAdvantage extends AdvantageExpression
     @Serialize("points")
     private var points:Null<Int> = null;
 
-    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:TraitType<Dynamic>
+    )
     {
         super(dn, gameObject, type, EXPR);
     }
@@ -36,7 +40,7 @@ class WillpowerAdvantage extends AdvantageExpression
         return this.getValue();
     }
 
-    public function burnWillpower()
+    public function burnWillpower():Void
     {
         var newPoints = this.getPoints() - 1;
 

@@ -22,7 +22,11 @@ class ArmorRating extends EquipmentTrait
     @Serialize("ballistic")
     private var ballistic:Int = 0;
 
-    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:TraitType<Dynamic>
+    )
     {
         super(dn, gameObject, type);
         this.holderEventBus.addHandler(AttackDamageGetEvent, this.applyArmorAbsorption);

@@ -11,7 +11,11 @@ class DamageMod extends WeaponMod
     public static final DN = "Свойство:Damage";
     public static final TYPE = TraitType.createType(DN, DamageMod.new);
 
-    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:TraitType<Dynamic>
+    )
     {
         super(dn, gameObject, type);
         this.holderEventBus.addHandler(AttackSuccesesEvent, this.applyDamage);
@@ -24,6 +28,8 @@ class DamageMod extends WeaponMod
         if (this.isHolderAttack(action))
             return;
 
-        event.setDamageSucceses(event.getDamageSucceses() + this.getValue());
+        event.setDamageSucceses(
+            event.getDamageSucceses() + this.getValue()
+        );
     }
 }

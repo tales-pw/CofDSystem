@@ -13,10 +13,17 @@ class Aspiration extends TextTrait
     @Serialize("description")
     private var description:String = "";
 
-    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:TraitType<Dynamic>
+    )
     {
         super(dn, gameObject, type);
-        this.eventBus.addHandler(AspirationsCollectEvent, (e:AspirationsCollectEvent) -> e.collect(this));
+        this.eventBus.addHandler(
+            AspirationsCollectEvent,
+            (e:AspirationsCollectEvent) -> e.collect(this)
+        );
     }
 
     public function setTitle(title:String):Void

@@ -10,7 +10,7 @@ class ABSRollRequest implements IRollRequest
 
     private function new() {}
 
-    public function setThreshold(threshold:Int)
+    public function setThreshold(threshold:Int):Void
     {
         this.threshold = threshold;
     }
@@ -20,7 +20,7 @@ class ABSRollRequest implements IRollRequest
         return this.threshold;
     }
 
-    public function setExplode(permutation:EnumExplode)
+    public function setExplode(permutation:EnumExplode):Void
     {
         this.explode = permutation;
     }

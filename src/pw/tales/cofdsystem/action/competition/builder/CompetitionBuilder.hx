@@ -15,7 +15,10 @@ class CompetitionBuilder
 
     private var oppositionType:EnumCompetition = EnumCompetition.CONTESTED;
 
-    public function new(actorPoolBuilder:ActionPoolBuilder, targetPoolBuilder:ActionPoolBuilder)
+    public function new(
+        actorPoolBuilder:ActionPoolBuilder,
+        targetPoolBuilder:ActionPoolBuilder
+    )
     {
         this.actorPoolBuilder = actorPoolBuilder;
         this.targetPoolBuilder = targetPoolBuilder;

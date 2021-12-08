@@ -10,24 +10,32 @@ class Utility
 {
     public inline static function values<K, V>(map:Map<K, V>):Array<V>
     {
-        return [for (item in map.keyValueIterator()) item.value];
+        return [
+            for (item in map.keyValueIterator()) item.value
+        ];
     }
 
     public inline static function items<K, V>(map:Map<K, V>):Array<Item<K, V>>
     {
-        return [for (item in map.keyValueIterator()) item];
+        return [
+            for (item in map.keyValueIterator()) item
+        ];
     }
 
     public inline static function sortedItems<K, V:Int>(map:Map<K, V>):Array<Item<K, V>>
     {
         var array = Utility.items(map);
-        array.sort((a:Item<K, V>, b:Item<K, V>) -> b.value - a.value);
+        array.sort(
+            (a:Item<K, V>, b:Item<K, V>) -> b.value - a.value
+        );
         return array;
     }
 
-    public inline static function replace<T>(array:Array<T>, value:T, replaceWith:T)
+    public inline static function replace<T>(array:Array<T>, value:T, replaceWith:T):Array<T>
     {
-        return [for (arrayValue in array) if (arrayValue == value) replaceWith else arrayValue];
+        return [
+            for (arrayValue in array) if (arrayValue == value) replaceWith else arrayValue
+        ];
     }
 
     @:nullSafety(Off)

@@ -7,7 +7,7 @@ class DiceRollerMock extends DiceRoller
     public var result:Null<Int>;
     public var results:Array<Int>;
 
-    public function new(results:Array<Int>, ?result:Null<Int>)
+    public function new(results:Array<Int>, result:Null<Int> = null)
     {
         super();
         this.result = result;
@@ -17,8 +17,10 @@ class DiceRollerMock extends DiceRoller
     override public function d10():Int
     {
         var nextRoll:Null<Int> = results.shift();
+
         if (nextRoll != null)
             return nextRoll;
+
         if (result != null)
             return result;
 

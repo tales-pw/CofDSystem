@@ -17,7 +17,7 @@ class ExplodeTagTestCase extends WeaponTagTestCase
         return request.getExplode();
     }
 
-    public function testApplyExplodeForAttacker()
+    public function testApplyExplodeForAttacker():Void
     {
         var action = new AttackBuilder(c1, c2).build();
         action.execute();
@@ -26,7 +26,7 @@ class ExplodeTagTestCase extends WeaponTagTestCase
         assertEquals(EnumExplode.DEFAULT, this.getGOExplode(action, c2));
     }
 
-    public function testDontApplyExplodeForTarget()
+    public function testDontApplyExplodeForTarget():Void
     {
         var action = new AttackBuilder(c2, c1).setResistType(EnumResistType.DODGE).build();
         action.execute();

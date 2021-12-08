@@ -22,7 +22,9 @@ class NodeDotsRange implements INodeLevels
 
     public function getLevels():Array<Int>
     {
-        return [for (i in start.getValue()...end.getValue() + 1) i];
+        return [
+            for (i in start.getValue()...end.getValue() + 1) i
+        ];
     }
 
     public function toString():String
@@ -30,7 +32,7 @@ class NodeDotsRange implements INodeLevels
         return 'NodeDotsRange[${this.start},${this.end}}]';
     }
 
-    public static function create(start:Int, end:Int)
+    public static function create(start:Int, end:Int):NodeDotsRange
     {
         return new NodeDotsRange(new NodeDots(start), new NodeDots(end));
     }

@@ -6,7 +6,7 @@ import pw.tales.cofdsystem.synchronization.serialization.game_object.GameObjectS
 
 class GameObjectSerializationTestCase extends CofDSystemTestCase
 {
-    public function test()
+    public function test():Void
     {
         var gameObject1 = PlayerPrefab.INSTANCE.createGameObject(this.system);
 
@@ -21,7 +21,7 @@ class GameObjectSerializationTestCase extends CofDSystemTestCase
         this.assertGOEquals(gameObject1, gameObject2);
     }
 
-    public function testRandomRealDeserialize()
+    public function testRandomRealDeserialize():Void
     {
         var system = SystemSerialization.INSTANCE.deserialize(TestData.SYSTEM_VALID_DATA);
 

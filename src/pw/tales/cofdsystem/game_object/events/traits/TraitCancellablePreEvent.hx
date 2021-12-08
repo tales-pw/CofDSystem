@@ -5,7 +5,7 @@ class TraitCancellablePreEvent extends TraitPreEvent
 {
     private var cancelled = false;
 
-    public function setCancelled(cancelled:Bool)
+    public function setCancelled(cancelled:Bool):Void
     {
         this.cancelled = cancelled;
     }

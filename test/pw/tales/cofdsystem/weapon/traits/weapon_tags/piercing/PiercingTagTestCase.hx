@@ -17,7 +17,11 @@ class PiercingTagTestCase extends WeaponTagTestCase
         return TYPE;
     }
 
-    public function setupGOArmor(gameObject:GameObject, general:Int, ballistic:Int):Void
+    public function setupGOArmor(
+        gameObject:GameObject,
+        general:Int,
+        ballistic:Int
+    ):Void
     {
         var armorPrefab:ArmorPrefab = {
             dn: "armor",

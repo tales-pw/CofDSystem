@@ -7,7 +7,7 @@ class GameObjectTestCase extends TestCase
 {
     public final system:CofDSystem = new CofDSystem();
 
-    public function testDeactivate()
+    public function testDeactivate():Void
     {
         var gameObject = new GameObject("game_object", system);
         gameObject.getTraitManager().addTrait(Attributes.STRENGTH);

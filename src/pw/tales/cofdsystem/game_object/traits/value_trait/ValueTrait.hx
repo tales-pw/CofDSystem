@@ -3,7 +3,6 @@ package pw.tales.cofdsystem.game_object.traits.value_trait;
 import pw.tales.cofdsystem.character.advancement.experience.IAdvanceableTrait;
 import pw.tales.cofdsystem.game_object.traits.value_trait.exceptions.UpdateRejectedException;
 import pw.tales.cofdsystem.game_object.traits.value_trait.events.ValueTraitUpdateEvent;
-import pw.tales.cofdsystem.game_object.traits.value_trait.ValueTraitType;
 
 @:expose("ValueTrait")
 class ValueTrait extends Trait implements IAdvanceableTrait
@@ -13,7 +12,12 @@ class ValueTrait extends Trait implements IAdvanceableTrait
 
     private var valueType:ValueTraitType<Dynamic>;
 
-    public function new(dn:String, gameObject:GameObject, type:ValueTraitType<Dynamic>, defaultValue:Int)
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:ValueTraitType<Dynamic>,
+        defaultValue:Int
+    )
     {
         super(dn, gameObject, type);
         this.value = defaultValue;
@@ -25,7 +29,7 @@ class ValueTrait extends Trait implements IAdvanceableTrait
         return this.value;
     }
 
-    public function canUpdate(newValue:Int)
+    public function canUpdate(newValue:Int):Bool
     {
         var event = new ValueTraitUpdateEvent(this, newValue);
         this.system.events.post(event);
@@ -40,7 +44,7 @@ class ValueTrait extends Trait implements IAdvanceableTrait
         return (newValue - this.getValue()) * dotCost;
     }
 
-    public function setValue(value:Int)
+    public function setValue(value:Int):Void
     {
         if (!this.canUpdate(value))
             throw new UpdateRejectedException(this, value);

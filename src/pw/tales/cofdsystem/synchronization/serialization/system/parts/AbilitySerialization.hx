@@ -61,7 +61,9 @@ class AbilitySerialization implements IPartSerialization
                 }
             } catch (e:ParsingException)
             {
-                logger.warning('Error occured while parsing requitements for ${dn}: ${e.getError()}');
+                logger.warning(
+                    'Error occured while parsing requitements for ${dn}: ${e.getError()}'
+                );
             }
         }
     }

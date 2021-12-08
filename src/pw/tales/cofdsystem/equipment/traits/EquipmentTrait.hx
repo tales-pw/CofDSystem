@@ -1,8 +1,6 @@
 package pw.tales.cofdsystem.equipment.traits;
 
 import pw.tales.cofdsystem.common.EnumHand;
-import pw.tales.cofdsystem.equipment.traits.Equippable;
-import pw.tales.cofdsystem.equipment.traits.HoldingHand;
 import pw.tales.cofdsystem.game_object.events.IGameObjectEvent;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.Trait;
@@ -15,7 +13,11 @@ class EquipmentTrait extends Trait
 {
     private final holderEventBus:SubEventBus;
 
-    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:TraitType<Dynamic>
+    )
     {
         super(dn, gameObject, type);
         this.holderEventBus = new SubEventBus(this.system.events, this.filterHolderEvent);

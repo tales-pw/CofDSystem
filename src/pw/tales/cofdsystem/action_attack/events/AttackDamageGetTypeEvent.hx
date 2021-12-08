@@ -21,7 +21,7 @@ class AttackDamageGetTypeEvent extends AttackEvent
         return this.damageType;
     }
 
-    public function setDamageType(damage:DamageType)
+    public function setDamageType(damage:DamageType):Void
     {
         this.damageType = damage;
     }

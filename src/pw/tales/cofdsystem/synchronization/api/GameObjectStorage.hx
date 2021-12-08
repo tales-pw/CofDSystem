@@ -135,16 +135,24 @@ class GameObjectStorage extends APIStorage
         return request;
     }
 
-    public function create(dn:String, traitTypes:Array<String> = null):Void
+    public function create(
+        dn:String,
+        traitTypes:Array<String> = null
+    ):Void
     {
-        var http = prepareRequest('${host}/game_objects/${dn}', {
-            "dn": dn,
-            "traitTypes": traitTypes
-        });
+        var http = prepareRequest(
+            '${host}/game_objects/${dn}',
+            {
+                "dn": dn,
+                "traitTypes": traitTypes
+            }
+        );
 
         var data:Dynamic = {};
         if (traitTypes != null)
-            data = {"traitTypes": traitTypes};
+            data = {
+                "traitTypes": traitTypes
+            };
 
         http.setPostData(haxe.Json.stringify(data));
         http.request(true);
@@ -152,11 +160,20 @@ class GameObjectStorage extends APIStorage
 
     public function read(dn:String):Void
     {
-        var http = prepareRequest('${host}/game_objects/${dn}', {"dn": dn});
+        var http = prepareRequest(
+            '${host}/game_objects/${dn}',
+            {
+                "dn": dn
+            }
+        );
         http.request();
     }
 
-    public function update(gameObject:GameObject, update:Array<Trait> = null, remove:Array<String> = null):Void
+    public function update(
+        gameObject:GameObject,
+        update:Array<Trait> = null,
+        remove:Array<String> = null
+    ):Void
     {
         if (update == null)
             update = [];
@@ -164,9 +181,12 @@ class GameObjectStorage extends APIStorage
         if (remove == null)
             remove = [];
 
-        var http = prepareRequest('${host}/game_objects/${gameObject.getDN()}/update', {
-            "gameObject": gameObject
-        });
+        var http = prepareRequest(
+            '${host}/game_objects/${gameObject.getDN()}/update',
+            {
+                "gameObject": gameObject
+            }
+        );
 
         http.setPostData(haxe.Json.stringify({
             "version": gameObject.version,

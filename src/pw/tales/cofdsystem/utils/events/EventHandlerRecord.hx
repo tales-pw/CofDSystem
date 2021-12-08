@@ -7,7 +7,11 @@ class EventHandlerRecord<T:IEvent>
     public var handlerFunction:(T) -> Void;
     public var priority:Int;
 
-    public function new(type:Class<T>, handlerFunction:(T) -> Void, priority:Int)
+    public function new(
+        type:Class<T>,
+        handlerFunction:(T) -> Void,
+        priority:Int
+    )
     {
         this.type = type;
         this.handlerFunction = handlerFunction;

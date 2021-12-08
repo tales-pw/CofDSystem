@@ -10,7 +10,12 @@ class AdvantageExpression extends Advantage
 {
     private final pool:IMathOperation<Int>;
 
-    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>, poolBuilder:IPoolBuilder)
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:TraitType<Dynamic>,
+        poolBuilder:IPoolBuilder
+    )
     {
         super(dn, gameObject, type);
         this.pool = poolBuilder.build(gameObject);

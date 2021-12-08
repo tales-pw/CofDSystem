@@ -15,7 +15,7 @@ class MathValue<T:Dynamic> implements IMathOperation<T>
         return this.value;
     }
 
-    public function setValue(value:T)
+    public function setValue(value:T):Void
     {
         this.value = value;
     }

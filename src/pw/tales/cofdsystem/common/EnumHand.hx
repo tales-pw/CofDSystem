@@ -6,7 +6,7 @@ import pw.tales.cofdsystem.utils.EnumNamed;
 @:expose("EnumHand")
 class EnumHand extends EnumNamed
 {
-    public static var VALUES = new StringMap<EnumHand>();
+    public static final VALUES = new StringMap<EnumHand>();
 
     public static final HAND = new EnumHand("hand");
     public static final OFFHAND = new EnumHand("offhand");

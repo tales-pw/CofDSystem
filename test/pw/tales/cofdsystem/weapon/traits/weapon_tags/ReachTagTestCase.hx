@@ -11,7 +11,7 @@ class ReachTagTestCase extends WeaponTagTestCase
         return ReachTag.TYPE;
     }
 
-    public function testApplied()
+    public function testApplied():Void
     {
         var action = new AttackBuilder(c2, c1).build();
         action.execute();
@@ -20,7 +20,7 @@ class ReachTagTestCase extends WeaponTagTestCase
         this.assertBonus(action, c2, null);
     }
 
-    public function testNotApplied()
+    public function testNotApplied():Void
     {
         var action = new AttackBuilder(c1, c2).build();
         action.execute();
@@ -29,7 +29,7 @@ class ReachTagTestCase extends WeaponTagTestCase
         this.assertBonus(action, c2, null);
     }
 
-    public function testNotAppliedWhenEnemyHasReach()
+    public function testNotAppliedWhenEnemyHasReach():Void
     {
         var weapon = c2.getTrait(HeldWeapon.TYPE).getMainHand();
         @:nullSafety(Off)

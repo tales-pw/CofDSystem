@@ -14,7 +14,7 @@ class TraitRemoveEvent extends GameObjectEvent
         this.trait = trait;
     }
 
-    public function setCancelled(cancelled:Bool)
+    public function setCancelled(cancelled:Bool):Void
     {
         this.cancelled = cancelled;
     }

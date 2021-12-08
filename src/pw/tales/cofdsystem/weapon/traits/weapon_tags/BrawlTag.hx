@@ -21,10 +21,18 @@ class BrawlTag extends WeaponTag
 
     public static final PRIORITY = HandlerPriority.lower([WeaponTrait.PRIORITY]);
 
-    public function new(dn:String, gameObject:GameObject, type:TraitType<BrawlTag>)
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:TraitType<BrawlTag>
+    )
     {
         super(dn, gameObject, type);
-        this.holderEventBus.addHandler(ActionBuildPoolEvent, this.changeTraits, PRIORITY);
+        this.holderEventBus.addHandler(
+            ActionBuildPoolEvent,
+            this.changeTraits,
+            PRIORITY
+        );
     }
 
     public function changeTraits(e:ActionBuildPoolEvent):Void
@@ -41,7 +49,11 @@ class BrawlTag extends WeaponTag
             return;
 
         var oldTraits = pool.getRequest().getTraits();
-        var newTraits = Utility.replace(oldTraits, Skills.WEAPONRY.getDN(), Skills.BRAWL.getDN());
+        var newTraits = Utility.replace(
+            oldTraits,
+            Skills.WEAPONRY.getDN(),
+            Skills.BRAWL.getDN()
+        );
 
         pool.getRequest().setTraits(newTraits);
     }

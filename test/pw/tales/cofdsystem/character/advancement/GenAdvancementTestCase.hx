@@ -15,7 +15,7 @@ class GenAdvancementTestCase extends CofDSystemTestCase
 {
     public static final MERIT_TYPE = new MeritType("test");
 
-    public override function setup()
+    public override function setup():Void
     {
         super.setup();
         c1.getTraitManager().addTrait(GenAdvancement.TYPE);
@@ -24,7 +24,7 @@ class GenAdvancementTestCase extends CofDSystemTestCase
         system.traits.register(MERIT_TYPE);
     }
 
-    public function testUpdateWealth()
+    public function testUpdateWealth():Void
     {
         var manager = c1.getTraitManager();
 
@@ -37,7 +37,7 @@ class GenAdvancementTestCase extends CofDSystemTestCase
         assertFalse(wealth.canUpdate(6));
     }
 
-    public function testAddAndUpdateMerit()
+    public function testAddAndUpdateMerit():Void
     {
         var m = c1.getTraitManager();
 
@@ -56,7 +56,7 @@ class GenAdvancementTestCase extends CofDSystemTestCase
         assertFalse(MERIT_TYPE.canAdd(c1));
     }
 
-    public function testAddSpeciality()
+    public function testAddSpeciality():Void
     {
         var m = c1.getTraitManager();
 
@@ -66,7 +66,7 @@ class GenAdvancementTestCase extends CofDSystemTestCase
         assertFalse(Speciality.TYPE.canAdd(c1));
     }
 
-    public function testUpdateAttribute()
+    public function testUpdateAttribute():Void
     {
         var m = c1.getTraitManager();
 
@@ -100,7 +100,7 @@ class GenAdvancementTestCase extends CofDSystemTestCase
         assertFalse(manipulation.canUpdate(2));
     }
 
-    public function testUpdateAttributeWhenFull()
+    public function testUpdateAttributeWhenFull():Void
     {
         var m = c1.getTraitManager();
 
@@ -119,7 +119,7 @@ class GenAdvancementTestCase extends CofDSystemTestCase
         assertTrue(intelligence.canUpdate(4));
     }
 
-    public function testUpdateSkills()
+    public function testUpdateSkills():Void
     {
         var m = c1.getTraitManager();
 
@@ -155,7 +155,7 @@ class GenAdvancementTestCase extends CofDSystemTestCase
         athletics.setValue(4);
     }
 
-    public function testUpdateSkillWhenFull()
+    public function testUpdateSkillWhenFull():Void
     {
         var m = c1.getTraitManager();
 

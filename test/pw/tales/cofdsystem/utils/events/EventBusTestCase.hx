@@ -4,7 +4,7 @@ import haxe.unit.TestCase;
 
 class EventBusTestCase extends TestCase
 {
-    public function testEvent()
+    public function testEvent():Void
     {
         var firstTriggered = false;
         var secondTriggered = false;
@@ -32,7 +32,7 @@ class EventBusTestCase extends TestCase
         assertTrue(secondTriggered);
     }
 
-    public function testTreeTriggerEvent()
+    public function testTreeTriggerEvent():Void
     {
         var trigggered:Bool = false;
 

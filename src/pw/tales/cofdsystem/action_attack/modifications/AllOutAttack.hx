@@ -22,7 +22,11 @@ class AllOutAttack implements IModification
     public function init(action:IAction):Void
     {
         var eventBus = action.getEventBus();
-        eventBus.addHandler(ActionBuildPoolEvent, this.applyRollBonus, HandlerPriority.NORMAL);
+        eventBus.addHandler(
+            ActionBuildPoolEvent,
+            this.applyRollBonus,
+            HandlerPriority.NORMAL
+        );
     }
 
     public function applyRollBonus(event:ActionBuildPoolEvent):Void

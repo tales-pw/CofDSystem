@@ -6,7 +6,11 @@ interface IEventBus
 
     function post<T:IEvent>(event:T):Void;
 
-    function addHandler<T:IEvent>(type:Class<T>, handler:(T) -> Void, priority:Int = null):EventHandlerRecord<T>;
+    function addHandler<T:IEvent>(
+        type:Class<T>,
+        handler:(T) -> Void,
+        priority:Int = null
+    ):EventHandlerRecord<T>;
 
     function addHandlerRecord<T:IEvent>(record:EventHandlerRecord<T>):Void;
 

@@ -1,5 +1,5 @@
 {
-  "defaultSeverity": "INFO",
+  "defaultSeverity": "ERROR",
   "extendsConfigPath": "",
   "numberOfCheckerThreads": 5,
   "baseDefines": [],
@@ -11,7 +11,9 @@
     },
     {
       "type": "AvoidStarImport",
-      "props": {}
+      "props": {
+          "severity": "IGNORE"
+      }
     },
     {
       "type": "BlockBreakingConditional",
@@ -20,6 +22,7 @@
     {
       "type": "CodeSimilarity",
       "props": {
+        "severity": "IGNORE",
         "severityIdentical": "WARNING",
         "thresholdIdentical": 60,
         "thresholdSimilar": 120
@@ -102,12 +105,13 @@
         "none": [
           "beforePackage",
           "betweenImports",
-          "beforeUsing",
           "typeDefinition",
           "afterLeftCurly",
           "beforeRightCurly"
         ],
-        "exact": [],
+        "exact": [
+            "beforeUsing"
+        ],
         "upto": [],
         "atleast": []
       }
@@ -171,24 +175,9 @@
       }
     },
     {
-      "type": "MethodCount",
-      "props": {
-        "maxTotal": 15,
-        "maxPrivate": 110,
-        "maxPublic": 110
-      }
-    },
-    {
-      "type": "MethodLength",
-      "props": {
-        "max": 30,
-        "ignoreEmptyLines": true
-      }
-    },
-    {
       "type": "NestedControlFlow",
       "props": {
-        "max": 3
+        "max": 5
       }
     },
     {
@@ -256,42 +245,6 @@
       }
     },
     {
-      "type": "ReturnCount",
-      "props": {
-        "max": 4,
-        "ignoreFormat": "^$"
-      }
-    },
-    {
-      "type": "RightCurly",
-      "props": {
-        "tokens": [
-          "CLASS_DEF",
-          "ENUM_DEF",
-          "ABSTRACT_DEF",
-          "TYPEDEF_DEF",
-          "INTERFACE_DEF",
-          "OBJECT_DECL",
-          "FUNCTION",
-          "FOR",
-          "WHILE",
-          "SWITCH",
-          "TRY",
-          "CATCH"
-        ],
-        "option": "aloneorsingle"
-      }
-    },
-    {
-      "type": "RightCurly",
-      "props": {
-        "tokens": [
-          "IF"
-        ],
-        "option": "same"
-      }
-    },
-    {
       "type": "SeparatorWhitespace",
       "props": {
         "dotPolicy": "none",
@@ -337,10 +290,7 @@
       }
     },
     {
-      "type": "Trace",
-      "props": {
-        "severity": "ERROR"
-      }
+      "type": "Trace"
     },
     {
       "type": "TrailingWhitespace",
@@ -378,8 +328,7 @@
       }
     },
     {
-      "type": "UnusedLocalVar",
-      "props": {}
+      "type": "UnusedLocalVar"
     }
   ],
   "exclude": {},

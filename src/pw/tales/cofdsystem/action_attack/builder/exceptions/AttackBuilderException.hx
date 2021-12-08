@@ -11,7 +11,12 @@ class AttackBuilderException extends CofDSystemException
 {
     private final attackBuilder:AttackBuilder;
 
-    private function new(attackBuilder:AttackBuilder, msg:String, previous:Null<Exception> = null, native:Null<Any> = null)
+    private function new(
+        attackBuilder:AttackBuilder,
+        msg:String,
+        previous:Null<Exception> = null,
+        native:Null<Any> = null
+    )
     {
         super(msg, previous, native);
         this.attackBuilder = attackBuilder;

@@ -2,7 +2,6 @@ package pw.tales.cofdsystem.weapon.traits.weapon_tags;
 
 import pw.tales.cofdsystem.game_object.traits.advantages.SizeAdvantage;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
-import pw.tales.cofdsystem.weapon.traits.weapon_tags.ConcealedTag;
 import pw.tales.cofdsystem.action_attack.builder.AttackBuilder;
 
 class ConcealedTagTestCase extends WeaponTagTestCase
@@ -12,13 +11,13 @@ class ConcealedTagTestCase extends WeaponTagTestCase
         return ConcealedTag.TYPE;
     }
 
-    private function setShieldSize(size:Int)
+    private function setShieldSize(size:Int):Void
     {
         var gameObject = this.weapon.getGameObject();
         gameObject.getTrait(SizeAdvantage.TYPE).setValue(size);
     }
 
-    public function testConcealedAppliedWhenTargetWithShield()
+    public function testConcealedAppliedWhenTargetWithShield():Void
     {
         for (size in 1...5)
         {
@@ -32,7 +31,7 @@ class ConcealedTagTestCase extends WeaponTagTestCase
         }
     }
 
-    public function testConcealedNotAppliedWhenActorWithShield()
+    public function testConcealedNotAppliedWhenActorWithShield():Void
     {
         this.setShieldSize(3);
 

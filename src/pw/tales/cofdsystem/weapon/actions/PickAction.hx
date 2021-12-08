@@ -13,7 +13,12 @@ class PickAction extends NoRollAction
     private final weapon:Null<Weapon>;
     private final hand:EnumHand;
 
-    public function new(actor:GameObject, hand:EnumHand, weapon:Null<Weapon>, system:CofDSystem)
+    public function new(
+        actor:GameObject,
+        hand:EnumHand,
+        weapon:Null<Weapon>,
+        system:CofDSystem
+    )
     {
         super(actor, EnumTime.INSTANT, system);
         this.weapon = weapon;

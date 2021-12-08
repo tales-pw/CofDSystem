@@ -23,7 +23,7 @@ class TraitTypeRegistry extends Registry<TraitType<Dynamic>>
         customMeritType.setName("Пользовательское Достоинство");
     }
 
-    private function autoregister()
+    private function autoregister():Void
     {
         try
         {
@@ -42,7 +42,7 @@ class TraitTypeRegistry extends Registry<TraitType<Dynamic>>
         }
     }
 
-    private function registerFromClass(clazz:Class<Dynamic>)
+    private function registerFromClass(clazz:Class<Dynamic>):Void
     {
         for (fieldName in Type.getClassFields(clazz))
         {

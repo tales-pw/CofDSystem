@@ -35,7 +35,11 @@ class RequirementsParser extends Parser
     {
         var andReqC:ParseObject<Dynamic> = AND;
         var orReqC:ParseObject<Dynamic> = OR;
-        var a:Array<ParseObject<Dynamic>> = [GROUP, Parser.or(andReqC, orReqC), STATEMENT];
+        var a:Array<ParseObject<Dynamic>> = [
+            GROUP,
+            Parser.or(andReqC, orReqC),
+            STATEMENT
+        ];
         return a.alt();
     }).lazy();
 
@@ -46,11 +50,13 @@ class RequirementsParser extends Parser
     }).lazy();
 
     public static final TRAIT_VALUE:ParseObject<NodeDots> = DotsLevelsParser.DOTS.as("trait value");
-    public static final TRAIT_DN:ParseObject<NodeTrait> = ParserHelper.takeWhileNo(Parser.whitespace().then(TRAIT_VALUE))
-        .map(function(v) return new NodeTrait(v))
-        .as("trait dn");
+    public static final TRAIT_DN:ParseObject<NodeTrait> = ParserHelper.takeWhileNo(Parser.whitespace().then(TRAIT_VALUE)
+    ).map(function(v) return new NodeTrait(v)).as("trait dn");
 
-    private static final ARRAY1:Array<ParseObject<Dynamic>> = [TRAIT_DN.skip(Parser.whitespace()), TRAIT_VALUE];
+    private static final ARRAY1:Array<ParseObject<Dynamic>> = [
+        TRAIT_DN.skip(Parser.whitespace()),
+        TRAIT_VALUE
+    ];
     public static final TRAIT_STATEMENT:ParseObject<NodeTraitRequirement> = ARRAY1.seq().map(function(values)
     {
         var dn:NodeTrait = cast(values[0]);
@@ -58,7 +64,9 @@ class RequirementsParser extends Parser
         return new NodeTraitRequirement(dn, dots);
     });
 
-    public static final STRING_STATEMENT:ParseObject<NodeString> = ParserHelper.inBondaries(Parser.all(), STATEMENT_END).map(function(value)
+    public static final STRING_STATEMENT:ParseObject<NodeString> = ParserHelper.inBondaries(Parser.all(),
+        STATEMENT_END
+    ).map(function(value)
     {
         return new NodeString(value);
     }).as("string");
@@ -74,7 +82,7 @@ class RequirementsParser extends Parser
     });
 
     private static final ARRAY3:Array<ParseObject<Dynamic>> = [STATEMENT, OR_LITERAL, FULL_PARSER];
-    public static var OR:ParseObject<NodeOr> = ARRAY3.seq().map(function(values)
+    public static final OR:ParseObject<NodeOr> = ARRAY3.seq().map(function(values)
     {
         var castedResult = cast(values, Array<Dynamic>);
         var node1 = cast(castedResult[0], INodeCheck);

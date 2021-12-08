@@ -10,7 +10,9 @@ class DeserializationException extends CofDSystemException
 
     public function new(data:Dynamic, field:String)
     {
-        super('Field "${field}" not found in ${data}.');
+        super(
+            'Field "${field}" not found in ${data}.'
+        );
         this.data = data;
         this.field = field;
     }

@@ -11,19 +11,25 @@ class MercyTagTestCase extends WeaponTagTestCase
         return MercyTag.TYPE;
     }
 
-    private function testApplyAttacker()
+    private function testApplyAttacker():Void
     {
         var action = new AttackBuilder(c1, c2).setModifier(EnumSide.ACTOR, 1).build();
         action.execute();
 
-        this.assertArrayEquals(action.getDamage().getTuple(), [1, 0, 0]);
+        this.assertArrayEquals(
+            action.getDamage().getTuple(),
+            [1, 0, 0]
+        );
     }
 
-    private function testDontApplyDefence()
+    private function testDontApplyDefence():Void
     {
         var action = new AttackBuilder(c2, c1).setModifier(EnumSide.ACTOR, 1).build();
         action.execute();
 
-        this.assertArrayEquals(action.getDamage().getTuple(), [0, 1, 0]);
+        this.assertArrayEquals(
+            action.getDamage().getTuple(),
+            [0, 1, 0]
+        );
     }
 }

@@ -19,7 +19,7 @@ class AdvantageModEvent extends GameObjectEvent
         return this.advantage;
     }
 
-    public function apply(modifier:Int)
+    public function apply(modifier:Int):Void
     {
         finalModifier = finalModifier + modifier;
     }

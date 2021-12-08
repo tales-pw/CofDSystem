@@ -13,7 +13,7 @@ class TwoHandedTagTestCase extends WeaponTagTestCase
         return TwoHandedTag.TYPE;
     }
 
-    public function test()
+    public function test():Void
     {
         this.weapon.getGameObject().getTrait(StrengthReq.TYPE).setValue(4);
         this.c1.getTrait(Attributes.STRENGTH).setValue(3);

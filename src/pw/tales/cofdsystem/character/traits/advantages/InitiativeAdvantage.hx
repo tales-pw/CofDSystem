@@ -7,7 +7,6 @@ import pw.tales.cofdsystem.game_object.traits.advantages.AdvantageExpression;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.scene.initiative.events.InitiativeModifiersEvent;
 import pw.tales.cofdsystem.utils.events.HandlerPriority;
-import pw.tales.cofdsystem.weapon.traits.InitiativeMod;
 
 @RegisterTraitTypes
 @:expose("InitiativeAdvantage")
@@ -18,10 +17,18 @@ class InitiativeAdvantage extends AdvantageExpression
 
     private static final EXPR = new PBTrait(DEXTERITY.getDN()).plus(new PBTrait(COMPOSURE.getDN()));
 
-    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:TraitType<Dynamic>
+    )
     {
         super(dn, gameObject, type, EXPR);
-        this.eventBus.addHandler(InitiativeModifiersEvent, this.applyInitiativeMod, HandlerPriority.NORMAL);
+        this.eventBus.addHandler(
+            InitiativeModifiersEvent,
+            this.applyInitiativeMod,
+            HandlerPriority.NORMAL
+        );
     }
 
     private function applyInitiativeMod(event:InitiativeModifiersEvent):Void

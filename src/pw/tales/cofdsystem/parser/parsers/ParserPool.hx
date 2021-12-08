@@ -1,7 +1,6 @@
 package pw.tales.cofdsystem.parser.parsers;
 
 import parsihax.ParseObject;
-import parsihax.Parser;
 import parsihax.ParseResult;
 import pw.tales.cofdsystem.parser.exception.ParsingException;
 import pw.tales.cofdsystem.parser.nodes.INodePoolBuilder;
@@ -24,7 +23,9 @@ class ParserPool
     private static final PLUS_LITERAL = "+".string().as("plus");
     private static final MINUS_LITERAL = "-".string().as("minus");
 
-    private static final TRAIT = ParserHelper.takeWhileNo([PLUS_LITERAL, MINUS_LITERAL, Parser.eof()].alt()).map(function(value)
+    private static final TRAIT = ParserHelper.takeWhileNo(
+        [PLUS_LITERAL, MINUS_LITERAL, Parser.eof()].alt()
+    ).map(function(value)
     {
         return new NodeTrait(value);
     });

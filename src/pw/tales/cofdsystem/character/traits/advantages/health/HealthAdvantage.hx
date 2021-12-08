@@ -32,11 +32,23 @@ class HealthAdvantage extends AdvantageExpression implements IHealthTrait
     @Serialize("aggravated")
     private var aggravated:Int = 0;
 
-    public function new(dn:String, gameObject:GameObject, type:TraitType<Dynamic>)
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:TraitType<Dynamic>
+    )
     {
         super(dn, gameObject, type, EXPR);
-        this.eventBus.addHandler(ActionBuildPoolEvent, this.applyHealthPenalty, HandlerPriority.NORMAL);
-        this.eventBus.addHandler(GetHealthTraitEvent, this.setHealthTrait, HandlerPriority.NORMAL);
+        this.eventBus.addHandler(
+            ActionBuildPoolEvent,
+            this.applyHealthPenalty,
+            HandlerPriority.NORMAL
+        );
+        this.eventBus.addHandler(
+            GetHealthTraitEvent,
+            this.setHealthTrait,
+            HandlerPriority.NORMAL
+        );
     }
 
     public function getBashing():Int
@@ -136,9 +148,16 @@ class HealthAdvantage extends AdvantageExpression implements IHealthTrait
     {
         this.applyDamage(damage);
 
-        this.eventBus.post(new GameObjectDamagedEvent(this.gameObject, damage));
+        this.eventBus.post(
+            new GameObjectDamagedEvent(this.gameObject, damage)
+        );
+
         if (isDead())
-            this.eventBus.post(new GameObjectDiedEvent(this.gameObject));
+        {
+            this.eventBus.post(
+                new GameObjectDiedEvent(this.gameObject)
+            );
+        }
 
         this.notifyUpdated();
     }

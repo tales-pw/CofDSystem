@@ -20,7 +20,9 @@ import pw.tales.cofdsystem.game_object.traits.advantages.SizeAdvantage;
 @:structInit @:expose("HumanPrefab")
 class HumanPrefab extends Prefab
 {
-    public static final INSTANCE:HumanPrefab = {dn: "human"};
+    public static final INSTANCE:HumanPrefab = {
+        dn: "human"
+    };
 
     private static final TRAITS:Array<TraitType<Dynamic>> = [
         // Utility

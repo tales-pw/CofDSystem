@@ -7,6 +7,9 @@ class NoHealthTraitException extends GameObjectException
 {
     public function new(gameObject:GameObject)
     {
-        super(gameObject, '${gameObject} have no health trait.');
+        super(
+            gameObject,
+            '${gameObject} have no health trait.'
+        );
     }
 }

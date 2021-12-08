@@ -15,7 +15,11 @@ class GenAdvancementItem<T:Trait, TY:TraitType<T>>
     private final traitClazz:Class<T>;
     private final traitTypeClazz:Class<TY>;
 
-    public function new(traitClazz:Class<T>, traitTypeClazz:Class<TY>, gameObject:GameObject)
+    public function new(
+        traitClazz:Class<T>,
+        traitTypeClazz:Class<TY>,
+        gameObject:GameObject
+    )
     {
         this.gameObject = gameObject;
         this.traitClazz = traitClazz;
@@ -28,7 +32,7 @@ class GenAdvancementItem<T:Trait, TY:TraitType<T>>
     public function canTraitBeUpdated(trait:T, newValue:Int):Bool
         throw new AbstractMethod();
 
-    public function canBeAdded(event:TraitAddEvent)
+    public function canBeAdded(event:TraitAddEvent):Void
     {
         var traitType:Null<TY> = Utility.downcast(event.getTraitType(), this.traitTypeClazz);
         if (traitType == null)
@@ -38,7 +42,7 @@ class GenAdvancementItem<T:Trait, TY:TraitType<T>>
             event.setCancelled(true);
     }
 
-    public function canBeUpdated(event:ValueTraitUpdateEvent)
+    public function canBeUpdated(event:ValueTraitUpdateEvent):Void
     {
         var trait:Null<T> = Utility.downcast(event.getTrait(), this.traitClazz);
         if (trait == null)

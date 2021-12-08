@@ -6,9 +6,11 @@ import thx.Uuid;
 
 class WornArmorTestCase extends CofDSystemTestCase
 {
-    public final ARMOR:ArmorPrefab = {dn: Uuid.create()};
+    public final ARMOR:ArmorPrefab = {
+        dn: Uuid.create()
+    };
 
-    public function testSetArmor()
+    public function testSetArmor():Void
     {
         var trait = this.c1.getTrait(WornArmor.TYPE);
         var armor = ARMOR.createArmor(this.system);
@@ -24,7 +26,7 @@ class WornArmorTestCase extends CofDSystemTestCase
         this.assertEquals(armor.getEquipper(), null);
     }
 
-    public function testReplaceArmor()
+    public function testReplaceArmor():Void
     {
         var trait = this.c1.getTrait(WornArmor.TYPE);
         var armor1 = ARMOR.createArmor(this.system);
