@@ -135,7 +135,10 @@ class GameObjectStorage extends APIStorage
         return request;
     }
 
-    public function create(dn:String, traitTypes:Array<String> = null):Void
+    public function create(
+        dn:String,
+        traitTypes:Array<String> = null
+    ):Void
     {
         var http = prepareRequest(
             '${host}/game_objects/${dn}',

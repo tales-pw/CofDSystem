@@ -106,7 +106,10 @@ class TraitType<T:Trait> implements IRecord
         return '${className}[${this.getDN()}]';
     }
 
-    public static function createType<T:Trait>(dn:String, factoryMethod:TraitFactoryMethod<T>):TraitType<T>
+    public static function createType<T:Trait>(
+        dn:String,
+        factoryMethod:TraitFactoryMethod<T>
+    ):TraitType<T>
     {
         var newType = new TraitType(dn);
         newType.factoryMethod = factoryMethod;

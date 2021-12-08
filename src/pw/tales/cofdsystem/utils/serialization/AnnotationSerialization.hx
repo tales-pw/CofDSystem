@@ -35,7 +35,10 @@ class AnnotationSerialization
         return metadata;
     }
 
-    private static function getSerializeKey(field:String, annotations:DynamicAccess<Dynamic>):String
+    private static function getSerializeKey(
+        field:String,
+        annotations:DynamicAccess<Dynamic>
+    ):String
     {
         var serializeKey = field;
         var args:Array<Dynamic> = cast(annotations.get(SERIALIZE_ANNOTATION));
@@ -44,7 +47,10 @@ class AnnotationSerialization
         return serializeKey;
     }
 
-    private static function parseAnnotations(field:String, annotations:DynamicAccess<Dynamic>):SerializationOptions
+    private static function parseAnnotations(
+        field:String,
+        annotations:DynamicAccess<Dynamic>
+    ):SerializationOptions
     {
         if (!annotations.exists(SERIALIZE_ANNOTATION))
             return null;
