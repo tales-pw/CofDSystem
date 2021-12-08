@@ -1,5 +1,5 @@
 {
-  "defaultSeverity": "INFO",
+  "defaultSeverity": "ERROR",
   "extendsConfigPath": "",
   "numberOfCheckerThreads": 5,
   "baseDefines": [],
@@ -31,7 +31,6 @@
     {
       "type": "ConstantName",
       "props": {
-        "severity": "WARNING",
         "format": "^[A-Z][A-Z0-9]*(_[A-Z0-9_]+)*$",
         "tokens": [
           "INLINE"
@@ -42,7 +41,6 @@
     {
       "type": "ConstantName",
       "props": {
-        "severity": "WARNING",
         "format": "^[A-Z][A-Z0-9]*(_[A-Z0-9_]+)*$",
         "tokens": [
           "NOTINLINE"
@@ -172,7 +170,6 @@
     {
       "type": "LineLength",
       "props": {
-        "severity": "ERROR",
         "max": 140,
         "ignorePattern": "^$"
       }
@@ -234,7 +231,6 @@
     {
       "type": "RedundantModifier",
       "props": {
-        "severity": "ERROR",
         "enforcePublicPrivate": false,
         "enforcePublic": false,
         "enforcePrivate": true
@@ -243,7 +239,6 @@
     {
       "type": "Return",
       "props": {
-        "severity": "ERROR",
         "allowEmptyReturn": false,
         "enforceReturnType": true,
         "enforceReturnTypeForAnonymous": false
@@ -295,10 +290,7 @@
       }
     },
     {
-      "type": "Trace",
-      "props": {
-        "severity": "ERROR"
-      }
+      "type": "Trace"
     },
     {
       "type": "TrailingWhitespace",
@@ -331,16 +323,12 @@
     {
       "type": "UnusedImport",
       "props": {
-        "severity": "ERROR",
         "ignoreModules": [],
         "moduleTypeMap": {}
       }
     },
     {
-      "type": "UnusedLocalVar",
-      "props": {
-          "severity": "ERROR"
-      }
+      "type": "UnusedLocalVar"
     }
   ],
   "exclude": {},
