@@ -1,12 +1,11 @@
 package pw.tales.cofdsystem.character.advancement.experience;
 
+import pw.tales.cofdsystem.character.advancement.core.AdvancementTrait;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.character.traits.Experience;
 import pw.tales.cofdsystem.game_object.events.TraitAddEvent;
 import pw.tales.cofdsystem.game_object.events.TraitRemoveEvent;
-import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.GameObjectState;
-import pw.tales.cofdsystem.game_object.traits.Trait;
 import pw.tales.cofdsystem.game_object.traits.value_trait.events.ValueTraitUpdateEvent;
 import pw.tales.cofdsystem.utils.Utility;
 
@@ -18,6 +17,9 @@ class ExpAdvancement extends AdvancementTrait
 
     public override function canBeAdded(event:TraitAddEvent):Void
     {
+        if (this.disabled)
+            return;
+
         if (this.gameObject.getState() != GameObjectState.ACTIVE)
             return;
 
@@ -43,6 +45,9 @@ class ExpAdvancement extends AdvancementTrait
 
     public override function canBeUpdated(event:ValueTraitUpdateEvent):Void
     {
+        if (this.disabled)
+            return;
+
         if (this.gameObject.getState() != GameObjectState.ACTIVE)
             return;
 
@@ -72,6 +77,9 @@ class ExpAdvancement extends AdvancementTrait
 
     public override function canBeRemoved(event:TraitRemoveEvent):Void
     {
+        if (this.disabled)
+            return;
+
         if (this.gameObject.getState() != GameObjectState.ACTIVE)
             return;
 

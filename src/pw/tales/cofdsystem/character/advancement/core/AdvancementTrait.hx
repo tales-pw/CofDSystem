@@ -1,5 +1,6 @@
-package pw.tales.cofdsystem.character.advancement;
+package pw.tales.cofdsystem.character.advancement.core;
 
+import pw.tales.cofdsystem.character.advancement.core.events.AdvancementCollectEvent;
 import pw.tales.cofdsystem.game_object.traits.value_trait.events.ValueTraitUpdateEvent;
 import pw.tales.cofdsystem.game_object.events.TraitRemoveEvent;
 import pw.tales.cofdsystem.game_object.events.TraitAddEvent;
@@ -9,6 +10,8 @@ import pw.tales.cofdsystem.game_object.traits.Trait;
 
 class AdvancementTrait extends Trait
 {
+    public var disabled = false;
+
     public function new(
         dn:String,
         gameObject:GameObject,
@@ -20,11 +23,23 @@ class AdvancementTrait extends Trait
         this.eventBus.addHandler(TraitAddEvent, this.canBeAdded);
         this.eventBus.addHandler(TraitRemoveEvent, this.canBeRemoved);
         this.eventBus.addHandler(ValueTraitUpdateEvent, this.canBeUpdated);
+
+        this.eventBus.addHandler(
+            AdvancementCollectEvent,
+            (event) -> event.collect(this)
+        );
     }
 
-    public function canBeAdded(event:TraitAddEvent):Void {}
+    public function setDisabled(disabled: Bool): Void {
+        this.disabled = disabled;
+    }
 
-    public function canBeUpdated(event:ValueTraitUpdateEvent):Void {}
+    public function canBeAdded(event:TraitAddEvent):Void {
+    }
 
-    public function canBeRemoved(event:TraitRemoveEvent):Void {}
+    public function canBeUpdated(event:ValueTraitUpdateEvent):Void {
+    }
+
+    public function canBeRemoved(event:TraitRemoveEvent):Void {
+    }
 }

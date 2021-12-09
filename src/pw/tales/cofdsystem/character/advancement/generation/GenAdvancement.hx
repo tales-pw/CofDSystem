@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.character.advancement.generation;
 
+import pw.tales.cofdsystem.character.advancement.core.AdvancementTrait;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.character.advancement.generation.trait_advancements.GenAttributeAdvancement;
 import pw.tales.cofdsystem.character.advancement.generation.trait_advancements.GenMeritAdvancement;
@@ -9,7 +10,6 @@ import pw.tales.cofdsystem.character.advancement.generation.trait_advancements.G
 import pw.tales.cofdsystem.game_object.events.TraitAddEvent;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.GameObjectState;
-import pw.tales.cofdsystem.game_object.traits.Trait;
 import pw.tales.cofdsystem.game_object.traits.value_trait.events.ValueTraitUpdateEvent;
 
 @:expose("GenAdvancement")
@@ -39,6 +39,9 @@ class GenAdvancement extends AdvancementTrait
 
     public override function canBeAdded(event:TraitAddEvent):Void
     {
+        if (this.disabled)
+            return;
+
         if (this.gameObject.getState() != GameObjectState.ACTIVE)
             return;
 
@@ -52,6 +55,9 @@ class GenAdvancement extends AdvancementTrait
 
     public override function canBeUpdated(event:ValueTraitUpdateEvent):Void
     {
+        if (this.disabled)
+            return;
+
         if (this.gameObject.getState() != GameObjectState.ACTIVE)
             return;
 
