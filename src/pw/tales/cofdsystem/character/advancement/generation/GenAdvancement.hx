@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.character.advancement.generation;
 
+import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.character.advancement.generation.trait_advancements.GenAttributeAdvancement;
 import pw.tales.cofdsystem.character.advancement.generation.trait_advancements.GenMeritAdvancement;
 import pw.tales.cofdsystem.character.advancement.generation.trait_advancements.GenSkillAdvancement;
@@ -15,13 +16,18 @@ import pw.tales.cofdsystem.game_object.traits.value_trait.events.ValueTraitUpdat
 class GenAdvancement extends Trait
 {
     public static final DN = "generation_advancement";
-    public static final TYPE = new GenAdvancementType(DN);
+    public static final TYPE = TraitType.createType(DN, GenAdvancement.new);
 
     public var restrictions:Array<GenAdvancementItem<Dynamic, Dynamic>> = [];
 
-    public function new(gameObject:GameObject)
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:TraitType<Dynamic>
+    )
     {
-        super(DN, gameObject, TYPE);
+        super(dn, gameObject, type);
+
         restrictions.push(new GenAttributeAdvancement(gameObject));
         restrictions.push(new GenSkillAdvancement(gameObject));
         restrictions.push(

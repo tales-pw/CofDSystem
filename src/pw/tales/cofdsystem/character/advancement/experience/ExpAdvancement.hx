@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.character.advancement.experience;
 
+import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.character.traits.Experience;
 import pw.tales.cofdsystem.game_object.events.TraitAddEvent;
 import pw.tales.cofdsystem.game_object.events.TraitRemoveEvent;
@@ -13,11 +14,15 @@ import pw.tales.cofdsystem.utils.Utility;
 class ExpAdvancement extends Trait
 {
     public static final DN = "experience_advancement";
-    public static final TYPE = new ExpAdvancementType(DN);
+    public static final TYPE = TraitType.createType(DN, ExpAdvancement.new);
 
-    public function new(gameObject:GameObject)
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:TraitType<Dynamic>
+    )
     {
-        super(DN, gameObject, TYPE);
+        super(dn, gameObject, type);
 
         this.eventBus.addHandler(TraitAddEvent, this.canBeAdded);
         this.eventBus.addHandler(TraitRemoveEvent, this.canBeRemoved);
