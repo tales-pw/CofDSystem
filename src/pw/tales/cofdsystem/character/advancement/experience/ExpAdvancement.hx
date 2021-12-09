@@ -83,6 +83,7 @@ class ExpAdvancement extends AdvancementTrait
         if (this.gameObject.getState() != GameObjectState.ACTIVE)
             return;
 
-        event.setCancelled(true);
+        if (event.getTrait().version != NEW)
+            event.setCancelled(true);
     }
 }
