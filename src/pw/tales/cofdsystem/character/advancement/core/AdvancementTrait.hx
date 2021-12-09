@@ -24,10 +24,7 @@ class AdvancementTrait extends Trait
         this.eventBus.addHandler(TraitRemoveEvent, this.canBeRemoved);
         this.eventBus.addHandler(ValueTraitUpdateEvent, this.canBeUpdated);
 
-        this.eventBus.addHandler(
-            AdvancementCollectEvent,
-            (event) -> event.collect(this)
-        );
+        this.eventBus.addHandler(AdvancementCollectEvent, this.collect);
     }
 
     public function setDisabled(disabled:Bool):Void

@@ -1,6 +1,6 @@
 package pw.tales.cofdsystem.character.merits;
 
-import pw.tales.cofdsystem.game_object.traits.advantages.SizeAdvantage;
+import pw.tales.cofdsystem.common.traits.advantages.SizeAdvantage;
 import pw.tales.cofdsystem.character.traits.merits.giant.GiantMerit;
 
 class SmallFramedTestCase extends CofDSystemTestCase
@@ -9,7 +9,7 @@ class SmallFramedTestCase extends CofDSystemTestCase
     {
         var manager = c1.getTraitManager();
 
-        var size:SizeAdvantage = cast(manager.getTrait(SizeAdvantage.TYPE));
+        var size = manager.getTrait(SizeAdvantage.TYPE);
         assertEquals(5, size.getValue());
 
         var giant = manager.addTrait(GiantMerit.TYPE);

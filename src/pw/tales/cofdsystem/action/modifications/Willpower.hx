@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.action.modifications;
 
+import pw.tales.cofdsystem.common.traits.advantages.IAdvantage;
 import pw.tales.cofdsystem.action.events.pool.ActionBuildPoolEvent;
 import pw.tales.cofdsystem.action.events.pool.ActionBuildResistEvent;
 import pw.tales.cofdsystem.character.traits.advantages.willpower.WillpowerAdvantage;
@@ -7,7 +8,7 @@ import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.utils.events.HandlerPriority;
 
 @:expose("Willpower")
-class Willpower implements IModification
+class Willpower implements IModification implements IAdvantage
 {
     private final gameObject:GameObject;
 

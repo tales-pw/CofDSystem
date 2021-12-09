@@ -6,7 +6,7 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 @:expose("PositionType")
 class PositionType extends TraitType<PositionTrait>
 {
-    override public function createWithDN(dn:String, gameObject:GameObject):PositionTrait
+    override public dynamic function createWithDN(dn:String, gameObject:GameObject):PositionTrait
     {
         return new PositionTrait(gameObject);
     }

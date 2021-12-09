@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem;
 
+import haxe.PosInfos;
 import thx.Set;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.action_attack.AttackAction;
@@ -84,6 +85,23 @@ class CofDSystemTestCase extends TestCase implements WithBaseTest
             var trait2 = gameObject2.getTraitManager().getTraitByDn(dn);
 
             this.assertObjectEquals(trait1.serialize(), trait2.serialize());
+        }
+    }
+
+    @:nullSafety(Off)
+    public function assertNotEquals<T>(
+        expected:Null<T>,
+        actual:Null<T>,
+        c:Null<PosInfos> = null
+    ):Void
+    {
+        currentTest.done = true;
+        if (actual == expected)
+        {
+            currentTest.success = false;
+            currentTest.error = "expected '" + expected + "' not to be equal to '" + actual + "'";
+            currentTest.posInfos = c;
+            throw currentTest;
         }
     }
 

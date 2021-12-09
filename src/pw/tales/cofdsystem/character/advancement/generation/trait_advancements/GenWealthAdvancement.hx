@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.character.advancement.generation.trait_advancements;
 
+import pw.tales.cofdsystem.common.traits.advantages.IAdvantage;
 import pw.tales.cofdsystem.character.traits.advantages.WealthAdvantage;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
@@ -7,7 +8,7 @@ import pw.tales.cofdsystem.game_object.traits.TraitType;
 typedef WealthAdvantageType = TraitType<WealthAdvantage>;
 
 @:expose("GenWealthAdvancement")
-class GenWealthAdvancement extends GenMeritGroupAdvancement<WealthAdvantage, WealthAdvantageType>
+class GenWealthAdvancement extends GenMeritGroupAdvancement<WealthAdvantage, WealthAdvantageType> implements IAdvantage
 {
     public function new(gameObject:GameObject)
     {

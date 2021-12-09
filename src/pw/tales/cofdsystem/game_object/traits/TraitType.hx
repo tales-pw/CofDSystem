@@ -29,7 +29,6 @@ class TraitType<T:Trait> implements IRecord
     private final dn:String;
     private var name:Null<String> = null;
 
-    private var factoryMethod:Null<TraitFactoryMethod<T>> = null;
     private var multiInstanced:Bool = false;
 
     public function new(dn:String)
@@ -77,11 +76,8 @@ class TraitType<T:Trait> implements IRecord
         return !createEvent.isCancelled();
     }
 
-    public function createWithDN(dn:String, gameObject:GameObject):T
+    public dynamic function createWithDN(dn:String, gameObject:GameObject):T
     {
-        if (this.factoryMethod != null)
-            return this.factoryMethod(dn, gameObject, this);
-
         throw new NotImplementedException();
     }
 
@@ -112,7 +108,10 @@ class TraitType<T:Trait> implements IRecord
     ):TraitType<T>
     {
         var newType = new TraitType(dn);
-        newType.factoryMethod = factoryMethod;
+        newType.createWithDN = (dn, gameObject) ->
+        {
+            return factoryMethod(dn, gameObject, newType);
+        }
         return newType;
     }
 }

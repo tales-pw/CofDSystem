@@ -1,6 +1,6 @@
 package pw.tales.cofdsystem.game_object.traits;
 
-import pw.tales.cofdsystem.game_object.traits.advantages.SizeAdvantage;
+import pw.tales.cofdsystem.common.traits.advantages.SizeAdvantage;
 import pw.tales.cofdsystem.character.traits.merits.giant.GiantMerit;
 import haxe.unit.TestCase;
 

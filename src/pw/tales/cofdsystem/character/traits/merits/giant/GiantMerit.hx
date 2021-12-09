@@ -1,8 +1,8 @@
 package pw.tales.cofdsystem.character.traits.merits.giant;
 
-import pw.tales.cofdsystem.game_object.traits.advantages.SizeAdvantage;
+import pw.tales.cofdsystem.common.traits.advantages.SizeAdvantage;
+import pw.tales.cofdsystem.game_object.events.TraitModEvent;
 import pw.tales.cofdsystem.character.traits.merits.Merit;
-import pw.tales.cofdsystem.game_object.events.AdvantageModEvent;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.utils.events.HandlerPriority;
 
@@ -21,15 +21,15 @@ class GiantMerit extends Merit
     {
         super(dn, gameObject, type, customName);
         this.eventBus.addHandler(
-            AdvantageModEvent,
+            TraitModEvent,
             this.onAdvantageModEvent,
             HandlerPriority.NORMAL
         );
     }
 
-    private function onAdvantageModEvent(event:AdvantageModEvent):Void
+    private function onAdvantageModEvent(event:TraitModEvent):Void
     {
-        if (event.getAdvantage().getType() != SizeAdvantage.TYPE)
+        if (event.getTrait().getType() != SizeAdvantage.TYPE)
             return;
 
         event.apply(1);

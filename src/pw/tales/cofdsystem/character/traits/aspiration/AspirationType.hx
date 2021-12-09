@@ -11,7 +11,7 @@ class AspirationType extends TraitType<Aspiration>
         return true;
     }
 
-    override public function createWithDN(dn:String, gameObject:GameObject):Aspiration
+    override public dynamic function createWithDN(dn:String, gameObject:GameObject):Aspiration
     {
         return new Aspiration(dn, gameObject, this);
     }

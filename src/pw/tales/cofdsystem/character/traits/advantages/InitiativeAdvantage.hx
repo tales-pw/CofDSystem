@@ -1,16 +1,17 @@
 package pw.tales.cofdsystem.character.traits.advantages;
 
+import pw.tales.cofdsystem.common.traits.advantages.IAdvantage;
+import pw.tales.cofdsystem.game_object.traits.expression.ExpressionTrait;
 import pw.tales.cofdsystem.character.traits.attribute.Attributes.*;
 import pw.tales.cofdsystem.dices.pool.builder.PBTrait;
 import pw.tales.cofdsystem.game_object.GameObject;
-import pw.tales.cofdsystem.game_object.traits.advantages.AdvantageExpression;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.scene.initiative.events.InitiativeModifiersEvent;
 import pw.tales.cofdsystem.utils.events.HandlerPriority;
 
 @RegisterTraitTypes
 @:expose("InitiativeAdvantage")
-class InitiativeAdvantage extends AdvantageExpression
+class InitiativeAdvantage extends ExpressionTrait implements IAdvantage
 {
     public static final DN = "Модификатор_Инициативы";
     public static final TYPE = TraitType.createType(DN, InitiativeAdvantage.new);

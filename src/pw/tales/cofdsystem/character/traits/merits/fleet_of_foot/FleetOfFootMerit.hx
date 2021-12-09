@@ -1,8 +1,8 @@
 package pw.tales.cofdsystem.character.traits.merits.fleet_of_foot;
 
+import pw.tales.cofdsystem.game_object.events.TraitModEvent;
 import pw.tales.cofdsystem.character.traits.advantages.SpeedAdvantage;
 import pw.tales.cofdsystem.character.traits.merits.Merit;
-import pw.tales.cofdsystem.game_object.events.AdvantageModEvent;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.utils.events.HandlerPriority;
 
@@ -21,16 +21,17 @@ class FleetOfFootMerit extends Merit
     {
         super(dn, gameObject, type, customName);
         this.eventBus.addHandler(
-            AdvantageModEvent,
-            this.onAdvantageModEvent,
+            TraitModEvent,
+            this.onModEvent,
             HandlerPriority.NORMAL
         );
     }
 
-    private function onAdvantageModEvent(event:AdvantageModEvent):Void
+    private function onModEvent(event:TraitModEvent):Void
     {
-        if (event.getAdvantage().getType() != SpeedAdvantage.TYPE)
+        if (event.getTrait().getType() != SpeedAdvantage.TYPE)
             return;
+
         event.apply(this.getValue());
     }
 }

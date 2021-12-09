@@ -1,12 +1,11 @@
-package pw.tales.cofdsystem.game_object.traits.advantages;
+package pw.tales.cofdsystem.game_object.traits.expression;
 
+import pw.tales.cofdsystem.utils.events.IEvent;
+import pw.tales.cofdsystem.game_object.events.TraitModEvent;
 import pw.tales.cofdsystem.dices.pool.IPoolBuilder;
-import pw.tales.cofdsystem.game_object.events.AdvantageModEvent;
-import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.utils.math.IMathOperation;
 
-@:expose("AdvantageExpression")
-class AdvantageExpression extends Advantage
+class ExpressionTrait extends Trait
 {
     private final pool:IMathOperation<Int>;
 
@@ -23,8 +22,13 @@ class AdvantageExpression extends Advantage
 
     override public function getValue():Int
     {
-        var event = new AdvantageModEvent(gameObject, this);
+        var event = new TraitModEvent(gameObject, this);
         this.gameObject.getSystem().events.post(event);
         return pool.calculate() + event.getModifier();
+    }
+
+    public override function shouldUpdateView(event:IEvent):Bool
+    {
+        return true;
     }
 }

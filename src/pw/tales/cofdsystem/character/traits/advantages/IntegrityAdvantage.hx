@@ -1,20 +1,25 @@
 package pw.tales.cofdsystem.character.traits.advantages;
 
-import pw.tales.cofdsystem.game_object.traits.advantages.Advantage;
-import pw.tales.cofdsystem.game_object.traits.TraitType;
+import pw.tales.cofdsystem.common.traits.advantages.IAdvantage;
+import pw.tales.cofdsystem.game_object.GameObject;
+import pw.tales.cofdsystem.game_object.traits.value_trait.ValueTrait;
+import pw.tales.cofdsystem.game_object.traits.value_trait.ValueTraitType;
 
 @RegisterTraitTypes
 @:expose("IntegrityAdvantage")
-class IntegrityAdvantage extends Advantage
+class IntegrityAdvantage extends ValueTrait implements IAdvantage
 {
     public static final DN = "Целостность";
-    public static final TYPE = TraitType.createType(DN, IntegrityAdvantage.new);
+    public static final TYPE = ValueTraitType.createType(DN, IntegrityAdvantage.new);
 
-    @Serialize("points")
-    private var points:Int = 7;
+    public static final DEFAULT = 7;
 
-    override public function getValue():Int
+    public function new(
+        dn:String,
+        gameObject:GameObject,
+        type:ValueTraitType<Dynamic>
+    )
     {
-        return this.points;
+        super(dn, gameObject, type, DEFAULT);
     }
 }

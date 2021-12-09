@@ -26,7 +26,7 @@ class GameObjectStorageTestCase extends APIStorageTestCase
     {
         this.httpMock.setData(Json.stringify({
             type: "game_object",
-            game_object: Json.parse(TestData.GO_VALID_DATA)
+            game_object: Json.parse(TestData.GO_DATA)
         }));
 
         var onGameObjectCalled = false;

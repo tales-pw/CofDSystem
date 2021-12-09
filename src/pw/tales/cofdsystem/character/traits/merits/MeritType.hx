@@ -59,7 +59,7 @@ class MeritType extends ValueTraitType<Merit>
         return this.levels.getLevels()[0];
     }
 
-    override public function createWithDN(dn:String, gameObject:GameObject):Merit
+    override public dynamic function createWithDN(dn:String, gameObject:GameObject):Merit
     {
         return new Merit(dn, gameObject, this);
     }

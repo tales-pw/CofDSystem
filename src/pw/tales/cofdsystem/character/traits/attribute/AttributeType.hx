@@ -32,7 +32,7 @@ class AttributeType extends ValueTraitType<Attribute>
         return this.group;
     }
 
-    override public function createWithDN(dn:String, gameObject:GameObject):Attribute
+    override public dynamic function createWithDN(dn:String, gameObject:GameObject):Attribute
     {
         return new Attribute(dn, gameObject, this, STARTING_VALUE);
     }

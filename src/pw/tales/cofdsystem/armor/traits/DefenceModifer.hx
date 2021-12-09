@@ -1,8 +1,9 @@
 package pw.tales.cofdsystem.armor.traits;
 
+import pw.tales.cofdsystem.utils.events.IEvent;
+import pw.tales.cofdsystem.game_object.events.TraitModEvent;
 import pw.tales.cofdsystem.character.traits.advantages.DefenceAdvantage;
 import pw.tales.cofdsystem.equipment.traits.EquipmentMod;
-import pw.tales.cofdsystem.game_object.events.AdvantageModEvent;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 
@@ -20,13 +21,18 @@ class DefenceModifer extends EquipmentMod
     )
     {
         super(dn, gameObject, type);
-        this.holderEventBus.addHandler(AdvantageModEvent, this.applyMod);
+        this.holderEventBus.addHandler(TraitModEvent, this.applyMod);
     }
 
-    private function applyMod(event:AdvantageModEvent):Void
+    private function applyMod(event:TraitModEvent):Void
     {
-        if (event.getAdvantage().getType() != DefenceAdvantage.TYPE)
+        if (event.getTrait().getType() != DefenceAdvantage.TYPE)
             return;
         event.apply(this.value);
+    }
+
+    public override function shouldUpdateView(event:IEvent):Bool
+    {
+        return true;
     }
 }

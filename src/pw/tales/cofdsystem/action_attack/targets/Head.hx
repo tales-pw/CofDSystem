@@ -1,6 +1,6 @@
 package pw.tales.cofdsystem.action_attack.targets;
 
-import pw.tales.cofdsystem.game_object.traits.advantages.SizeAdvantage;
+import pw.tales.cofdsystem.common.traits.advantages.SizeAdvantage;
 import pw.tales.cofdsystem.character.traits.tilts.StunnedTilt;
 
 @:expose("Head")

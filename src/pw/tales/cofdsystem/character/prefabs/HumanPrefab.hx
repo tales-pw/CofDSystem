@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.character.prefabs;
 
+import pw.tales.cofdsystem.common.traits.advantages.SizeAdvantage;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.character.traits.advantages.DefenceAdvantage;
 import pw.tales.cofdsystem.character.traits.advantages.health.HealthAdvantage;
@@ -15,7 +16,6 @@ import pw.tales.cofdsystem.character.traits.skill.Skills;
 import pw.tales.cofdsystem.character.traits.WornArmor;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.prefabs.Prefab;
-import pw.tales.cofdsystem.game_object.traits.advantages.SizeAdvantage;
 
 @:structInit @:expose("HumanPrefab")
 class HumanPrefab extends Prefab

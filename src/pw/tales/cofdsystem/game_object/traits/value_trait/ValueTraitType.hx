@@ -3,6 +3,12 @@ package pw.tales.cofdsystem.game_object.traits.value_trait;
 import pw.tales.cofdsystem.character.advancement.experience.IAdvanceableType;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 
+typedef ValueTraitFactoryMethod<Y:ValueTrait> = (
+    dn:String,
+    gameObject:GameObject,
+    t:ValueTraitType<Y>
+) -> Y;
+
 @:expose("ValueTraitType")
 class ValueTraitType<T:ValueTrait> extends TraitType<T> implements IAdvanceableType
 {
@@ -23,5 +29,18 @@ class ValueTraitType<T:ValueTrait> extends TraitType<T> implements IAdvanceableT
         if (this.dotCost == null)
             return null;
         return this.getLowestValue() * this.dotCost;
+    }
+
+    public static function createType<Y:ValueTrait>(
+        dn:String,
+        factoryMethod:ValueTraitFactoryMethod<Y>
+    ):ValueTraitType<Y>
+    {
+        var newType = new ValueTraitType(dn);
+        newType.createWithDN = (dn, gameObject) ->
+        {
+            return factoryMethod(dn, gameObject, newType);
+        }
+        return newType;
     }
 }

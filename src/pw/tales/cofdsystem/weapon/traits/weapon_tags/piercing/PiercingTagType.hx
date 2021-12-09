@@ -19,7 +19,7 @@ class PiercingTagType extends TraitType<PiercingTag>
         return this.level;
     }
 
-    override public function createWithDN(dn:String, gameObject:GameObject):PiercingTag
+    override public dynamic function createWithDN(dn:String, gameObject:GameObject):PiercingTag
     {
         return new PiercingTag(gameObject, this);
     }

@@ -19,7 +19,7 @@ class SkillType extends ValueTraitType<Skill>
         return this.group;
     }
 
-    override public function createWithDN(dn:String, gameObject:GameObject):Skill
+    override public dynamic function createWithDN(dn:String, gameObject:GameObject):Skill
     {
         return new Skill(dn, gameObject, this);
     }

@@ -11,7 +11,7 @@ class FleetOfFootType extends MeritType
         return false;
     }
 
-    override public function createWithDN(dn:String, gameObject:GameObject):FleetOfFootMerit
+    override public dynamic function createWithDN(dn:String, gameObject:GameObject):Merit
     {
         return new FleetOfFootMerit(dn, gameObject, this);
     }

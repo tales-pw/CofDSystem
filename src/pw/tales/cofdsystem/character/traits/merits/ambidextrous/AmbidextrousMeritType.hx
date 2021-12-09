@@ -11,7 +11,7 @@ class AmbidextrousMeritType extends MeritType
         return false;
     }
 
-    override public function createWithDN(dn:String, gameObject:GameObject):AmbidextrousMerit
+    override public dynamic function createWithDN(dn:String, gameObject:GameObject):Merit
     {
         return new AmbidextrousMerit(dn, gameObject, this);
     }

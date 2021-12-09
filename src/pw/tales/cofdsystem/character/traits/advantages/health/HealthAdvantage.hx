@@ -1,6 +1,8 @@
 package pw.tales.cofdsystem.character.traits.advantages.health;
 
-import pw.tales.cofdsystem.game_object.traits.advantages.SizeAdvantage;
+import pw.tales.cofdsystem.common.traits.advantages.IAdvantage;
+import pw.tales.cofdsystem.game_object.traits.expression.ExpressionTrait;
+import pw.tales.cofdsystem.common.traits.advantages.SizeAdvantage;
 import pw.tales.cofdsystem.action.events.pool.ActionBuildPoolEvent;
 import pw.tales.cofdsystem.character.traits.advantages.health.events.GameObjectDamagedEvent;
 import pw.tales.cofdsystem.character.traits.advantages.health.events.GameObjectDiedEvent;
@@ -10,13 +12,12 @@ import pw.tales.cofdsystem.dices.pool.builder.PBTrait;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.health_helper.GetHealthTraitEvent;
 import pw.tales.cofdsystem.game_object.health_helper.IHealthTrait;
-import pw.tales.cofdsystem.game_object.traits.advantages.AdvantageExpression;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.utils.events.HandlerPriority;
 
 @RegisterTraitTypes
 @:expose("HealthAdvantage")
-class HealthAdvantage extends AdvantageExpression implements IHealthTrait
+class HealthAdvantage extends ExpressionTrait implements IHealthTrait implements IAdvantage
 {
     public static final DN = "Здоровье";
     public static final TYPE = TraitType.createType(DN, HealthAdvantage.new);
