@@ -11,25 +11,12 @@ import pw.tales.cofdsystem.game_object.traits.value_trait.events.ValueTraitUpdat
 import pw.tales.cofdsystem.utils.Utility;
 
 @:expose("ExpAdvancement")
-class ExpAdvancement extends Trait
+class ExpAdvancement extends AdvancementTrait
 {
     public static final DN = "experience_advancement";
     public static final TYPE = TraitType.createType(DN, ExpAdvancement.new);
 
-    public function new(
-        dn:String,
-        gameObject:GameObject,
-        type:TraitType<Dynamic>
-    )
-    {
-        super(dn, gameObject, type);
-
-        this.eventBus.addHandler(TraitAddEvent, this.canBeAdded);
-        this.eventBus.addHandler(TraitRemoveEvent, this.canBeRemoved);
-        this.eventBus.addHandler(ValueTraitUpdateEvent, this.canBeUpdated);
-    }
-
-    public function canBeAdded(event:TraitAddEvent):Void
+    public override function canBeAdded(event:TraitAddEvent):Void
     {
         if (this.gameObject.getState() != GameObjectState.ACTIVE)
             return;
@@ -54,7 +41,7 @@ class ExpAdvancement extends Trait
         experience.spend(cost);
     }
 
-    public function canBeUpdated(event:ValueTraitUpdateEvent):Void
+    public override function canBeUpdated(event:ValueTraitUpdateEvent):Void
     {
         if (this.gameObject.getState() != GameObjectState.ACTIVE)
             return;
@@ -83,7 +70,7 @@ class ExpAdvancement extends Trait
         experience.spend(cost);
     }
 
-    public function canBeRemoved(event:TraitRemoveEvent):Void
+    public override function canBeRemoved(event:TraitRemoveEvent):Void
     {
         if (this.gameObject.getState() != GameObjectState.ACTIVE)
             return;
