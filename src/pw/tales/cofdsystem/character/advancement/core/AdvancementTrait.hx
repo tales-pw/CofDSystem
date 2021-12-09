@@ -30,16 +30,25 @@ class AdvancementTrait extends Trait
         );
     }
 
-    public function setDisabled(disabled: Bool): Void {
+    public function setDisabled(disabled:Bool):Void
+    {
         this.disabled = disabled;
     }
 
-    public function canBeAdded(event:TraitAddEvent):Void {
-    }
+    public function canBeAdded(event:TraitAddEvent):Void {}
 
-    public function canBeUpdated(event:ValueTraitUpdateEvent):Void {
-    }
+    public function canBeUpdated(event:ValueTraitUpdateEvent):Void {}
 
-    public function canBeRemoved(event:TraitRemoveEvent):Void {
+    public function canBeRemoved(event:TraitRemoveEvent):Void {}
+
+    public static function get(gameObject:GameObject):Null<AdvancementTrait>
+    {
+        var event = new AdvancementCollectEvent(gameObject);
+        gameObject.getEventBus().post(event);
+        var collected = event.getCollected();
+
+        if (collected.length != 1) return null;
+
+        return collected[0];
     }
 }
