@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.character.prefabs;
 
+import pw.tales.cofdsystem.character.advancement.generation.GenAdvancement;
 import pw.tales.cofdsystem.character.traits.Experience;
 import pw.tales.cofdsystem.game_object.GameObject;
 
@@ -16,5 +17,6 @@ class PlayerPrefab extends HumanPrefab
 
         var traitManager = gameObject.getTraitManager();
         traitManager.addTrait(Experience.TYPE);
+        traitManager.addTrait(GenAdvancement.TYPE);
     }
 }

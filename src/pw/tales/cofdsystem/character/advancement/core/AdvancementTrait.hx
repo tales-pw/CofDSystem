@@ -47,7 +47,8 @@ class AdvancementTrait extends Trait
         gameObject.getEventBus().post(event);
         var collected = event.getCollected();
 
-        if (collected.length != 1) return null;
+        if (collected.length != 1)
+            return null;
 
         return collected[0];
     }
