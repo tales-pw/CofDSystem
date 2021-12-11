@@ -1,6 +1,7 @@
 PYPI_REPO_DIR="${ROOT}/PyPI"
 
 PYTHON_PACKAGE_ROOT=${ROOT}/out/python
+PYTHON_PACKAGE_BUILT=${PYTHON_PACKAGE_ROOT}/dist/*.whl
 PYTHON_PACKAGE_TEMPLATE=${ROOT}/package/python/*
 
 pypi_prepare_package: build_python
@@ -19,8 +20,6 @@ pypi_cleanup_repo:
 
 .ONESHELL:
 pypi_publish: pypi_cleanup_repo pypi_build_package
-	cd ${PYTHON_PACKAGE_ROOT}
-
 	git clone git@github.com:tales-pw/PyPI $(PYPI_REPO_DIR)
 
 	cd $(PYPI_REPO_DIR)
@@ -30,7 +29,7 @@ pypi_publish: pypi_cleanup_repo pypi_build_package
 	git config --local user.name "pypi"
 
 	# Upload new package
-	yes | cp ../dist/*.whl ./
+	yes | cp ${PYTHON_PACKAGE_BUILT} ./
 	git add --all
 	git commit -a -m "update"
 	git push
