@@ -1,1 +1,0 @@
-module.exports = require("./CofDSystem.js")["CofDSystem"];

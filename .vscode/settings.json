@@ -9,5 +9,6 @@
     ],
     "haxe.displayServer": {
         "arguments": ["-v"],
-    }
+    },
+    "python.pythonPath": "/bin/python"
 }
