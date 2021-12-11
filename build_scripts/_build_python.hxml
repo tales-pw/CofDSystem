@@ -1,2 +1,2 @@
 -D python_version=3.9
--python out/python/haxe_build.py
+-python out/python/src/haxe_build.py

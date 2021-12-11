@@ -73,8 +73,9 @@ class Tree:
 
 
 class Generator:
-    def __init__(self, tree: Tree):
+    def __init__(self, tree: Tree, output_path: str):
         self.tree = tree
+        self.output_path = output_path
 
     @staticmethod
     def generate_file_module(
@@ -82,7 +83,7 @@ class Generator:
         dirs: List[str],
         tree_module: TreeModule,
     ):
-        file_value = "import CofDSystem.haxe_build as haxe_build\n"
+        file_value = "from CofDSystem.haxe_build import haxe_build\n"
 
         for key, value in tree_module.items():
             if isinstance(value, dict):
@@ -112,14 +113,14 @@ class Generator:
 
     def generate(self) -> None:
         tree_module = self.tree.get_tree_module()
-        self.generate_module(["."], tree_module)
+        self.generate_module([self.output_path], tree_module)
 
     @classmethod
-    def create(cls, module: Any, package_name: str):
+    def create(cls, module: Any, output_path: str, package_name: str):
         tree = Tree.create(module, package_name)
-        return Generator(tree)
+        return Generator(tree, output_path)
 
 
-def generate_modules():
+def generate_modules(output_path: str):
     module = importlib.import_module("haxe_build")
-    Generator.create(module, "pw.tales.cofdsystem").generate()
+    Generator.create(module, output_path, "pw.tales.cofdsystem").generate()

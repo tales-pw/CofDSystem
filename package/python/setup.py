@@ -1,14 +1,16 @@
 import os
-import setuptools
-from distutils.core import setup
-
+import sys
+from setuptools import setup, find_packages
 from structure import generate_modules
 
-generate_modules()
+sys.path.append("src")
+
+generate_modules("src")
 
 setup(
-    name='CofDSystem',
+    name="CofDSystem",
     version=os.environ["RELEASE_VERSION"],
-    author='xunto',
-    author_email='-',
+    author="xunto",
+    author_email="xunto.orlov@gmail.com",
+    packages=find_packages(),
 )
