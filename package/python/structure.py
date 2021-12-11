@@ -73,17 +73,19 @@ class Tree:
 
 
 class Generator:
-    def __init__(self, tree: Tree, output_path: str):
+    def __init__(self, module: Any, tree: Tree, output_path: str):
+        self.module = module
         self.tree = tree
         self.output_path = output_path
 
-    @staticmethod
     def generate_file_module(
+        self,
         filename: str,
         dirs: List[str],
         tree_module: TreeModule,
     ):
-        file_value = "from CofDSystem.haxe_build import haxe_build\n"
+        prefix = self.module.__name__
+        file_value = f"import {prefix} as haxe_build\n"
 
         for key, value in tree_module.items():
             if isinstance(value, dict):
@@ -96,31 +98,30 @@ class Generator:
         with open(os.path.join(*[*dirs, filename]), "w") as file:
             file.write(file_value)
 
-    @classmethod
-    def generate_module(cls, dirs: List[str], tree_module: TreeModule):
+    def generate_module(self, dirs: List[str], tree_module: TreeModule):
         os.makedirs(os.path.join(*dirs), exist_ok=True)
 
-        cls.generate_file_module("__init__.py", dirs, tree_module)
+        self.generate_file_module("__init__.py", dirs, tree_module)
 
         for key, value in tree_module.items():
             if not isinstance(value, dict):
                 continue
 
             if Tree.has_submodules(value):
-                cls.generate_module([*dirs, key], value)
+                self.generate_module([*dirs, key], value)
             else:
-                cls.generate_file_module(f"{key}.py", dirs, value)
+                self.generate_file_module(f"{key}.py", dirs, value)
 
     def generate(self) -> None:
         tree_module = self.tree.get_tree_module()
-        self.generate_module([self.output_path], tree_module)
+        self.generate_module([self.output_path, "cofdsystem"], tree_module)
 
     @classmethod
     def create(cls, module: Any, output_path: str, package_name: str):
         tree = Tree.create(module, package_name)
-        return Generator(tree, output_path)
+        return Generator(module, tree, output_path)
 
 
-def generate_modules(output_path: str):
-    module = importlib.import_module("haxe_build")
+def generate_modules(module_name: str, output_path: str):
+    module = importlib.import_module(module_name)
     Generator.create(module, output_path, "pw.tales.cofdsystem").generate()
