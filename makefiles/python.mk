@@ -1,9 +1,17 @@
-PYPI_REPO_DIR="./PyPI"
+PYPI_REPO_DIR="${ROOT}/PyPI"
+
+PYTHON_PACKAGE_ROOT=${ROOT}/out/python
+PYTHON_PACKAGE_TEMPLATE=${ROOT}/package/python/*
+
+pypi_prepare_package: build_python
+	cp -r ${PYTHON_PACKAGE_TEMPLATE} ${PYTHON_PACKAGE_ROOT}
 
 pypi_setup_deps:
 	python3 -m pip install wheel
 
-pypi_build_package: build_python pypi_setup_deps
+.ONESHELL:
+pypi_build_package: pypi_prepare_package pypi_setup_deps
+	cd ${PYTHON_PACKAGE_ROOT}
 	python3 setup.py bdist_wheel
 
 pypi_cleanup_repo:
@@ -11,6 +19,8 @@ pypi_cleanup_repo:
 
 .ONESHELL:
 pypi_publish: pypi_cleanup_repo pypi_build_package
+	cd ${PYTHON_PACKAGE_ROOT}
+
 	git clone git@github.com:tales-pw/PyPI $(PYPI_REPO_DIR)
 
 	cd $(PYPI_REPO_DIR)

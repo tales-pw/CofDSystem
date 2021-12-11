@@ -21,9 +21,6 @@ cleanup_build:
 build_%: setup_haxe cleanup_build
 	haxe build_scripts/$@.hxml
 
-build_js: setup_npm cleanup_build
-	npx webpack
-
 build_all: setup_haxe
 	haxe build_scripts/build.hxml
 
