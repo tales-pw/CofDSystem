@@ -8,7 +8,7 @@ class APIStorage
     {
         var request = new haxe.Http(url);
         #if js
-            request.withCredentials = true;
+        request.withCredentials = true;
         #end
         return request;
     }
