@@ -24,11 +24,13 @@ class GameObjectStorage extends APIStorage
         this.system = system;
     }
 
+    #if js
     public static function createForClient(host:String, system:CofDSystem):GameObjectStorage
     {
         var storage = new GameObjectStorage(host, system);
         return storage;
     }
+    #end
 
     public static function createForServer(host:String, system:CofDSystem, token:String):GameObjectStorage
     {
