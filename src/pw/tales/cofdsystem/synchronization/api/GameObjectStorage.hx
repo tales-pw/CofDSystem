@@ -16,7 +16,6 @@ class GameObjectStorage extends APIStorage
     private final host:String;
     private final system:CofDSystem;
 
-    private var clientToken:String = null;
     private var serverToken:String = null;
 
     private function new(host:String, system:CofDSystem)
@@ -25,10 +24,9 @@ class GameObjectStorage extends APIStorage
         this.system = system;
     }
 
-    public static function createForClient(host:String, system:CofDSystem, token:String):GameObjectStorage
+    public static function createForClient(host:String, system:CofDSystem):GameObjectStorage
     {
         var storage = new GameObjectStorage(host, system);
-        storage.setClientToken(token);
         return storage;
     }
 
@@ -44,11 +42,6 @@ class GameObjectStorage extends APIStorage
     public dynamic function onUpdated(version:String):Void {}
 
     public dynamic function onError(data:Dynamic, context:Dynamic):Void {}
-
-    private function setClientToken(token:String):Void
-    {
-        this.clientToken = token;
-    }
 
     private function setServerToken(token:String):Void
     {
@@ -102,14 +95,6 @@ class GameObjectStorage extends APIStorage
             request.addHeader("Server-Token", this.serverToken);
             return;
         }
-
-        if (this.clientToken != null)
-        {
-            request.addHeader("Client-Token", this.clientToken);
-            return;
-        }
-
-        throw "No server or client token set, use factory methods instead of constructor";
     }
 
     private function prepareRequest(url:String, context:Dynamic = null):HttpBase

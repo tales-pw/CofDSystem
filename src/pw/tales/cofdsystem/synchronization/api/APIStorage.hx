@@ -6,6 +6,10 @@ class APIStorage
 {
     public dynamic function createHttp(url:String):HttpBase
     {
-        return new haxe.Http(url);
+        var request = new haxe.Http(url);
+        #if js
+            request.withCredentials = true;
+        #end
+        return request;
     }
 }

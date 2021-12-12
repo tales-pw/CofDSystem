@@ -18,7 +18,7 @@ class GameObjectStorageTestCase extends APIStorageTestCase
     {
         super.setup();
         this.system = SystemSerialization.INSTANCE.deserialize(TestData.SYSTEM_VALID_DATA);
-        this.storage = GameObjectStorage.createForClient(this.DOMAIN, this.system, this.TOKEN);
+        this.storage = GameObjectStorage.createForClient(this.DOMAIN, this.system);
         this.storage.createHttp = this.mockCreateHttp();
     }
 
