@@ -53,7 +53,7 @@ class Merit extends ValueTrait
         );
     }
 
-    override public function canUpdate(newValue:Int):Bool
+    override public function canUpdate(newValue:Int, preview:Bool = true):Bool
     {
         var levels = meritType.getLevels();
 

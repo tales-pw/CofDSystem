@@ -34,7 +34,7 @@ class ExpAdvancement extends AdvancementTrait
             return event.setCancelled(true);
 
         // Spend experience
-        var experience:Null<Experience> = this.gameObject.getTrait(Experience.TYPE);
+        var experience = this.gameObject.getTrait(Experience.TYPE);
         if (experience == null)
             return event.setCancelled(true);
 
@@ -52,28 +52,31 @@ class ExpAdvancement extends AdvancementTrait
         if (this.gameObject.getState() != GameObjectState.ACTIVE)
             return;
 
-        var advanceableTrait:Null<IAdvanceableTrait> = Utility.downcast(event.getTrait(), IAdvanceableTrait);
-        if (advanceableTrait == null)
-            return event.setCancelled(true);
+        var trait = event.getTrait();
+        var newValue = event.getNewValue();
+        var savedValue = trait.getSavedValue();
 
         // Disallow lowering stats
-        if (event.getTrait().getValue() <= event.getNewValue())
+        if (savedValue <= newValue)
             return event.setCancelled(true);
 
         // Get cost
-        var cost = advanceableTrait.getCost(event.getNewValue());
+        var cost = trait.getCost(newValue);
         if (cost == null)
             return event.setCancelled(true);
 
         // Spend experience
-        var experience:Null<Experience> = this.gameObject.getTrait(Experience.TYPE);
+        var experience = this.gameObject.getTrait(Experience.TYPE);
         if (experience == null)
             return event.setCancelled(true);
 
         if (!experience.isEnough(cost))
             return event.setCancelled(true);
 
-        experience.spend(cost);
+        if (!event.isPreview())
+        {
+            experience.spend(cost);
+        }
     }
 
     public override function canBeRemoved(event:TraitRemoveEvent):Void
@@ -84,7 +87,13 @@ class ExpAdvancement extends AdvancementTrait
         if (this.gameObject.getState() != GameObjectState.ACTIVE)
             return;
 
+        var trait = Utility.downcast(event.getTrait(), IAdvanceableTrait);
+
         if (event.getTrait().version != NEW)
             event.setCancelled(true);
+
+        // Return spent experience.
+        var experience = this.gameObject.getTrait(Experience.TYPE);
+        experience.spend(-trait.getWorth());
     }
 }
