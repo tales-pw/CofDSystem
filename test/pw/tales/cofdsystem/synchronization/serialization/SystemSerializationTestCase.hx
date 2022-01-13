@@ -24,7 +24,7 @@ class SystemSerializationTestCase extends CofDSystemTestCase
         var traitType = system.traits.getRecord(REMOTE_TRAIT_DN);
         var trait = c1.getTraitManager().addTrait(traitType);
 
-        this.assertEquals(trait.getDN(), REMOTE_TRAIT_DN);
+        this.assertEquals(REMOTE_TRAIT_DN, trait.getDN());
         this.assertEquals(Type.getClass(trait), clazz);
     }
 
