@@ -27,7 +27,7 @@ class ConditionSerialization implements IPartSerialization
             var type:TraitType<Condition> = cast(system.traits.getRecord(dn));
             if (type == null)
             {
-                type = new TraitType<Condition>(dn);
+                type = TraitType.createType(dn, Condition.new);
                 system.traits.register(type);
             }
 

@@ -1,0 +1,16 @@
+{
+   "version":"5.0.0",
+   "abilities":{},
+   "armor":{},
+   "conditions":{
+      "Remote":{
+         "categories":["Категория:Состояние персонажа"],
+         "dn":"Remote",
+         "name":"Состояние"
+      }
+   },
+   "melee_weapons":{},
+   "ranged_weapons":{},
+   "tilts":{},
+   "weapon_tags":{}
+}

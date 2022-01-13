@@ -7,9 +7,9 @@
     "ranged_weapons":{},
     "tilts":{},
     "weapon_tags":{
-       "Remote (weapon tag)":{
-          "dn":"Remote (weapon tag)",
-          "name":"Remote",
+       "Remote":{
+          "dn":"Remote",
+          "name":"Тэг оружия",
           "categories":[
              "Категория:Тэг оружия"
           ]
