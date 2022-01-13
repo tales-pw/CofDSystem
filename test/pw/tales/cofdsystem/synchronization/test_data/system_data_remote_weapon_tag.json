@@ -1,0 +1,18 @@
+{
+    "version":"5.0.0",
+    "abilities":{},
+    "armor":{},
+    "conditions":{},
+    "melee_weapons":{},
+    "ranged_weapons":{},
+    "tilts":{},
+    "weapon_tags":{
+       "Remote (weapon tag)":{
+          "dn":"Remote (weapon tag)",
+          "name":"Remote",
+          "categories":[
+             "Категория:Тэг оружия"
+          ]
+       }
+    }
+ }

@@ -27,7 +27,7 @@ class TagSerialization implements IPartSerialization
             var type:TraitType<WeaponTag> = cast(system.traits.getRecord(dn));
             if (type == null)
             {
-                type = new TraitType<WeaponTag>(dn);
+                type = TraitType.createType(dn, WeaponTag.new);
                 system.traits.register(type);
             }
 
