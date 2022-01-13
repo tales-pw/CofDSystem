@@ -35,6 +35,14 @@ class SystemSerializationTestCase extends CofDSystemTestCase
             TestData.SYSTEM_DATA_REMOTE_WEAPON_TAG,
             WeaponTag
         );
+
+        var traitType = system.traits.getRecord(REMOTE_TRAIT_DN);
+
+        var melee = this.system.weapons.getRecord("melee_weapon");
+        this.assertArrayEquals([traitType], melee.getWeaponTags());
+
+        var ranged = this.system.weapons.getRecord("ranged_weapon");
+        this.assertArrayEquals([traitType], ranged.getWeaponTags());
     }
 
     /** Tests creation of missing condition from remote data. **/
