@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.synchronization.serialization.system.parts;
 
+import pw.tales.cofdsystem.synchronization.serialization.system.exceptions.ParsingError;
 import haxe.DynamicAccess;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.weapon_melee.prefabs.MeleeWeaponPrefab;
@@ -33,8 +34,11 @@ class MeleeSerialization implements IPartSerialization
             for (tagDN in record.tags)
             {
                 var tag = system.traits.getRecord(tagDN);
-                if (tag != null)
-                    tags.push(tag);
+
+                if (tag == null)
+                    throw new ParsingError(record.tags);
+
+                tags.push(tag);
             }
 
             final weapon:MeleeWeaponPrefab = {
