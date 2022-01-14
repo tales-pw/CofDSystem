@@ -1,6 +1,5 @@
 package pw.tales.cofdsystem.synchronization.serialization.system.parts;
 
-import pw.tales.cofdsystem.synchronization.serialization.system.exceptions.ParsingError;
 import haxe.DynamicAccess;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.weapon_melee.prefabs.MeleeWeaponPrefab;
@@ -17,41 +16,30 @@ typedef ApiMeleeWeapon = {
 }
 
 @:expose("MeleeSerialization")
-class MeleeSerialization implements IPartSerialization
+class MeleeSerialization extends WeaponSerialization<ApiMeleeWeapon, MeleeWeaponPrefab>
 {
     public static final INSTANCE = new MeleeSerialization();
 
-    public function new() {}
-
-    public function update(system:CofDSystem, data:Dynamic):Void
+    private override function getWeaponsData(data:Dynamic):DynamicAccess<ApiMeleeWeapon>
     {
-        var melee_weapons:DynamicAccess<ApiMeleeWeapon> = data.melee_weapons;
-        for (dn in melee_weapons.keys())
-        {
-            var record = melee_weapons.get(dn);
+        return data.melee_weapons;
+    }
 
-            var tags:Array<TraitType<Dynamic>> = [];
-            for (tagDN in record.tags)
-            {
-                var tag = system.traits.getRecord(tagDN);
+    private override function create(
+        record:ApiMeleeWeapon,
+        tags:Array<TraitType<Dynamic>>
+    ):MeleeWeaponPrefab
+    {
+        final weapon:MeleeWeaponPrefab = {
+            dn: record.dn,
+            name: record.name,
+            initiative: record.initiative,
+            damage: record.damage,
+            size: record.size,
+            strength: record.strength,
+            tags: tags
+        };
 
-                if (tag == null)
-                    throw new ParsingError(record.tags);
-
-                tags.push(tag);
-            }
-
-            final weapon:MeleeWeaponPrefab = {
-                dn: record.dn,
-                name: record.name,
-                initiative: record.initiative,
-                damage: record.damage,
-                size: record.size,
-                strength: record.strength,
-                tags: tags
-            };
-
-            system.weapons.register(weapon);
-        }
+        return weapon;
     }
 }
