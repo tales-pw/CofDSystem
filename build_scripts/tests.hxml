@@ -1,5 +1,4 @@
 build_scripts/_libraries_dev.hxml
-build_scripts/_link.hxml
 
 -cp src
 -cp test
