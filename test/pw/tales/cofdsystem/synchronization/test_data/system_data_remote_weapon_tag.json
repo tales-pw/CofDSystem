@@ -1,0 +1,44 @@
+{
+    "version":"5.0.0",
+    "abilities":{},
+    "armor":{},
+    "conditions":{},
+    "melee_weapons":{
+      "melee_weapon": {
+         "dn": "melee_weapon",
+         "name": null,
+         "categories": [
+           "Категория:Холодное оружие"
+         ],
+         "damage": 3,
+         "initiative": -4,
+         "strength": 3,
+         "size": 4,
+         "tags": ["Remote"]
+       }
+    },
+    "ranged_weapons":{
+      "ranged_weapon": {
+         "dn": "ranged_weapon",
+         "name": null,
+         "categories": [
+           "Категория:Дальнее оружие"
+         ],
+         "damage": 2,
+         "initiative": -5,
+         "strength": 2,
+         "size": 3,
+         "tags": ["Remote"]
+       }
+    },
+    "tilts":{},
+    "weapon_tags":{
+       "Remote":{
+          "dn":"Remote",
+          "name":"Тэг оружия",
+          "categories":[
+             "Категория:Тэг оружия"
+          ]
+       }
+    }
+ }

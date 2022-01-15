@@ -19,9 +19,9 @@ class SystemSerialization extends Serialization<CofDSystem, SystemData>
         ConditionSerialization.INSTANCE,
         TiltSerialization.INSTANCE,
         ArmorSerialization.INSTANCE,
+        TagSerialization.INSTANCE,
         MeleeSerialization.INSTANCE,
         RangedSerialization.INSTANCE,
-        TagSerialization.INSTANCE
     ];
 
     public function new() {}

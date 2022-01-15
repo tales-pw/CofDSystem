@@ -16,38 +16,30 @@ typedef ApiRangedWeapon = {
 }
 
 @:expose("RangedSerialization")
-class RangedSerialization implements IPartSerialization
+class RangedSerialization extends WeaponSerialization<ApiRangedWeapon, RangedWeaponPrefab>
 {
     public static final INSTANCE = new RangedSerialization();
 
-    public function new() {}
-
-    public function update(system:CofDSystem, data:Dynamic):Void
+    private override function getWeaponsData(data:Dynamic):DynamicAccess<ApiRangedWeapon>
     {
-        var rangedWeapons:DynamicAccess<ApiRangedWeapon> = data.ranged_weapons;
-        for (dn in rangedWeapons.keys())
-        {
-            var record = rangedWeapons.get(dn);
+        return data.ranged_weapons;
+    }
 
-            var tags:Array<TraitType<Dynamic>> = [];
-            for (tagDN in record.tags)
-            {
-                var tag = system.traits.getRecord(tagDN);
-                if (tag != null)
-                    tags.push(tag);
-            }
-
-            var weapon:RangedWeaponPrefab = {
-                dn: record.dn,
-                name: record.name,
-                initiative: record.initiative,
-                damage: record.damage,
-                size: record.size,
-                strength: data.strength,
-                tags: tags
-            }
-
-            system.weapons.register(weapon);
+    private override function create(
+        record:ApiRangedWeapon,
+        tags:Array<TraitType<Dynamic>>
+    ):RangedWeaponPrefab
+    {
+        var weapon:RangedWeaponPrefab = {
+            dn: record.dn,
+            name: record.name,
+            initiative: record.initiative,
+            damage: record.damage,
+            size: record.size,
+            strength: record.strength,
+            tags: tags
         }
+
+        return weapon;
     }
 }

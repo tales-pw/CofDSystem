@@ -12,6 +12,7 @@ class SystemStorageTestCase extends APIStorageTestCase
         this.storage.createHttp = this.mockCreateHttp();
     }
 
+    /** Tests successful fetch. **/
     public function testSuccessfulFetch():Void
     {
         this.httpMock.setData(TestData.SYSTEM_VALID_DATA);
@@ -20,8 +21,5 @@ class SystemStorageTestCase extends APIStorageTestCase
         this.storage.update(system);
 
         this.assertEquals(httpMock.url, '${this.DOMAIN}/system');
-        this.assertTrue(
-            new CofDSystem().traits.items().length < system.traits.items().length
-        );
     }
 }
