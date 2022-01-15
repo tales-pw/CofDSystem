@@ -1,6 +1,5 @@
 package pw.tales.cofdsystem.utils.time;
 
-import thx.Int64s;
 import haxe.Int64;
 import thx.Time;
 

@@ -1,6 +1,7 @@
 package pw.tales.cofdsystem.character.traits.advantages.willpower;
 
 using pw.tales.cofdsystem.utils.time.TimeUtils;
+using pw.tales.cofdsystem.utils.time.DateTimeUtils;
 
 import thx.Time;
 import pw.tales.cofdsystem.utils.logger.LoggerManager;
@@ -78,7 +79,7 @@ class WillpowerAdvantage extends AdvantageExpression
             return;
         }
 
-        var totalTime = newTime - oldTime;
+        var totalTime = newTime.fixedSubtractDate(oldTime);
 
         // Get amount of willpower restore intervals (24 hours)
         // since last time update.
