@@ -26,11 +26,8 @@ class WillpowerAdvantageTestCase extends CofDSystemTestCase
         assertTrue(exceptionHappened);
     }
 
-    private function setUpUpdateTimeTest()
+    private function setUpUpdateTimeTest():WillpowerAdvantage
     {
-        c2.getTrait(WillpowerAdvantage.TYPE).gEventBus.disable();
-        c3.getTrait(WillpowerAdvantage.TYPE).gEventBus.disable();
-
         c1.getTrait(Attributes.RESOLVE).setValue(5);
         c1.getTrait(Attributes.COMPOSURE).setValue(5);
 
@@ -40,7 +37,7 @@ class WillpowerAdvantageTestCase extends CofDSystemTestCase
         return willpower;
     }
 
-    public function testUpdateTimeNotEnoughTime()
+    public function testUpdateTimeNotEnoughTime():Void
     {
         var willpower = this.setUpUpdateTimeTest();
         var timeUpdated = willpower.getTimeUpdated();
@@ -51,7 +48,7 @@ class WillpowerAdvantageTestCase extends CofDSystemTestCase
         this.assertEquals(0, willpower.getPoints());
     }
 
-    public function testUpdateTimeSingleInterval()
+    public function testUpdateTimeSingleInterval():Void
     {
         var willpower = this.setUpUpdateTimeTest();
         var timeUpdated = willpower.getTimeUpdated();
@@ -61,7 +58,7 @@ class WillpowerAdvantageTestCase extends CofDSystemTestCase
         this.assertEquals(1, willpower.getPoints());
     }
 
-    public function testUpdateFullInterval()
+    public function testUpdateFullInterval():Void
     {
         var willpower = this.setUpUpdateTimeTest();
         var timeUpdated = willpower.getTimeUpdated();
