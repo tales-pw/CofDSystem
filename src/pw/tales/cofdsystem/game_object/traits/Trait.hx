@@ -28,7 +28,10 @@ class Trait implements IRecord
     private final type:TraitType<Dynamic>;
     private final gameObject:GameObject;
     private final system:CofDSystem;
+
     private final eventBus:SubEventBus;
+
+    public final gEventBus:SubEventBus;
 
     private var version:TraitVersion = TraitVersion.NEW;
 
@@ -46,6 +49,7 @@ class Trait implements IRecord
         this.gameObject = gameObject;
         this.system = gameObject.getSystem();
         this.eventBus = gameObject.getEventBus().createSubBus();
+        this.gEventBus = system.events.createSubBus();
     }
 
     public function getDisplayName():String
@@ -128,6 +132,7 @@ class Trait implements IRecord
     public function onRemoved():Void
     {
         this.eventBus.disable();
+        this.gEventBus.disable();
     }
 
     /**

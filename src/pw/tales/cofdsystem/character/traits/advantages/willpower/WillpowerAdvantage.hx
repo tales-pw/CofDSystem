@@ -1,7 +1,9 @@
 package pw.tales.cofdsystem.character.traits.advantages.willpower;
 
+using pw.tales.cofdsystem.utils.time.TimeUtils;
+
+import thx.Time;
 import pw.tales.cofdsystem.utils.logger.LoggerManager;
-import haxe.Int64;
 import thx.DateTime;
 import pw.tales.cofdsystem.time.events.TimeUpdateEvent;
 import pw.tales.cofdsystem.character.traits.advantages.willpower.exceptions.NoWillpowerException;
@@ -17,6 +19,8 @@ class WillpowerAdvantage extends AdvantageExpression
 {
     public static final DN = "Сила_воли";
     public static final TYPE = TraitType.createType(DN, WillpowerAdvantage.new);
+
+    public static final RESTORE_INTERVAL = Time.create(24);
 
     private static final EXPR = new PBTrait(RESOLVE.getDN()).plus(new PBTrait(COMPOSURE.getDN()));
 
@@ -34,9 +38,10 @@ class WillpowerAdvantage extends AdvantageExpression
     )
     {
         super(dn, gameObject, type, EXPR);
+
         this.timeUpdated = DateTime.nowUtc().toString();
 
-        this.eventBus.addHandler(TimeUpdateEvent, this.handleTimeUpdate);
+        this.gEventBus.addHandler(TimeUpdateEvent, this.handleTimeUpdate);
     }
 
     private function setTimeUpdated(time:DateTime):Void
@@ -45,7 +50,7 @@ class WillpowerAdvantage extends AdvantageExpression
         this.notifyUpdated();
     }
 
-    private function getTimeUpdated():DateTime
+    public function getTimeUpdated():DateTime
     {
         return DateTime.fromString(this.timeUpdated);
     }
@@ -73,11 +78,11 @@ class WillpowerAdvantage extends AdvantageExpression
             return;
         }
 
-        var totalHours = (newTime - oldTime).totalHours;
+        var totalTime = newTime - oldTime;
 
         // Get amount of willpower restore intervals (24 hours)
         // since last time update.
-        var intervals = Int64.div(totalHours, 24).low;
+        var intervals = totalTime.div(RESTORE_INTERVAL);
 
         // Not enough time has passed since last update.
         if (intervals < 1)
@@ -87,12 +92,14 @@ class WillpowerAdvantage extends AdvantageExpression
         this.restoreWillpower(amount);
 
         // Set last update to the end of last interval.
-        this.setTimeUpdated(oldTime.addHours(intervals * 24));
+        this.setTimeUpdated(
+            oldTime + (RESTORE_INTERVAL.multiply(intervals))
+        );
     }
 
     public function isFull():Bool
     {
-        return this.getPoints() <= this.getValue();
+        return this.getPoints() >= this.getValue();
     }
 
     public function canUse():Bool
