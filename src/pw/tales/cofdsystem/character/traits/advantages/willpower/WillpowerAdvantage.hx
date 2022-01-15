@@ -77,7 +77,8 @@ class WillpowerAdvantage extends AdvantageExpression
         return this.getValue();
     }
 
-    public function setPoints(points:Int):Void {
+    public function setPoints(points:Int):Void
+    {
         this.points = points;
         this.notifyUpdated();
     }
