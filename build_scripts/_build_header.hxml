@@ -1,4 +1,5 @@
 build_scripts/_libraries.hxml
+build_scripts/_link.hxml
 
 -cp src
 -D analyzer-optimize
