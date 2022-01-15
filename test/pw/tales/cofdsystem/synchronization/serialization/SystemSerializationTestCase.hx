@@ -17,7 +17,7 @@ class SystemSerializationTestCase extends CofDSystemTestCase
     }
 
     /** Tests creation of missing trait from remote data. **/
-    private function methodTestRemoteTrait(data:String, clazz:Class<Dynamic>)
+    private function methodTestRemoteTrait(data:String, clazz:Class<Dynamic>):Void
     {
         var system = SystemSerialization.INSTANCE.update(this.system, data);
 
@@ -29,7 +29,7 @@ class SystemSerializationTestCase extends CofDSystemTestCase
     }
 
     /** Tests creation of missing weapon tag from remote data. **/
-    public function testRemoteWeaponTag()
+    public function testRemoteWeaponTag():Void
     {
         this.methodTestRemoteTrait(
             TestData.SYSTEM_DATA_REMOTE_WEAPON_TAG,
@@ -46,7 +46,7 @@ class SystemSerializationTestCase extends CofDSystemTestCase
     }
 
     /** Tests creation of missing condition from remote data. **/
-    public function testRemoteCondition()
+    public function testRemoteCondition():Void
     {
         this.methodTestRemoteTrait(
             TestData.SYSTEM_DATA_REMOTE_CONDITION,
@@ -55,7 +55,7 @@ class SystemSerializationTestCase extends CofDSystemTestCase
     }
 
     /** Tests creation of missing tilt from remote data. **/
-    public function testRemoteTilt()
+    public function testRemoteTilt():Void
     {
         this.methodTestRemoteTrait(
             TestData.SYSTEM_DATA_REMOTE_TILT,
