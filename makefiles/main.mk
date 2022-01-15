@@ -31,7 +31,7 @@ build_docs: cleanup_build
 build: cleanup_build build_all build_js
 
 checkstyle_check: setup_checkstyle
-	haxelib run checkstyle ${SOURCE_ARGS}
+	haxelib run checkstyle ${SOURCE_ARGS} --exitcode
 
 formatter_check: setup_formatter
 	haxelib run formatter --check ${SOURCE_ARGS}
