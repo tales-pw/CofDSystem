@@ -1,4 +1,3 @@
 -L thx.semver:0.2.2
--L thx.core:0.44.0
 -L compiletime:2.8.0
 -L parsihax:2.0.2
