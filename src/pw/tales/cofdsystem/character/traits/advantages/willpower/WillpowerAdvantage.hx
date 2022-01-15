@@ -24,8 +24,8 @@ class WillpowerAdvantage extends AdvantageExpression
     private var points:Null<Int> = null;
 
     @Optional
-    @Serialize("update")
-    private var updated:String;
+    @Serialize("timeUpdated")
+    private var timeUpdated:String;
 
     public function new(
         dn:String,
@@ -34,30 +34,60 @@ class WillpowerAdvantage extends AdvantageExpression
     )
     {
         super(dn, gameObject, type, EXPR);
-        this.updated = DateTime.nowUtc().toString();
+        this.timeUpdated = DateTime.nowUtc().toString();
 
-        this.eventBus.addHandler(TimeUpdateEvent, this.handleTime);
+        this.eventBus.addHandler(TimeUpdateEvent, this.handleTimeUpdate);
     }
 
-    public function handleTime(e:TimeUpdateEvent):Void
+    private function setTimeUpdated(time:DateTime):Void
     {
+        this.timeUpdated = time.toString();
+        this.notifyUpdated();
+    }
+
+    private function getTimeUpdated():DateTime
+    {
+        return DateTime.fromString(this.timeUpdated);
+    }
+
+    /* Clamp restore amount to a maximum possible value. */
+    public function clampRestorePoints(amount:Int):Int
+    {
+        var points = this.getPoints();
+        var maxPoints = this.getValue();
+
+        var maxAmount = maxPoints - points;
+
+        return Std.int(Math.min(maxAmount, amount));
+    }
+
+    public function handleTimeUpdate(e:TimeUpdateEvent):Void
+    {
+        var newTime = e.getTime();
+        var oldTime = this.getTimeUpdated();
+
         // Don't try to restore when already full.
         if (this.isFull())
+        {
+            this.setTimeUpdated(newTime);
+            return;
+        }
+
+        var totalHours = (newTime - oldTime).totalHours;
+
+        // Get amount of willpower restore intervals (24 hours)
+        // since last time update.
+        var intervals = Int64.div(totalHours, 24).low;
+
+        // Not enough time has passed since last update.
+        if (intervals < 1)
             return;
 
-        var newTime = e.getTime();
-        var oldTime = DateTime.fromString(this.updated);
+        var amount = this.clampRestorePoints(intervals);
+        this.restoreWillpower(amount);
 
-        var hours = (newTime - oldTime).totalHours;
-
-        var dm = Int64.divMod(hours, 24);
-
-        var intervals = dm.quotient.low;
-        var leftover = dm.modulus.low;
-
-        this.restoreWillpower(intervals);
-
-        this.updated = oldTime.addHours(leftover).toString();
+        // Set last update to the end of last interval.
+        this.setTimeUpdated(oldTime.addHours(intervals * 24));
     }
 
     public function isFull():Bool
@@ -95,7 +125,7 @@ class WillpowerAdvantage extends AdvantageExpression
             logger.warning(
                 'Clamping willpower $newPoints to $maxPoints.'
             );
-            newPoints = maxPoints;
+            newPoints = this.clampRestorePoints(newPoints);
         }
 
         this.setPoints(newPoints);
