@@ -5,7 +5,7 @@ ensure_haxe_repo:
 
 setup_haxe: ensure_haxe_repo
 	haxelib install build_scripts/_libraries_full.hxml --always
-	haxelib git thx.core https://github.com/fponticelli/thx.core.git
+	haxelib git thx.core https://github.com/fponticelli/thx.core.git 82aa5db46e1c2d2b7d45cb6570687d5d357c21bd
 
 setup_npm:
 	npm install
