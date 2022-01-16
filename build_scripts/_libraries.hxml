@@ -1,4 +1,4 @@
 -L thx.semver:0.2.2
--L thx.core:0.44.0
+-L thx.core:git:https://github.com/fponticelli/thx.core.git#82aa5db46e1c2d2b7d45cb6570687d5d357c21bd 
 -L compiletime:2.8.0
 -L parsihax:2.0.2
