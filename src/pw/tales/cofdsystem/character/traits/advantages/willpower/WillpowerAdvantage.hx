@@ -1,10 +1,9 @@
 package pw.tales.cofdsystem.character.traits.advantages.willpower;
 
-using pw.tales.cofdsystem.utils.time.TimeUtils;
+using pw.tales.cofdsystem.time.TimeUtils;
 
-import thx.Time;
+import datetime.DateTime;
 import pw.tales.cofdsystem.utils.logger.LoggerManager;
-import thx.DateTime;
 import pw.tales.cofdsystem.time.events.TimeUpdateEvent;
 import pw.tales.cofdsystem.character.traits.advantages.willpower.exceptions.NoWillpowerException;
 import pw.tales.cofdsystem.character.traits.attribute.Attributes.*;
@@ -20,7 +19,7 @@ class WillpowerAdvantage extends AdvantageExpression
     public static final DN = "Сила_воли";
     public static final TYPE = TraitType.createType(DN, WillpowerAdvantage.new);
 
-    public static final RESTORE_INTERVAL = Time.create(24);
+    public static final RESTORE_INTERVAL = Hour(24).toInterval();
 
     private static final EXPR = new PBTrait(RESOLVE.getDN()).plus(new PBTrait(COMPOSURE.getDN()));
 
@@ -39,7 +38,7 @@ class WillpowerAdvantage extends AdvantageExpression
     {
         super(dn, gameObject, type, EXPR);
 
-        this.timeUpdated = DateTime.nowUtc().toString();
+        this.timeUpdated = DateTime.now().toString();
 
         this.gEventBus.addHandler(TimeUpdateEvent, this.handleTimeUpdate);
     }

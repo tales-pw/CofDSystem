@@ -1,6 +1,6 @@
 package pw.tales.cofdsystem.time.events;
 
-import thx.DateTime;
+import datetime.DateTime;
 import pw.tales.cofdsystem.utils.events.IEvent;
 
 class TimeUpdateEvent implements IEvent
@@ -19,7 +19,7 @@ class TimeUpdateEvent implements IEvent
 
     public static function post(system:CofDSystem):Void
     {
-        var time = DateTime.nowUtc();
+        var time = DateTime.now();
         system.events.post(new TimeUpdateEvent(time));
     }
 }
