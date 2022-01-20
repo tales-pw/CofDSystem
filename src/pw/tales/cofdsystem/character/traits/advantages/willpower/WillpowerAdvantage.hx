@@ -48,7 +48,8 @@ class WillpowerAdvantage extends AdvantageExpression
 
     public function getTimeUpdated():DateTime
     {
-        if (this.timeUpdated == null) {
+        if (this.timeUpdated == null)
+        {
             var now = DateTime.now();
             this.setTimeUpdated(now);
             return now;
@@ -136,7 +137,9 @@ class WillpowerAdvantage extends AdvantageExpression
             newPoints = this.clampRestorePoints(newPoints);
         }
 
-        logger.info('Restoring $newPoints willpower for ${this.gameObject.getDN()}.');
+        logger.info(
+            'Restoring $newPoints willpower for ${this.gameObject.getDN()}.'
+        );
 
         this.setPoints(newPoints);
     }
