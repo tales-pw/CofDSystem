@@ -28,7 +28,7 @@ class WillpowerAdvantage extends AdvantageExpression
 
     @Optional
     @Serialize("timeUpdated")
-    private var timeUpdated:String;
+    private var timeUpdated:Null<String> = null;
 
     public function new(
         dn:String,
@@ -37,9 +37,6 @@ class WillpowerAdvantage extends AdvantageExpression
     )
     {
         super(dn, gameObject, type, EXPR);
-
-        this.timeUpdated = DateTime.now().toString();
-
         this.gEventBus.addHandler(TimeUpdateEvent, this.handleTimeUpdate);
     }
 
@@ -51,6 +48,11 @@ class WillpowerAdvantage extends AdvantageExpression
 
     public function getTimeUpdated():DateTime
     {
+        if (this.timeUpdated == null) {
+            var now = DateTime.now();
+            this.setTimeUpdated(now);
+            return now;
+        }
         return DateTime.fromString(this.timeUpdated);
     }
 
