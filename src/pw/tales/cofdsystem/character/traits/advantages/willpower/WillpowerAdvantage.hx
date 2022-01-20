@@ -134,6 +134,8 @@ class WillpowerAdvantage extends AdvantageExpression
             newPoints = this.clampRestorePoints(newPoints);
         }
 
+        logger.info('Restoring $newPoints willpower for ${this.gameObject.getDN()}.');
+
         this.setPoints(newPoints);
     }
 
