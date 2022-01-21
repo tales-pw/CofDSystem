@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.character.advantages;
 
+import thx.DateTime;
 import datetime.DateTime.DTPeriod;
 
 using pw.tales.cofdsystem.time.TimeUtils;
@@ -35,6 +36,21 @@ class WillpowerAdvantageTestCase extends CofDSystemTestCase
         willpower.burnWillpower(willpower.getPoints());
         this.assertEquals(0, willpower.getPoints());
         return willpower;
+    }
+
+    public function testSerialization():Void
+    {
+        var willpower = this.setUpUpdateTimeTest();
+        var timeUpdated = willpower.getTimeUpdated();
+
+        var newTime = timeUpdated + DTPeriod.Hour(2);
+        system.events.post(new TimeUpdateEvent(newTime));
+
+        var data = willpower.serialize();
+        willpower.deserialize(data);
+
+
+        this.assertEquals(newTime, willpower.getTimeUpdated());
     }
 
     public function testUpdateTimeNotEnoughTime():Void

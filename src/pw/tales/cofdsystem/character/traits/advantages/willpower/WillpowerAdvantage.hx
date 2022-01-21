@@ -13,6 +13,7 @@ import pw.tales.cofdsystem.game_object.traits.advantages.AdvantageExpression;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 
 @RegisterTraitTypes
+@:rtti
 @:expose("WillpowerAdvantage")
 class WillpowerAdvantage extends AdvantageExpression
 {
@@ -26,9 +27,8 @@ class WillpowerAdvantage extends AdvantageExpression
     @Serialize("points")
     private var points:Null<Int> = null;
 
-    @Optional
     @Serialize("timeUpdated")
-    private var timeUpdated:Null<String> = null;
+    private var timeUpdated:DateTime;
 
     public function new(
         dn:String,
@@ -37,24 +37,19 @@ class WillpowerAdvantage extends AdvantageExpression
     )
     {
         super(dn, gameObject, type, EXPR);
+        this.timeUpdated = DateTime.now();
         this.gEventBus.addHandler(TimeUpdateEvent, this.handleTimeUpdate);
     }
 
     private function setTimeUpdated(time:DateTime):Void
     {
-        this.timeUpdated = time.toString();
+        this.timeUpdated = time;
         this.notifyUpdated();
     }
 
     public function getTimeUpdated():DateTime
     {
-        if (this.timeUpdated == null)
-        {
-            var now = DateTime.now();
-            this.setTimeUpdated(now);
-            return now;
-        }
-        return DateTime.fromString(this.timeUpdated);
+        return this.timeUpdated;
     }
 
     /* Clamp restore amount to a maximum possible value. */
