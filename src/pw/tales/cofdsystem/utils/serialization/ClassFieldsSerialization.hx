@@ -1,6 +1,6 @@
 package pw.tales.cofdsystem.utils.serialization;
 
-import thx.DateTime;
+import datetime.DateTime;
 import haxe.rtti.CType;
 import haxe.rtti.Rtti;
 
@@ -36,8 +36,9 @@ class ClassFieldsSerialization
             case CAbstract(name, params):
                 if (name == "Null")
                     return this.serializeValue(value, params[0]);
-                if (name == "datetime.DateTime") {
-                    var datetime: datetime.DateTime = value;
+                if (name == "datetime.DateTime")
+                {
+                    var datetime:DateTime = value;
                     return datetime.toString();
                 }
                 return value;
@@ -50,7 +51,8 @@ class ClassFieldsSerialization
     {
         var type = this.fieldTypes.get(fieldName);
 
-        if (type == null) return value;
+        if (type == null)
+            return value;
 
         return this.serializeValue(value, type);
     }
@@ -74,7 +76,8 @@ class ClassFieldsSerialization
     {
         var type = this.fieldTypes.get(fieldName);
 
-        if (type == null) return value;
+        if (type == null)
+            return value;
 
         return this.deserializeValue(value, type);
     }

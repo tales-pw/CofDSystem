@@ -1,6 +1,5 @@
 package pw.tales.cofdsystem.utils.serialization;
 
-import haxe.rtti.Rtti;
 import haxe.DynamicAccess;
 import haxe.rtti.Meta;
 

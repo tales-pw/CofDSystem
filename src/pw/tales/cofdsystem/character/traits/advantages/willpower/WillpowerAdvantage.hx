@@ -41,7 +41,7 @@ class WillpowerAdvantage extends AdvantageExpression
         this.gEventBus.addHandler(TimeUpdateEvent, this.handleTimeUpdate);
     }
 
-    private function setTimeUpdated(time:DateTime):Void
+    public function setTimeUpdated(time:DateTime):Void
     {
         this.timeUpdated = time;
         this.notifyUpdated();
