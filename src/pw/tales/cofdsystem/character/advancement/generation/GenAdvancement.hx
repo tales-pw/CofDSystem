@@ -11,6 +11,7 @@ import pw.tales.cofdsystem.game_object.GameObjectState;
 import pw.tales.cofdsystem.game_object.traits.Trait;
 import pw.tales.cofdsystem.game_object.traits.value_trait.events.ValueTraitUpdateEvent;
 
+@RegisterTraitTypes
 @:expose("GenAdvancement")
 class GenAdvancement extends Trait
 {
