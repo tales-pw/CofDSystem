@@ -72,7 +72,8 @@ class GameObjectSerialization extends Serialization<GameObject, GameObjectData>
         this.applyChanges(gameObject, data.traits, removedTraits);
 
         // Mark all traits as having latest version.
-        for (trait in gameObject.getTraitManager().getTraits().items()) {
+        for (trait in gameObject.getTraitManager().getTraits().items())
+        {
             trait.acceptChanges();
         }
 

@@ -151,7 +151,8 @@ class Trait implements IRecord
         Fetch object data from given anonymous structure.
         @param  data  Data, probably created by serialize method.
     **/
-    public function loadData(data: Dynamic): Void {
+    public function loadData(data:Dynamic):Void
+    {
         AnnotationSerialization.deserialize(this, data);
         this.eventBus.post(new TraitPostDeserializeEvent(this));
     }
