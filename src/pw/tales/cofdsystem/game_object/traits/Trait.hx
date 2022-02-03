@@ -1,8 +1,8 @@
 package pw.tales.cofdsystem.game_object.traits;
 
+import pw.tales.cofdsystem.game_object.events.traits.TraitPostDataLoadEvent;
 import pw.tales.cofdsystem.game_object.events.CollectEvent;
 import haxe.DynamicAccess;
-import pw.tales.cofdsystem.game_object.events.traits.TraitPostDeserializeEvent;
 import pw.tales.cofdsystem.game_object.events.traits.TraitPostEvent;
 import pw.tales.cofdsystem.game_object.events.traits.TraitPostUpdateEvent;
 import pw.tales.cofdsystem.game_object.GameObject;
@@ -149,15 +149,24 @@ class Trait implements IRecord
 
     /**
         Fetch object data from given anonymous structure.
+        @param  data  Data, probably created by serialize method.
+    **/
+    public function loadData(data:Dynamic):Void
+    {
+        AnnotationSerialization.deserialize(this, data);
+        this.eventBus.post(new TraitPostDataLoadEvent(this));
+    }
+
+    /**
+        Fetch object data from given anonymous structure.
         Final state will become object's head of changes.
 
         @param  data  Data, probably created by serialize method.
     **/
     public function deserialize(data:Dynamic):Void
     {
-        AnnotationSerialization.deserialize(this, data);
+        this.loadData(data);
         this.acceptChanges();
-        this.eventBus.post(new TraitPostDeserializeEvent(this));
     }
 
     public function isNew():Bool
