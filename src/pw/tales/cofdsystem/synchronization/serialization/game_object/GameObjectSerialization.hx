@@ -71,6 +71,11 @@ class GameObjectSerialization extends Serialization<GameObject, GameObjectData>
 
         this.applyChanges(gameObject, data.traits, removedTraits);
 
+        // Mark all traits as having latest version.
+        for (trait in gameObject.getTraitManager().getTraits().items()) {
+            trait.acceptChanges();
+        }
+
         // Make GameObject active
         gameObject.setState(GameObjectState.ACTIVE);
         logger.info('${gameObject} loaded.');
@@ -109,7 +114,7 @@ class GameObjectSerialization extends Serialization<GameObject, GameObjectData>
             var trait:Trait = this.ensureTrait(manager, type, traitData.dn);
             try
             {
-                trait.deserialize(traitData);
+                trait.loadData(traitData);
             } catch (e:DeserializationException)
             {
                 logger.warning(
@@ -117,7 +122,7 @@ class GameObjectSerialization extends Serialization<GameObject, GameObjectData>
                 );
                 manager.removeTrait(trait);
                 trait = manager.addTrait(UnknownTrait.TYPE);
-                trait.deserialize(traitData);
+                trait.loadData(traitData);
             }
         }
     }
