@@ -57,7 +57,11 @@ class WillpowerAdvantageTestCase extends CofDSystemTestCase
         var timeUpdated = willpower.getTimeUpdated();
 
         var newTime = timeUpdated + DTPeriod.Hour(2);
-        system.events.post(new TimeUpdateEvent(newTime));
+        willpower.now = function()
+        {
+            return newTime;
+        };
+        system.events.post(new TimeUpdateEvent());
 
         this.assertEquals(0, willpower.getPoints());
     }
@@ -68,7 +72,11 @@ class WillpowerAdvantageTestCase extends CofDSystemTestCase
         var timeUpdated = willpower.getTimeUpdated();
 
         var newTime = timeUpdated + WillpowerAdvantage.RESTORE_INTERVAL;
-        system.events.post(new TimeUpdateEvent(newTime));
+        willpower.now = function()
+        {
+            return newTime;
+        };
+        system.events.post(new TimeUpdateEvent());
         this.assertEquals(1, willpower.getPoints());
     }
 
@@ -78,7 +86,11 @@ class WillpowerAdvantageTestCase extends CofDSystemTestCase
         var timeUpdated = willpower.getTimeUpdated();
 
         var newTime = timeUpdated + WillpowerAdvantage.RESTORE_INTERVAL.multiply(willpower.getValue());
-        system.events.post(new TimeUpdateEvent(newTime));
+        willpower.now = function()
+        {
+            return newTime;
+        };
+        system.events.post(new TimeUpdateEvent());
         this.assertEquals(willpower.getValue(), willpower.getPoints());
     }
 }

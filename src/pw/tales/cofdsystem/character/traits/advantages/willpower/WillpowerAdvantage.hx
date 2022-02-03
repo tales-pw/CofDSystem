@@ -30,6 +30,7 @@ class WillpowerAdvantage extends AdvantageExpression
     @Serialize("timeUpdated")
     private var timeUpdated:DateTime;
 
+    @:nullSafety(Off)
     public function new(
         dn:String,
         gameObject:GameObject,
@@ -37,19 +38,32 @@ class WillpowerAdvantage extends AdvantageExpression
     )
     {
         super(dn, gameObject, type, EXPR);
-        this.timeUpdated = DateTime.now();
+
+        this.timeUpdated = this.now();
         this.gEventBus.addHandler(TimeUpdateEvent, this.handleTimeUpdate);
     }
 
-    public function setTimeUpdated(time:DateTime):Void
+    /* Get amount of willpower restore intervals (24 hours) */
+    private function countRestoreIntervals(start:DateTime, end:DateTime):Int
     {
-        this.timeUpdated = time;
-        this.notifyUpdated();
+        var totalTime = end - start;
+        return totalTime.div(RESTORE_INTERVAL);
+    }
+
+    public dynamic function now():DateTime
+    {
+        return DateTime.now();
     }
 
     public function getTimeUpdated():DateTime
     {
         return this.timeUpdated;
+    }
+
+    public function setTimeUpdated(timeUpdated:DateTime):Void
+    {
+        this.timeUpdated = timeUpdated;
+        this.notifyUpdated();
     }
 
     /* Clamp restore amount to a maximum possible value. */
@@ -65,21 +79,15 @@ class WillpowerAdvantage extends AdvantageExpression
 
     public function handleTimeUpdate(e:TimeUpdateEvent):Void
     {
-        var newTime = e.getTime();
         var oldTime = this.getTimeUpdated();
+        var newTime = this.now();
 
         // Don't try to restore when already full.
         if (this.isFull())
-        {
-            this.setTimeUpdated(newTime);
             return;
-        }
 
-        var totalTime = newTime - oldTime;
-
-        // Get amount of willpower restore intervals (24 hours)
-        // since last time update.
-        var intervals = totalTime.div(RESTORE_INTERVAL);
+        // Get amount of willpower restore intervals since last time update.
+        var intervals = this.countRestoreIntervals(oldTime, newTime);
 
         // Not enough time has passed since last update.
         if (intervals < 1)
@@ -87,11 +95,6 @@ class WillpowerAdvantage extends AdvantageExpression
 
         var amount = this.clampRestorePoints(intervals);
         this.restoreWillpower(amount);
-
-        // Set last update to the end of last interval.
-        this.setTimeUpdated(
-            oldTime + (RESTORE_INTERVAL.multiply(intervals))
-        );
     }
 
     public function isFull():Bool
@@ -114,6 +117,7 @@ class WillpowerAdvantage extends AdvantageExpression
     public function setPoints(points:Int):Void
     {
         this.points = points;
+        this.timeUpdated = this.now();
         this.notifyUpdated();
     }
 
