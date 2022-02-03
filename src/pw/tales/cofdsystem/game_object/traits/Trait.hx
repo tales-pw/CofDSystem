@@ -1,8 +1,8 @@
 package pw.tales.cofdsystem.game_object.traits;
 
+import pw.tales.cofdsystem.game_object.events.traits.TraitPostDataLoadEvent;
 import pw.tales.cofdsystem.game_object.events.CollectEvent;
 import haxe.DynamicAccess;
-import pw.tales.cofdsystem.game_object.events.traits.TraitPostDeserializeEvent;
 import pw.tales.cofdsystem.game_object.events.traits.TraitPostEvent;
 import pw.tales.cofdsystem.game_object.events.traits.TraitPostUpdateEvent;
 import pw.tales.cofdsystem.game_object.GameObject;
@@ -154,7 +154,7 @@ class Trait implements IRecord
     public function loadData(data:Dynamic):Void
     {
         AnnotationSerialization.deserialize(this, data);
-        this.eventBus.post(new TraitPostDeserializeEvent(this));
+        this.eventBus.post(new TraitPostDataLoadEvent(this));
     }
 
     /**
