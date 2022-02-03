@@ -55,17 +55,6 @@ class WillpowerAdvantage extends AdvantageExpression
         return DateTime.now();
     }
 
-    public function getTimeUpdated():DateTime
-    {
-        return this.timeUpdated;
-    }
-
-    public function setTimeUpdated(timeUpdated:DateTime):Void
-    {
-        this.timeUpdated = timeUpdated;
-        this.notifyUpdated();
-    }
-
     /* Clamp restore amount to a maximum possible value. */
     public function clampRestorePoints(amount:Int):Int
     {
@@ -79,7 +68,7 @@ class WillpowerAdvantage extends AdvantageExpression
 
     public function handleTimeUpdate(e:TimeUpdateEvent):Void
     {
-        var oldTime = this.getTimeUpdated();
+        var oldTime = this.timeUpdated;
         var newTime = this.now();
 
         // Don't try to restore when already full.

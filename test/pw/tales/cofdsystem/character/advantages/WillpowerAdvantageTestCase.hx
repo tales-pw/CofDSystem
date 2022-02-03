@@ -1,5 +1,7 @@
 package pw.tales.cofdsystem.character.advantages;
 
+import pw.tales.cofdsystem.action.modifications.Willpower;
+import datetime.DateTime;
 import datetime.DateTime.DTPeriod;
 
 using pw.tales.cofdsystem.time.TimeUtils;
@@ -26,6 +28,19 @@ class WillpowerAdvantageTestCase extends CofDSystemTestCase
         assertTrue(exceptionHappened);
     }
 
+    public static function getTimeUpdated(willpower:WillpowerAdvantage):DateTime
+    {
+        return Reflect.getProperty(willpower, "timeUpdated");
+    }
+
+    private static function setTimeUpdated(
+        willpower:WillpowerAdvantage,
+        newTime:DateTime
+    )
+    {
+        Reflect.setField(willpower, "timeUpdated", newTime);
+    }
+
     private function setUpUpdateTimeTest():WillpowerAdvantage
     {
         c1.getTrait(Attributes.RESOLVE).setValue(5);
@@ -40,21 +55,21 @@ class WillpowerAdvantageTestCase extends CofDSystemTestCase
     public function testSerialization():Void
     {
         var willpower = this.setUpUpdateTimeTest();
-        var timeUpdated = willpower.getTimeUpdated();
+        var timeUpdated = getTimeUpdated(willpower);
 
         var newTime = timeUpdated + DTPeriod.Hour(2);
-        willpower.setTimeUpdated(newTime);
+        setTimeUpdated(willpower, newTime);
 
         var data = willpower.serialize();
         willpower.deserialize(data);
 
-        this.assertEquals(newTime, willpower.getTimeUpdated());
+        this.assertEquals(newTime, getTimeUpdated(willpower));
     }
 
     public function testUpdateTimeNotEnoughTime():Void
     {
         var willpower = this.setUpUpdateTimeTest();
-        var timeUpdated = willpower.getTimeUpdated();
+        var timeUpdated = getTimeUpdated(willpower);
 
         var newTime = timeUpdated + DTPeriod.Hour(2);
         willpower.now = function()
@@ -69,7 +84,7 @@ class WillpowerAdvantageTestCase extends CofDSystemTestCase
     public function testUpdateTimeSingleInterval():Void
     {
         var willpower = this.setUpUpdateTimeTest();
-        var timeUpdated = willpower.getTimeUpdated();
+        var timeUpdated = getTimeUpdated(willpower);
 
         var newTime = timeUpdated + WillpowerAdvantage.RESTORE_INTERVAL;
         willpower.now = function()
@@ -83,7 +98,7 @@ class WillpowerAdvantageTestCase extends CofDSystemTestCase
     public function testUpdateFullInterval():Void
     {
         var willpower = this.setUpUpdateTimeTest();
-        var timeUpdated = willpower.getTimeUpdated();
+        var timeUpdated = getTimeUpdated(willpower);
 
         var newTime = timeUpdated + WillpowerAdvantage.RESTORE_INTERVAL.multiply(willpower.getValue());
         willpower.now = function()
