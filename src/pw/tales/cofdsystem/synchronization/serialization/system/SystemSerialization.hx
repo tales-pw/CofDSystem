@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.synchronization.serialization.system;
 
+import thx.semver.Version;
 import pw.tales.cofdsystem.synchronization.serialization.Serialization;
 import pw.tales.cofdsystem.synchronization.serialization.system.exceptions.VersionMissmatchException;
 import pw.tales.cofdsystem.synchronization.serialization.system.parts.AbilitySerialization;
@@ -31,13 +32,23 @@ class SystemSerialization extends Serialization<CofDSystem, SystemData>
         return new CofDSystem();
     }
 
-    public override function updateWithData(obj:CofDSystem, data:SystemData):CofDSystem
+    private function checkVersion(data:SystemData):Void
     {
-        var remoteVersion:String = data.version;
-        if (CofDSystem.VERSION_CHECK && remoteVersion != CofDSystem.VERSION)
+        if (!CofDSystem.VERSION_CHECK)
+            return;
+
+        var localVersion:Version = CofDSystem.VERSION;
+        var remoteVersion:Version = data.version;
+
+        if (remoteVersion.major != localVersion.major)
         {
             throw new VersionMissmatchException(CofDSystem.VERSION, remoteVersion);
         }
+    }
+
+    public override function updateWithData(obj:CofDSystem, data:SystemData):CofDSystem
+    {
+        this.checkVersion(data);
 
         for (handler in HANDLERS)
         {

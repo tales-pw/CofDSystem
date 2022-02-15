@@ -76,6 +76,9 @@ class AnnotationSerialization
         var access:DynamicAccess<Dynamic> = object;
         var data:DynamicAccess<Dynamic> = {};
 
+        var clazz = Type.getClass(object);
+        var fields = new ClassFieldsSerialization(clazz).init();
+
         for (keyvalue in metadata.keyValueIterator())
         {
             var field:String = keyvalue.key;
@@ -85,8 +88,9 @@ class AnnotationSerialization
             if (options != null)
             {
                 var serializeKey = options.serializeKey;
-                var serialzeValue:Dynamic = access.get(field);
-                data.set(serializeKey, serialzeValue);
+                var serialzeValue = access.get(field);
+                var serialzedValue = fields.serialize(field, serialzeValue);
+                data.set(serializeKey, serialzedValue);
             }
         }
 
@@ -96,6 +100,9 @@ class AnnotationSerialization
     public static function deserialize(object:Dynamic, data:DynamicAccess<Dynamic>):Dynamic
     {
         var metadata:DynamicAccess<Dynamic> = gatherMetadata(object);
+
+        var clazz = Type.getClass(object);
+        var fields = new ClassFieldsSerialization(clazz).init();
 
         for (keyvalue in metadata.keyValueIterator())
         {
@@ -110,7 +117,8 @@ class AnnotationSerialization
 
             if (data.exists(serializeKey))
             {
-                var value:Dynamic = data.get(serializeKey);
+                var serializedValue:Dynamic = data.get(serializeKey);
+                var value = fields.deserialize(field, serializedValue);
                 Reflect.setField(object, field, value);
             } else
             {
