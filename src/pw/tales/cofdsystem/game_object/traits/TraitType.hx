@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.game_object.traits;
 
+import thx.Set;
 import haxe.exceptions.NotImplementedException;
 import pw.tales.cofdsystem.game_object.events.TraitAddEvent;
 import pw.tales.cofdsystem.utils.registry.IRecord;
@@ -28,6 +29,7 @@ class TraitType<T:Trait> implements IRecord
 {
     private final dn:String;
     private var name:Null<String> = null;
+    private var tags:Set<String> = Set.createString();
 
     private var factoryMethod:Null<TraitFactoryMethod<T>> = null;
     private var multiInstanced:Bool = false;
@@ -68,6 +70,11 @@ class TraitType<T:Trait> implements IRecord
     {
         this.multiInstanced = multiInstanced;
         return this;
+    }
+
+    public function getTags():Set<String>
+    {
+        return this.tags;
     }
 
     public function canAdd(gameObject:GameObject):Bool
