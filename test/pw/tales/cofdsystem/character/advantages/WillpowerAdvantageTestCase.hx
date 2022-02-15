@@ -1,6 +1,5 @@
 package pw.tales.cofdsystem.character.advantages;
 
-import pw.tales.cofdsystem.action.modifications.Willpower;
 import datetime.DateTime;
 import datetime.DateTime.DTPeriod;
 
@@ -36,7 +35,7 @@ class WillpowerAdvantageTestCase extends CofDSystemTestCase
     private static function setTimeUpdated(
         willpower:WillpowerAdvantage,
         newTime:DateTime
-    )
+    ): Void
     {
         Reflect.setField(willpower, "timeUpdated", newTime);
     }
