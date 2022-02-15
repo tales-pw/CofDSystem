@@ -28,6 +28,7 @@ class TiltSerialization implements IPartSerialization
             if (type == null)
             {
                 type = TraitType.createType(dn, Tilt.new);
+                type.setTags(record.categories);
                 system.traits.register(type);
             }
 

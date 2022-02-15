@@ -28,6 +28,7 @@ class TraitType<T:Trait> implements IRecord
 {
     private final dn:String;
     private var name:Null<String> = null;
+    private var tags:Array<String> = [];
 
     private var factoryMethod:Null<TraitFactoryMethod<T>> = null;
     private var multiInstanced:Bool = false;
@@ -68,6 +69,16 @@ class TraitType<T:Trait> implements IRecord
     {
         this.multiInstanced = multiInstanced;
         return this;
+    }
+
+    public function setTags(tags:Array<String>):Void
+    {
+        this.tags = tags;
+    }
+
+    public function getTags():Array<String>
+    {
+        return this.tags;
     }
 
     public function canAdd(gameObject:GameObject):Bool

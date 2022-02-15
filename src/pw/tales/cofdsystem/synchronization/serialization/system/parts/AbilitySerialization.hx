@@ -42,6 +42,8 @@ class AbilitySerialization implements IPartSerialization
                 system.traits.register(abilityType);
             }
 
+            abilityType.setTags(record.categories);
+
             if (record.name != null)
                 abilityType.setName(record.name);
 
