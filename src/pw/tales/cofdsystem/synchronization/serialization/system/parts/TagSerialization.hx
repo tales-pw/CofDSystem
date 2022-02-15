@@ -28,7 +28,11 @@ class TagSerialization implements IPartSerialization
             if (type == null)
             {
                 type = TraitType.createType(dn, WeaponTag.new);
-                type.setTags(record.categories);
+
+                var tags = type.getTags();
+                tags.pushMany(record.categories);
+                tags.push("weapon_tag");
+
                 system.traits.register(type);
             }
 
