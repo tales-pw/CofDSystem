@@ -33,11 +33,8 @@ class Registry<T:IRecord>
         return dn;
     }
 
-    public function getRecord(dn:Null<String>):T
+    public function getRecord(dn:String):T
     {
-        if (dn == null)
-            return null;
-
         if (this.normalize)
             dn = normalizeDn(dn);
 
