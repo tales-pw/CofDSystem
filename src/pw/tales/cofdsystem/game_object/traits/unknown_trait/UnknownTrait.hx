@@ -25,7 +25,8 @@ class UnknownTrait extends Trait
         return this.data;
     };
 
-    override public function loadData(data:Dynamic): Void {
+    override public function loadData(data:Dynamic):Void
+    {
         this.data = data;
         this.eventBus.post(new TraitPostDataLoadEvent(this));
     }

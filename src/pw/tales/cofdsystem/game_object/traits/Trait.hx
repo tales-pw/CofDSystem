@@ -216,7 +216,8 @@ class Trait implements IRecord
     }
 
     #if python
-    public function __repr__(): String {
+    public function __repr__():String
+    {
         return this.toString();
     }
     #end
