@@ -19,11 +19,9 @@ class UnknownTrait extends Trait
         );
     }
 
-    override public function serialize():Dynamic
-        throw
-            {
-                return this.data;
-            };
+    override public function serialize():Dynamic {
+        return this.data;
+    };
 
     override public function deserialize(data:Dynamic):Void
     {
