@@ -35,7 +35,7 @@ class WillpowerAdvantageTestCase extends CofDSystemTestCase
     private static function setTimeUpdated(
         willpower:WillpowerAdvantage,
         newTime:DateTime
-    ): Void
+    ):Void
     {
         Reflect.setField(willpower, "timeUpdated", newTime);
     }
