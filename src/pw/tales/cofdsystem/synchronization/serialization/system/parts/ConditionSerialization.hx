@@ -28,7 +28,11 @@ class ConditionSerialization implements IPartSerialization
             if (type == null)
             {
                 type = TraitType.createType(dn, Condition.new);
-                type.setTags(record.categories);
+
+                var tags = type.getTags();
+                tags.pushMany(record.categories);
+                tags.push("condition");
+
                 system.traits.register(type);
             }
 
