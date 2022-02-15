@@ -214,4 +214,10 @@ class Trait implements IRecord
         var className = Utility.getClassName(Type.getClass(this));
         return '${className}[${this.serialize()}]';
     }
+
+    #if python
+    public function __repr__(): String {
+        return this.toString();
+    }
+    #end
 }
