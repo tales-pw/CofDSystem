@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.game_object.traits.unknown_trait;
 
+import pw.tales.cofdsystem.game_object.events.traits.TraitPostDataLoadEvent;
 import pw.tales.cofdsystem.game_object.traits.unknown_trait.events.UnknownTraitsCollectEvent;
 
 @:expose("UnknownTrait")
@@ -24,8 +25,8 @@ class UnknownTrait extends Trait
         return this.data;
     };
 
-    override public function deserialize(data:Dynamic):Void
-    {
+    override public function loadData(data:Dynamic): Void {
         this.data = data;
+        this.eventBus.post(new TraitPostDataLoadEvent(this));
     }
 }
