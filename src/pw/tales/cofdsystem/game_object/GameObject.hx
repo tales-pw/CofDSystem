@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.game_object;
 
+import thx.Uuid;
 import pw.tales.cofdsystem.synchronization.serialization.game_object.GameObjectSerialization;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.game_object.traits.Trait;
@@ -107,5 +108,12 @@ class GameObject implements IRecord
     {
         var serializer = new GameObjectSerialization(system);
         return serializer.fromData(data);
+    }
+
+    public function clone():GameObject
+    {
+        var data = this.toData();
+        data.dn = Uuid.create().toString();
+        return GameObject.fromData(this.system, data);
     }
 }
