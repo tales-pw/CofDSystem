@@ -1,4 +1,4 @@
-package pw.tales.cofdsystem.pool.math;
+package pw.tales.cofdsystem.pool;
 
 interface IModifer
 {
