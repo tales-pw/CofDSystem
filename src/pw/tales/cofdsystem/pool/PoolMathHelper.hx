@@ -1,7 +1,7 @@
 package pw.tales.cofdsystem.pool;
 
 import pw.tales.cofdsystem.pool.math.PoolTrait;
-import pw.tales.cofdsystem.pool.math.PoolTraitSourced;
+import pw.tales.cofdsystem.pool.math.PoolModifier;
 import pw.tales.cofdsystem.utils.Utility;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.utils.math.IMathOperation;
@@ -42,21 +42,20 @@ function getTraits(
 
 function getModifier(
     pool:IMathOperation<Dynamic>,
-    traitType:TraitType<Dynamic>
-):Null<PoolTraitSourced>
+    modifier:IModifer
+):Null<PoolModifier>
 {
-    var sourced = Utility.downcast(pool, PoolTraitSourced);
+    var poolMod = Utility.downcast(pool, PoolModifier);
 
-    if (sourced != null && sourced.getTraitType() == traitType)
-        return sourced;
+    if (poolMod != null && poolMod.getModifier() == modifier)
+        return poolMod;
 
-    // Get in operands
     var operands = pool.getOperands();
     for (operand in operands)
     {
-        var operandModifer = getModifier(operand, traitType);
-        if (operandModifer != null)
-            return operandModifer;
+        var operandPoolMod = getModifier(operand, modifier);
+        if (operandPoolMod != null)
+            return operandPoolMod;
     }
 
     return null;
