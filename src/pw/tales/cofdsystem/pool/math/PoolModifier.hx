@@ -5,12 +5,12 @@ import pw.tales.cofdsystem.utils.math.IMathOperation;
 @:expose("PoolModifier")
 class PoolModifier implements IMathOperation<Int>
 {
-    private final modifier:IModifer;
+    private final modifier:IModifier;
 
     private var restrctied:Bool = false;
     private var value:Int;
 
-    public function new(modifier:IModifer, value:Int)
+    public function new(modifier:IModifier, value:Int)
     {
         this.modifier = modifier;
         this.value = value;
@@ -26,7 +26,7 @@ class PoolModifier implements IMathOperation<Int>
         this.value += addMod;
     }
 
-    public function getModifier():IModifer
+    public function getModifier():IModifier
     {
         return this.modifier;
     }

@@ -49,7 +49,7 @@ function getTraits(pool:IMathOperation<Dynamic>):Array<PoolTrait>
 
 function getModifier(
     pool:IMathOperation<Dynamic>,
-    modifier:IModifer
+    modifier:IModifier
 ):Null<PoolModifier>
 {
     var poolMod = Utility.downcast(pool, PoolModifier);

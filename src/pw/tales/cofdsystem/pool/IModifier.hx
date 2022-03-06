@@ -1,6 +1,6 @@
 package pw.tales.cofdsystem.pool;
 
-interface IModifer
+interface IModifier
 {
     function getDisplayName():String;
 }

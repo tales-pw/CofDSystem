@@ -7,10 +7,10 @@ import pw.tales.cofdsystem.utils.math.IMathOperation;
 @:expose("PBModifier")
 class PBModifier extends PoolBuilder
 {
-    private final modifier:IModifer;
+    private final modifier:IModifier;
     private final value:Int;
 
-    public function new(modifier:IModifer, value:Int)
+    public function new(modifier:IModifier, value:Int)
     {
         super();
         this.modifier = modifier;
