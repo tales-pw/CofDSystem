@@ -12,21 +12,28 @@ function replace(
     replaceWith:TraitType<Dynamic>
 ):Void
 {
-    var traits = getTraits(pool, replaceWhat);
+    var traits = searchTraits(pool, replaceWhat);
     for (trait in traits)
     {
         trait.setTraitType(replaceWith);
     }
 }
 
-function getTraits(
+function searchTraits(
     pool:IMathOperation<Dynamic>,
     traitType:TraitType<Dynamic>
 ):Array<PoolTrait>
 {
+    return getTraits(pool).filter(
+        (trait) -> trait.getTraitType() == traitType
+    );
+}
+
+function getTraits(pool:IMathOperation<Dynamic>):Array<PoolTrait>
+{
     var trait = Utility.downcast(pool, PoolTrait);
 
-    if (trait != null && trait.getTraitType() == traitType)
+    if (trait != null)
         return [trait];
 
     var traits = [];
