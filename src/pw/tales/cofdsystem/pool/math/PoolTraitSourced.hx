@@ -18,6 +18,11 @@ class PoolTraitSourced implements IMathOperation<Int>
         this.value = value;
     }
 
+    public function getTraitType():TraitType<Dynamic>
+    {
+        return this.traitType;
+    }
+
     public function getOperands():Array<IMathOperation<Dynamic>>
     {
         return [];

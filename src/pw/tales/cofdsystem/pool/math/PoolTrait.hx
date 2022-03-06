@@ -9,11 +9,21 @@ import pw.tales.cofdsystem.utils.math.IMathOperation;
 class PoolTrait implements IMathOperation<Int>
 {
     private final gameObject:GameObject;
-    private final traitType:TraitType<Dynamic>;
+    private var traitType:TraitType<Dynamic>;
 
     public function new(gameObject:GameObject, traitType:TraitType<Dynamic>)
     {
         this.gameObject = gameObject;
+        this.traitType = traitType;
+    }
+
+    public function getTraitType():TraitType<Dynamic>
+    {
+        return this.traitType;
+    }
+
+    public function setTraitType(traitType:TraitType<Dynamic>):Void
+    {
         this.traitType = traitType;
     }
 
