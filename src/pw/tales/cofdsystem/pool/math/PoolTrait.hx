@@ -1,4 +1,4 @@
-package pw.tales.cofdsystem.dices.pool.math;
+package pw.tales.cofdsystem.pool.math;
 
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.utils.math.IMathOperation;

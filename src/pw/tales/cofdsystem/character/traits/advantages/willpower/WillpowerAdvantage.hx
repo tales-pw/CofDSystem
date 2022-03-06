@@ -7,7 +7,7 @@ import pw.tales.cofdsystem.utils.logger.LoggerManager;
 import pw.tales.cofdsystem.time.events.TimeUpdateEvent;
 import pw.tales.cofdsystem.character.traits.advantages.willpower.exceptions.NoWillpowerException;
 import pw.tales.cofdsystem.character.traits.attribute.Attributes.*;
-import pw.tales.cofdsystem.dices.pool.builder.PBTrait;
+import pw.tales.cofdsystem.pool.builder.PBTrait;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.advantages.AdvantageExpression;
 import pw.tales.cofdsystem.game_object.traits.TraitType;

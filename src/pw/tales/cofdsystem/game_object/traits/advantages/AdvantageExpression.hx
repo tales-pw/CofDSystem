@@ -1,6 +1,6 @@
 package pw.tales.cofdsystem.game_object.traits.advantages;
 
-import pw.tales.cofdsystem.dices.pool.IPoolBuilder;
+import pw.tales.cofdsystem.pool.builder.IPoolBuilder;
 import pw.tales.cofdsystem.game_object.events.AdvantageModEvent;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.utils.math.IMathOperation;
