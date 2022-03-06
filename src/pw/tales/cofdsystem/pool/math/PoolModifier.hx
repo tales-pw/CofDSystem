@@ -7,7 +7,7 @@ class PoolModifier implements IMathOperation<Int>
 {
     private final modifier:IModifer;
 
-    private var restrctied:Bool;
+    private var restrctied:Bool = false;
     private var value:Int;
 
     public function new(modifier:IModifer, value:Int)
