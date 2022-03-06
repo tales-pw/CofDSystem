@@ -15,7 +15,7 @@ class InitiativeAdvantage extends AdvantageExpression
     public static final DN = "Модификатор_Инициативы";
     public static final TYPE = TraitType.createType(DN, InitiativeAdvantage.new);
 
-    private static final EXPR = new PBTrait(DEXTERITY.getDN()).plus(new PBTrait(COMPOSURE.getDN()));
+    private static final EXPR = new PBTrait(DEXTERITY).plus(new PBTrait(COMPOSURE));
 
     public function new(
         dn:String,

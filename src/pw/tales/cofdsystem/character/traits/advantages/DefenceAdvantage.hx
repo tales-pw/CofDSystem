@@ -16,9 +16,9 @@ class DefenceAdvantage extends AdvantageExpression
     public static final TYPE = TraitType.createType(DN, DefenceAdvantage.new);
 
     private static final EXPR = new PBMin(
-        new PBTrait(DEXTERITY.getDN()),
-        new PBTrait(WITS.getDN())
-    ).plus(new PBTrait(ATHLETICS.getDN()));
+        new PBTrait(DEXTERITY),
+        new PBTrait(WITS)
+    ).plus(new PBTrait(ATHLETICS));
 
     public function new(
         dn:String,

@@ -1,6 +1,5 @@
 package pw.tales.cofdsystem.parser.nodes;
 
-import pw.tales.cofdsystem.pool.math.PoolTrait;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.utils.math.IMathOperation;
 import pw.tales.cofdsystem.utils.math.MathMore;
@@ -26,7 +25,7 @@ class NodeTraitRequirement implements INodeCheck
     public function build(gameObject:GameObject):IMathOperation<Bool>
     {
         return new MathMore(
-            new PoolTrait(gameObject, this.trait.getValue()),
+            this.trait.build(gameObject),
             new MathValue<Int>(this.value.getValue() - 1)
         );
     }

@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.pool.builder;
 
+import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.pool.math.PoolTrait;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.utils.math.IMathOperation;
@@ -7,21 +8,21 @@ import pw.tales.cofdsystem.utils.math.IMathOperation;
 @:expose("PBTrait")
 class PBTrait extends PoolBuilder
 {
-    private final dn:String;
+    private final traitType:TraitType<Dynamic>;
 
-    public function new(dn:String)
+    public function new(traitType:TraitType<Dynamic>)
     {
         super();
-        this.dn = dn;
+        this.traitType = traitType;
     }
 
     override public function getHumanReadable():String
     {
-        return Std.string(this.dn);
+        return this.traitType.getDisplayName();
     }
 
     override public function build(gameObject:GameObject):IMathOperation<Int>
     {
-        return new PoolTrait(gameObject, this.dn);
+        return new PoolTrait(gameObject, this.traitType);
     }
 }

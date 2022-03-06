@@ -14,7 +14,7 @@ class SpeedAdvantage extends AdvantageExpression
     public static final DN = "Скорость";
     public static final TYPE = cast TraitType.createType(DN, SpeedAdvantage.new);
 
-    private static final EXPR = new PBTrait(STRENGTH.getDN()).plus(new PBTrait(DEXTERITY.getDN())).plus(new PBValue(5));
+    private static final EXPR = new PBTrait(STRENGTH).plus(new PBTrait(DEXTERITY)).plus(new PBValue(5));
 
     public function new(
         dn:String,

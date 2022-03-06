@@ -21,7 +21,7 @@ class HealthAdvantage extends AdvantageExpression implements IHealthTrait
     public static final DN = "Здоровье";
     public static final TYPE = TraitType.createType(DN, HealthAdvantage.new);
 
-    private static final EXPR = new PBTrait(SizeAdvantage.DN).plus(new PBTrait(STAMINA.getDN()));
+    private static final EXPR = new PBTrait(SizeAdvantage.TYPE).plus(new PBTrait(STAMINA));
 
     @Serialize("bashing")
     private var bashing:Int = 0;

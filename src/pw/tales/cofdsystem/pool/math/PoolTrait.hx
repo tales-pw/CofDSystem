@@ -1,5 +1,7 @@
 package pw.tales.cofdsystem.pool.math;
 
+import pw.tales.cofdsystem.game_object.traits.Trait;
+import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.utils.math.IMathOperation;
 
@@ -7,12 +9,12 @@ import pw.tales.cofdsystem.utils.math.IMathOperation;
 class PoolTrait implements IMathOperation<Int>
 {
     private final gameObject:GameObject;
-    private final dn:String;
+    private final traitType:TraitType<Dynamic>;
 
-    public function new(gameObject:GameObject, dn:String)
+    public function new(gameObject:GameObject, traitType:TraitType<Dynamic>)
     {
         this.gameObject = gameObject;
-        this.dn = dn;
+        this.traitType = traitType;
     }
 
     public function getOperands():Array<IMathOperation<Dynamic>>
@@ -22,6 +24,8 @@ class PoolTrait implements IMathOperation<Int>
 
     public function calculate():Int
     {
-        return this.gameObject.getTraitManager().getValue(this.dn);
+        var trait: Null<Trait> = this.gameObject.getTrait(this.traitType);
+        if (trait == null) return 0;
+        return trait.getValue();
     }
 }

@@ -22,7 +22,7 @@ class WillpowerAdvantage extends AdvantageExpression
 
     public static final RESTORE_INTERVAL = Hour(24).toInterval();
 
-    private static final EXPR = new PBTrait(RESOLVE.getDN()).plus(new PBTrait(COMPOSURE.getDN()));
+    private static final EXPR = new PBTrait(RESOLVE).plus(new PBTrait(COMPOSURE));
 
     @Serialize("points")
     private var points:Null<Int> = null;
