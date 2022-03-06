@@ -40,7 +40,7 @@ function getTraits(pool:IMathOperation<Dynamic>):Array<PoolTrait>
     var operands = pool.getOperands();
     for (operand in operands)
     {
-        var newTraits = getTraits(operand, traitType);
+        var newTraits = getTraits(operand);
         traits = traits.concat(newTraits);
     }
 
