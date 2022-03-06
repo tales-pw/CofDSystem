@@ -1,5 +1,8 @@
 package pw.tales.cofdsystem.pool.builder;
 
+import haxe.exceptions.ArgumentException;
+import pw.tales.cofdsystem.utils.Utility;
+import pw.tales.cofdsystem.game_object.traits.TraitType;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.utils.math.IMathOperation;
 
@@ -21,8 +24,27 @@ class PoolBuilder implements IPoolBuilder
         throw "Unimplemented";
     }
 
-    public function plus(other:IPoolBuilder):IPoolBuilder
+    public function plus(other:Dynamic):PBSum
     {
-        return new PBSum(this, other);
+        var otherPoolBuilder:IPoolBuilder;
+
+        if (Std.isOfType(other, Int))
+        {
+            otherPoolBuilder = new PBValue(other);
+        } else if (Std.isOfType(other, TraitType))
+        {
+            var traitType = Utility.downcast(other, TraitType);
+
+            @:nullSafety(Off)
+            otherPoolBuilder = traitType.poolBuilder();
+        } else if (Std.isOfType(other, IPoolBuilder))
+        {
+            otherPoolBuilder = other;
+        } else
+        {
+            throw new ArgumentException("other");
+        }
+
+        return new PBSum(this, otherPoolBuilder);
     }
 }

@@ -1,7 +1,5 @@
 package pw.tales.cofdsystem.parser.nodes;
 
-import pw.tales.cofdsystem.game_object.traits.TraitType;
-import pw.tales.cofdsystem.character.advancement.generation.GenAdvancement;
 import pw.tales.cofdsystem.pool.math.PoolTrait;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.utils.math.IMathOperation;

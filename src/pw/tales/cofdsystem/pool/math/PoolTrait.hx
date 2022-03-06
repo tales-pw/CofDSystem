@@ -24,8 +24,9 @@ class PoolTrait implements IMathOperation<Int>
 
     public function calculate():Int
     {
-        var trait: Null<Trait> = this.gameObject.getTrait(this.traitType);
-        if (trait == null) return 0;
+        var trait:Null<Trait> = this.gameObject.getTrait(this.traitType);
+        if (trait == null)
+            return 0;
         return trait.getValue();
     }
 }

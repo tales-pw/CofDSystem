@@ -1,5 +1,7 @@
 package pw.tales.cofdsystem.game_object.traits;
 
+import pw.tales.cofdsystem.pool.builder.PBTrait;
+import pw.tales.cofdsystem.pool.builder.PBSum;
 import thx.Set;
 import haxe.exceptions.NotImplementedException;
 import pw.tales.cofdsystem.game_object.events.TraitAddEvent;
@@ -105,6 +107,16 @@ class TraitType<T:Trait> implements IRecord
         }
 
         return createWithDN(newDn, gameObject);
+    }
+
+    public function poolBuilder():PBTrait
+    {
+        return new PBTrait(this);
+    }
+
+    public function plus(v:Dynamic):PBSum
+    {
+        return this.poolBuilder().plus(v);
     }
 
     private function toString():String
