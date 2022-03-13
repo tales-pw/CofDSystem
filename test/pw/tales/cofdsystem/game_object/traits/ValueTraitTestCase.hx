@@ -48,7 +48,7 @@ class ValueTraitTestCase extends CofDSystemTestCase
         this.assertTrue(triggered);
     }
 
-    public function testSetForbiddenByExternal()
+    public function testSetForbiddenByExternal():Void
     {
         this.c1.getEventBus().addHandler(ValueTraitUpdateEvent, (e) -> e.setCancelled(true));
         var triggered = false;
