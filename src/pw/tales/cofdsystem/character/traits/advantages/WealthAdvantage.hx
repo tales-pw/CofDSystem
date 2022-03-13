@@ -34,6 +34,7 @@ class WealthAdvantage extends Advantage
     public function canUpdate(newValue:Int):Bool
     {
         var event = new ValueTraitUpdateEvent(this, newValue);
+        this.system.events.post(event);
 
         if (event.isCancelled())
             return false;
