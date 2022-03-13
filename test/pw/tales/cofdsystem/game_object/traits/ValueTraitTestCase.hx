@@ -28,7 +28,7 @@ class ValueTraitTestCase extends CofDSystemTestCase
 
         for (i in 0...TRAIT_LIMIT)
         {
-            this.c1.getTrait(TEST_TRAIT_TYPE).setValue(i);
+            trait.setValue(i);
             this.assertEquals(trait.getValue(), i);
         }
     }
