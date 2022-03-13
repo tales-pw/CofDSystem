@@ -4,11 +4,12 @@ import pw.tales.cofdsystem.game_object.events.traits.TraitEvent;
 
 class TraitLimitEvent extends TraitEvent
 {
-    private var traitLimit = 5;
+    private var traitLimit:Int;
 
-    public function new(trait:Trait)
+    public function new(trait:Trait, traitLimit:Int = 5)
     {
         super(trait);
+        this.traitLimit = traitLimit;
     }
 
     public function getTraitLimit():Int
