@@ -1,4 +1,4 @@
-package pw.tales.cofdsystem.game_object.traits;
+package pw.tales.cofdsystem.character.advantages;
 
 import pw.tales.cofdsystem.action.EnumTime;
 import pw.tales.cofdsystem.action.pool.ActionPool;
@@ -11,7 +11,7 @@ import pw.tales.cofdsystem.game_object.health_helper.HealthTraitHelper;
 import pw.tales.cofdsystem.mocks.BasicAction;
 
 @:nullSafety(Off)
-class HealthTestCase extends CofDSystemTestCase
+class HealthAdvantageTestCase extends CofDSystemTestCase
 {
     private function prepareHealthAdvantage(bashing:Int, lethal:Int, aggravated:Int):HealthAdvantage
     {

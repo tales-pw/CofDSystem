@@ -1,11 +1,11 @@
-package pw.tales.cofdsystem.game_object.traits;
+package pw.tales.cofdsystem.game_object;
 
 import pw.tales.cofdsystem.game_object.traits.advantages.SizeAdvantage;
 import pw.tales.cofdsystem.character.traits.merits.giant.GiantMerit;
 import haxe.unit.TestCase;
 
 @:nullSafety(Off)
-class ManagerTestCase extends TestCase
+class TraitManagerTestCase extends TestCase
 {
     public function testAddAndRemoveTrait():Void
     {

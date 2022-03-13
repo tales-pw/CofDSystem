@@ -74,6 +74,12 @@ class TraitType<T:Trait> implements IRecord
         return this;
     }
 
+    public function setFactoryMethod(factoryMethod:TraitFactoryMethod<T>):TraitType<T>
+    {
+        this.factoryMethod = factoryMethod;
+        return this;
+    }
+
     public function getTags():Set<String>
     {
         return this.tags;
@@ -131,7 +137,6 @@ class TraitType<T:Trait> implements IRecord
     ):TraitType<T>
     {
         var newType = new TraitType(dn);
-        newType.factoryMethod = factoryMethod;
-        return newType;
+        return newType.setFactoryMethod(factoryMethod);
     }
 }
