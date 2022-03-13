@@ -10,7 +10,6 @@ import pw.tales.cofdsystem.game_object.traits.value_trait.events.ValueTraitUpdat
 @:expose("WealthAdvantage")
 class WealthAdvantage extends Advantage
 {
-    // TODO: Somehow merge it with ValueTrait. Turning Avdantage into interface is a valid choice.
     public static final DN = "Богатство";
     public static final TYPE = TraitType.createType(DN, WealthAdvantage.new);
 
@@ -27,11 +26,25 @@ class WealthAdvantage extends Advantage
         this.eventBus.addHandler(GenMeritCollectEvent, this.collect);
     }
 
+    public function getTraitLimit():Int
+    {
+        return 10;
+    }
+
     public function canUpdate(newValue:Int):Bool
     {
         var event = new ValueTraitUpdateEvent(this, newValue);
         this.system.events.post(event);
-        return !event.isCancelled();
+
+        if (event.isCancelled())
+            return false;
+
+        var traitLimit = this.getTraitLimit();
+
+        if (newValue > traitLimit)
+            return false;
+
+        return true;
     }
 
     public function setValue(points:Int):Void

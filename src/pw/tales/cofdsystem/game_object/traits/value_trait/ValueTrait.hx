@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.game_object.traits.value_trait;
 
+import pw.tales.cofdsystem.game_object.traits.value_trait.events.TraitLimitEvent;
 import pw.tales.cofdsystem.character.advancement.experience.IAdvanceableTrait;
 import pw.tales.cofdsystem.game_object.traits.value_trait.exceptions.UpdateRejectedException;
 import pw.tales.cofdsystem.game_object.traits.value_trait.events.ValueTraitUpdateEvent;
@@ -24,6 +25,13 @@ class ValueTrait extends Trait implements IAdvanceableTrait
         this.valueType = type;
     }
 
+    public function getTraitLimit():Int
+    {
+        var event = new TraitLimitEvent(this);
+        this.eventBus.post(event);
+        return event.getTraitLimit();
+    }
+
     override public function getValue():Int
     {
         return this.value;
@@ -33,7 +41,16 @@ class ValueTrait extends Trait implements IAdvanceableTrait
     {
         var event = new ValueTraitUpdateEvent(this, newValue);
         this.system.events.post(event);
-        return !event.isCancelled();
+
+        if (event.isCancelled())
+            return false;
+
+        var traitLimit = this.getTraitLimit();
+
+        if (newValue > traitLimit)
+            return false;
+
+        return true;
     }
 
     public function getCost(newValue:Int):Null<Int>
