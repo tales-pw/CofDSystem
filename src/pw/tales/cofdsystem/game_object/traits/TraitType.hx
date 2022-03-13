@@ -1,7 +1,5 @@
 package pw.tales.cofdsystem.game_object.traits;
 
-import pw.tales.cofdsystem.pool.builder.PBTrait;
-import pw.tales.cofdsystem.pool.builder.PBSum;
 import thx.Set;
 import haxe.exceptions.NotImplementedException;
 import pw.tales.cofdsystem.game_object.events.TraitAddEvent;

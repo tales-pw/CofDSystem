@@ -1,5 +1,6 @@
 package pw.tales.cofdsystem.pool;
 
+import pw.tales.cofdsystem.pool.builder.PBMin;
 import pw.tales.cofdsystem.pool.builder.PBTrait;
 import pw.tales.cofdsystem.pool.builder.PBValue;
 import haxe.exceptions.ArgumentException;
@@ -30,4 +31,9 @@ function poolBuilder(a:Dynamic):IPoolBuilder
 function plus(a:Dynamic, b:Dynamic):PBSum
 {
     return new PBSum(poolBuilder(a), poolBuilder(b));
+}
+
+function min(a:Dynamic, b:Dynamic):PBMin
+{
+    return new PBMin(poolBuilder(a), poolBuilder(b));
 }

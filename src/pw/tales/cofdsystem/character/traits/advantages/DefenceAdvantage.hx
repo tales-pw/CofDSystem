@@ -1,10 +1,11 @@
 package pw.tales.cofdsystem.character.traits.advantages;
 
+import pw.tales.cofdsystem.pool.PoolBuilderHelper.min;
+
 using pw.tales.cofdsystem.pool.PoolBuilderHelper;
 
 import pw.tales.cofdsystem.character.traits.attribute.Attributes.*;
 import pw.tales.cofdsystem.character.traits.skill.Skills.*;
-import pw.tales.cofdsystem.pool.builder.PBMin;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.advantages.AdvantageExpression;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
@@ -16,7 +17,7 @@ class DefenceAdvantage extends AdvantageExpression
     public static final DN = "Защита";
     public static final TYPE = TraitType.createType(DN, DefenceAdvantage.new);
 
-    private static final EXPR = PBMin.min(DEXTERITY, WITS).plus(ATHLETICS);
+    private static final EXPR = min(DEXTERITY, WITS).plus(ATHLETICS);
 
     public function new(
         dn:String,

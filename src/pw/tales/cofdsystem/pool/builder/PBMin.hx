@@ -16,11 +16,4 @@ class PBMin extends PBBinary
     {
         return 'min(${this.operand1.getHumanReadable()}, ${this.operand2.getHumanReadable()})';
     }
-
-    public static function min<T:Dynamic>(v1:T, v2:T):PBMin
-    {
-        var operand1 = v1.poolBuilder();
-        var operand2 = v2.poolBuilder();
-        return new PBMin(operand1, operand2);
-    }
 }
