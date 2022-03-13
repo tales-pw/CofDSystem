@@ -1,5 +1,7 @@
 package pw.tales.cofdsystem.character.traits.advantages;
 
+using pw.tales.cofdsystem.pool.PoolBuilderHelper;
+
 import pw.tales.cofdsystem.character.traits.attribute.Attributes.*;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.advantages.AdvantageExpression;

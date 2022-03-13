@@ -1,13 +1,13 @@
 package pw.tales.cofdsystem.character.traits.advantages.willpower;
 
 using pw.tales.cofdsystem.time.TimeUtils;
+using pw.tales.cofdsystem.pool.PoolBuilderHelper;
 
 import datetime.DateTime;
 import pw.tales.cofdsystem.utils.logger.LoggerManager;
 import pw.tales.cofdsystem.time.events.TimeUpdateEvent;
 import pw.tales.cofdsystem.character.traits.advantages.willpower.exceptions.NoWillpowerException;
 import pw.tales.cofdsystem.character.traits.attribute.Attributes.*;
-import pw.tales.cofdsystem.pool.builder.PBTrait;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.advantages.AdvantageExpression;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
@@ -22,7 +22,7 @@ class WillpowerAdvantage extends AdvantageExpression
 
     public static final RESTORE_INTERVAL = Hour(24).toInterval();
 
-    private static final EXPR = new PBTrait(RESOLVE).plus(new PBTrait(COMPOSURE));
+    private static final EXPR = RESOLVE.plus(COMPOSURE);
 
     @Serialize("points")
     private var points:Null<Int> = null;

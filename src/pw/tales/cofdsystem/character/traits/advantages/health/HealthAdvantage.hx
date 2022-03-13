@@ -1,12 +1,13 @@
 package pw.tales.cofdsystem.character.traits.advantages.health;
 
+using pw.tales.cofdsystem.pool.PoolBuilderHelper;
+
 import pw.tales.cofdsystem.game_object.traits.advantages.SizeAdvantage;
 import pw.tales.cofdsystem.action.events.pool.ActionBuildPoolEvent;
 import pw.tales.cofdsystem.character.traits.advantages.health.events.GameObjectDamagedEvent;
 import pw.tales.cofdsystem.character.traits.advantages.health.events.GameObjectDiedEvent;
 import pw.tales.cofdsystem.character.traits.attribute.Attributes.*;
 import pw.tales.cofdsystem.damage.Damage;
-import pw.tales.cofdsystem.pool.builder.PBTrait;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.health_helper.GetHealthTraitEvent;
 import pw.tales.cofdsystem.game_object.health_helper.IHealthTrait;
@@ -21,7 +22,7 @@ class HealthAdvantage extends AdvantageExpression implements IHealthTrait
     public static final DN = "Здоровье";
     public static final TYPE = TraitType.createType(DN, HealthAdvantage.new);
 
-    private static final EXPR = new PBTrait(SizeAdvantage.TYPE).plus(new PBTrait(STAMINA));
+    private static final EXPR = SizeAdvantage.TYPE.plus(STAMINA);
 
     @Serialize("bashing")
     private var bashing:Int = 0;

@@ -9,8 +9,6 @@ import pw.tales.cofdsystem.utils.math.IMathOperation;
 **/
 interface IPoolBuilder
 {
-    function plus(other:IPoolBuilder):IPoolBuilder;
-
     function getHumanReadable():String;
 
     function build(gameObject:GameObject):IMathOperation<Int>;

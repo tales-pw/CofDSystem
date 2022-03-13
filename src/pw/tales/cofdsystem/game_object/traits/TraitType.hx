@@ -115,16 +115,6 @@ class TraitType<T:Trait> implements IRecord
         return createWithDN(newDn, gameObject);
     }
 
-    public function poolBuilder():PBTrait
-    {
-        return new PBTrait(this);
-    }
-
-    public function plus(v:Dynamic):PBSum
-    {
-        return this.poolBuilder().plus(v);
-    }
-
     private function toString():String
     {
         var className = Utility.getClassName(Type.getClass(this));
