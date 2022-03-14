@@ -135,20 +135,6 @@ class TraitManager
     }
 
     /**
-        Fetches Trait's value by dn.
-
-        @param    dn  Trait's DN.
-        @returns      Trait's value or 0 if it's not found.
-    **/
-    public function getValue(dn:String):Int
-    {
-        var record = traits.getRecord(dn);
-        if (record == null)
-            return 0;
-        return record.getValue();
-    }
-
-    /**
         Getter for registry that stores Traits. Avoid using it.
 
         Used internally for serialization and deserialization.

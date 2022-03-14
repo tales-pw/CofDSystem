@@ -1,4 +1,4 @@
-package pw.tales.cofdsystem.dices.pool.builder;
+package pw.tales.cofdsystem.pool.builder;
 
 import pw.tales.cofdsystem.utils.math.MathSum;
 

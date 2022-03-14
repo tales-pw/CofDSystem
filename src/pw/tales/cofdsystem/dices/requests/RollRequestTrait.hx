@@ -2,6 +2,8 @@ package pw.tales.cofdsystem.dices.requests;
 
 import pw.tales.cofdsystem.game_object.GameObject;
 
+using Lambda;
+
 @:expose("RollRequestTrait")
 class RollRequestTrait extends ABSRollRequest
 {
@@ -30,10 +32,9 @@ class RollRequestTrait extends ABSRollRequest
 
     private function buildPool():Int
     {
-        var values = traits.map(
-            (trait) -> gameObject.getTraitManager().getValue(trait)
-        );
-        return Lambda.fold(values, (a, b) -> a + b, 0);
+        var manager = this.gameObject.getTraitManager();
+        return traits.map(manager.getTraitByDn).filter((trait) -> traits != null).map((trait) -> trait.getValue()).fold((a, b) -> a + b,
+            0);
     }
 
     public function addIgnoreLimit(source:String):Void

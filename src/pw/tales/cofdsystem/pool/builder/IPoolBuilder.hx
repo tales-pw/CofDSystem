@@ -1,4 +1,4 @@
-package pw.tales.cofdsystem.dices.pool;
+package pw.tales.cofdsystem.pool.builder;
 
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.utils.math.IMathOperation;
@@ -9,9 +9,9 @@ import pw.tales.cofdsystem.utils.math.IMathOperation;
 **/
 interface IPoolBuilder
 {
-    function plus(other:IPoolBuilder):IPoolBuilder;
-
     function getHumanReadable():String;
 
     function build(gameObject:GameObject):IMathOperation<Int>;
+
+    function calculate(gameObject:GameObject):Int;
 }

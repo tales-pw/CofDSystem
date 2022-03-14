@@ -1,11 +1,8 @@
-package pw.tales.cofdsystem.dices.pool.builder;
+package pw.tales.cofdsystem.pool.builder;
 
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.utils.math.IMathOperation;
 
-/*
-
- */
 @:expose("PoolBuilder")
 class PoolBuilder implements IPoolBuilder
 {
@@ -21,8 +18,8 @@ class PoolBuilder implements IPoolBuilder
         throw "Unimplemented";
     }
 
-    public function plus(other:IPoolBuilder):IPoolBuilder
+    public function calculate(gameObject:GameObject):Int
     {
-        return new PBSum(this, other);
+        return this.build(gameObject).calculate();
     }
 }

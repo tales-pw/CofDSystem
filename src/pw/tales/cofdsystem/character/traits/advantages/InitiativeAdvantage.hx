@@ -1,7 +1,8 @@
 package pw.tales.cofdsystem.character.traits.advantages;
 
+using pw.tales.cofdsystem.pool.PoolBuilderHelper;
+
 import pw.tales.cofdsystem.character.traits.attribute.Attributes.*;
-import pw.tales.cofdsystem.dices.pool.builder.PBTrait;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.game_object.traits.advantages.AdvantageExpression;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
@@ -15,7 +16,7 @@ class InitiativeAdvantage extends AdvantageExpression
     public static final DN = "Модификатор_Инициативы";
     public static final TYPE = TraitType.createType(DN, InitiativeAdvantage.new);
 
-    private static final EXPR = new PBTrait(DEXTERITY.getDN()).plus(new PBTrait(COMPOSURE.getDN()));
+    private static final EXPR = DEXTERITY.plus(COMPOSURE);
 
     public function new(
         dn:String,

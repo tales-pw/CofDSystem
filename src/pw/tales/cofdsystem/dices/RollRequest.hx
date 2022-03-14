@@ -1,7 +1,5 @@
 package pw.tales.cofdsystem.dices;
 
-import pw.tales.cofdsystem.dices.pool.math.PoolTrait;
-import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.utils.math.IMathOperation;
 
 @:expose("RollRequest")
@@ -17,18 +15,9 @@ class RollRequest implements IRollRequest
         this.pool = pool;
     }
 
-    public function getTraits(gameObject:GameObject):Array<PoolTrait>
+    public function getPool():IMathOperation<Int>
     {
-        return [];
-    }
-
-    public function addModifier(
-        value:Int,
-        modDn:Null<String> = null,
-        gameObject:Null<GameObject> = null
-    ):Void
-    {
-        // TODO: Implement
+        return this.pool;
     }
 
     public function setThreshold(threshold:Int):Void

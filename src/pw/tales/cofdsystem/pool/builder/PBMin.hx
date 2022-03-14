@@ -1,4 +1,6 @@
-package pw.tales.cofdsystem.dices.pool.builder;
+package pw.tales.cofdsystem.pool.builder;
+
+using pw.tales.cofdsystem.pool.PoolBuilderHelper;
 
 import pw.tales.cofdsystem.utils.math.MathMin;
 
