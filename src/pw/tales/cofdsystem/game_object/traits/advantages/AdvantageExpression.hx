@@ -24,6 +24,6 @@ class AdvantageExpression extends Advantage
     {
         var event = new AdvantageModEvent(gameObject, this);
         this.gameObject.getSystem().events.post(event);
-        return poolBuilder.build(gameObject).calculate() + event.getModifier();
+        return poolBuilder.calculate(gameObject) + event.getModifier();
     }
 }
