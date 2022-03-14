@@ -1,6 +1,6 @@
 package pw.tales.cofdsystem.pool.builder;
 
-import pw.tales.cofdsystem.pool.math.PoolModifier;
+import pw.tales.cofdsystem.utils.math.MathValue;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.utils.math.IMathOperation;
 
@@ -24,6 +24,6 @@ class PBModifier extends PoolBuilder
 
     override public function build(gameObject:GameObject):IMathOperation<Int>
     {
-        return new PoolModifier(this.modifier, this.value);
+        return new MathValue(this.value);
     }
 }
