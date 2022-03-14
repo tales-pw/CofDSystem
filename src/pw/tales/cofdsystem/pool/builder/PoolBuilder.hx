@@ -3,9 +3,6 @@ package pw.tales.cofdsystem.pool.builder;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.utils.math.IMathOperation;
 
-/*
-
- */
 @:expose("PoolBuilder")
 class PoolBuilder implements IPoolBuilder
 {
@@ -19,5 +16,10 @@ class PoolBuilder implements IPoolBuilder
     public function build(gameObject:GameObject):IMathOperation<Int>
     {
         throw "Unimplemented";
+    }
+
+    public function calculate(gameObject:GameObject):Int
+    {
+        return this.build(gameObject).calculate();
     }
 }

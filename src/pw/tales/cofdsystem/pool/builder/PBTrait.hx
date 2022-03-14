@@ -1,7 +1,8 @@
 package pw.tales.cofdsystem.pool.builder;
 
+import pw.tales.cofdsystem.game_object.traits.Trait;
+import pw.tales.cofdsystem.utils.math.MathValue;
 import pw.tales.cofdsystem.game_object.traits.TraitType;
-import pw.tales.cofdsystem.pool.math.PoolTrait;
 import pw.tales.cofdsystem.game_object.GameObject;
 import pw.tales.cofdsystem.utils.math.IMathOperation;
 
@@ -16,6 +17,14 @@ class PBTrait extends PoolBuilder
         this.traitType = traitType;
     }
 
+    private function getValue(gameObject:GameObject):Int
+    {
+        var trait:Null<Trait> = gameObject.getTrait(this.traitType);
+        if (trait == null)
+            return 0;
+        return trait.getValue();
+    }
+
     override public function getHumanReadable():String
     {
         return this.traitType.getDisplayName();
@@ -23,6 +32,6 @@ class PBTrait extends PoolBuilder
 
     override public function build(gameObject:GameObject):IMathOperation<Int>
     {
-        return new PoolTrait(gameObject, this.traitType);
+        return new MathValue(this.getValue(gameObject));
     }
 }

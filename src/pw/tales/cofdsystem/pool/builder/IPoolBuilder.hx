@@ -12,4 +12,6 @@ interface IPoolBuilder
     function getHumanReadable():String;
 
     function build(gameObject:GameObject):IMathOperation<Int>;
+
+    function calculate(gameObject:GameObject):Int;
 }
