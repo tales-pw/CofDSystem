@@ -23,7 +23,7 @@ class AdvantageExpression extends Advantage
     override public function getValue():Int
     {
         var event = new AdvantageModEvent(gameObject, this);
-        this.gameObject.getSystem().events.post(event);
+        this.system.events.post(event);
         return poolBuilder.calculate(gameObject) + event.getModifier();
     }
 }
